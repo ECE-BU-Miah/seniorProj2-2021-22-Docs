@@ -1,0 +1,303 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compact Laboratory Book
+% LaTeX Template
+% Version 1.0 (4/6/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Joan Queralt Gil (http://phobos.xtec.cat/jqueralt) using the labbook class by
+% Frank Kuster (http://www.ctan.org/tex-archive/macros/latex/contrib/labbook/)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the labbook.cls file to be in the same directory as the
+% .tex file. The labbook.cls file provides the necessary structure to create the
+% lab book.
+%
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing lab book content.
+%
+% HOW TO USE THIS TEMPLATE 
+% Each day in the lab consists of three main things:
+%
+% 1. LABDAY: The first thing to put is the \labday{} command with a date in 
+% curly brackets, this will make a new section showing that you are working
+% on a new day.
+%
+% 2. EXPERIMENT/SUBEXPERIMENT: Next you need to specify what 
+% experiment(s) and subexperiment(s) you are working on with a 
+% \experiment{} and \subexperiment{} commands with the experiment 
+% shorthand in the curly brackets. The experiment shorthand is defined in the 
+% 'DEFINITION OF EXPERIMENTS' section below, this means you can 
+% say \experiment{pcr} and the actual text written to the PDF will be what 
+% you set the 'pcr' experiment to be. If the experiment is a one off, you can 
+% just write it in the bracket without creating a shorthand. Note: if you don't 
+% want to have an experiment, just leave this out and it won't be printed.
+%
+% 3. CONTENT: Following the experiment is the content, i.e. what progress 
+% you made on the experiment that day.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------                               
+
+% \UseRawInputEncoding
+
+\documentclass[fontsize=11pt, % Document font size
+                             paper=letter, % Document paper type
+                             %twoside, % Shifts odd pages to the left for easier reading when printed, can be changed to oneside
+                             openany, % chapters can start on any page
+                             captions=tableheading,
+                             index=totoc,
+                             hyperref]{labbook}
+
+%\documentclass[idxtotoc,hyperref,openany]{labbook} % 'openany' here removes the
+  
+\usepackage[bottom=10em]{geometry} % Reduces the whitespace at the bottom of the page so more text can fit
+
+\usepackage[english]{babel} % English language
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage[utf8]{inputenc} % Uses the utf8 input encoding
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[osf]{mathpazo} % Palatino as the main font
+\linespread{1.05}\selectfont % Palatino needs some extra spacing, here 5% extra
+\usepackage[scaled=.88]{beramono} % Bera-Monospace
+\usepackage[scaled=.86]{berasans} % Bera Sans-Serif
+
+\usepackage{booktabs,array} % Packages for tables
+
+\usepackage{amsmath} % For typesetting math
+\usepackage{graphicx} % Required for including images
+\usepackage{etoolbox}
+\usepackage[norule]{footmisc} % Removes the horizontal rule from footnotes
+\usepackage{lastpage} % Counts the number of pages of the document
+\usepackage{float}
+
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e} % For algorithms
+
+
+\usepackage[dvipsnames]{xcolor}  % Allows the definition of hex colors
+\usepackage{epstopdf}
+\epstopdfsetup{suffix={}}
+\definecolor{titleblue}{rgb}{0.16,0.24,0.64} % Custom color for the title on the title page
+\definecolor{linkcolor}{rgb}{0,0,0.42} % Custom color for links - dark blue at the moment
+
+\addtokomafont{title}{\Huge\color{titleblue}} % Titles in custom blue color
+\addtokomafont{chapter}{\color{OliveGreen}} % Lab dates in olive green
+\addtokomafont{section}{\color{Sepia}} % Sections in sepia
+\addtokomafont{pagehead}{\normalfont\sffamily\color{gray}} % Header text in gray and sans serif
+\addtokomafont{caption}{\footnotesize\itshape} % Small italic font size for captions
+\addtokomafont{captionlabel}{\upshape\bfseries} % Bold for caption labels
+\addtokomafont{descriptionlabel}{\rmfamily}
+\setcapwidth[c]{10cm} % Center align caption text
+\setkomafont{footnote}{\sffamily} % Footnotes in sans serif
+
+\deffootnote[4cm]{4cm}{1em}{\textsuperscript{\thefootnotemark}} % Indent footnotes to line up with text
+
+\DeclareFixedFont{\textcap}{T1}{phv}{bx}{n}{1.5cm} % Font for main title: Helvetica 1.5 cm
+\DeclareFixedFont{\textaut}{T1}{phv}{bx}{n}{0.8cm} % Font for author name: Helvetica 0.8 cm
+
+\def\currentYear{2021}
+
+\usepackage{scrhack}
+\usepackage[headsepline]{scrlayer-scrpage} % Provides headers and footers configuration
+\pagestyle{scrheadings} % Print the headers and footers on all pages
+\clearscrheadfoot % Clean old definitions if they exist
+
+\automark[chapter]{chapter}
+\ohead{\headmark} % Prints outer header
+
+\setlength{\headheight}{25pt} % Makes the header take up a bit of extra space for aesthetics
+\addtokomafont{headsepline}{\color{lightgray}} % Colors the rule under the header light gray
+
+\ofoot[\normalfont\normalcolor{\thepage\ |\  \pageref{LastPage}}]{\normalfont\normalcolor{\thepage\ |\  \pageref{LastPage}}} % Creates an outer footer of: "current page | total pages"
+
+% These lines make it so each new lab day directly follows the previous one i.e. does not start on a new page - comment them out to separate lab days on new pages
+\makeatletter
+\patchcmd{\addchap}{\if@openright\cleardoublepage\else\clearpage\fi}{\par}{}{}
+\makeatother
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+% These lines make it so every figure and equation in the document is numbered consecutively rather than restarting at 1 for each lab day - comment them out to remove this behavior
+\usepackage{chngcntr}
+\counterwithout{figure}{labday}
+\counterwithout{equation}{labday}
+
+% Hyperlink configuration
+\usepackage[
+    pdfauthor={Kalli Allen, Darrah Beebe, and Jason Braker}, % Your name for the author field in the PDF
+    pdftitle={Laboratory Journal}, % PDF title
+    pdfsubject={labNotebookSeniorProject3}, % PDF subject
+    bookmarksopen=true,
+    linktocpage=true,
+    urlcolor=linkcolor, % Color of URLs
+    citecolor=linkcolor, % Color of citations
+    linkcolor=linkcolor, % Color of links to other pages/figures
+    backref=page,
+    pdfpagelabels=true,
+    plainpages=false,
+    colorlinks=true, % Turn off all coloring by changing this to false
+    bookmarks=true,
+    pdfview=FitB]{hyperref}
+
+\usepackage[stretch=10]{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{todonotes}
+
+% This package is for plotting graphs
+\usepackage{pgfplots}
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%    DEFINITION OF EXPERIMENTS
+%----------------------------------------------------------------------------------------
+
+% Template: \newexperiment{<abbrev>}[<short form>]{<long form>}
+% <abbrev> is the reference to use later in the .tex file in \experiment{}, the <short form> is only used in the table of contents and running title - it is optional, <long form> is what is printed in the lab book itself
+
+\newexperiment{example}[Example experiment]{This is an example experiment}
+\newexperiment{example2}[Example experiment 2]{This is another example experiment}
+\newexperiment{example3}[Example experiment 3]{This is yet another example experiment}
+
+\newsubexperiment{subexp_example}[Example sub-experiment]{This is an example sub-experiment}
+\newsubexperiment{subexp_example2}[Example sub-experiment 2]{This is another example sub-experiment}
+\newsubexperiment{subexp_example3}[Example sub-experiment 3]{This is yet another example sub-experiment}
+
+%----------------------------------------------------------------------------------------
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Command to make the lines in the title page
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%    TITLE PAGE
+%----------------------------------------------------------------------------------------
+%\frontmatter % Use Roman numerals for page numbers
+
+%\begin{center}
+
+%
+
+\title{
+\begin{center}
+\href{http://www.bradley.edu}{\includegraphics[height=0.5in]{figs/logoBU1-Print}}
+\vskip10pt
+\HRule \\[0.4cm]
+{\Huge \bfseries Laboratory Notebook \\[0.5cm] \Large Robotic Cart}\\[0.4cm] % Degree
+\HRule \\[1.5cm]
+\end{center}
+}
+\author{ Firstname Lastname, Firstname Lastname, and Firstname Lastname \\ \\\Large yourEmail@mail.bradley.edu, yourEmail@mail.bradley.edu, \\yourEmail@mail.bradley.edu} % Your name and email address
+\date{Beginning September 14, \currentYear} % Beginning date
+\maketitle
+
+%\maketitle % Title page
+
+\printindex
+\tableofcontents % Table of contents
+\newpage % Start lab look on a new page
+
+\begin{addmargin}[0cm]{0cm} % Makes the text width much shorter for a compact look
+
+\pagestyle{scrheadings} % Begin using headers
+
+%----------------------------------------------------------------------------------------
+%    LAB BOOK CONTENTS
+%----------------------------------------------------------------------------------------
+
+\labday{Wednesday, September 15, \currentYear}
+\experiment{Meeting Minutes}
+% Place your initial below
+HG\\
+
+In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting time on Mondays from 5:00 to 6:00 pm. Darrah was not present. Dr. Miah went over introductory materials and shared a Google Drive as well as a GitHub repo for storing files. We were informed by Dr. Miah that we should use camel case for file names. Dr. Miah also informed us that we will be using Inkscape or IPE for creating figures, and Dia for flowcharts. 
+
+%-------------------------------------------
+
+\labday{Thursday, September 16, \currentYear}
+\experiment{Meeting Minutes}
+% Place your initial below
+HG\\
+
+In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting time on Mondays from 5:00 to 6:00 pm. Darrah was not present. Dr. Miah went over introductory materials and shared a Google Drive as well as a GitHub repo for storing files. We were informed by Dr. Miah that we should use camel case for file names. Dr. Miah also informed us that we will be using Inkscape or IPE for creating figures, and Dia for flowcharts. 
+
+% -------------------------------------------
+
+\labday{Thursday, September 23, \currentYear}
+\experiment{Meeting Minutes}
+% Place your initial below
+HG\\
+
+In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting time on Mondays from 5:00 to 6:00 pm. Darrah was not present. Dr. Miah went over introductory materials and shared a Google Drive as well as a GitHub repo for storing files. We were informed by Dr. Miah that we should use camel case for file names. Dr. Miah also informed us that we will be using Inkscape or IPE for creating figures, and Dia for flowcharts. 
+
+% -------------------------------------------
+%-------------------------------------------
+
+\experiment{Background study}
+
+JB\\
+Today in the lab time, I worked on modeling the Junior Runt Rover robot in CoppeliaSim. First, I drew a 3d model of the robot chassis and a wheel in an external 3d CAD program. Then I imported the models into CoppeliaSim and worked on setting up the joints for simulation. I found the following document that explained how to model a robot in CoppeliaSim: \href{https://www.coppeliarobotics.com/helpFiles/en/buildingAModelTutorial.htm}{https://www.coppeliarobotics.com/helpFiles/en/buildingAModelTutorial.htm}
+
+\vspace*{12pt}
+
+KA\\
+Today during the lab time, I worked on modeling the Junior Runt Rover robot in CoppeliaSim. First, I researched how to model a robot using the CoppeliaSim software and used the following document as a guide:\\
+\href{https://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm}{https://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm}\\
+Then I modeled the robot chassis based on preliminary measurements of the Junior Runt Rover and then opened a new scene to design each of the wheels and worked on configuring the wheels to the chassis of the robot.
+
+\vspace*{12pt}DB\\
+For this lab session I found and used the same reference material as linked by Jason.  I then measured and modded the Actobotics Junior Rover in Fusion 360 and imported it into Coppelia Sim and finished linked the model together.  Did not get to but next step should be getting it connected to Matlab.
+
+\experiment{Meeting Minutes}
+Agenda:
+\begin{itemize}
+    \item Discuss next steps in project
+    \item Discuss Xbee modules and project materials
+\end{itemize}
+
+JB\\
+In today's meeting, we briefly went over the System Level Functional Requirements document with Dr. Shastry since he missed our meeting last week. Then we were informed that we need to make a presentation from the material in that document. The presentation will be next Tuesday, October 13th, in our weekly meeting. Finally, we discussed the Xbee modules. Darrah already has enough Xbee modules, and Kalli and I will go to Dr. Miah's office to pick up some modules to use for the project.
+
+%-------------------------------------------
+
+
+%--------------------------------------------------------------------------------------------
+
+\end{addmargin}
+
+%----------------------------------------------------------------------------------------
+%    BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+
+\bibliographystyle{plain}
+\bibliography{bib/references.bib}
+
+
+% \begin{thebibliography}{9}
+
+
+
+% \end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

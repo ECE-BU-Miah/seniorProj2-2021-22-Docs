@@ -1,0 +1,96 @@
+# Rules to ignore files without extensions except for Makefiles
+*
+!*/
+!*.*
+!Makefile
+
+# TeX auxiliary files #
+#######################
+# Ignore the output pdfs
+labNotebook.pdf
+systemLevelFunctionalRequirements.pdf
+systemLevelFunctionalRequirementsPres.pdf
+finalReportPres.pdf
+finalReport.pdf
+proposal.pdf
+proposalPres.pdf
+
+# TeX auxiliary files #
+#######################
+*.aux
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.log
+*.out
+*.synctex*
+*.toc
+*.nav
+*.snm
+*.nlo
+*.xwm
+*.bbl
+*.blg
+*.pyg
+*.syntex*
+
+# Dia tilde files #
+###################
+*.dia~
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+__pycache__/
+
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+*.db
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows generated files #
+######################
+Icon?
+Icon*
+
+# Platform directories #
+########################
+TempTest/
+venv/
+

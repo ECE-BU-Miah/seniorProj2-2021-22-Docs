@@ -1,0 +1,165 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[12pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%%%\usepackage[document]{ragged2e} 
+
+%%% Examples of Article customizations
+% These packages are optional, depending on whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+\geometry{margin=1in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\graphicspath{
+{figs/ipe/}
+}
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{epstopdf}
+\epstopdfsetup{suffix = {}}
+\usepackage{siunitx}
+\sisetup{inter-unit-product = \cdot}
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+\usepackage{caption}        %Allows modification of captions
+% \usepackage{indentfirst}    %Allows for indenting first paragraphs
+
+
+
+\usepackage{hyperref}
+\usepackage{todonotes}
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customize the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{enumerate}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Command to make the lines in the title page
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{
+    \begin{center}
+        \href{http://www.bradley.edu}{\includegraphics[height=1in]{figs/logoBU1-Print}}
+        \vskip10pt
+        \HRule \\[0.4cm]
+        {\Huge \bfseries Robotic Cart System \\\Large Project Statement and Functional Requirements}\\[0.4cm] % Degree
+        \HRule \\[0.4cm]
+    \end{center}
+    }
+\author{Kallistah Allen, Darrah Beebe, and Jason Braker \\ \underline{Advisors}: Dr. Suruz Miah and Dr. Prasad Shastry}
+
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+         
+% \setlength{\parindent}{4em} % this should indent paragraphs
+
+\setlength{\marginparwidth}{2cm}
+
+\begin{document}
+\maketitle
+
+% \newpage
+% \tableofcontents % Table of contents
+\newpage % Start lab look on a new page
+
+\section{Project Description}
+Robotic carts are of paramount importance to conduct many indoor or outdoor tasks. There are many applications of autonomous robotic carts. For example, in a grocery store, a customer (especially a person with disability) may need more than one cart but is incapable of pushing two carts simultaneously. Therefore, a second cart that is capable of identifying the customer to follow and is able to track and follow the customer through the store would be very useful. In an indoor office environment, such an autonomous robotic cart may be used to carry items such as files from one office to another. In an outdoor environment, such a cart may be used to carry sheets of glass.
+
+There are many solutions available in the market for such robotic carts. However, all of them require line of sight communication. In this project, we are proposing a robotic cart using mainly analog signals using cost-effective wireless communication. Implementation of a fully functional robotic cart will be out of the scope of this project but is an ultimate goal for this project in the coming years. However, this project is expected to encourage further research in this area as well as provide a foundation for that research.
+
+%------------------------------------------------
+\section{System Architecture}
+\subsection{System Block Diagram}
+The robotic cart system will be comprised of two main subsystems - a mobile cart and a remote target device. The system, as a whole, will take into consideration the world around it and avoid obstacles while trying to follow the remote target.  The system will also be trying to follow the remote pointer even if it loses the line of sight detection.  If the robot loses track or falls too far behind the remote, the remote will indicate this to the user.
+
+% A block diagram of the robotic cart system is shown in \autoref{fig:sysBlockDiag}
+% \begin{figure}[b]
+%     \centering
+%     \captionsetup{justification=centering, margin=3cm}
+%     \includegraphics[width=6.5in]{figs/system_block_diagram}
+%     \caption{Block Diagram of the Robotic Cart System}
+%     \label{fig:sysBlockDiag}
+% \end{figure}
+
+\subsection{System Inputs and Outputs}
+\subsubsection{Inputs}
+There are four inputs to the robotic cart system.
+\begin{itemize}
+    \item Power - Both the mobile cart and the remote will require power from a battery.
+    \item On/Off Switch - The user must be able to turn both the cart and the remote off to save power when the robotic cart system is not in use.
+    \item Movement of the Remote - The user will control the mobile cart by moving with the remote.
+    \item Mode Selection - The user must be able to select which mode of operation the robotic cart system should use.
+\end{itemize}
+
+\subsubsection{Outputs}
+There are two outputs from the robotic cart system.
+\begin{itemize}
+    \item Movement of the Cart - The cart will move to follow the remote.
+    \item Status Indicators - Both the mobile cart and the remote will have status indicators to provide the user with the status of the system.
+\end{itemize}
+
+%------------------------------------------------
+\section{Requirements and Specifications}
+\subsection{Requirements}
+The robotic cart system will meet the following requirements:
+\begin{itemize}
+    \item Cart should follow remote at a reasonable distance
+    \item Cart should be able to travel at a speed reasonable for walking
+    \item User should be alerted if cart falls too far behind
+    \item Cart should not require line-of-sight to follow remote
+    \item Cart should avoid obstacles
+\end{itemize}
+
+\subsection{Specifications}
+Based on the requirements, the robotic cart system must meet the following specifications:
+\begin{itemize}
+    \item Cart should be able to follow the remote while maintaining a distance of 1 to 1.5 meters.
+    \item Cart should be able to travel at speeds up to 2 m/s
+    \item User should be alerted if the cart falls more than 2 meters behind
+    \item Cart should not require line-of-sight to follow remote
+    \item Cart should not collide with obstacles while following remote
+\end{itemize}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
