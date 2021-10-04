@@ -79,11 +79,11 @@
         \href{http://www.bradley.edu}{\includegraphics[height=1in]{figs/logoBU1-Print}}
         \vskip10pt
         \HRule \\[0.4cm]
-        {\Huge \bfseries Robotic Cart System \\\Large Project Statement and Functional Requirements}\\[0.4cm] % Degree
+        {\Huge \bfseries HIL Plant Modeling \\\Large Project Statement and Functional Requirements}\\[0.4cm] % Degree
         \HRule \\[0.4cm]
     \end{center}
     }
-\author{Kallistah Allen, Darrah Beebe, and Jason Braker \\ \underline{Advisors}: Dr. Suruz Miah and Dr. Prasad Shastry}
+\author{Hannah Grady and Nicholas Nauman \\ \underline{Advisors}: Dr. Suruz Miah}
 
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -100,63 +100,137 @@
 \newpage % Start lab look on a new page
 
 \section{Project Description}
-Robotic carts are of paramount importance to conduct many indoor or outdoor tasks. There are many applications of autonomous robotic carts. For example, in a grocery store, a customer (especially a person with disability) may need more than one cart but is incapable of pushing two carts simultaneously. Therefore, a second cart that is capable of identifying the customer to follow and is able to track and follow the customer through the store would be very useful. In an indoor office environment, such an autonomous robotic cart may be used to carry items such as files from one office to another. In an outdoor environment, such a cart may be used to carry sheets of glass.
+Autonomous vehicles are being developed by many companies with the goal of being able to use these vehicles in both commercial and residential settings. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to increase safety for other drivers and pedestrians alike. To control autonomous vehicles, accurate models of six main subsystems must be created so controllers can be developed to reliably control the system.
 
-There are many solutions available in the market for such robotic carts. However, all of them require line of sight communication. In this project, we are proposing a robotic cart using mainly analog signals using cost-effective wireless communication. Implementation of a fully functional robotic cart will be out of the scope of this project but is an ultimate goal for this project in the coming years. However, this project is expected to encourage further research in this area as well as provide a foundation for that research.
+There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. There are controllers in place to control the Lexus vehicle platform, but the reliability of these controllers are lower than what is expected. The scope of this project includes developing models for each subsystem so AutonomouStuff can implement controls that improve the reliability of the vehicle platform.
 
 %------------------------------------------------
+
+\section{Literature}
+\label{sec:Literature}
+
+Authors in~\cite{Adnan2010} shows how a system with small non-linearities cna be modeled using Matlab's System Identification Toolbox. Since the researchers were able to model their system successfully, that indicates that we should be able to model our steering model with its small non-linearities caused by very small steering angles as well. Any concerns that modeling the vehicle components using the System Identification Toolbox will produce inaccurate results are addressed by~\cite{Donjaroennon2021}. Using input and output signals, they were able to come up with a model that had a best fit percentage of 95.1\%. Therefore we can carry out our project knowing that the models we produce will be accurate. 
+
+Autonomous vehicle modeling is illustrated by authors in~\cite{Wang2021}.
+
+Mathematical model construction is conducted by authors in~\cite{Donjaroennon2021}.
+
 \section{System Architecture}
 \subsection{System Block Diagram}
-The robotic cart system will be comprised of two main subsystems - a mobile cart and a remote target device. The system, as a whole, will take into consideration the world around it and avoid obstacles while trying to follow the remote target.  The system will also be trying to follow the remote pointer even if it loses the line of sight detection.  If the robot loses track or falls too far behind the remote, the remote will indicate this to the user.
+The Lexus car platform is comprised of six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model. The system, as a whole, will be taking into consideration obstacles around it while the vehicle traverses a predetermined route. For the system to be able to accomplish this reliably, the six main subsystems must be precisely modeled, especially the steering subsystem. 
 
-% A block diagram of the robotic cart system is shown in \autoref{fig:sysBlockDiag}
-% \begin{figure}[b]
-%     \centering
-%     \captionsetup{justification=centering, margin=3cm}
-%     \includegraphics[width=6.5in]{figs/system_block_diagram}
-%     \caption{Block Diagram of the Robotic Cart System}
-%     \label{fig:sysBlockDiag}
-% \end{figure}
+A block diagram of the vehicle steering model is shown in \autoref{fig:sysBlockDiag}
+\begin{figure}[b]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=3.5in]{figs/inkscape/steeringModelArchitecture}
+    \caption{Block Diagram of the Vehicle Steering Model}
+    \label{fig:sysBlockDiag}
+\end{figure}
 
 \subsection{System Inputs and Outputs}
 \subsubsection{Inputs}
-There are four inputs to the robotic cart system.
+
 \begin{itemize}
-    \item Power - Both the mobile cart and the remote will require power from a battery.
-    \item On/Off Switch - The user must be able to turn both the cart and the remote off to save power when the robotic cart system is not in use.
-    \item Movement of the Remote - The user will control the mobile cart by moving with the remote.
-    \item Mode Selection - The user must be able to select which mode of operation the robotic cart system should use.
+    \item Steering Model
+    \begin{itemize}
+    		\item Desired Steering Wheel Angle
+    		\item Actual Steering Wheel Angle 
+    		\item Torque Voltages
+    \end{itemize}
+    \item Acceleration Model
+    \begin{itemize}
+    		\item Acceleration Pedal Voltages
+    \end{itemize}
+    \item Brake Model
+    \begin{itemize}
+    		\item Brake Pedal Pressure Voltages
+    		\item Brake Pedal Stroke Voltages 
+    		\item Brake Pedal On/Off Switch
+    \end{itemize}
+    \item Shift Model
+    \begin{itemize}
+    		\item Desired Shift Gear
+    \end{itemize}
+    \item Speed Model
+    \begin{itemize}
+    		\item Acceleration Pedal Position
+    		\item Brake Pedal Position
+    		\item Shifter Actual Gear
+    \end{itemize}
+    \item Speed Control Model
+    \begin{itemize}
+    		\item Desired Vehicle Speed
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Outputs}
-There are two outputs from the robotic cart system.
+
 \begin{itemize}
-    \item Movement of the Cart - The cart will move to follow the remote.
-    \item Status Indicators - Both the mobile cart and the remote will have status indicators to provide the user with the status of the system.
+    \item Steering Model
+    \begin{itemize}
+    		\item Wheel Angle
+    		\item Actual Steering Wheel Angle
+    \end{itemize}
+    \item Acceleration Model
+    \begin{itemize}
+    		\item Acceleration Pedal Position
+    \end{itemize}
+    \item Brake Model
+    \begin{itemize}
+    		\item Brake Pedal Position
+    		\item Brake Pressed
+    \end{itemize}
+    \item Shift Model
+    \begin{itemize}
+    		\item Shifter Actual Gear
+    \end{itemize}
+    \item Speed Model
+    \begin{itemize}
+    		\item Vehicle Speed
+    \end{itemize}
+    \item Speed Control Model
+    \begin{itemize}
+    		\item Vehicle Speed
+    \end{itemize}
 \end{itemize}
 
 %------------------------------------------------
 \section{Requirements and Specifications}
 \subsection{Requirements}
-The robotic cart system will meet the following requirements:
+The vehicle platform plant model will meet the following requirements:
 \begin{itemize}
-    \item Cart should follow remote at a reasonable distance
-    \item Cart should be able to travel at a speed reasonable for walking
-    \item User should be alerted if cart falls too far behind
-    \item Cart should not require line-of-sight to follow remote
-    \item Cart should avoid obstacles
+    \item The plant model should have an accurate model of the six main subsystems
+    \item A HIL test bench can be developed from the plant models of the subsystems
+    \item The steering model can handle very small steering angles
 \end{itemize}
 
 \subsection{Specifications}
-Based on the requirements, the robotic cart system must meet the following specifications:
+Based on the requirements, the vehicle platform plant model must meet the following specifications:
 \begin{itemize}
-    \item Cart should be able to follow the remote while maintaining a distance of 1 to 1.5 meters.
-    \item Cart should be able to travel at speeds up to 2 m/s
-    \item User should be alerted if the cart falls more than 2 meters behind
-    \item Cart should not require line-of-sight to follow remote
-    \item Cart should not collide with obstacles while following remote
+    \item The model of the steering subsystem should be modeled first as it is crucial to operation and has non-linearity considerations
+    \item The remaining subsystems will be modeled individually 
+    \item Our steering model will be designed to accommodate very small steering angles
 \end{itemize}
 
+\section{Other Considerations}
+As we progress with this project, it is important that we take into consideration how this will affect others and make sure that we are holding ourselves to high ethical standards. 
+\begin{itemize}
+    \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents and driving fatalities and injuries. As a result people will be able to live longer and healthier lives. By creating accurate models, we will help advance the development of autonomous vehicles and make this a reality. 
+    \item Public Safety: This is a relevant concern, because the real world implementations of inaccurate models could be disastrous since it is a self-driving vehicle. We will address this by creating a rigorous test plan for our models. 
+    \item Public Welfare: This factor is somewhat related to public safety and health in that we need to make sure that these vehicles are safe for people to use. How we will help ensure this in our project is the same as how we will ensure public safety, by making sure we throughly test our models. 
+    \item Global Factors: This is irrelevant to this project. While our work will help with the development of autonomous vehicles, we do not have any control or impact over how they will be introduced to the world and used in society. 
+    \item Cultural Factors: 
+    \item Social Factors: Advancing autonomous vehicle research could lead to them replacing those who drive for a living, such as taxi or Uber drivers. This is an important issue that needs to be addressed as autonomous vehicles become more widespread, but it is outside of the scope of our project. 
+    \item Environmental Factors: By modeling the vehicle components using software, that means the vehicle will not have to be used as often for testing. Less vehicle use could potentially have a positive impact on the environment. 
+    \item Business Factors: We must keep in mind the maintenance of developed software to control the vehicle based on updates to the control models. 
+    \item Economic Factors: There is an increased cost associated with the specialized hardware which allows for the autonomy of the vehicle. However, this cost is justified to the consumer as it reduces the stress and time involved with driving a vehicle. 
+
+\end{itemize}
+
+\pagebreak
+\bibliographystyle{IEEEtran}
+\bibliography{bib/references.bib}
 \end{document}
 
 %%% Local Variables:

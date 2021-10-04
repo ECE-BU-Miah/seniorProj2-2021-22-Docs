@@ -134,7 +134,7 @@
 
 % Hyperlink configuration
 \usepackage[
-    pdfauthor={Kalli Allen, Darrah Beebe, and Jason Braker}, % Your name for the author field in the PDF
+    pdfauthor={Hannah Grady, Nicholas Nauman}, % Your name for the author field in the PDF
     pdftitle={Laboratory Journal}, % PDF title
     pdfsubject={labNotebookSeniorProject3}, % PDF subject
     bookmarksopen=true,
@@ -195,13 +195,14 @@
 \href{http://www.bradley.edu}{\includegraphics[height=0.5in]{figs/logoBU1-Print}}
 \vskip10pt
 \HRule \\[0.4cm]
-{\Huge \bfseries Laboratory Notebook \\[0.5cm] \Large Robotic Cart}\\[0.4cm] % Degree
+{\Huge \bfseries Laboratory Notebook \\[0.5cm] \Large HIL Plant Modeling}\\[0.4cm] % Degree
 \HRule \\[1.5cm]
 \end{center}
 }
-\author{ Firstname Lastname, Firstname Lastname, and Firstname Lastname \\ \\\Large yourEmail@mail.bradley.edu, yourEmail@mail.bradley.edu, \\yourEmail@mail.bradley.edu} % Your name and email address
+\author{ Hannah Grady, Nicholas Nauman \\ \\\Large hgrady@mail.bradley.edu, nnauman@mail.bradley.edu} % Your name and email address
 \date{Beginning September 14, \currentYear} % Beginning date
 \maketitle
+
 
 %\maketitle % Title page
 
@@ -222,7 +223,7 @@
 % Place your initial below
 HG\\
 
-In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting time on Mondays from 5:00 to 6:00 pm. Darrah was not present. Dr. Miah went over introductory materials and shared a Google Drive as well as a GitHub repo for storing files. We were informed by Dr. Miah that we should use camel case for file names. Dr. Miah also informed us that we will be using Inkscape or IPE for creating figures, and Dia for flowcharts. 
+Dr. Miah, Mr. Guetz, Mr. Buckner, and I discussed the project design form and work statement. Nick was not present. Dr. Miah, Nick, and myself will be recieving documents and diagrams from AutonomouStuff around September 22nd which will add further detail to our project. We also went over project logistics and discussed using GitHub for project work unless the information became confidential. Project deliverables will be finalized at the next meeting, and weekly meetings will be conducted via Zoom. Nick and I will have at least six hours of lab work each week, not including extra research. Agendas will be sent out before each meeting.
 
 %-------------------------------------------
 
@@ -231,7 +232,7 @@ In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting 
 % Place your initial below
 HG\\
 
-In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting time on Mondays from 5:00 to 6:00 pm. Darrah was not present. Dr. Miah went over introductory materials and shared a Google Drive as well as a GitHub repo for storing files. We were informed by Dr. Miah that we should use camel case for file names. Dr. Miah also informed us that we will be using Inkscape or IPE for creating figures, and Dia for flowcharts. 
+Dr. Miah, Nick, and I met to recap some of the aspects of the meeting on 9/15 and discuss what we would be doing as students for this project. It is important to bring a notebook to all meetings in order to record the meeting minutes, and that all agendas and meeting minutes should be recorded in the lab notebook. Meetings will be on Thursdays from 4-5pm and Dr. Miah will send out meeting invitations to everyone. Lab work will take place on Tuesdays and Thursdays from 4-7pm. Dr. Miah will join these lab sessions either in-person or virtually. We will be using camel case convention for the naming of all folders and files, and Dr. Miah will provide the templates we need. Nick and I will send our GitHub information to Dr. Miah so we can access the senior project GitHub, and Dr. Miah will share a Google Drive folder with us. We discussed the format for lab notebook entries, and Nick and I will need to install Inkscape and TeX Live. 
 
 % -------------------------------------------
 
@@ -240,35 +241,41 @@ In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting 
 % Place your initial below
 HG\\
 
-In today's meeting, Dr. Miah, Dr. Shastry, Kalli, and I set up a weekly meeting time on Mondays from 5:00 to 6:00 pm. Darrah was not present. Dr. Miah went over introductory materials and shared a Google Drive as well as a GitHub repo for storing files. We were informed by Dr. Miah that we should use camel case for file names. Dr. Miah also informed us that we will be using Inkscape or IPE for creating figures, and Dia for flowcharts. 
+Dr. Miah, Mr. Guetz, Mr. Buckner, Nick, and I met to further discuss the project. Mr. Guetz provided block diagrams for the systems that we will be modeling. Everything highlighted in red is related to the vehicle, while everything in blue is related to firmware. The torque voltages range from 1.8-3.8V and based on the voltage the steering wheel will turn either left or right. AutonomouStuff already has a steering controller, but it has trouble with small steering angles. Some deliverables we discussed were having a Simulink model that mathematically aligns with data along with a report, test plans for data collection, small steering angle and mathematical model, and results. Once we get raw data from an actual vehicle we will then come up with a Simulink model. A tentative schedule we discussed was spending the first semester gathering data and modeling that data, and then conducting experiments during the second semester. We might go out to AutonomouStuff to collect data, right now we need to start thinking about what type of data we need to collect and formulate a test plan. When we do this depends on vehicle availability, and AutonomouStuff will let us know what days the vehicle will be available. Dr. Miah, Nick, and myself were granted access to the BitBucket repository for this senior project by AutonomouStuff. This is where all documents from this meeting will go. At the end of the meeting Nick asked if there were any ranges we needed to focus on for data collection. The answer is that we need to look at speeds, with 20mph being the max limit. 
 
 % -------------------------------------------
 %-------------------------------------------
 
 \experiment{Background study}
 
-JB\\
-Today in the lab time, I worked on modeling the Junior Runt Rover robot in CoppeliaSim. First, I drew a 3d model of the robot chassis and a wheel in an external 3d CAD program. Then I imported the models into CoppeliaSim and worked on setting up the joints for simulation. I found the following document that explained how to model a robot in CoppeliaSim: \href{https://www.coppeliarobotics.com/helpFiles/en/buildingAModelTutorial.htm}{https://www.coppeliarobotics.com/helpFiles/en/buildingAModelTutorial.htm}
+HG\\
+During the lab, I worked on reading and taking notes of the different sections of the "Get Started with Sytem Identification Toolbox" documentation in MathWorks. I was able to read most of the documentation in the "About System Identification" section, but I will have to finish reading the rest of it and completing the tutorials over the weekend. 
 
 \vspace*{12pt}
 
-KA\\
-Today during the lab time, I worked on modeling the Junior Runt Rover robot in CoppeliaSim. First, I researched how to model a robot using the CoppeliaSim software and used the following document as a guide:\\
-\href{https://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm}{https://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm}\\
-Then I modeled the robot chassis based on preliminary measurements of the Junior Runt Rover and then opened a new scene to design each of the wheels and worked on configuring the wheels to the chassis of the robot.
+NN\\
+Today during the lab time, I researched how the Mathworks System Identification Toolbox allows users to create mathematical models of dynamic systems from measured input and output data using MATLAB functions and Simulink in either time-domain or frequency-domain. The research was completed using the following documentation: \href{https://www.mathworks.com/help/ident/getting-started-1.html} \\
+There are multiple methods for obtaining identification, but I believe the most effective method for this project will be to capture important system dynamics and organize the data into variables. Once the data is assigned to variables, it can be imported into the System Identification app or set as a data object that can be used to estimate a model from the command line. The System Identification Toolbox software supports time-domain and frequency-domain data for creating linear models and only time-domain data for creating nonlinear models. The data can be single or multiple inputs and outputs that are either real or complex. Once the data is prepared and ran through the System Identification Toolbox, there are functions that are used for either Linear Model Estimation, Nonlinear Model Estimation, or Grey-Box Model Estimation methods. Once the model equations are built, there are options for model validation (comparing experimental data with expected model data), Model Analysis (Model Transformation, Data Extraction, Simulation and Prediction, and Response Computation), and Time Series Analysis.
 
-\vspace*{12pt}DB\\
-For this lab session I found and used the same reference material as linked by Jason.  I then measured and modded the Actobotics Junior Rover in Fusion 360 and imported it into Coppelia Sim and finished linked the model together.  Did not get to but next step should be getting it connected to Matlab.
+% -------------------------------------------
 
+\labday{Thursday, September 30, \currentYear}
 \experiment{Meeting Minutes}
+% Place your initial below
 Agenda:
 \begin{itemize}
-    \item Discuss next steps in project
-    \item Discuss Xbee modules and project materials
+	\item Discuss a plan for data collection of the Lexus car platform
+	\item Discuss the logistics of when data collection may occur
 \end{itemize}
 
-JB\\
-In today's meeting, we briefly went over the System Level Functional Requirements document with Dr. Shastry since he missed our meeting last week. Then we were informed that we need to make a presentation from the material in that document. The presentation will be next Tuesday, October 13th, in our weekly meeting. Finally, we discussed the Xbee modules. Darrah already has enough Xbee modules, and Kalli and I will go to Dr. Miah's office to pick up some modules to use for the project.
+NN\\
+In today's meeting, Dr. Miah, Mr. Guetz, Hannah, and I discussed the ranges of the inputs and outputs of the steering model so a data collection test plan could be created. Also, we discussed the logistics of collecting this data. The Lexus platform will not be available for testing for at least two weeks. This should allow Mr. Guetz enough time to get the firmware ready for collecting data.
+
+\experiment{Background study}
+
+HG\\
+Today during the lab time I started reading through documents that could be used in the literature review section of our proposal and summarizing them. I also watched some videos on the MathWorks website about using the System Identification Toolbox. 
+
 
 %-------------------------------------------
 
