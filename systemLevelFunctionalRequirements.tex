@@ -100,27 +100,22 @@
 \newpage % Start lab look on a new page
 
 \section{Project Description}
-Autonomous vehicles are being developed by many companies with the goal of being able to use these vehicles in both commercial and residential settings. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to increase safety for other drivers and pedestrians alike. To control autonomous vehicles, accurate models of six main subsystems must be created so controllers can be developed to reliably control the system.
+Autonomous vehicles are being developed by many companies for commercial and personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. To control autonomous vehicles, accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage the system.
 
-There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. There are controllers in place to control the Lexus vehicle platform, but the reliability of these controllers are lower than what is expected. The scope of this project includes developing models for each subsystem so AutonomouStuff can implement controls that improve the reliability of the vehicle platform.
+There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. We will be modeling these six subsystems for a Lexus platform using the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are controllers in place to control the Lexus vehicle platform, but the reliability of these controllers is lower than expected. The scope of this project includes developing models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing. 
 
 %------------------------------------------------
 
 \section{Literature}
 \label{sec:Literature}
 
-Authors in~\cite{Adnan2010} shows how a system with small non-linearities cna be modeled using Matlab's System Identification Toolbox. Since the researchers were able to model their system successfully, that indicates that we should be able to model our steering model with its small non-linearities caused by very small steering angles as well. Any concerns that modeling the vehicle components using the System Identification Toolbox will produce inaccurate results are addressed by~\cite{Donjaroennon2021}. Using input and output signals, they were able to come up with a model that had a best fit percentage of 95.1\%. Therefore we can carry out our project knowing that the models we produce will be accurate. 
+Researchers in ~\cite{Adnan2010} show how a system with small non-linearities can be modeled using Matlab's System Identification Toolbox. Since the researchers were able to model their system successfully, that indicates that we should be able to model our steering model with its small non-linearities caused by very small steering angles as well. Another method for modeling small non-linearities is introduced by the authors in ~\cite{Saruchi2015} using a Steer-By-Wire method as the model for the steering system. With this model a composite nonlinear feedback (CNF) PID controller can be implemented to control the steering system even for small turning angles. Another option for modeling the steering system is using a third order ARMAX model as proposed by ~\cite{Li1999}. Using this model, traditional analysis methods can be used to develop a model and controller. Any concerns that modeling the vehicle components using the System Identification Toolbox will produce inaccurate results are addressed by ~\cite{Donjaroennon2021}. Using input and output signals, they were able to come up with a model that had a best fit percentage of 95.1\%. With these options for modeling automotive systems, we can carry out our project knowing that the models we produce will be accurate. 
 
-Autonomous vehicle modeling is illustrated by authors in~\cite{Wang2021}.
-
-Mathematical model construction is conducted by authors in~\cite{Donjaroennon2021}.
-
+%------------------------------------------------
 \section{System Architecture}
 \subsection{System Block Diagram}
-The Lexus car platform is comprised of six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model. The system, as a whole, will be taking into consideration obstacles around it while the vehicle traverses a predetermined route. For the system to be able to accomplish this reliably, the six main subsystems must be precisely modeled, especially the steering subsystem. 
-
-A block diagram of the vehicle steering model is shown in \autoref{fig:sysBlockDiag}
-\begin{figure}[b]
+The Lexus car platform is comprised of six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model. The system, as a whole, will be taking into consideration obstacles around it while the vehicle traverses a predetermined route. For the system to be able to accomplish this reliably, the six main subsystems must be precisely modeled, especially the steering subsystem. A block diagram of the vehicle steering model is shown in \autoref{fig:sysBlockDiag}
+\begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
     \includegraphics[width=3.5in]{figs/inkscape/steeringModelArchitecture}
@@ -134,9 +129,11 @@ A block diagram of the vehicle steering model is shown in \autoref{fig:sysBlockD
 \begin{itemize}
     \item Steering Model
     \begin{itemize}
-    		\item Desired Steering Wheel Angle
-    		\item Actual Steering Wheel Angle 
     		\item Torque Voltages
+    		\begin{itemize}
+    			\item Desired Steering Wheel Angle
+    			\item Actual Steering Wheel Angle
+    		\end{itemize}
     \end{itemize}
     \item Acceleration Model
     \begin{itemize}
@@ -213,21 +210,22 @@ Based on the requirements, the vehicle platform plant model must meet the follow
     \item Our steering model will be designed to accommodate very small steering angles
 \end{itemize}
 
+%------------------------------------------------
 \section{Other Considerations}
 As we progress with this project, it is important that we take into consideration how this will affect others and make sure that we are holding ourselves to high ethical standards. 
 \begin{itemize}
-    \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents and driving fatalities and injuries. As a result people will be able to live longer and healthier lives. By creating accurate models, we will help advance the development of autonomous vehicles and make this a reality. 
+    \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents and driving fatalities and injuries. As a result, people will be able to live longer and healthier lives. By creating accurate models, we will help advance the development of autonomous vehicles and make this a reality. 
     \item Public Safety: This is a relevant concern, because the real world implementations of inaccurate models could be disastrous since it is a self-driving vehicle. We will address this by creating a rigorous test plan for our models. 
     \item Public Welfare: This factor is somewhat related to public safety and health in that we need to make sure that these vehicles are safe for people to use. How we will help ensure this in our project is the same as how we will ensure public safety, by making sure we throughly test our models. 
-    \item Global Factors: This is irrelevant to this project. While our work will help with the development of autonomous vehicles, we do not have any control or impact over how they will be introduced to the world and used in society. 
-    \item Cultural Factors: 
+    \item Global Factors: Our work will be used to help advance the technology behind autonomous vehicles, but we will not have any control over how they will be used in society. Therefore, this factor is irrelevant the project. 
+    \item Cultural Factors: This is irrelevant to this project. While our work will help with the development of autonomous vehicles, we do not have any control or impact over how they will be introduced within cultural boundaries.
     \item Social Factors: Advancing autonomous vehicle research could lead to them replacing those who drive for a living, such as taxi or Uber drivers. This is an important issue that needs to be addressed as autonomous vehicles become more widespread, but it is outside of the scope of our project. 
     \item Environmental Factors: By modeling the vehicle components using software, that means the vehicle will not have to be used as often for testing. Less vehicle use could potentially have a positive impact on the environment. 
     \item Business Factors: We must keep in mind the maintenance of developed software to control the vehicle based on updates to the control models. 
     \item Economic Factors: There is an increased cost associated with the specialized hardware which allows for the autonomy of the vehicle. However, this cost is justified to the consumer as it reduces the stress and time involved with driving a vehicle. 
-
 \end{itemize}
 
+%------------------------------------------------
 \pagebreak
 \bibliographystyle{IEEEtran}
 \bibliography{bib/references.bib}
