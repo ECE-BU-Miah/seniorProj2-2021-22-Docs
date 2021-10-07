@@ -43,9 +43,9 @@
 % \usepackage{indentfirst}    %Allows for indenting first paragraphs
 
 
-
 \usepackage{hyperref}
-\usepackage{todonotes}
+
+% \usepackage{easyReview}
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -65,6 +65,11 @@
 %%% ToC (table of contents) APPEARANCE
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+
+
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{soul}
+
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
@@ -79,11 +84,11 @@
         \href{http://www.bradley.edu}{\includegraphics[height=1in]{figs/logoBU1-Print}}
         \vskip10pt
         \HRule \\[0.4cm]
-        {\Huge \bfseries HIL Plant Modeling \\\Large Project Statement and Functional Requirements}\\[0.4cm] % Degree
+        {\Huge \bfseries Hardware-in-the-Loop Plant Modeling for Autonomous Vehicle \\\Large Project Statement and Functional Requirements}\\[0.4cm] % Degree
         \HRule \\[0.4cm]
     \end{center}
     }
-\author{Hannah Grady and Nicholas Nauman \\ \underline{Advisors}: Dr. Suruz Miah}
+\author{Hannah Grady and Nicholas Nauman \\ \underline{Advisor}: Dr. Suruz Miah}
 
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -100,32 +105,61 @@
 \newpage % Start lab look on a new page
 
 \section{Project Description}
-Autonomous vehicles are being developed by many companies for commercial and personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. To control autonomous vehicles, accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage the system.
+Autonomous vehicles are being developed by many companies for commercial and/or personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. To control autonomous vehicles, accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage the system.
 
-There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. We will be modeling these six subsystems for a Lexus platform using the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are controllers in place to control the Lexus vehicle platform, but the reliability of these controllers is lower than expected. The scope of this project includes developing models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing. 
+There are six main subsystems - a steering model, an acceleration model, a brake
+model, a shifting model, a speed model, and a cruise model - that must be
+modeled to get an accurate representation of how the vehicle should be
+controlled. We will be modeling these six subsystems for a Lexus platform using
+the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are controllers in place to control the Lexus vehicle platform, but the reliability of these controllers is lower than expected. The scope of this project includes developing models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing. 
 
 %------------------------------------------------
 
 \section{Literature}
 \label{sec:Literature}
 
-Researchers in ~\cite{Adnan2010} show how a system with small non-linearities can be modeled using Matlab's System Identification Toolbox. Since the researchers were able to model their system successfully, that indicates that we should be able to model our steering model with its small non-linearities caused by very small steering angles as well. Another method for modeling small non-linearities is introduced by the authors in ~\cite{Saruchi2015} using a Steer-By-Wire method as the model for the steering system. With this model a composite nonlinear feedback (CNF) PID controller can be implemented to control the steering system even for small turning angles. Another option for modeling the steering system is using a third order ARMAX model as proposed by ~\cite{Li1999}. Using this model, traditional analysis methods can be used to develop a model and controller. Any concerns that modeling the vehicle components using the System Identification Toolbox will produce inaccurate results are addressed by ~\cite{Donjaroennon2021}. Using input and output signals, they were able to come up with a model that had a best fit percentage of 95.1\%. With these options for modeling automotive systems, we can carry out our project knowing that the models we produce will be accurate. 
+Researchers in~\cite{Adnan2010} show how a system with small non-linearities can
+be modeled using Matlab's System Identification Toolbox. Since the researchers
+were able to model their system successfully, that indicates that we should be
+able to model our steering model with its small non-linearities caused by very
+small steering angles as well. Another method for modeling small non-linearities
+is introduced by the authors in~\cite{Saruchi2015} using a Steer-By-Wire method
+as the model for the steering system. With this model, a composite nonlinear
+feedback (CNF) PID controller can be implemented to control the steering system
+even for small turning angles. Another option for modeling the steering system
+is using a third order ARMAX model as proposed by~\cite{Li1999}. Using this
+model, traditional analysis methods can be used to develop a model and
+controller. Any concerns that modeling the vehicle components using the System
+Identification Toolbox will produce inaccurate results are addressed by
+~\cite{Donjaroennon2021}. Using input and output signals, they were able to come
+up with a model that had a best fit percentage of 95.1\%. With these options for
+modeling automotive systems, we can carry out our project knowing that the
+models we produce will be accurate.
 
 %------------------------------------------------
 \section{System Architecture}
 \subsection{System Block Diagram}
-The Lexus car platform is comprised of six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model. The system, as a whole, will be taking into consideration obstacles around it while the vehicle traverses a predetermined route. For the system to be able to accomplish this reliably, the six main subsystems must be precisely modeled, especially the steering subsystem. A block diagram of the vehicle steering model is shown in \autoref{fig:sysBlockDiag}
+The Lexus car platform is comprised of six main subsystems - a steering model,
+an acceleration model, a brake model, a shifting model, a speed model, and a
+cruise model. The system, as a whole, will be taking into consideration
+obstacles around it while the vehicle traverses a predetermined route. For the
+system to be able to accomplish this reliably, the six main subsystems must be
+precisely modeled, especially the steering subsystem. A block diagram of the
+vehicle steering model is shown in \autoref{fig:sysBlockDiag}. %
+%
 \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
     \includegraphics[width=3.5in]{figs/inkscape/steeringModelArchitecture}
-    \caption{Block Diagram of the Vehicle Steering Model}
+    \caption{Block Diagram of the Vehicle Steering Model.}
     \label{fig:sysBlockDiag}
 \end{figure}
+%
 
 \subsection{System Inputs and Outputs}
 \subsubsection{Inputs}
 
+\todo[inline]{For the steering model, is it a single input (torque voltage) and multiple output system?}
 \begin{itemize}
     \item Steering Model
     \begin{itemize}
