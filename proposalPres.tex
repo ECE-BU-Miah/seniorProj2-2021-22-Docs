@@ -74,14 +74,14 @@
 \setbeamertemplate{caption}[numbered] % adds the figure or table number to the caption.
 
 
-\title[Robotic Cart System (Proposal)]{Robotic Cart System}
+\title[HIL Plant Modeling]{Hardware-in-the-Loop Plant Modeling for Autonomous
+  Vehicle}
 
 % % A subtitle is optional and this may be deleted
-\subtitle{Product Proposal}
+\subtitle{Modeling, Simulation, and Testing}
 
-\author[K.~Allen, D.~Beebe, J.~Braker]{Kallistah~Allen \and Darrah~Beebe \and
-Jason~Braker
-Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
+\author[H.~Grady, N.~Nauman]{Hannah~Grady \and Nicholas~Nauman 
+\linebreak Advisor:~Dr.~Suruz~Miah}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
@@ -96,7 +96,7 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date[December~3,~2020]{Thursday, December~3,~2020}
+\date[October~7,~2021]{Thursday, October~7,~2021}
 
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
@@ -150,77 +150,55 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 % and table of contents.
 \section{Introduction}
 
-\begin{frame}{Introduction}
-  % \begin{center}
-  %   % \href{videos/proposalVideo.mp4}{\includegraphics[width=0.8\textwidth]{figs/img/proposalVideoTitle}}
-  % \end{center}
-  % \begin{center}
-  %   \includemedia[
-  %     width=\textwidth,
-  %     height=0.7\textheight,
-  %     label=proposalVideo,
-  %     % activate=onclick,
-  %     % playbutton=fancy,
-  %     addresource=videos/proposalVideo.mp4,
-  %     flashvars={source=videos/proposalVideo.mp4}]
-  %     {}{VPlayer.swf}
-  %     \\
-  %     % \mediabutton[
-  %     %   mediacommand=proposalVideo:playPause,
-  %     %   overface=\color{blue}{\fbox{\strut \faPause\ \faPlay}},
-  %     %   downface=\color{red}{\fbox{\strut \faPause\ \faPlay}}
-  %     % ]{}
-  %     % \mediabutton[
-  %     %   mediacommand=proposalVideo:setSource
-  %     %   [(videos/proposalVideo.mp4)]]{\fbox{Introduction Video}}
-  % \end{center}
+\begin{frame}{Introduction}{}
+    \begin{block}{Applications of Autonomous Vehicles}
+    	\begin{itemize}
+    		\item Autonomous vehicles are being developed by many companies for commercial and personal use
+    		\item Modeling the steering system for autonomous vehicles is a challenging task
+     		\item Models for autonomous vehicle subsystems must be very accurate due to safety factors
+		\end{itemize}
+    \end{block}
+        \begin{figure}
+			\centering
+			\begin{minipage}[t]{0.4\textwidth}
+				\centering
+				\includegraphics[height=1.5cm]{figs/img/autonomousVehiclesAStuff}
+				\caption{AutonomouStuff Vehicle Fleet\textsuperscript{a}}
+				\label{fig:fleet}
+			\end{minipage}
+			\begin{minipage}[t]{0.4\textwidth}
+				\centering
+				\includegraphics[height=1.5cm]{figs/img/autonomousVehiclesSteering}
+				\caption{Autonomous Vehicle Steering System\textsuperscript{b}}
+				\label{fig:steerSystem}
+			\end{minipage}
+        \end{figure}
+    \begin{tiny}
+		\textsuperscript{a}https://hexagonpositioning.com/pi-brands/autonomoustuff\\\textsuperscript{b}https://www.autonews.com/article/20181105/OEM10/181109921/delphi-s-pace-award-winning-e-steer-an-autonomous-vehicle-building-block
+    \end{tiny}
 \end{frame}
 
 \begin{frame}{Problem Statement}
   \begin{block}{Problem Statement}
-    \begin{LARGE}
-      Design a robotic cart that follows the user.
-    \end{LARGE}
+    \begin{large}
+      Model vehicle subsystems for a Lexus platform.
+ \begin{itemize}
+          \item Steering Model
+          \item Acceleration Model
+          \item Brake Model
+          \item Shift Model
+          \item Speed Model
+          \item Speed Control Model
+        \end{itemize} 
+    \end{large}
   \end{block}
   \pause
   \begin{block}{Proposed Solution}
-    \begin{LARGE}
-      Utilize wireless signal strength to locate and then follow the user.
-    \end{LARGE}
+    \begin{large}
+      A potential solution is to develop conventional System Identification techniques for modeling subsystems using available raw data.  
+    \end{large}
   \end{block}
 \end{frame}
-
-% \begin{frame}{Introduction}{}
-% %\documentclass{beamer}
-%   % applications of mobile robot navigation and problem description
-%   \begin{block}{Applications of Mobile Carts}
-%     \begin{itemize}
-%       %\item Mail delivery
-%       %\item Transferring files in offices
-%       \item Carrying medical supplies in hospitals (Fig.\ref{fig:medCart})
-%       \item Carrying materials and tools in factories (Fig. \ref{fig:factCart})
-%       \item Shopping carts for ease of use and people with disabilities
-%     \end{itemize}
-%   \end{block}
-%       \begin{figure}
-%       \centering
-%       \begin{minipage}[t]{0.5\textwidth}
-%         \centering
-%         \includegraphics[height=3.0cm]{figs/img/MedicalRoboticCart}
-%         \caption{Medical Mobile Robotic Cart\textsuperscript{a}}
-%         \label{fig:medCart}
-%       \end{minipage}
-%       \begin{minipage}[t]{0.4\textwidth}
-%         \centering
-%         \includegraphics[height=2.0cm]{figs/img/FactoryRoboticCart}
-%         \caption{Factory Mobile Robotic Cart\textsuperscript{b}}
-%         \label{fig:factCart}
-%       \end{minipage}
-%       \end{figure}
-%     \begin{tiny}
-%       \textsuperscript{a}https://www.cnet.com/news/robots-give-a-helping-hand-in-san-franciscos-newest-hospital/\\\textsuperscript{b}https://www.greencarcongress.com/2020/05/20200515-nvidia.html
-%     \end{tiny}
-% \end{frame}
 
 %----------------------------------
 
@@ -228,7 +206,26 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 
 \begin{frame}{Literature Review}
   \begin{block}{Existing Solution}
-        Mobile platform interface with ultrasound and radio transmission technology~\cite{Sales2016-CompaRob}
+ \begin{itemize}
+        \item Use of System Identification Toolbox in Matlab to create models from data~\cite{Adnan2010}
+	 \begin{itemize}
+		    \tiny
+		    		\item Offers a variety of model choices
+				\item Needs a large amount of raw data to produce an accurate model
+	\end{itemize}
+	\item Third order ARMAX model creates models using traditional methods of analysis~\cite{Li1999}
+	 \begin{itemize}
+		    \tiny
+		    		\item Allows the use of traditional analysis methods to create a model 
+				\item More room for error during calculations
+	\end{itemize}
+	\item Steer-By-Wire method as a system model~\cite{Saruchi2015}
+	 \begin{itemize}
+		    \tiny
+		    		\item Can model systems with small non-linearities 
+				\item Mechanical components replaced by electrical components 
+	\end{itemize}
+\end{itemize}
   \end{block}
     % \begin{figure}[b]
     %     \centering
@@ -268,21 +265,20 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 
 %----------------------------------
 
-\begin{frame}{Existing Solutions}
-  \begin{block}{Problems}
-    \begin{itemize}
-      \item Require line-of-sight between robot and user
-      \item Some require costly dedicated image processing hardware
-    \end{itemize}
-  \end{block}
-  \pause
-  \begin{block}{Benefits of Proposed Solution}
-    \begin{itemize}
-      \item Line-of-sight is not required since analog RF signals will be used
-      \item RF components are cost-effective
-    \end{itemize}
-  \end{block}
-\end{frame}
+%\begin{frame}{Existing Solutions}
+%  \begin{block}{Problems}
+%    \begin{itemize}
+%      \item Require line-of-sight between robot and user
+%      \item Some require costly dedicated image processing hardware
+%    \end{itemize}
+%  \end{block}
+%  \pause
+%  \begin{block}{Benefits of Proposed Solution}
+%    \begin{itemize}
+%      \item High level of accuracy 
+%    \end{itemize}
+%  \end{block}
+%\end{frame}
 
 %----------------------------------
 
@@ -319,14 +315,68 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 %----------------------------------
 
 \section{System Requirements}
+\begin{frame}
+\tiny
+	\begin{block}{System Inputs and Outputs}
+		\begin{itemize}
+			\tiny
+		    \item Steering Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Torque Voltages
+		    		\begin{itemize}
+		    		\tiny
+		    			\item Desired Steering Wheel Angle
+		    			\item Actual Steering Wheel Angle
+		    		\end{itemize}
+		    \end{itemize}
+		    \item Acceleration Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Acceleration Pedal Voltages
+		    \end{itemize}
+		    \item Brake Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Brake Pedal Pressure Voltages
+		    		\item Brake Pedal Stroke Voltages 
+		    		\item Brake Pedal On/Off Switch
+		    \end{itemize}
+		    \item Shift Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Desired Shift Gear
+		    \end{itemize}
+		    \item Speed Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Acceleration Pedal Position
+		    		\item Brake Pedal Position
+		    		\item Shifter Actual Gear
+		    \end{itemize}
+		    \item Speed Control Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Desired Vehicle Speed
+		    \end{itemize}
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}			
+	\begin{figure}
+		\includegraphics[width=10cm]{figs/inkscape/steeringModelArchitecture}
+		\caption{Block Diagram of Steering Subsystem}
+		\label{fig:steeringModel}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{System Requirements}
   \begin{block}{Specifications}
     \begin{itemize}
-      \item Cart should be able to follow the remote target
-      \item Cart should maintain a distance of 1~[\si{\meter}] to 1.5~[\si{\meter}] from the remote target.
-      \item Cart should be able to attain a speed of at least 1~[\si{\meter\per\second}]
-      \item Cart should not require line-of-sight to follow remote
-     \end{itemize}
+      	\item The plant model should have an accurate model of the six main subsystems
+    		\item A hardware-in-loop (HIL) test bench can be developed from the plant models of the subsystems
+    		\item The steering model can handle very small steering angles
+    \end{itemize}
   \end{block}
 \end{frame}
 
@@ -340,18 +390,21 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
   \begin{block}{Project goals}
     \begin{LARGE}
       \begin{itemize}
-        \item Develop a robotic cart system utilizing wireless signal strength to locate and follow the user.
+        \item Develop models of an autonomous vehicle's subsystems
         \begin{itemize}
-          \item Does not require line-of-sight
-          \item Low-cost design
+          \item Steering Model
+          \item Acceleration Model
+          \item Brake Model
+          \item Shift Model
+          \item Speed Model
+          \item Speed Control Model
         \end{itemize}
       \end{itemize}
     \end{LARGE}
   \end{block}
   \begin{block}{Anticipated Challenges}
     \begin{itemize}
-      \item Inaccurate distance measurements due to multipath effect from environment
-      \item Achieving full 360\textdegree measurement in short enough time
+      \item Achieving an acceptable accuracy and reliability for each model due to its nonlinearities over small changes
     \end{itemize}
   \end{block}
 \end{frame}
@@ -360,8 +413,8 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 
 \section{References}
 
-% \begin{frame}{References}
-%   \bibliographystyle{IEEEtran}
+%\begin{frame}{References}
+%  \bibliographystyle{IEEEtran}
 %   \begin{itemize}
 %     \item N. Rawashdeh, R. Haddad, O. Jadallah, and A. To’ma, “A person-following
 % robotic cart controlled via a smartphone application: design and evaluation,”
@@ -385,6 +438,19 @@ Advisors:~Dr.~Suruz~Miah \and Dr.~Prasad~Shastry}
 
   \bibliographystyle{IEEEtran}
   \bibliography{bib/references.bib}
+
+%\begin{itemize}
+%\item
+%@INPROCEEDINGS{Donjaroennon2021,
+%  author={Donjaroennon, Natthapon and Nuchkum, Suphatchakan and Leeton, Uthen},
+%  booktitle={2021 9th International Electrical Engineering Congress (iEECON)}, 
+%  title={Mathematical model construction of DC Motor by closed-loop system Identification technique Using Matlab/Simulink}, 
+%  year={2021},
+%  volume={},
+%  number={},
+%  pages={289-292},
+%  doi={10.1109/iEECON51072.2021.9440305}}
+%\end{itemize}
 % 	\begin{itemize}
 % 		\item T. Xie, H. Jiang, X. Zhao, and C. Zhang, “A wi-fi-based wireless indoor position sensing system with multipath interference mitigation,” Sep 2019. [Online].
 % Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6767237/
