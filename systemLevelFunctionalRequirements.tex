@@ -105,13 +105,13 @@
 \newpage % Start lab look on a new page
 
 \section{Project Description}
-Autonomous vehicles are being developed by many companies for commercial and/or personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. To control autonomous vehicles, accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage the system.
+Autonomous vehicles are being developed by many companies for commercial and/or personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. Accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage these vehicles.
 
 There are six main subsystems - a steering model, an acceleration model, a brake
 model, a shifting model, a speed model, and a cruise model - that must be
 modeled to get an accurate representation of how the vehicle should be
 controlled. We will be modeling these six subsystems for a Lexus platform using
-the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are controllers in place to control the Lexus vehicle platform, but the reliability of these controllers is lower than expected. The scope of this project includes developing models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing. 
+the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected. The scope of this project includes developing mathematical models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing. 
 
 %------------------------------------------------
 
@@ -141,29 +141,66 @@ models we produce will be accurate.
 \subsection{System Block Diagram}
 The Lexus car platform is comprised of six main subsystems - a steering model,
 an acceleration model, a brake model, a shifting model, a speed model, and a
-cruise model. The system, as a whole, will be taking into consideration
-obstacles around it while the vehicle traverses a predetermined route. For the
+cruise model. As a whole, the system will be taking nearby obstacles into consideration as the vehicle traverses a predetermined route. For the
 system to be able to accomplish this reliably, the six main subsystems must be
-precisely modeled, especially the steering subsystem. A block diagram of the
-vehicle steering model is shown in \autoref{fig:sysBlockDiag}. %
+precisely modeled, especially the steering subsystem. The block diagrams of each system is shown below.
 %
-\begin{figure}[h]
+\begin{figure}
     \centering
     \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=3.5in]{figs/inkscape/steeringModelArchitecture}
+    \includegraphics[width=3in]{figs/inkscape/steeringModelArchitecture}
     \caption{Block Diagram of the Vehicle Steering Model.}
-    \label{fig:sysBlockDiag}
+    \label{fig:steerBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{Block Diagram of the Vehicle Brake Model.}
+    \label{fig:brakeBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
+    \caption{Block Diagram of the Vehicle Acceleration Model.}
+    \label{fig:accelBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/inkscape/shiftModelArchitecture}
+    \caption{Block Diagram of the Vehicle Shift Model.}
+    \label{fig:shiftBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/inkscape/speedControlModelArchitecture}
+    \caption{Block Diagram of the Vehicle Speed Control Model.}
+    \label{fig:cruiseBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/inkscape/speedModelArchitecture}
+    \caption{Block Diagram of the Vehicle Speed Model.}
+    \label{fig:speedBlockDiag}
 \end{figure}
 %
 
 \subsection{System Inputs and Outputs}
 \subsubsection{Inputs}
 
-\todo[inline]{For the steering model, is it a single input (torque voltage) and multiple output system?}
 \begin{itemize}
     \item Steering Model
     \begin{itemize}
-    		\item Torque Voltages
+    		\item Two Torque Voltage Signals
     		\begin{itemize}
     			\item Desired Steering Wheel Angle
     			\item Actual Steering Wheel Angle
@@ -181,7 +218,7 @@ vehicle steering model is shown in \autoref{fig:sysBlockDiag}. %
     \end{itemize}
     \item Shift Model
     \begin{itemize}
-    		\item Desired Shift Gear
+    		\item Desired Shifter Gear
     \end{itemize}
     \item Speed Model
     \begin{itemize}
@@ -214,7 +251,7 @@ vehicle steering model is shown in \autoref{fig:sysBlockDiag}. %
     \end{itemize}
     \item Shift Model
     \begin{itemize}
-    		\item Shifter Actual Gear
+    		\item Actual Shifter Gear
     \end{itemize}
     \item Speed Model
     \begin{itemize}
@@ -227,12 +264,39 @@ vehicle steering model is shown in \autoref{fig:sysBlockDiag}. %
 \end{itemize}
 
 %------------------------------------------------
+\section{Hardware Implementation}
+
+Each subsystem that we will be testing has a similar hardware setup. The hardware used for each system is as follows:
+\begin{itemize}
+	\item System-specific components
+	\item PACMod
+	\item CAN Case
+	\item Laptop
+\end{itemize}
+CAN data is collected on the laptop. The data is collected from the system-specific components by the PACMod, which is connected to the CAN case. This case is then connected to the laptop via a CAN bus. In \autoref{fig:hardwareSetup1} and \autoref{fig:hardwareSetup2} below, the CAN case and laptop are visible, but the PACMod and other internal components are not. 
+%
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=3.25in]{figs/img/picturesVisitToAStuff/dataColletionSetup1-20211007}
+    \caption{Depiction of Hardware Setup for Autonomous Vehicle Platform.}
+    \label{fig:hardwareSetup1}
+\end{figure}\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[angle=180,width=3.25in]{figs/img/picturesVisitToAStuff/dataColletionSetup2-20211007}
+    \caption{Depiction of Hardware Setup for Autonomous Vehicle Platform.}
+    \label{fig:hardwareSetup2}
+\end{figure}
+%
+
+%------------------------------------------------
 \section{Requirements and Specifications}
 \subsection{Requirements}
 The vehicle platform plant model will meet the following requirements:
 \begin{itemize}
     \item The plant model should have an accurate model of the six main subsystems
-    \item A HIL test bench can be developed from the plant models of the subsystems
+    \item A HIL test bench can be developed from the plant model of the subsystems
     \item The steering model can handle very small steering angles
 \end{itemize}
 
@@ -240,7 +304,7 @@ The vehicle platform plant model will meet the following requirements:
 Based on the requirements, the vehicle platform plant model must meet the following specifications:
 \begin{itemize}
     \item The model of the steering subsystem should be modeled first as it is crucial to operation and has non-linearity considerations
-    \item The remaining subsystems will be modeled individually 
+    \item All subsystems will be modeled individually 
     \item Our steering model will be designed to accommodate very small steering angles
 \end{itemize}
 
@@ -248,14 +312,14 @@ Based on the requirements, the vehicle platform plant model must meet the follow
 \section{Other Considerations}
 As we progress with this project, it is important that we take into consideration how this will affect others and make sure that we are holding ourselves to high ethical standards. 
 \begin{itemize}
-    \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents and driving fatalities and injuries. As a result, people will be able to live longer and healthier lives. By creating accurate models, we will help advance the development of autonomous vehicles and make this a reality. 
+    \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents along with driving fatalities and injuries. As a result, people will be able to live longer and healthier lives. By creating accurate models, we will help advance the development of autonomous vehicles and make this a reality. 
     \item Public Safety: This is a relevant concern, because the real world implementations of inaccurate models could be disastrous since it is a self-driving vehicle. We will address this by creating a rigorous test plan for our models. 
     \item Public Welfare: This factor is somewhat related to public safety and health in that we need to make sure that these vehicles are safe for people to use. How we will help ensure this in our project is the same as how we will ensure public safety, by making sure we throughly test our models. 
     \item Global Factors: Our work will be used to help advance the technology behind autonomous vehicles, but we will not have any control over how they will be used in society. Therefore, this factor is irrelevant the project. 
     \item Cultural Factors: This is irrelevant to this project. While our work will help with the development of autonomous vehicles, we do not have any control or impact over how they will be introduced within cultural boundaries.
     \item Social Factors: Advancing autonomous vehicle research could lead to them replacing those who drive for a living, such as taxi or Uber drivers. This is an important issue that needs to be addressed as autonomous vehicles become more widespread, but it is outside of the scope of our project. 
     \item Environmental Factors: By modeling the vehicle components using software, that means the vehicle will not have to be used as often for testing. Less vehicle use could potentially have a positive impact on the environment. 
-    \item Business Factors: We must keep in mind the maintenance of developed software to control the vehicle based on updates to the control models. 
+    \item Business Factors: This is relevant to our project. From a business standpoint, using software to develop these mathematical models and using HIL testing can be less expensive than constantly using a vehicle for testing. By completing this project we can help AutonomouStuff save money. 
     \item Economic Factors: There is an increased cost associated with the specialized hardware which allows for the autonomy of the vehicle. However, this cost is justified to the consumer as it reduces the stress and time involved with driving a vehicle. 
 \end{itemize}
 

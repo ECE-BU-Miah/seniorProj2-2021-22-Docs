@@ -74,14 +74,14 @@
 \setbeamertemplate{caption}[numbered] % adds the figure or table number to the caption.
 
 
-\title[HIL Plant Modeling]{Hardware-in-Loop Plant Modeling for Autonomous
+\title[HIL Plant Modeling]{Hardware-in-the-Loop Plant Modeling for Autonomous
   Vehicle}
 
 % % A subtitle is optional and this may be deleted
 \subtitle{Modeling, Simulation, and Testing}
 
 \author[H.~Grady, N.~Nauman]{Hannah~Grady \and Nicholas~Nauman 
-\linebreak Advisors:~Dr.~Suruz~Miah}
+\linebreak Advisor:~Dr.~Suruz~Miah}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
@@ -195,7 +195,7 @@
   \pause
   \begin{block}{Proposed Solution}
     \begin{large}
-      Use conventional System Identification techniques for modeling subsystems based on available raw data.  
+      A potential solution is to develop conventional System Identification techniques for modeling subsystems using available raw data.  
     \end{large}
   \end{block}
 \end{frame}
@@ -206,13 +206,26 @@
 
 \begin{frame}{Literature Review}
   \begin{block}{Existing Solution}
-        Use of System Identification Toolbox in Matlab to create models from data~\cite{Donjaroennon2021}
-  \end{block}
-  \begin{block}{Existing Solution}
-        Third order ARMAX model creates models using traditional methods of analysis~\cite{Li1999}
-  \end{block}
-  \begin{block}{Existing Solution}
-        Steer-By-Wire method as a system model~\cite{Saruchi2015}
+ \begin{itemize}
+        \item Use of System Identification Toolbox in Matlab to create models from data~\cite{Adnan2010}
+	 \begin{itemize}
+		    \tiny
+		    		\item Offers a variety of model choices
+				\item Needs a large amount of raw data to produce an accurate model
+	\end{itemize}
+	\item Third order ARMAX model creates models using traditional methods of analysis~\cite{Li1999}
+	 \begin{itemize}
+		    \tiny
+		    		\item Allows the use of traditional analysis methods to create a model 
+				\item More room for error during calculations
+	\end{itemize}
+	\item Steer-By-Wire method as a system model~\cite{Saruchi2015}
+	 \begin{itemize}
+		    \tiny
+		    		\item Can model systems with small non-linearities 
+				\item Mechanical components replaced by electrical components 
+	\end{itemize}
+\end{itemize}
   \end{block}
     % \begin{figure}[b]
     %     \centering
@@ -252,20 +265,20 @@
 
 %----------------------------------
 
-\begin{frame}{Existing Solutions}
-  \begin{block}{Problems}
-    \begin{itemize}
-      \item Require line-of-sight between robot and user
-      \item Some require costly dedicated image processing hardware
-    \end{itemize}
-  \end{block}
-  \pause
-  \begin{block}{Benefits of Proposed Solution}
-    \begin{itemize}
-      \item High level of accuracy 
-    \end{itemize}
-  \end{block}
-\end{frame}
+%\begin{frame}{Existing Solutions}
+%  \begin{block}{Problems}
+%    \begin{itemize}
+%      \item Require line-of-sight between robot and user
+%      \item Some require costly dedicated image processing hardware
+%    \end{itemize}
+%  \end{block}
+%  \pause
+%  \begin{block}{Benefits of Proposed Solution}
+%    \begin{itemize}
+%      \item High level of accuracy 
+%    \end{itemize}
+%  \end{block}
+%\end{frame}
 
 %----------------------------------
 
@@ -302,6 +315,61 @@
 %----------------------------------
 
 \section{System Requirements}
+\begin{frame}
+\tiny
+	\begin{block}{System Inputs and Outputs}
+		\begin{itemize}
+			\tiny
+		    \item Steering Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Torque Voltages
+		    		\begin{itemize}
+		    		\tiny
+		    			\item Desired Steering Wheel Angle
+		    			\item Actual Steering Wheel Angle
+		    		\end{itemize}
+		    \end{itemize}
+		    \item Acceleration Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Acceleration Pedal Voltages
+		    \end{itemize}
+		    \item Brake Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Brake Pedal Pressure Voltages
+		    		\item Brake Pedal Stroke Voltages 
+		    		\item Brake Pedal On/Off Switch
+		    \end{itemize}
+		    \item Shift Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Desired Shift Gear
+		    \end{itemize}
+		    \item Speed Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Acceleration Pedal Position
+		    		\item Brake Pedal Position
+		    		\item Shifter Actual Gear
+		    \end{itemize}
+		    \item Speed Control Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Desired Vehicle Speed
+		    \end{itemize}
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}			
+	\begin{figure}
+		\includegraphics[width=10cm]{figs/inkscape/steeringModelArchitecture}
+		\caption{Block Diagram of Steering Subsystem}
+		\label{fig:steeringModel}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{System Requirements}
   \begin{block}{Specifications}
     \begin{itemize}
@@ -313,7 +381,27 @@
 \end{frame}
 
 %----------------------------------
-
+\begin{frame}{Other Considerations}
+  \begin{block}{Factors}
+  	\begin{small}
+      \begin{itemize}
+        \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents
+and driving fatalities and injuries. As a result, people will be able to live longer and
+healthier lives. By creating accurate models, we will help advance the development of
+autonomous vehicles and make this a reality.
+		\item Public Safety: This is a relevant concern, because the real world implementations of inaccurate models could be disastrous since it is a self-driving vehicle. We will address this by creating a rigorous test plan for our models.
+		\item Public Welfare: This factor is somewhat related to public safety and health in that we need to make sure that these vehicles are safe for people to use. How we will help
+ensure this in our project is the same as how we will ensure public safety, by making sure we throughly test our models.
+		\item Global Factors: 
+		\item Cultural Factors: 
+		\item Social Factors: 
+		\item Environmental Factors: 
+		\item Business Factors: 
+		\item Economic Factors: 
+      \end{itemize}
+     \end{small}
+  \end{block}
+\end{frame}
 
 %----------------------------------
 

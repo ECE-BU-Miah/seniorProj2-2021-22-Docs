@@ -221,7 +221,7 @@
 \labday{Wednesday, September 15, \currentYear}
 \experiment{Meeting Minutes}
 % Place your initial below
-HG\\
+HG
 
 Dr. Miah, Mr. Guetz, Mr. Buckner, and I discussed the project design form and work statement. Nick was not present. Dr. Miah, Nick, and myself will be recieving documents and diagrams from AutonomouStuff around September 22nd which will add further detail to our project. We also went over project logistics and discussed using GitHub for project work unless the information became confidential. Project deliverables will be finalized at the next meeting, and weekly meetings will be conducted via Zoom. Nick and I will have at least six hours of lab work each week, not including extra research. Agendas will be sent out before each meeting.
 
@@ -266,6 +266,9 @@ There are multiple methods for obtaining identification, but I believe the most 
 HG\\
 During part of the lab time we met with Dr. Miah. We discussed how a folder called "labnotebook" was added to BitBucket. The Virtual Desktop Matlab application doesn't have the System Identification toolbox, Dr. Miah will ask about getting it added to the virtual desktop. We talked about what we have been working on in lab so far. Today I mainly read through some System Identification Toolbox documentation and found articles for the literature review. 
 
+NN\\
+During the lab time after meeting with Dr. Miah, I worked on reading documentation on the Matlab System Identification Toolbox and looking at examples of using the System Identification Toolbox. Also, I started creating the block diagrams for the vehicle subsystems that we will be collecting data for and modeling. I got the steering system, acceleration system, shift system, and speed control system block diagrams created. 
+
 % -------------------------------------------
 
 \labday{Thursday, September 30, \currentYear}
@@ -298,6 +301,48 @@ and References slides. We also met with Dr. Miah to go over the expectations for
 the presentation and so he could give us feedback on our draft of the System
 Level Functional Requirements document. Dr. Miah also pushed the changes we made
 to some of the documents to the GitHub repository we have for this project.
+
+NN\\
+During the lab time, I added the Introduction, System Inputs/Outputs, System Requirements, and Concluding Remarks sections of the System Level Functional Requirements presentation. 
+
+%--------------------------------------------------------------------------------------------
+
+\labday{Thursday, October 7, \currentYear}
+\experiment{Data Collection}
+% Place your initial below
+HG\\
+Today Dr. Miah, Nick, and I went to AutonomouStuff in Morton to collect data. We met Mr. Guetz and Mr. Buckner there, and they helped us sign in and showed us where the vehicles were kept. Dr. Miah, Nick, Mr. Guetz, and I went out to the Lexus and used that for testing. Dr. Miah was the safety driver while Mr. Guetz used a computer to give commands to the vehicle. Nick and I took notes. There is a red button to shut down the system, and the safety driver can also turn the steering wheel or step on the gas in case anything goes wrong. We started measuring data for the steering model first. At rest the steering angle is zero, and if the driver tries to manually move the steering wheel while the software is engaged, the torque voltages will fight them. Turning the wheel counterclockwise corresponds to positive radians, while clockwise corresponds to negative radians. The wheel angle is proportional to the steering angle. Dr. Miah turned the steering wheel all the way to lock and back twice to collect that data. We then moved onto collecting data at 0.1 radians to the left and then to the right multiple times. From there we moved onto pi/2 radian turns at 5mph. We also collected data for multiple steering angles at 10mph. We then kept collecting data, keeping the car at a speed between 10-11mph. Mr. Guetz explained that the car can also be controlled using a joystick, but that tends to be jittery. Data can also be collected while the car is being driven manually, and we ended up collecting data while the car was being controlled manually and automatically. From the computer, Mr. Guetz requests a position, and the car produces a single torque voltage that gets split into two torque voltages. Torque is the amount of assist applied to the rack. Once we had collected the steering data, we then moved onto collecting brake data. We collected that data while parked, and gathered data while the car was being operated manually and automatically. In automatic mode, there is no visible pedal change, since everything happens internally. We did two rounds of testing, during the first round we collected data manually at a range of 0-93 and then automatically from 0-100. For the second round we tested the brakes manually from 0-98 and automatically from 0-100. We got the data from this in terms of voltages. At the range of 0-75, the brake pressure is low, and you reach a maximum pressure as you approach 100. Afterwards we collected data for our acceleration model. It was similar to the data collection for the brake model in that the vehicle was put in park, only this time the acceleration pedal was pushed. We did two rounds of data collection in manual and automatic. The first round tested the acceleration from 0-100 for the vehicle in manual and automatic, and did the same thing for the second round. The input to the system is the voltages and the output is the pedal position. We will come back to AutonomouStuff later to collect data for the shift and gear models. 
+
+NN\\
+After completing the testing as described above, we returned to the garage to ask any remaining questions. I asked Mr. Guetz about the hardware setup for each system we are developing models for. He explained that the hardware implementation each similar for each system. The system is connected to the PACMod which is then connected to a CAN case, which connects to the laptop. The laptop can be used to log this CAN data, which is how we collected the data we will be analyzing. 
+
+%--------------------------------------------------------------------------------------------
+\labday{Thursday, October 14, \currentYear}
+\experiment{Background Study}
+% Place your initial below
+HG\\
+At the beginning of the lab time, Nick and I met with Dr. Miah. He let us know that he had uploaded the pictures from our trip to AutonomouStuff. Nick mentioned that he had started using the System Identification Toolbox with the data we collected last Thursday. We went over a block diagram for the steering model. There are two torque voltages A, and B, so the model will have to be updated. The controller deals with the error between the desired steering angle (which Eric was setting during data collection) and the actual steering angle. We discussed how we need to understand the physical significance of A and B and what they do. We went over the data that Nick already had open in Matlab. The commanded value might not be a percentage, and instead may be in radians. We will have to ask Eric about this. The steering RPT Output value is the actual steering angle. The actual steering wheel angle is based on output voltages A and B, and using these values will help us to identify our two-input two-output system. Nick and I will have to do some research on what order system reliably gives a good model. We will also have to do research and see how people come up with different models based on a two-input, one output system. We will include any research in our proposal. Dr. Miah will ask Mr. Mattus about having the System Identification Toolbox on the lab computers. 
+
+
+
+%-------------------------------------------
+
+\labday{Tuesday, October 19, \currentYear}
+\experiment{Background Study}
+% Place your initial below
+HG\\
+At the beginning of lab Nick and I met with Dr. Miah to discuss what we have been working on. We talked about the steering model and how the system had two inputs (torque voltages A and B) and one output (Actual SW angle). We discussed the possible options for identifying a model for the steering system using the System Identification Toolbox. One option is to use A and B as  the inputs and the commanded (desired) steering angle as the output. We talked about creating an agenda for Thursday's meeting that includes questions we have for Erik. This agenda will be placed in BitBucket along with our modified diagrams. The System Level Functional Requirements Document must be finalized by October 21st, along with the presentation. Nick and I will work on this outside of lab time. During the lab time Dr. Miah wanted us to work with the data and find examples showing system modeling of MISO systems using the toolbox. Nick has already started working with the Data before our meeting today. He has generated a transfer function, and wants to tune the generated parameters. We will try all possible options and see what gives the best fit and validation data for a model. Since we will have two inputs, when both inputs are activated, the ultimate output is the superimposed result. The inputs should be coupled, so we will need to modify the way we are simulating. 
+
+During the lab time I worked on finding examples of system identification of MISO systems. I was able to find a couple related documents, including one Matlab tutorial. I worked through this tutorial during the lab time. 
+
+NN\\
+
+
+%---------------------------------------------------------
+
+
+
+%-------------------------------------------
 
 %--------------------------------------------------------------------------------------------
 
