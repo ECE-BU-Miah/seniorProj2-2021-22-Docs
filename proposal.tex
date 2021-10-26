@@ -37,13 +37,13 @@ format=default,justification=centerlast]{caption} % Figure caption text customiz
 \usetikzlibrary{positioning,fit}
 
 \usepackage{siunitx}
-\sisetup{unitstep=\cdot}
+\sisetup{unitsep=\cdot}
 
 \title{ECE498:~Senior Capstone Project I\\\textbf{\underline{Project Proposal}}\\
 \vspace{0.5in}
 Project Title: Hardware-in-the-Loop Plant Modeling for Autonomous Vehicle 
 \vspace{1.0in}
-\author{Nicholas Nauman and Hannah Grady\\ Advisors: Dr.~Suruz Miah}
+\author{Hannah Grady and Nicholas Nauman\\ Advisor: Dr.~Suruz Miah}
 }
 %\date{February 6, 2003}  No need to write, Date will be automatically on the title page
 \date{}  % Do not show date on the title page
@@ -68,7 +68,7 @@ Caterpillar College of Engineering and Technology\\
 \href{http://www.bradley.edu/}{Bradley University}\\
 
 \vspace*{6.0cm}
-\copyright~K.~Allen,~D.~Beebe~and~J.~Braker, Peoria, IL, USA, 2020\\
+\copyright~H.~Grady~and~N.~Nauman, Peoria, IL, USA, 2021\\
 
 \end{center}
 \thispagestyle{empty}
@@ -83,7 +83,13 @@ Caterpillar College of Engineering and Technology\\
 \newpage
 
 \section{Introduction}
-Robotic carts are a prevalent invention designed to aid users in a number of important indoor and outdoor tasks. There are robotic systems currently available in the market that perform these tasks in a variety of ways. For example, in a grocery store, a customer may require the need of more than one cart but cannot push or pull two carts simultaneously. One major drawback, however, is that people with disabilities cannot push one cart let alone have a second cart to carry more items. Moreover, robots used for this purpose are more costly than they are worth. In this project, we are proposing a robotic cart that would primarily use analog signals with the use of cost-effective wireless communication to identify the customer and be able to track and follow the customer through the store. The implementation of such a fully functional robotic cart will outreach the scope of the project but is the overall goal for this project in the coming years while encouraging further research in this field. Applications of the proposed robotic cart include, but are not limited to, delivery carts to follow mail personnel and carry the deliveries, file transfer carts in offices, hospital carts to aid nurses and doctors by carrying medicine or surgery supplies, and carts in construction sites to carry tools and other supplies across the job site.
+Autonomous vehicles are being developed by many companies for commercial and/or personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. Accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage these vehicles.
+
+There are six main subsystems - a steering model, an acceleration model, a brake
+model, a shifting model, a speed model, and a cruise model - that must be
+modeled to get an accurate representation of how the vehicle should be
+controlled. We will be modeling these six subsystems for a Lexus platform using
+the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected. The scope of this project includes developing mathematical models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing.
 
 % \section{Literature Review}
 % Abundant research in the field of mobile robotics shows various ways to develop robotic carts that will help consumers in carrying groceries through stores. See~\cite{Rawashdeh2017-Person,islam_lam_fukuda_kobayashi_kuno_2019,Sales2016-CompaRob}, for example. Currently, the work being done focuses on a few different methods of having a robotic cart interface with the customer and follow them through the store.
@@ -104,16 +110,13 @@ Robotic carts are a prevalent invention designed to aid users in a number of imp
 % \noindent
 % All of the solutions that were found required direct line-of-sight between the robot and the user. In this project we aim to use the XBee S2C RF radios and a parabolic reflector combined into a rotating system similar to the one presented in~\cite{Miah2018-Intelligent} in order to have the robot track the customer through a store without using line-of-sight sensing. The major challenge of this implementation will be estimating the distance between the robot and the remote in varying environments.
 
-% \section{System Requirements}
-% There are three primary requirements for our proposed mobile robotic cart. These requirements are stated as follows:
-
-% \begin{enumerate}
-%   \item The mobile cart to follow the remote attached to the user while maintaining a safe distance of $1~[\si{\meter}]$ to $1.5~[\si{\meter}]$. This requirement stems from the intended usage of the project, which is a cart that follows the user. The cart must be able to follow the remote, but it also must be able to keep an appropriate distance so it does not run into the user or fall too far behind.
-
-%   \item The second requirement for the system is that the cart should be able to travel at $1~[\si{\meter\per\second}]$. If the cart can only travel slowly, it will not be as useful since the user will have to walk very slowly to allow the cart to keep up.
-
-%   \item The proposed cart is not to rely on line-of-sight communication between the remote (user) and the cart. In the case that an obstacle gets between the cart and the remote, the communication should be able to be maintained so that the cart still knows where the user is located.
-% \end{enumerate}
+\section{System Requirements}
+The vehicle platform plant model will meet the following requirements:
+\begin{itemize}
+    \item The plant model should have an accurate model of the six main subsystems
+    \item A HIL test bench can be developed from the plant model of the subsystems
+    \item The steering model can handle very small steering angles
+\end{itemize}
 
 
 % \section{System Architecture}
@@ -342,7 +345,13 @@ Robotic carts are a prevalent invention designed to aid users in a number of imp
 %   \label{alg:navAlgo}
 % \end{algorithm}
 
-% % \subsection{Specifications}
+ \subsection{Specifications}
+ Based on the requirements, the vehicle platform plant model must meet the following specifications:
+ \begin{itemize}
+    \item The model of the steering subsystem should be modeled first as it is crucial to operation and has non-linearity considerations
+    \item All subsystems will be modeled individually 
+    \item Our steering model will be designed to accommodate very small steering angles
+ \end{itemize}
 
 % % \section{Preliminary Work}
 
@@ -482,7 +491,7 @@ Robotic carts are a prevalent invention designed to aid users in a number of imp
 % The fourth and final milestone is to complete the final report and presentation. This involves documenting our findings in a report and presenting our work. At this point, the project will be complete.
 
 \section{Concluding Remarks}
-A robotic cart that follows the user is a useful application of mobile robotics. Although some methods of performing this task have been developed, the existing methods require line-of-sight sensing between the robot and the cart. Our proposed robotic cart system does not require line-of-sight since it uses analog wireless signal strength as opposed to ultrasonic or photographic sensing. In this way, we plan to develop a robotic cart that can detect the user even in the presence of obstacles.
+Autonomous vehicles have a numerous amount of useful applications in today's society. ...
 
 \pagebreak
 \bibliographystyle{IEEEtran}
