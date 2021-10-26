@@ -91,8 +91,12 @@ modeled to get an accurate representation of how the vehicle should be
 controlled. We will be modeling these six subsystems for a Lexus platform using
 the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected. The scope of this project includes developing mathematical models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing.
 
-% \section{Literature Review}
-% Abundant research in the field of mobile robotics shows various ways to develop robotic carts that will help consumers in carrying groceries through stores. See~\cite{Rawashdeh2017-Person,islam_lam_fukuda_kobayashi_kuno_2019,Sales2016-CompaRob}, for example. Currently, the work being done focuses on a few different methods of having a robotic cart interface with the customer and follow them through the store.
+ \section{Literature Review}
+In the paper “Identification of Multiple Input-Single Output (MISO) Model for MPPT of Photovoltaic System”, the researchers wanted to model a system where the two inputs were Solar irradiance and Cell temperature and the output was DC current. In order to model this system Matlab’s System Identification Toolbox was used. In order to create different models, they collected and used data from an energy center in Malaysia. After generating different models, the researchers ended up going with a fourth order ARX (also known as ARXQS) model because it was the most accurate, with a best fit percentage of 93.42\%. The polynomial model equation for ARX is shown below. 
+
+y(t) + a_1y(t - 1) +...+a_{na}y(t - n_{a}) = b_{1}u(t-n_{k})+...+b_{nb}u(t - n_{k}-n_{b}+1) + e(t)
+
+y(t) is the output of the equation at a certain time t, while u(t) is the input at a certain time t. The noise disturbance of the system is represented by e(t). The variables na, nb, and nk are the system’s number of poles, amount of b parameters, and the samples before the inputs begin to affect the system’s output.
 
 % \vspace*{12pt}
 % \noindent
