@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg125580"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="speedControlModelArchitecture.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview125582"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.3932941"
+     inkscape:cx="408.02584"
+     inkscape:cy="513.17234"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g119841">
+    <inkscape:grid
+       type="xygrid"
+       id="grid125584" />
+  </sodipodi:namedview>
+  <defs
+     id="defs125577">
+    <rect
+       x="159.33464"
+       y="183.01952"
+       width="155.02829"
+       height="112.6826"
+       id="rect2367" />
+    <marker
+       style="overflow:visible"
+       id="marker97420-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path97418-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker97420-8-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path97418-9-1" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g119855"
+       transform="matrix(0.84032881,0,0,0.88461538,47.026534,82.694285)">
+      <g
+         id="g119841">
+        <rect
+           style="mix-blend-mode:hue;fill:#ffb380;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.844364;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect31"
+           width="53.930946"
+           height="68.742966"
+           x="34.941174"
+           y="26.205883"
+           ry="7.4172378" />
+        <text
+           xml:space="preserve"
+           transform="matrix(0.37950122,0,0,0.406555,-28.242384,-31.908364)"
+           id="text2365"
+           style="font-style:normal;font-weight:normal;font-size:24.8416px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2367);fill:#000000;fill-opacity:1;stroke:none"
+           x="55.475266"
+           y="0"><tspan
+             x="198.08215"
+             y="205.68328"
+             id="tspan288">Speed </tspan><tspan
+             x="191.63522"
+             y="236.73528"
+             id="tspan290">Control </tspan><tspan
+             x="200.29582"
+             y="267.78728"
+             id="tspan292">Model</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+           x="-21.466482"
+           y="68.541512"
+           id="text77963"
+           transform="scale(1.0384036,0.9630167)"><tspan
+             sodipodi:role="line"
+             id="tspan77961"
+             style="font-size:4.54957px;stroke-width:0.213261"
+             x="-21.466482"
+             y="68.541512">Desired Vehicle Speed</tspan></text>
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
+           d="M -6.2146709,59.057548 H 34.716727"
+           id="path97416-1"
+           inkscape:connector-type="polyline"
+           inkscape:connector-curvature="0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+           x="88.212807"
+           y="68.987328"
+           id="text77963-8"
+           transform="scale(1.0384036,0.9630167)"><tspan
+             sodipodi:role="line"
+             id="tspan77961-0"
+             style="font-size:4.54957px;stroke-width:0.213261"
+             x="88.212807"
+             y="68.987328">Vehicle Speed</tspan></text>
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-4)"
+           d="M 88.872116,59.057548 H 129.80351"
+           id="path97416-1-3"
+           inkscape:connector-type="polyline"
+           inkscape:connector-curvature="0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:12.275px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.306874"
+           x="-4.4602675"
+           y="18.952871"
+           id="text118702"
+           transform="scale(1.0260124,0.97464709)"><tspan
+             sodipodi:role="line"
+             id="tspan118700"
+             style="stroke-width:0.306874"
+             x="-4.4602675"
+             y="18.952871">Speed Control Model</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

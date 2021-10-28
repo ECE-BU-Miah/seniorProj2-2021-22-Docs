@@ -344,7 +344,39 @@ NN\\
 \experiment{Background Study}
 % Place your initial below
 HG\\
-I arrived late to today's meeting with the AutonomouStuff since my class doesn't get out until 4:15pm. When I entered the meeting Nick was sharing his screen and the data that he had so far. He mentioned that the parameters needed to be tuned up so that the desired steering wheel angle matched the actual steering wheel angle. The current model he had wasn't very good at predicting the steering angle but it got better as time went on. We will have to try tuning a model to handle small steering wheel angles and then apply that model to the larger steering wheel angle data to see if it works. Dr. Miah's plan is to create data sets out of the data that we have and then generate random test sets. We will then isolate some data sets where the response is small steering wheel angles and make test data. Dr. Miah drew a new steering wheel model block diagram and then two options. The first option was to use the output torque voltages A and B from the steering wheel model as inputs to a predictive steering model, with the output being the actual steering wheel angle. The second option was to take the torque voltages A and B from the controller output as our predictive model's inputs and then have the output be the commanded steering wheel angle. The problem is mainly coming up with a model and then tuning the parameters in such a way so the real data matches with the predictive data. After getting a model, it will be tested with AutonomouStuff's controller to see if they can get better control. Our model will have to have the non-linearities seen in the real world. Mr. Guetz mentioned that a small steering wheel angle is considered to be between -10 and 10 degrees. We also talked about how a small steering angle means that from time to time the steering angle varies very little. Mr. Guetz explained that the non-linearities are larger in smaller angles, especially when the car is trying to stay in one lane. These small non-linearities cause the car to swerve back and forth. He then drew us a diagram to help illustrate the non-linearities, which occur when going to the center. We will need to add a section on non-linearities to our report. We will need to predict our model in such a way that it will respond to small non-linear angles faster than the existing system. As we go along we will explore a deep reinforcement learning algorithm. Erik will run through the data and make sure that it is okay. He will then send it to us by Monday. For now we will work with the clean data and then work with the rest of the data. 
+I arrived late to today's meeting with the AutonomouStuff since my class doesn't
+get out until 4:15pm. When I entered the meeting Nick was sharing his screen and
+the data that he had so far. He mentioned that the parameters needed to be tuned
+up so that the desired steering wheel angle matched the actual steering wheel
+angle. The current model he had wasn't very good at predicting the steering
+angle but it got better as time went on. We will have to try tuning a model to
+handle small steering wheel angles and then apply that model to the larger
+steering wheel angle data to see if it works. Dr. Miah's plan is to create data
+sets out of the data that we have and then generate random test sets. We will
+then isolate some data sets where the response is small steering wheel angles
+and make test data. Dr. Miah drew a new steering wheel model block diagram and
+then two options. The first option was to use the output torque voltages A and B
+from the steering wheel model as inputs to a predictive steering model, with the
+output being the actual steering wheel angle. The second option was to take the
+torque voltages A and B from the controller output as our predictive model's
+inputs and then have the output be the commanded steering wheel angle. The
+problem is mainly coming up with a model and then tuning the parameters in such
+a way so the real data matches with the predictive data. After getting a model,
+it will be tested with AutonomouStuff's controller to see if they can get better
+control. Our model will have to have the non-linearities seen in the real world.
+Mr. Guetz mentioned that a small steering wheel angle is considered to be
+between -10 and 10 degrees. We also talked about how a small steering angle
+means that from time to time the steering angle varies very little. Mr. Guetz
+explained that the non-linearities are larger in smaller angles, especially when
+the car is trying to stay in one lane. These small non-linearities cause the car
+to swerve back and forth. He then drew us a diagram to help illustrate the
+non-linearities, which occur when going to the center. We will need to add a
+section on non-linearities to our report. We will need to predict our model in
+such a way that it will respond to small non-linear angles faster than the
+existing system. As we go along we will explore a deep reinforcement learning
+algorithm. Erik will run through the data and make sure that it is okay. He will
+then send it to us by Monday. For now we will work with the clean data and then
+work with the rest of the data.
 
 After our meeting with AutonomouStuff, Nick, Dr. Miah, and I met. Dr. Miah told us to write everything and place all diagrams and plots in the lab notebook and project proposal. Going forward we will be working on the proposal template. We will start using GitHub for all document templates so Nick and I can edit simultaneously. 
 
