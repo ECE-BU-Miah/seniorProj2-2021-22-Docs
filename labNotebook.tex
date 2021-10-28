@@ -323,7 +323,8 @@ After completing the testing as described above, we returned to the garage to as
 HG\\
 At the beginning of the lab time, Nick and I met with Dr. Miah. He let us know that he had uploaded the pictures from our trip to AutonomouStuff. Nick mentioned that he had started using the System Identification Toolbox with the data we collected last Thursday. We went over a block diagram for the steering model. There are two torque voltages A, and B, so the model will have to be updated. The controller deals with the error between the desired steering angle (which Eric was setting during data collection) and the actual steering angle. We discussed how we need to understand the physical significance of A and B and what they do. We went over the data that Nick already had open in Matlab. The commanded value might not be a percentage, and instead may be in radians. We will have to ask Eric about this. The steering RPT Output value is the actual steering angle. The actual steering wheel angle is based on output voltages A and B, and using these values will help us to identify our two-input two-output system. Nick and I will have to do some research on what order system reliably gives a good model. We will also have to do research and see how people come up with different models based on a two-input, one output system. We will include any research in our proposal. Dr. Miah will ask Mr. Mattus about having the System Identification Toolbox on the lab computers. 
 
-
+NN\\
+During the lab time, Dr. Miah, Hannah, and I discussed the data we collected during our trip to AutonomouStuff. Dr. Miah showed us how to develop a block diagram to describe the behavior of the steering model. This allowed us to easily select which data we needed to use as the inputs and outputs for using in Matlab. With these details, I started working on trying to develop a model of the steering motor using the data collected from AutonomouStuff. I ran into some problems with not add my data correctly so I researched some articles that explained how to process the data.
 
 %-------------------------------------------
 
@@ -336,55 +337,63 @@ At the beginning of lab Nick and I met with Dr. Miah to discuss what we have bee
 During the lab time I worked on finding examples of system identification of MISO systems. I was able to find a couple related documents, including one Matlab tutorial. I worked through this tutorial during the lab time. 
 
 NN\\
-
+During the lab time, Dr. Miah, Hannah, and I discussed the data that we collected from AutonomouStuff. We discussed the need to get clarification from Erik and Joe about what units were being used for the actual steering angle, commanded steering angle, and reference steering angle. We also discussed getting clarification on what the non-linearities actual mean to the system. After the discussion, I worked on manipulation the data in the System Identification Toolbox to try and get a model that closely follows the system output. 
 
 %---------------------------------------------------------
 
 \labday{Thursday, October 21, \currentYear}
-\experiment{Background Study}
+\experiment{Meeting Minutes}
 % Place your initial below
 HG\\
-I arrived late to today's meeting with the AutonomouStuff since my class doesn't
-get out until 4:15pm. When I entered the meeting Nick was sharing his screen and
-the data that he had so far. He mentioned that the parameters needed to be tuned
-up so that the desired steering wheel angle matched the actual steering wheel
-angle. The current model he had wasn't very good at predicting the steering
-angle but it got better as time went on. We will have to try tuning a model to
-handle small steering wheel angles and then apply that model to the larger
-steering wheel angle data to see if it works. Dr. Miah's plan is to create data
-sets out of the data that we have and then generate random test sets. We will
-then isolate some data sets where the response is small steering wheel angles
-and make test data. Dr. Miah drew a new steering wheel model block diagram and
-then two options. The first option was to use the output torque voltages A and B
-from the steering wheel model as inputs to a predictive steering model, with the
-output being the actual steering wheel angle. The second option was to take the
-torque voltages A and B from the controller output as our predictive model's
-inputs and then have the output be the commanded steering wheel angle. The
-problem is mainly coming up with a model and then tuning the parameters in such
-a way so the real data matches with the predictive data. After getting a model,
-it will be tested with AutonomouStuff's controller to see if they can get better
-control. Our model will have to have the non-linearities seen in the real world.
-Mr. Guetz mentioned that a small steering wheel angle is considered to be
-between -10 and 10 degrees. We also talked about how a small steering angle
-means that from time to time the steering angle varies very little. Mr. Guetz
-explained that the non-linearities are larger in smaller angles, especially when
-the car is trying to stay in one lane. These small non-linearities cause the car
-to swerve back and forth. He then drew us a diagram to help illustrate the
-non-linearities, which occur when going to the center. We will need to add a
-section on non-linearities to our report. We will need to predict our model in
-such a way that it will respond to small non-linear angles faster than the
-existing system. As we go along we will explore a deep reinforcement learning
-algorithm. Erik will run through the data and make sure that it is okay. He will
-then send it to us by Monday. For now we will work with the clean data and then
-work with the rest of the data.
+I arrived late to today's meeting with the AutonomouStuff since my class doesn't get out until 4:15pm. When I entered the meeting Nick was sharing his screen and the data that he had so far. He mentioned that the parameters needed to be tuned up so that the desired steering wheel angle matched the actual steering wheel angle. The current model he had wasn't very good at predicting the steering angle but it got better as time went on. We will have to try tuning a model to handle small steering wheel angles and then apply that model to the larger steering wheel angle data to see if it works. Dr. Miah's plan is to create data sets out of the data that we have and then generate random test sets. We will then isolate some data sets where the response is small steering wheel angles and make test data. Dr. Miah drew a new steering wheel model block diagram and then two options. The first option was to use the output torque voltages A and B from the steering wheel model as inputs to a predictive steering model, with the output being the actual steering wheel angle. The second option was to take the torque voltages A and B from the controller output as our predictive model's inputs and then have the output be the commanded steering wheel angle. The problem is mainly coming up with a model and then tuning the parameters in such a way so the real data matches with the predictive data. After getting a model, it will be tested with AutonomouStuff's controller to see if they can get better control. Our model will have to have the non-linearities seen in the real world. Mr. Guetz mentioned that a small steering wheel angle is considered to be between -10 and 10 degrees. We also talked about how a small steering angle means that from time to time the steering angle varies very little. Mr. Guetz explained that the non-linearities are larger in smaller angles, especially when the car is trying to stay in one lane. These small non-linearities cause the car to swerve back and forth. He then drew us a diagram to help illustrate the non-linearities, which occur when going to the center. We will need to add a section on non-linearities to our report. We will need to predict our model in such a way that it will respond to small non-linear angles faster than the existing system. As we go along we will explore a deep reinforcement learning algorithm. Erik will run through the data and make sure that it is okay. He will then send it to us by Monday. For now we will work with the clean data and then work with the rest of the data.
 
-After our meeting with AutonomouStuff, Nick, Dr. Miah, and I met. Dr. Miah told us to write everything and place all diagrams and plots in the lab notebook and project proposal. Going forward we will be working on the proposal template. We will start using GitHub for all document templates so Nick and I can edit simultaneously. 
+\experiment{Background Study}
+% Place your initial below
+HG\\ 
+After our meeting with AutonomouStuff, Nick, Dr. Miah, and I met. Dr. Miah told us to write everything and place all diagrams and plots in the lab notebook and project proposal. Going forward we will be working on the proposal template. We will start using GitHub for all document templates so Nick and I can edit simultaneously. Nick and I divided up the sections of the proposal to work on and I looked for examples of using system identification for MISO or MIMO systems. 
 
- 
+NN\\
+Dr. Miah, Hannah, and I met with Joe and Erik to discuss clarifications with the units of the steering angle since there was some confusion from an email Erik sent. We also got some clarification on what the system non-linearities were and how the affected the steering. Erik also provided some context to how the models would be used once we completed them. While we wait for Erik to send an email with what is the bad data in the data sets, Dr. Miah advised us to do more research on using the System Identification Toolbox for modeling MISO systems and examples we could run through. These are some of the articles I found:
+\begin{itemize}
+	\item \href{https://www.mathworks.com/help/ident/ug/dealing-with-multi-variable-systems-identification-and-analysis.html}{Example 1}
+	\item \href{https://www.mathworks.com/help/ident/ug/modal-analysis-of-a-flexible-flying-wing-aircraft.html}{Example 2}
+	\item \href{https://www.mathworks.com/help/ident/gs/system-identification-workflow.html}{Workflow}
+	\item \href{https://www.mathworks.com/help/ident/model-validation-basics.html}{Validation Basics}
+\end{itemize}
+
+
+%-------------------------------------------
+
+\labday{Tuesday, October 26, \currentYear}
+\experiment{System Identification}
+% Place your initial below
+HG\\
+Dr. Miah, Nick, and I met at the beginning of the lab time to discuss our progress. I had read a paper over the weekend that mentioned modeling a MISO system, and so during the lab time I finished summarizing it and placed that summary in the proposal document. There is an error that keeps popping up that I tried to resolve, but after doing some research, I still wasn't able to fix the problem. I will have to email Dr. Miah about this. It did not affect my ability to add stuff to the proposal. I also wrote a mathematical equation for the summary and also placed that in the project proposal. I then found another example in Matlab about dealing with MIMO systems and estimating models, so I worked on that during the lab time. 
+
+NN\\
+During the lab time today, Dr. Miah advised Hannah and I to work through some examples for using the Matlab System Identification Toolbox, specifically for MISO or MIMO systems so that we can verify we are working through the process correctly. I worked through the following examples and when I was confused by what a certain function did, I looked at the documentation to understand it better. 
+\begin{itemize}
+	\item \href{https://www.mathworks.com/help/ident/ug/dealing-with-multi-variable-systems-identification-and-analysis.html}{Example 1}
+	\item \href{http://www.ece.northwestern.edu/local-apps/matlabhelp/toolbox/ident/ch3tut44.html}{Example 2}
+\end{itemize}
+
+Also, Dr. Miah announced that the Matlab System Identification Toolbox was installed on computers 9 and 10 in the Senior Lab.
+
+\labday{Thursday, October 28, \currentYear}
+\experiment{Meeting Minutes}
+% Place your initial below
+HG\\
 
 NN\\
 
-%-------------------------------------------
+
+\experiment{Background Study}
+% Place your initial below
+HG\\
+
+NN\\
+
+
 
 %--------------------------------------------------------------------------------------------
 

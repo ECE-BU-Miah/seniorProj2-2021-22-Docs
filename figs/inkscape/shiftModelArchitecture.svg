@@ -24,6 +24,7 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="1.3932941"
+<<<<<<< HEAD
      inkscape:cx="491.28178"
      inkscape:cy="604.6821"
      inkscape:window-width="1920"
@@ -32,6 +33,16 @@
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="g125527">
+=======
+     inkscape:cx="491.28179"
+     inkscape:cy="604.32326"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g119841">
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
     <inkscape:grid
        type="xygrid"
        id="grid119940" />
@@ -101,22 +112,38 @@
              y="0"><tspan
                x="166.90885"
                y="205.68328"
+<<<<<<< HEAD
                id="tspan50">Shift Model</tspan></text>
           <text
              xml:space="preserve"
              style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
              x="-14.844913"
+=======
+               id="tspan129425">Shift Model</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+             x="-13.632063"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
              y="68.095688"
              id="text77963"
              transform="scale(1.0384036,0.9630167)"><tspan
                sodipodi:role="line"
                id="tspan77961"
                style="font-size:4.54957px;stroke-width:0.213261"
+<<<<<<< HEAD
                x="-14.844913"
                y="68.095688">Desired Shifter Gear</tspan></text>
           <path
              style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
              d="M -6.2146709,59.057548 H 34.716727"
+=======
+               x="-13.632063"
+               y="68.095688">Desired Shift Gear</tspan></text>
+          <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
+             d="M -5.5849571,59.057548 H 35.346441"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
              id="path97416-1"
              inkscape:connector-type="polyline"
              inkscape:connector-curvature="0" />
@@ -124,14 +151,22 @@
              xml:space="preserve"
              style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
              x="88.212807"
+<<<<<<< HEAD
              y="68.366165"
+=======
+             y="68.987328"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
              id="text77963-8"
              transform="scale(1.0384036,0.9630167)"><tspan
                sodipodi:role="line"
                id="tspan77961-0"
                style="font-size:4.54957px;stroke-width:0.213261"
                x="88.212807"
+<<<<<<< HEAD
                y="68.366165">Actual Shifter Gear</tspan></text>
+=======
+               y="68.987328">Actual Shift Gear</tspan></text>
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
           <path
              style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-4)"
              d="M 88.872116,59.057548 H 129.80351"

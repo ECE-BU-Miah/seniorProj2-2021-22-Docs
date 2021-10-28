@@ -230,6 +230,7 @@
                  y="0"><tspan
                    x="196.49702"
                    y="207.34837"
+<<<<<<< HEAD
                    id="tspan126">Power </tspan><tspan
                    x="180.50091"
                    y="240.68174"
@@ -237,6 +238,15 @@
                    x="198.4827"
                    y="274.01512"
                    id="tspan130">Motor</tspan></text>
+=======
+                   id="tspan188">Power </tspan><tspan
+                   x="180.50091"
+                   y="240.68174"
+                   id="tspan190">Steering </tspan><tspan
+                   x="198.4827"
+                   y="274.01512"
+                   id="tspan192">Motor</tspan></text>
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
             </g>
             <g
                id="g27969-2"
@@ -258,6 +268,7 @@
                  y="0"><tspan
                    x="180.50091"
                    y="207.34837"
+<<<<<<< HEAD
                    id="tspan132">Steering </tspan><tspan
                    x="171.02173"
                    y="240.68174"
@@ -269,6 +280,22 @@
                id="path37907"
                inkscape:connector-type="polyline"
                inkscape:connector-curvature="0" />
+=======
+                   id="tspan194">Steering </tspan><tspan
+                   x="171.02173"
+                   y="240.68174"
+                   id="tspan196">Controller</tspan></text>
+            </g>
+            <path
+               style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.665;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+               d="m -5.6864291,59.296976 47.6249961,0.02284"
+               id="path37907"
+               inkscape:connector-type="polyline"
+               inkscape:connector-curvature="0"
+               inkscape:connection-end="#g27969"
+               inkscape:connection-start="#g27969-2"
+               transform="matrix(0.84032881,0,0,0.88461538,6.69638,4.1873453)" />
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
             <text
                xml:space="preserve"
                transform="matrix(0.22233699,0,0,0.23405448,-60.964058,-37.641276)"
@@ -278,6 +305,7 @@
                y="0"><tspan
                  x="328.01009"
                  y="432.57406"
+<<<<<<< HEAD
                  id="tspan138"><tspan
                    style="text-align:center;text-anchor:middle"
                    id="tspan136">Torque </tspan></tspan><tspan
@@ -286,6 +314,16 @@
                  id="tspan142"><tspan
                    style="text-align:center;text-anchor:middle"
                    id="tspan140">Voltages</tspan></tspan></text>
+=======
+                 id="tspan200"><tspan
+                   style="text-align:center;text-anchor:middle"
+                   id="tspan198">Torque </tspan></tspan><tspan
+                 x="317.41445"
+                 y="463.5032"
+                 id="tspan204"><tspan
+                   style="text-align:center;text-anchor:middle"
+                   id="tspan202">Voltages</tspan></tspan></text>
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
             <text
                xml:space="preserve"
                style="font-style:normal;font-weight:normal;font-size:3.92258px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183871"
@@ -312,25 +350,41 @@
                  y="40.188545">Wheel Angle</tspan></text>
             <path
                style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420)"
+<<<<<<< HEAD
                d="m -78.326818,73.807301 h 34.395832"
+=======
+               d="m -77.797651,73.807301 h 34.395832"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
                id="path97416"
                inkscape:connector-type="polyline"
                inkscape:connector-curvature="0" />
             <path
                style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
+<<<<<<< HEAD
                d="m -78.326818,42.057302 h 34.395832"
+=======
+               d="m -77.797651,42.057302 h 34.395832"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
                id="path97416-1"
                inkscape:connector-type="polyline"
                inkscape:connector-curvature="0" />
             <path
                style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-5)"
+<<<<<<< HEAD
                d="M 87.302349,73.807302 H 121.69819"
+=======
+               d="M 86.244015,73.807302 H 120.63985"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
                id="path97416-3"
                inkscape:connector-type="polyline"
                inkscape:connector-curvature="0" />
             <path
                style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-1)"
+<<<<<<< HEAD
                d="M 87.302349,42.057302 H 121.69819"
+=======
+               d="M 86.244015,42.057302 H 120.63985"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
                id="path97416-0"
                inkscape:connector-type="polyline"
                inkscape:connector-curvature="0" />

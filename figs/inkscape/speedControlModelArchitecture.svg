@@ -24,8 +24,13 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="1.3932941"
+<<<<<<< HEAD
      inkscape:cx="408.02584"
      inkscape:cy="513.17234"
+=======
+     inkscape:cx="408.02586"
+     inkscape:cy="513.17236"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
      inkscape:window-width="1920"
      inkscape:window-height="986"
      inkscape:window-x="-11"
@@ -99,6 +104,7 @@
            y="0"><tspan
              x="198.08215"
              y="205.68328"
+<<<<<<< HEAD
              id="tspan288">Speed </tspan><tspan
              x="191.63522"
              y="236.73528"
@@ -106,6 +112,15 @@
              x="200.29582"
              y="267.78728"
              id="tspan292">Model</tspan></text>
+=======
+             id="tspan129449">Speed </tspan><tspan
+             x="191.63522"
+             y="236.73528"
+             id="tspan129451">Control </tspan><tspan
+             x="200.29582"
+             y="267.78728"
+             id="tspan129453">Model</tspan></text>
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
         <text
            xml:space="preserve"
            style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
@@ -120,7 +135,11 @@
              y="68.541512">Desired Vehicle Speed</tspan></text>
         <path
            style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
+<<<<<<< HEAD
            d="M -6.2146709,59.057548 H 34.716727"
+=======
+           d="M -5.5849571,59.057548 H 35.346441"
+>>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
            id="path97416-1"
            inkscape:connector-type="polyline"
            inkscape:connector-curvature="0" />
