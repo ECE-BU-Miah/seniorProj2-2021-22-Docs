@@ -105,9 +105,9 @@ $y(t)$ is the output of the equation at a certain time t, while u(t) is the inpu
 Introduction to system identification...., Mathworks' MATLAB has the system
 identification toolbox, where a few existing examples demonstrate the working principle of this toolbox.
 
-\subsection{Example 1: ..........}
+\subsection{Example 1: Dealing with Multi-Variable Systems: Identification and Analysis}
 \label{sec:sysID-Example1}
-
+During this example I learned how to create an iddata object from a dataset in order to get the inputs and the outputs. The next step was to look at the impulse and step responses in order to learn more about how the inputs and outputs act. From there the state space model was estimated using the first part of the given data. This model was compared to the step responses that were found earlier and with the second part of the data to see if it was a good fit. The model had a best fit percentage of 83.55\% for the generated voltage data, and a best fit of 39.33\% for the speed data. The frequency response of the model was estimated with spectral analysis and bode plots were also created. The tutorial explained that if the data doesn’t give nice models, then it is best to try out submodels for the different channels. Two single-input single-output (SISO) models were created and compared with the existing multiple-input multiple-output (MIMO) model and the actual data. The Nyquist plots were also compared. Both SISO models performed well during these comparisons. The next step in the tutorial was to create a multiple-input single-output (MISO) model in order to get a model that more accurately reflected the generated voltage data. By creating this model and comparing it to the validation data and previous models, we saw a best fit percentage of 90.18\%. The last thing the example showed was how to merge the two SISO models we created earlier.
 
 
 \subsection{Example 2: ..........}
@@ -391,123 +391,124 @@ To start this project, we first read documentation outlining the uses of Matlab'
 % % \subsection{Experimental Activities} \label{sec:expresults}
 
 
-% % \section{Parts List}
+\section{Parts List}
+	\subsection{Software}
+	\begin{itemize}
+    \item MATLAB's System Identification Toolbox 
+    \item  
+ \end{itemize} 
+	
+	\subsection{Hardware} 
+	\begin{itemize}
+    \item Laptop
+    \item PAC Mod 
+    \item CAN Case 
+    \item CAN Bus 
+ \end{itemize}
 
-% \section{Timeline and Milestones} \label{sec:timeline}
+\section{Timeline and Milestones} \label{sec:timeline}
 
-% \begin{figure}
-%   \centering
-%   \begin{ganttchart}[
-%     hgrid,
-%     vgrid,
-%     x unit=.6cm,
-%     y unit title=.8cm,
-%     y unit chart=.6cm,
-%     milestone label font=\tiny,
-%     milestone progress label font = \tiny,
-%     milestone progress label anchor = east,
-%     bar label font=\tiny,
-%     group label font=\small,
-%     bar/.append style={fill=green},
-%     bar incomplete/.append style={fill=red},
-%     group progress label font = \tiny,
-%     progress label text={$\displaystyle#1\%$},
-%     group progress label anchor = east,
-%     bar progress label font = \tiny,
-%     bar progress label anchor = east,
-%     ]{1}{17}
+ \begin{figure}
+   \centering
+   \begin{ganttchart}[
+     hgrid,
+     vgrid,
+     x unit=.6cm,
+     y unit title=.8cm,
+     y unit chart=.6cm,
+     milestone label font=\tiny,
+     milestone progress label font = \tiny,
+     milestone progress label anchor = east,
+     bar label font=\tiny,
+     group label font=\small,
+     bar/.append style={fill=green},
+     bar incomplete/.append style={fill=red},
+     group progress label font = \tiny,
+     progress label text={$\displaystyle#1\%$},
+     group progress label anchor = east,
+     bar progress label font = \tiny,
+     bar progress label anchor = east,
+     ]{1}{17}
 
 %     \gantttitle{2020}{17}\\
-%     \gantttitle{Sep}{4}
-%     \gantttitle{Oct}{4}
-%     \gantttitle{Nov}{4}
-%     \gantttitle{Dec}{4}
-%     \gantttitle{}{1}\\
+     \gantttitle{Sep}{4}
+     \gantttitle{Oct}{4}
+     \gantttitle{Nov}{4}
+     \gantttitle{Dec}{4}
+     \gantttitle{}{1}\\
 
 %     \ganttgroup[progress = 100]{Research}{3}{12} \\
-%     \ganttbar[progress = 100]{Research Multipath}{3}{12}\\
-%     \ganttbar[progress = 100]{Research Reflector}{3}{12}\\
+     \ganttbar[progress = 100]{Read System Identification Documentation}{3}{12}\\
+     \ganttbar[progress = 100]{Collect Steering, Acceleration, and Braking Data}{3}{12}\\
 
 %     \ganttgroup[progress = 80]{Simulation}{8}{10}\\
-%     \ganttbar[progress = 80]{CoppeliaSim simulation}{8}{10}\\
-%     \ganttmilestone[progress = 0]{Simulation Complete}{10}\\
+     \ganttbar[progress = 80]{System Identification Tutorials}{8}{10}\\
+     \ganttbar[progress = 100]{System Functional Requirements Document}{8}{10}\\
+          \ganttbar[progress = 100]{System Functional Requirements Presentation}{8}{10}\\
 
-%     \ganttgroup[progress = 100]{Project Proposal}{11}{12}\\
-%     \ganttbar[progress = 100]{Proposal Document}{11}{11}\\
-%     \ganttbar[progress = 100]{Proposal Presentation}{12}{12}\\
+     \ganttbar[progress = 100]{Parts Order Request}{8}{12}\\
+     \ganttbar[progress = 100]{Proposal Document}{11}{11}\\
+     \ganttbar[progress = 100]{Proposal Presentation}{12}{12}\\
 
 %     \ganttgroup[progress = 82.5]{XBee Setup}{13}{14}\\
-%     \ganttbar[progress = 90]{Voltage Regulator Circuit}{13}{13}\\
-%     \ganttbar[progress = 80]{Configuration with X-CTU}{14}{14}\\
-%     \ganttbar[progress = 90]{Sensing RSSI}{14}{14}\\
-%     \ganttbar[progress = 70]{Serial Communication}{14}{14}\\
-%   \end{ganttchart}
-% \caption{Gantt chart for Fall 2020}
-% \label{fig:gantt1}
-% \end{figure}
+     \ganttmilestone[progress = 90]{Model Steering System}{13}{13}\\
+     \ganttbar[progress = 80]{Model Acceleration System}{14}{14}\\
+     \ganttbar[progress = 90]{Model Braking System}{14}{14}\\
+     
+   \end{ganttchart}
+ \caption{Gantt chart for Fall 2021}
+ \label{fig:gantt1}
+ \end{figure}
 
-% \begin{figure}
-%   \centering
-%   \begin{ganttchart}[
-%     hgrid,
-%     vgrid,
-%     x unit=.6cm,
-%     y unit title=.8cm,
-%     y unit chart=.6cm,
-%     milestone label font=\tiny,
-%     milestone progress label font = \tiny,
-%     milestone progress label anchor = east,
-%     bar label font=\tiny,
-%     group label font=\small,
-%     bar/.append style={fill=green},
-%     bar incomplete/.append style={fill=red},
-%     group progress label font = \tiny,
-%     progress label text={$\displaystyle#1\%$},
-%     group progress label anchor = east,
-%     bar progress label font = \tiny,
-%     bar progress label anchor = east,
-%     ]{1}{18}
-%     \gantttitle{2021}{18}\\
-%     \gantttitle{Jan}{2}
-%     \gantttitle{Feb}{4}
-%     \gantttitle{Mar}{4}
-%     \gantttitle{Apr}{4}
-%     \gantttitle{May}{4}\\
+ \begin{figure}
+   \centering
+   \begin{ganttchart}[
+     hgrid,
+     vgrid,
+     x unit=.6cm,
+     y unit title=.8cm,
+     y unit chart=.6cm,
+     milestone label font=\tiny,
+     milestone progress label font = \tiny,
+     milestone progress label anchor = east,
+     bar label font=\tiny,
+     group label font=\small,
+     bar/.append style={fill=green},
+     bar incomplete/.append style={fill=red},
+     group progress label font = \tiny,
+     progress label text={$\displaystyle#1\%$},
+     group progress label anchor = east,
+     bar progress label font = \tiny,
+     bar progress label anchor = east,
+     ]{1}{18}
+     %\gantttitle{2021}{18}\\
+     \gantttitle{Jan}{2}
+     \gantttitle{Feb}{4}
+     \gantttitle{Mar}{4}
+     \gantttitle{Apr}{4}
+     \gantttitle{May}{4}\\
 
 %     \ganttgroup[progress = 0]{Assembly}{3}{4}\\
-%     \ganttbar[progress = 0]{Replace Motors}{3}{3}\\
-%     \ganttbar[progress = 0]{Design and Construct Reflector}{3}{4}\\
-%     \ganttbar[progress = 0]{Mount Reflector}{4}{4}\\
-%     \ganttmilestone[progress = 0]{Assembly Complete}{4}\\
+     \ganttbar[progress = 0]{Collect Shift, Speed Control, and Speed Data}{3}{3}\\
+     \ganttbar[progress = 0]{Model Shift System}{3}{4}\\
+     \ganttbar[progress = 0]{Model Speed Control System}{4}{4}\\
+     \ganttbar[progress = 0]{Model Speed System}{4}{10}\\
 
 %     \ganttgroup[progress = 10]{Software}{5}{6}\\
-%     \ganttbar[progress = 20]{XBee Library}{5}{5}\\
-%     \ganttbar[progress = 0]{Control Library}{6}{6}\\
-
-%     \ganttgroup[progress = 0]{Angle Estimation}{7}{8}\\
-%     \ganttbar[progress = 0]{Rotate XBee on Stepper Motor}{7}{7}\\
-%     \ganttbar[progress = 0]{Determine Angle}{8}{8}\\
-
-%     \ganttgroup[progress = 0]{Distance Estimation}{9}{10}\\
-%     \ganttbar[progress = 0]{Calibrate Distance Calculation}{9}{10}\\
-
-%     \ganttgroup[progress = 0]{Subsystem Integration}{11}{15}\\
-%     \ganttbar[progress = 0]{Angle Estimation Testing}{11}{11}\\
-%     \ganttbar[progress = 0]{Distance Estimation Testing}{12}{13}\\
-%     \ganttbar[progress = 0]{System Testing}{14}{15}\\
-%     \ganttmilestone[progress = 0]{Integration Complete}{15}\\
+     \ganttbar[progress = 20]{Test Subsystems}{5}{5}\\
+     \ganttmilestone[progress = 0]{Test Subsystems with HIL}{6}{6}\\
 
 %     \ganttgroup[progress = 0]{Project Completion}{16}{17}\\
-%     \ganttbar[progress = 0]{Final Report}{16}{16}\\
-%     \ganttbar[progress = 0]{Final Presentation}{17}{17}\\
-%     \ganttbar[progress = 0]{Presentation to IAB}{17}{17}\\
-%     \ganttbar[progress = 0]{Project Demo}{17}{17}\\
+     \ganttmilestone[progress = 0]{Final Report}{16}{16}\\
+     \ganttmilestone[progress = 0]{Final Presentation}{17}{17}\\
+     \ganttbar[progress = 0]{Presentation to IAB}{17}{17}\\
+     \ganttbar[progress = 0]{Project Demo}{17}{17}\\
 
 %     \ganttmilestone[progress = 0]{Project Complete}{17}
-%   \end{ganttchart}
-%   \caption{Gantt Chart for Spring 2020}
-%   \label{fig:gantt2}
-% \end{figure}
+   \end{ganttchart}
+   \caption{Gantt Chart for Spring 2022}
+   \label{fig:gantt2}
+ \end{figure}
 
 % The Gantt charts in Figures \ref{fig:gantt1} and \ref{fig:gantt2} show our planned schedule to complete this project. In these charts, there are four sections in each month represented by the dotted grid. This is to approximate a weekly schedule. Our first milestone is to complete the simulation of the system in MATLAB and CoppeliaSim. This includes simulating a remote as well as the robotic cart. The simulation of the RSSI detection will be handled in Matlab based on the positions of the cart and remote. We will add noise to the simulated RSSI in order to simulate the multipath effect. The expected functionality is that the cart will follow the remote.
 
