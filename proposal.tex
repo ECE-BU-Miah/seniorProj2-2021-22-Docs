@@ -84,12 +84,9 @@ Caterpillar College of Engineering and Technology\\
 
 \section{Introduction}
 Autonomous vehicles are being developed by many companies for commercial and/or personal use. These autonomous vehicles would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. Also, autonomous vehicles have the ability to make roads safer for drivers and pedestrians alike. Accurate models of six main vehicle subsystems must be created so controllers can be developed to reliably manage these vehicles.
-
-There are six main subsystems - a steering model, an acceleration model, a brake
-model, a shifting model, a speed model, and a cruise model - that must be
-modeled to get an accurate representation of how the vehicle should be
-controlled. We will be modeling these six subsystems for a Lexus platform using
-the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected. The scope of this project includes developing mathematical models for each subsystem so Autonomous Stuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing.
+\vspace*{12pt}
+\noindent
+There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. We will be modeling these six subsystems for a Lexus vehicle platform using the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected due to non-linear behaviors of the torques voltages required to control each subsystem. The scope of this project includes developing mathematical models for each subsystem so AutonomouStuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing.
 
  \section{Literature Review}
 In the paper “Identification of Multiple Input-Single Output (MISO) Model for MPPT of Photovoltaic System”, the researchers wanted to model a system where the two inputs were Solar irradiance and Cell temperature and the output was DC current. In order to model this system Matlab’s System Identification Toolbox was used. In order to create different models, they collected and used data from an energy center in Malaysia. After generating different models, the researchers ended up going with a fourth order ARX (also known as ARXQS) model because it was the most accurate, with a best fit percentage of 93.42\%. The polynomial model equation for ARX is shown below. 
@@ -141,7 +138,10 @@ The vehicle platform plant model will meet the following requirements:
 \begin{itemize}
     \item The plant model should have an accurate model of the six main subsystems
     \item A HIL test bench can be developed from the plant model of the subsystems
-    \item The steering model can handle very small steering angles
+    \item The steering model can handle very small changes in steering angles
+    \begin{itemize}
+    		\item The steering model should have a very smooth, continuous output as a choppy, discontinuous output would translate into difficulty tracking the vehicle in a straight line for instances such as keeping the vehicle in its lane. For this reason, that model that we create should be able to smooth out any discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle
+    \end{itemize}
 \end{itemize}
 
 
@@ -372,7 +372,7 @@ The vehicle platform plant model will meet the following requirements:
 % \end{algorithm}
 
  \subsection{Specifications}
- Based on the requirements, the vehicle platform plant model must meet the following specifications:
+ Based on the system requirements, the vehicle platform plant model must meet the following specifications:
  \begin{itemize}
     \item The model of the steering subsystem should be modeled first as it is crucial to operation and has non-linearity considerations
     \item All subsystems will be modeled individually 
