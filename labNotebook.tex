@@ -335,6 +335,9 @@ HG\\
 At the beginning of lab Nick and I met with Dr. Miah to discuss what we have been working on. We talked about the steering model and how the system had two inputs (torque voltages A and B) and one output (Actual SW angle). We discussed the possible options for identifying a model for the steering system using the System Identification Toolbox. One option is to use A and B as  the inputs and the commanded (desired) steering angle as the output. We talked about creating an agenda for Thursday's meeting that includes questions we have for Erik. This agenda will be placed in BitBucket along with our modified diagrams. The System Level Functional Requirements Document must be finalized by October 21st, along with the presentation. Nick and I will work on this outside of lab time. During the lab time Dr. Miah wanted us to work with the data and find examples showing system modeling of MISO systems using the toolbox. Nick has already started working with the Data before our meeting today. He has generated a transfer function, and wants to tune the generated parameters. We will try all possible options and see what gives the best fit and validation data for a model. Since we will have two inputs, when both inputs are activated, the ultimate output is the superimposed result. The inputs should be coupled, so we will need to modify the way we are simulating. 
 
 During the lab time I worked on finding examples of system identification of MISO systems. I was able to find a couple related documents, including one Matlab tutorial. I worked through this tutorial during the lab time. 
+\begin{itemize}
+	\item \href{https://www.mathworks.com/help/ident/gs/identify-linear-models-using-the-command-line.html}{Example}
+\end{itemize}
 
 NN\\
 During the lab time, Dr. Miah, Hannah, and I discussed the data that we collected from AutonomouStuff. We discussed the need to get clarification from Erik and Joe about what units were being used for the actual steering angle, commanded steering angle, and reference steering angle. We also discussed getting clarification on what the non-linearities actual mean to the system. After the discussion, I worked on manipulation the data in the System Identification Toolbox to try and get a model that closely follows the system output. 
@@ -369,6 +372,9 @@ Dr. Miah, Hannah, and I met with Joe and Erik to discuss clarifications with the
 % Place your initial below
 HG\\
 Dr. Miah, Nick, and I met at the beginning of the lab time to discuss our progress. I had read a paper over the weekend that mentioned modeling a MISO system, and so during the lab time I finished summarizing it and placed that summary in the proposal document. There is an error that keeps popping up that I tried to resolve, but after doing some research, I still wasn't able to fix the problem. I will have to email Dr. Miah about this. It did not affect my ability to add stuff to the proposal. I also wrote a mathematical equation for the summary and also placed that in the project proposal. I then found another example in Matlab about dealing with MIMO systems and estimating models, so I worked on that during the lab time. 
+\begin{itemize}
+	\item \href{https://www.mathworks.com/help/ident/ug/dealing-with-multi-variable-systems-identification-and-analysis.html}{Example}
+\end{itemize}
 
 NN\\
 During the lab time today, Dr. Miah advised Hannah and I to work through some examples for using the Matlab System Identification Toolbox, specifically for MISO or MIMO systems so that we can verify we are working through the process correctly. I worked through the following examples and when I was confused by what a certain function did, I looked at the documentation to understand it better. 
