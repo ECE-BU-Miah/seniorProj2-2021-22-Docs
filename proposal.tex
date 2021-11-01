@@ -111,7 +111,7 @@ During this example I learned how to create an iddata object from a dataset in o
 This example discusses solutions for modeling both MISO and MIMO models using Mathworks' Matlab System Identification Toolbox. As the article discusses, MISO system models are easier to develop because all model structures used by the toolbox support models with a single output and multiple inputs. Therefore, the process for developing a model for a MISO system is importing the data as an iddata object, removing the mean from the data, and estimating the solution using any model structure available in the toolbox. The command line can be used by using the function associated with the model structure name and then using the compare function to get the best fit percentage. For MIMO systems, there are not model structures built into the System Identification Toolbox and they must be imported instead. Otherwise the process is very similar to that of a MISO system. For a MIMO system, using the compare function can be crucial. The compare function will tell which output channel is the most difficult to develop a model for, if it is possible at all. With this information, the output channel that is hardest to model should first be modeled individually because there will be less freedom in what model structures are available. The other channels should be able to closely relate to the model for the output channel you selected.
 
 
-\subsection{Example 3: ..........}
+\subsection{Example 3: Identify Linear Models Using the Command Line}
 \label{sec:sysID-Example3}
 
 
@@ -266,22 +266,22 @@ To start this project, we first read documentation outlining the uses of Matlab'
      \gantttitle{}{1}\\
 
 %     \ganttgroup[progress = 100]{Research}{3}{12} \\
-     \ganttbar[progress = 100]{Read System Identification Documentation}{3}{12}\\
-     \ganttbar[progress = 100]{Collect Steering, Acceleration, and Braking Data}{3}{12}\\
+     \ganttbar[progress = 100]{Read System Identification Documentation}{3}{6}\\
+     \ganttbar[progress = 100]{Collect Steering, Acceleration, and Braking Data}{6}{7}\\
 
 %     \ganttgroup[progress = 80]{Simulation}{8}{10}\\
-     \ganttbar[progress = 80]{System Identification Tutorials}{8}{10}\\
-     \ganttbar[progress = 100]{System Functional Requirements Document}{8}{10}\\
-          \ganttbar[progress = 100]{System Functional Requirements Presentation}{8}{10}\\
+     \ganttbar[progress = 100]{System Identification Tutorials}{4}{7}\\
+     \ganttbar[progress = 100]{System Functional Requirements Document}{4}{9}\\
+          \ganttbar[progress = 100]{System Functional Requirements Presentation}{4}{9}\\
 
      \ganttbar[progress = 100]{Parts Order Request}{8}{12}\\
-     \ganttbar[progress = 100]{Proposal Document}{11}{11}\\
-     \ganttbar[progress = 100]{Proposal Presentation}{12}{12}\\
+     \ganttbar[progress = 50]{Proposal Document}{9}{15}\\
+     \ganttbar[progress = 30]{Proposal Presentation}{9}{15}\\
 
 %     \ganttgroup[progress = 82.5]{XBee Setup}{13}{14}\\
-     \ganttmilestone[progress = 90]{Model Steering System}{13}{13}\\
-     \ganttbar[progress = 80]{Model Acceleration System}{14}{14}\\
-     \ganttbar[progress = 90]{Model Braking System}{14}{14}\\
+     \ganttmilestone[progress = 30]{Model Steering System}{13}{14}\\
+     \ganttbar[progress = 0]{Model Acceleration System}{14}{15}\\
+     \ganttbar[progress = 0]{Model Braking System}{15}{16}\\
      
    \end{ganttchart}
  \caption{Gantt chart for Fall 2021}
@@ -319,16 +319,16 @@ To start this project, we first read documentation outlining the uses of Matlab'
 %     \ganttgroup[progress = 0]{Assembly}{3}{4}\\
      \ganttbar[progress = 0]{Collect Shift, Speed Control, and Speed Data}{3}{3}\\
      \ganttbar[progress = 0]{Model Shift System}{3}{4}\\
-     \ganttbar[progress = 0]{Model Speed Control System}{4}{4}\\
-     \ganttbar[progress = 0]{Model Speed System}{4}{10}\\
+     \ganttbar[progress = 0]{Model Speed Control System}{5}{6}\\
+     \ganttbar[progress = 0]{Model Speed System}{7}{8}\\
 
 %     \ganttgroup[progress = 10]{Software}{5}{6}\\
-     \ganttbar[progress = 20]{Test Subsystems}{5}{5}\\
-     \ganttmilestone[progress = 0]{Test Subsystems with HIL}{6}{6}\\
+     \ganttbar[progress = 0]{Test Subsystems}{9}{12}\\
+     \ganttmilestone[progress = 0]{Test Subsystems with HIL}{12}{15}\\
 
 %     \ganttgroup[progress = 0]{Project Completion}{16}{17}\\
-     \ganttmilestone[progress = 0]{Final Report}{16}{16}\\
-     \ganttmilestone[progress = 0]{Final Presentation}{17}{17}\\
+     \ganttmilestone[progress = 0]{Final Report}{15}{15}\\
+     \ganttmilestone[progress = 0]{Final Presentation}{16}{16}\\
      \ganttbar[progress = 0]{Presentation to IAB}{17}{17}\\
      \ganttbar[progress = 0]{Project Demo}{17}{17}\\
 
@@ -337,6 +337,14 @@ To start this project, we first read documentation outlining the uses of Matlab'
    \caption{Gantt Chart for Spring 2022}
    \label{fig:gantt2}
  \end{figure}
+
+	Our Gantt charts shown in Figures \ref{fig:gantt1} and \ref{fig:gantt2} outline our project work and milestones for the year. While we are still working on the details, we plan on splitting the work equally to make sure that we each get a chance to learn from this project and to keep it fair for all team members.  
+
+
+The first milestone on our list will be to model the steering system. This will be a challenge due to its small non-linearities around very small steering angle changes. The next milestone will be to test our subsystem models on AutonomouStuff's HIL system. This is one of the most important milestones because the company sponsors our project and we are working to help solve one of their problems. Our last two milestones will be to present our work in the form of a final report and presentation. This is where all of our work will come together and we will get a chance to explain how we solved the problem. 
+
+We plan on demonstrating our project for AutonomouStuff along with including a full report on how we modeled the vehicle subsystems. As for the final report and presentation, we plan on working on it as soon as possible next semester. This presentation will also be shown to the Industrial Advisory Board. 
+
 
 % The Gantt charts in Figures \ref{fig:gantt1} and \ref{fig:gantt2} show our planned schedule to complete this project. In these charts, there are four sections in each month represented by the dotted grid. This is to approximate a weekly schedule. Our first milestone is to complete the simulation of the system in MATLAB and CoppeliaSim. This includes simulating a remote as well as the robotic cart. The simulation of the RSSI detection will be handled in Matlab based on the positions of the cart and remote. We will add noise to the simulated RSSI in order to simulate the multipath effect. The expected functionality is that the cart will follow the remote.
 
