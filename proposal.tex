@@ -113,14 +113,14 @@ This example discusses solutions for modeling both MISO and MIMO models using Ma
 
 \subsection{Example 3: Identify Linear Models Using the Command Line}
 \label{sec:sysID-Example3}
-
+This example shows how to create models for MISO systems using the command line. Before starting the model estimation process, the equilibrium values of the inputs and outputs had to be taken out. The data from each experiment also had to be separated into different iddata objects. The example showed how to estimate and compare non-parametric impulse response, transfer function, ARMA, state-space, and Box-Jenkins models with the measured experimental data. The state-space model with the five-step response prediction was the most accurate, with a best fit percentage of 85.83\%. 
 
 
 \section{System Requirements}
-The vehicle platform plant model will meet the following requirements:
+The vehicle plant model will fulfill the requirements listed below:
 \begin{itemize}
-    \item The plant model should have an accurate model of the six main subsystems
-    \item A HIL test bench can be developed from the plant model of the subsystems
+    \item The resulting plant model will consist of accurate subsystem models
+    \item The subsystems can be used to create an HIL testbench
     \item The steering model can handle very small changes in steering angles
     \begin{itemize}
     		\item The steering model should have a very smooth, continuous output as a choppy, discontinuous output would translate into difficulty tracking the vehicle in a straight line for instances such as keeping the vehicle in its lane. For this reason, that model that we create should be able to smooth out any discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle
@@ -200,17 +200,18 @@ The overall system architecture of this project consists of six subsystems which
 
 
  \subsection{Specifications}
- Based on the system requirements, the vehicle platform plant model must meet the following specifications:
+ Based on the system requirements listed above, the plant model will meet the following specifications:
  \begin{itemize}
-    \item The model of the steering subsystem should be modeled first as it is crucial to operation and has non-linearity considerations
-    \item All subsystems will be modeled individually 
-    \item Our steering model will be designed to accommodate very small steering angles
+    \item The steering subsystem will be modeled first due to its non-linearities and the fact that it is important to the operation of the vehicle
+    \item Each vehicle subsystem will be modeled separately 
+    \item The steering subsystem will be able to handle small steering angles
  \end{itemize}
 
 \section{Preliminary Work}
 To start this project, we first read documentation outlining the uses of Matlab's System Identification Toolbox. From there we worked on Matlab tutorials on how to model systems from data using System Identification and then find the most accurate model. We specifically tried to find examples with Multiple-Input Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since most of the vehicle subsystems we will model fall into one of these categories. A literature review was also conducted to see how systems with small non-linearities like our steering subsystem were modeled using System Identification. On October 7th we traveled to AutonomouStuff in order to collect data from the steering, acceleration, and braking subsystems in an autonomous vehicle. The data we collected will be used to generate and then verify our models. 
 
-% % \subsection{Modelling} \label{sec:model}
+ \subsection{Modeling} \label{sec:model}
+ All modeling of vehicle subsystems will be done using Matlab's System Identification Toolbox feature. The subsystems can be grouped into four different categories: Single-Input-Single-Output, Multiple-Input-Multiple-Output, Single-Input-Multiple-Output, and Multiple-Input-Single-Output. 
 
 % % \subsection{Simulation Results} \label{sec:simresults}
 
