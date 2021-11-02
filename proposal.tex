@@ -89,6 +89,9 @@ Autonomous vehicles are being developed by many companies for commercial and/or 
 There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. We will be modeling these six subsystems for a Lexus vehicle platform using the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected due to non-linear behaviors of the torques voltages required to control each subsystem. The scope of this project includes developing mathematical models for each subsystem so AutonomouStuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing.
 
  \section{Literature Review}
+
+Authors in~\cite{Hussain2011} illustrates identification of multiple-input single-output model for maximum power point tracking of photovoltaic system.  
+ 
 In the paper “Identification of Multiple Input-Single Output (MISO) Model for MPPT of Photovoltaic System”, the researchers wanted to model a system where the two inputs were Solar irradiance and Cell temperature and the output was DC current. In order to model this system Matlab’s System Identification Toolbox was used. In order to create different models, they collected and used data from an energy center in Malaysia. After generating different models, the researchers ended up going with a fourth order ARX (also known as ARXQS) model because it was the most accurate, with a best fit percentage of 93.42\%. The polynomial model equation for ARX is shown below. 
 
 $y(t) + a_1y(t - 1) +...+a_{na}y(t - n_{a}) = b_{1}u(t-n_{k})+...+b_{nb}u(t - n_{k}-n_{b}+1) + e(t)$
@@ -103,6 +106,7 @@ System identification is the process of developing mathematical models for a dyn
 
 \subsection{Example 1: Dealing with Multi-Variable Systems: Identification and Analysis}
 \label{sec:sysID-Example1}
+
 During this example I learned how to create an iddata object from a dataset in order to get the inputs and the outputs. The next step was to look at the impulse and step responses in order to learn more about how the inputs and outputs act. From there the state space model was estimated using the first part of the given data. This model was compared to the step responses that were found earlier and with the second part of the data to see if it was a good fit. The model had a best fit percentage of 83.55\% for the generated voltage data, and a best fit of 39.33\% for the speed data. The frequency response of the model was estimated with spectral analysis and bode plots were also created. The tutorial explained that if the data doesn’t give nice models, then it is best to try out submodels for the different channels. Two single-input single-output (SISO) models were created and compared with the existing multiple-input multiple-output (MIMO) model and the actual data. The Nyquist plots were also compared. Both SISO models performed well during these comparisons. The next step in the tutorial was to create a multiple-input single-output (MISO) model in order to get a model that more accurately reflected the generated voltage data. By creating this model and comparing it to the validation data and previous models, we saw a best fit percentage of 90.18\%. The last thing the example showed was how to merge the two SISO models we created earlier.
 
 
@@ -237,6 +241,9 @@ To start this project, we first read documentation outlining the uses of Matlab'
 
 \section{Timeline and Milestones} \label{sec:timeline}
 
+
+The Gantt chart highlighting the progress and potential schedule of the project in Fall 2021 is shown in Figure~\ref{fig:gantt1}.  
+
  \begin{figure}
    \centering
    \begin{ganttchart}[
@@ -289,6 +296,12 @@ To start this project, we first read documentation outlining the uses of Matlab'
  \label{fig:gantt1}
  \end{figure}
 
+
+
+The potential schedule for our project in Spring 2022 is highlighted in the gantt chart shown in Figure~\ref{fig:gantt2}. 
+ 
+
+ 
  \begin{figure}
    \centering
    \begin{ganttchart}[
