@@ -133,74 +133,59 @@ The vehicle plant model will fulfill the requirements listed below:
 
 
 \section{System Architecture}
-The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and cruise control systems as shown in \autoref{fig:sys_block_diag}.
-
-% \subsection{System Block Diagram}
-% The high-level system block diagram of the proposed robotic cart (prototype) is shown in \autoref{fig:sys_block_diag}. There are four inputs to the proposed cart system. Obviously, the robotic cart is powered on through a source of power (input), which is simply a battery, for instance. There will be an on/off switch to allow the system to be powered down when not in use. The motion of the cart will be controlled by the motion of the remote. A stretch goal is to have mode selection buttons to allow the user to put the system into different operating modes which will be explained later on.
-
-% \vspace*{12pt}
-% \noindent
-% The main output of the system is the trajectory of the cart on the ground. As the user moves with the remote, the cart is supposed to follow the user. The other output of the robotic cart system is status indication in the form of LED lights. These lights will be used to notify the user of the status of the system.
-
-% \begin{figure}[!h]
-%     \centering
-%     % \includegraphics[scale=0.9]{figs/system_block_diagram_2}
-%     \caption{System level block diagram detailing inputs and outputs to the
-%       mobile cart system.}
-% 	\label{fig:sys_block_diag}
-% \end{figure}
-
-% \subsection{Subsystem Block Diagrams}
-% Both of the subsystems of the mobile cart system, being the Mobile Cart and Remote Target, act as their own enclosed systems. The two subsystems communicate with one another by relaying radio messages between them. The block diagram of the Remote Target subsystem is shown in \autoref{fig:remote_block_diag}. Of the two subsystems the Remote Target is the simplest since it only requires an XBee module attached to a 9 volt battery with a voltage regulation circuit.
-
-% \vspace*{12pt}
-% \noindent
-% The Mobile Cart subsystem block diagram is shown in
-% \autoref{fig:mobile_block_diag}. The Mobile Cart has four inputs. The cart
-% requires a power source, which will be a Li-Po battery. The power to the
-% subsystem will be toggled by an on/off switch. The buttons for changing the
-% operating mode of the cart will be on the cart if we have time to implement
-% them. The final input to the mobile cart subsystem is the XBee network messages
-% received from the remote target.
-
-% \vspace*{12pt}
-% \noindent
-
-% There are three outputs of the mobile cart subsystem. The first is the wheel
-% velocities that move the cart. There will also be LEDs to indicate the status of
-% the system to the user. Also, the cart will send radio messages to the remote
-% target by means of an array of XBee radio modules. %
-% %
-% \begin{figure}[h!]
-%   \centering
-%   \missingfigure
-%   % \includegraphics[scale=0.9]{figs/remote_target_block_diagram}
-%   \caption{Remote Target block diagram}
-%   \label{fig:remote_block_diag}
-% \end{figure}
-
-% \begin{figure}[h!]
-%   \centering
-%   % \includegraphics[scale=0.82]{figs/mobile_cart_block_diagram}
-%   \caption{Block diagram showing the subsystem-level components of the proposed robotic cart.}
-%   \label{fig:mobile_block_diag}
-% \end{figure}
+The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and cruise control systems as shown in \autoref{fig:steerBlockDiag}, \autoref{fig:brakeBlockDiag}, \autoref{fig:accelBlockDiag}, \autoref{fig:shiftBlockDiag}, \autoref{fig:cruiseBlockDiag}, and \autoref{fig:speedBlockDiag}.
 
 
-% \subsection{Operation of Mobile Cart System}
-% The Mobile Cart will controlled by a central embedded computer which we are using the BeagleBone Blue for. Two DC motors will be used to drive wheels to move the cart. Five XBee modules will be used to allow communication with the remote target. One of these radio sensors will be mounted on top of the cart to broadcast in all directions. The other four sensors will be placed inside parabolic reflectors at right angles to each other. This sensor array will be mounted on a stepper motor to allow rotation.
 
-% \vspace*{12pt}
-% \noindent
-
-% There are two main steps in the operation of the robotic cart system. The first step is localization of the remote in the robot's local coordinate frame. Once the location of the remote is known, the navigation step handles the control of the wheel velocities to move the cart to the desired location. A flowchart of the system operation is shown in \autoref{fig:sysOpFlowchart}.
-
-% \begin{figure}
-%   \centering
-%   \input{figs/dia/systemOperationFlowchart.tex}
-%   \caption{Flowchart of System Operation}
-%   \label{fig:sysOpFlowchart}
-% \end{figure}
+\begin{minipage}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=3in]{figs/inkscape/steeringModelArchitecture}
+    \caption{Block Diagram of the Vehicle Steering Model.}
+    \label{fig:steerBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{Block Diagram of the Vehicle Brake Model.}
+    \label{fig:brakeBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
+    \caption{Block Diagram of the Vehicle Acceleration Model.}
+    \label{fig:accelBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/inkscape/shiftModelArchitecture}
+    \caption{Block Diagram of the Vehicle Shift Model.}
+    \label{fig:shiftBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/inkscape/speedControlModelArchitecture}
+    \caption{Block Diagram of the Vehicle Speed Control Model.}
+    \label{fig:cruiseBlockDiag}
+\end{figure}
+%
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/inkscape/speedModelArchitecture}
+    \caption{Block Diagram of the Vehicle Speed Model.}
+    \label{fig:speedBlockDiag}
+\end{minipage}
 
 
  \subsection{Specifications}
