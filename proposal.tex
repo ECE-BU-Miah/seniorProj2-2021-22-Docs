@@ -37,7 +37,6 @@ format=default,justification=centerlast]{caption} % Figure caption text customiz
 \usetikzlibrary{positioning,fit}
 
 \usepackage{siunitx}
-\sisetup{unitsep=\cdot}
 
 \title{ECE498:~Senior Capstone Project I\\\textbf{\underline{Project Proposal}}\\
 \vspace{0.5in}
@@ -142,8 +141,7 @@ The vehicle plant model will fulfill the requirements listed below:
 \section{System Architecture}
 The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and cruise control systems as shown in \autoref{fig:steerBlockDiag}, \autoref{fig:brakeBlockDiag}, \autoref{fig:accelBlockDiag}, \autoref{fig:shiftBlockDiag}, \autoref{fig:cruiseBlockDiag}, and \autoref{fig:speedBlockDiag}.
 
-\begin{minipage}
-%
+
 \begin{figure}
     \centering
     \captionsetup{justification=centering, margin=3cm}
@@ -190,7 +188,7 @@ The overall system architecture of this project consists of six subsystems which
     \includegraphics[width=2in]{figs/inkscape/speedModelArchitecture}
     \caption{Block Diagram of the Vehicle Speed Model.}
     \label{fig:speedBlockDiag}
-\end{minipage}
+\end{figure}
 
 
  \subsection{Specifications}
