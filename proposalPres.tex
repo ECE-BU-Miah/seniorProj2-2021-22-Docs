@@ -405,15 +405,37 @@
 \end{frame}
 
 %----------------------------------
+\section{Design}
+
+\begin{frame}{Design}
+	\begin{block}
+		Each subsystem that we are modeling are set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the ECU are discarded by open-circuiting the motors that control each subsystem. Instead, controllers built by AutonomouStuff send the torque voltages to the motor using relays.
+	\end{block}
+\end{frame}
+
+%----------------------------------
 \section{Simulation Results}
 
 \begin{frame}{Simulation Results}
   \begin{block}{}
  \begin{itemize}
-        \item 
-	\item 
-	\item 
-\end{itemize}
+	\item The best fit percentage of the by-wire steering estimated model is 85.54
+	\item The best fit percentage of the manual steering estimated model is 90.27
+ \end{itemize}
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/img/byWireSteeringTransferFunctionModel}
+    \caption{Output of Estimated By-Wire System Model}
+    \label{fig:byWireSteerModel}
+\end{figure}
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/img/manualSteeringTransferFunctionModel}
+    \caption{Output of Estimated Manual System Model}
+    \label{fig:manualSteerModel}
+\end{figure}
   \end{block}
 \end{frame}
 
