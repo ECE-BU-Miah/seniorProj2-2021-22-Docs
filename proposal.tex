@@ -206,10 +206,25 @@ To start this project, we first read documentation outlining the uses of Matlab'
  All modeling of vehicle subsystems will be done using Matlab's System Identification Toolbox feature. The subsystems can be grouped into four different categories: Single-Input-Single-Output, Multiple-Input-Multiple-Output, Single-Input-Multiple-Output, and Multiple-Input-Single-Output. 
 
 \subsection{Design} \label{sec:design}
-Each subsystem that we are modeling are set up in a similar manner. In manual mode, 
+Each subsystem that we are modeling are set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the ECU are discarded by open-circuiting the motors that control each subsystem. Instead, controllers built by AutonomouStuff send the torque voltages to the motor using relays.
 
 \subsection{Simulation Results} \label{sec:simresults}
+In \autoref{fig:byWireSteerModel}, the output steering angle is plotted versus time when the vehicle is in by-wire mode. The figure shows the output steering angle from some data collected to depict the steering system behavior plotted with the behavior of the estimated model. The best fit percentage for this model is 85.54. Likewise, \autoref{fig:manualSteerModel} depicts the output steering angle plotted versus time when the vehicle is in manual mode. The best fit percentage for this model is 90.27. 
 
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/img/byWireSteeringTransferFunctionModel}
+    \caption{Output of Estimated By-Wire System Model}
+    \label{fig:byWireSteerModel}
+\end{figure}
+\begin{figure}
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2in]{figs/img/manualSteeringTransferFunctionModel}
+    \caption{Output of Estimated Manual System Model}
+    \label{fig:manualSteerModel}
+\end{figure}
 
 
 \section{Parts List}
