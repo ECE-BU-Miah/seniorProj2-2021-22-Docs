@@ -253,64 +253,48 @@
   \end{block}
 \end{frame}
 
-% \begin{frame}{Literature Review}
-%   \begin{block}{Existing Solution}
-%         Gated Recurrent Unit (GRU) network with LiDAR sensor and camera to map the customer~\cite{islam_lam_fukuda_kobayashi_kuno_2019}
-%   \end{block}
-%     \begin{figure}[b]
-%         \centering
-%         \includegraphics[width=0.40\textwidth]{figs/img/ShoppingSuportRobot}
-%         \caption{Shopping Support Robot}
-%         %\label{fig:sysBlockDiag}
-%     \end{figure}
-% \end{frame}
-
-% %----------------------------------
-
-% \begin{frame}{Literature Review}
-%   \begin{block}{Existing Solution}
-%     Arduino MEGA 2560, six ultrasonic sensors, two DC motors with Pulse Width Modulation (PWM), an Android Studio IDE device, and Bluetooth~\cite{Rawashdeh2017-Person}
-%   \end{block}
-%     \begin{figure}[b]
-%         \centering
-%         \includegraphics[width=0.50\textwidth]{figs/img/SmartCart}
-%         \caption{Smart Cart Robot}
-%         %\label{fig:sysBlockDiag}
-%     \end{figure}
-% \end{frame}
-
-%----------------------------------
-
-%\begin{frame}{Existing Solutions}
-%  \begin{block}{Problems}
-%    \begin{itemize}
-%      \item Require line-of-sight between robot and user
-%      \item Some require costly dedicated image processing hardware
-%    \end{itemize}
-%  \end{block}
-%  \pause
-%  \begin{block}{Benefits of Proposed Solution}
-%    \begin{itemize}
-%      \item High level of accuracy 
-%    \end{itemize}
-%  \end{block}
-%\end{frame}
-
-% \begin{frame}{Literature Review}
-%   \begin{block}{Challenges}
-%     \begin{itemize}
-%       \item Communication between the robot and the remote
-%       \item Buffer distance between the robotic cart and the customer without using line of sight sensing
-%     \end{itemize}
-%   \end{block}
-% \end{frame}
 
 %----------------------------------
 
 \section{System Requirements}
+
+\begin{frame}{System Requirements}
+  \begin{block}{Specifications}
+    The vehicle plant model will fulfill the requirements listed below:
+\begin{itemize}
+    \item The resulting plant model will consist of accurate subsystem models
+    \item The subsystems can be used to create a HIL testbench
+    \item The steering model can handle very small changes in steering angles
+    \begin{itemize}
+    		\item smooth out any non-linear discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle, depicted in \autoref{fig:nonlinGraph}.
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=1in]{figs/inkscape/nonlinearBehavior}
+    \caption{Steering Non-linear Behavior}
+    \label{fig:nonlinGraph}
+\end{figure}
+  \end{block}
+\end{frame}
+
+%--------------------------------
+
+\section{System Architecture}
+
+\begin{frame}{System Architecture}
+  \begin{block}{System Architecture}
+ \begin{itemize}
+        \item The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and cruise control systems
+\end{itemize}
+  \end{block}
+\end{frame}
+
 \begin{frame}
+\begin{minipage}[t]{0.48\linewidth}
 \tiny
-	\begin{block}{System Inputs and Outputs}
+	\begin{block}{System Inputs}
 		\begin{itemize}
 			\tiny
 		    \item Steering Model
@@ -354,40 +338,70 @@
 		    \end{itemize}
 		\end{itemize}
 	\end{block}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.48\linewidth}
+\begin{block}{System Inputs}
+		\begin{itemize}
+			\tiny
+		    \item Steering Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Wheel Angle
+		    		\item Actual Steering Angle
+		    \end{itemize}
+		    \item Acceleration Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Acceleration Pedal Position
+		    \end{itemize}
+		    \item Brake Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Brake Pedal Position
+		    		\item Brake Pressed
+		    \end{itemize}
+		    \item Shift Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Actual Shift Gear
+		    \end{itemize}
+		    \item Speed Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Vehicle Speed
+		    \end{itemize}
+		    \item Speed Control Model
+		    \begin{itemize}
+		    \tiny
+		    		\item Vehicle Speed
+		    \end{itemize}
+		\end{itemize}
+	\end{block}
+\end{minipage}
 \end{frame}
-\begin{frame}			
-	\begin{figure}
-		\includegraphics[width=10cm]{figs/inkscape/steeringModelArchitecture}
-		\caption{Block Diagram of Steering Subsystem}
-		\label{fig:steeringModel}
-	\end{figure}
+
+
+\begin{frame}
+\centering
+\includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
+\begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System \item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
+\includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
+\includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
 \end{frame}
 
-\begin{frame}{System Requirements}
-  \begin{block}{Specifications}
-    \begin{itemize}
-      	\item The plant model should have an accurate model of the six main subsystems
-    		\item A hardware-in-loop (HIL) test bench can be developed from the plant models of the subsystems
-    		\item The steering model can handle very small steering angles
-    \end{itemize}
-  \end{block}
-\end{frame}
 
-%--------------------------------
-
-\section{System Architecture}
-
-\begin{frame}{System Architecture}
-  \begin{block}{System Architecture}
- \begin{itemize}
-        \item The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and cruise control systems
-\end{itemize}
-  \end{block}
+\begin{frame}
+\centering
+\includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
+\begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
+\includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
+\includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
 \end{frame}
 
 %----------------------------------
 
-\section{Preliminary Work}
+\subsection{Preliminary Work}
 
 \begin{frame}{Preliminary Work}
   \begin{block}{Preliminary Work}
@@ -405,42 +419,16 @@
 \end{frame}
 
 %----------------------------------
-\section{Design}
+\subsection{Design}
 
 \begin{frame}{Design}
-	\begin{block}
+	\begin{block}{}
 		Each subsystem that we are modeling are set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the ECU are discarded by open-circuiting the motors that control each subsystem. Instead, controllers built by AutonomouStuff send the torque voltages to the motor using relays.
 	\end{block}
 \end{frame}
 
 %----------------------------------
-\section{Simulation Results}
-
-\begin{frame}{Simulation Results}
-  \begin{block}{}
- \begin{itemize}
-	\item The best fit percentage of the by-wire steering estimated model is 85.54
-	\item The best fit percentage of the manual steering estimated model is 90.27
- \end{itemize}
-\begin{figure}
-    \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=2in]{figs/img/byWireSteeringTransferFunctionModel}
-    \caption{Output of Estimated By-Wire System Model}
-    \label{fig:byWireSteerModel}
-\end{figure}
-\begin{figure}
-    \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=2in]{figs/img/manualSteeringTransferFunctionModel}
-    \caption{Output of Estimated Manual System Model}
-    \label{fig:manualSteerModel}
-\end{figure}
-  \end{block}
-\end{frame}
-
-%----------------------------------
-\section{Parts List}
+\subsection{Parts List}
 
 \begin{frame}{Parts List}
   \begin{block}{Software and Hardware}
@@ -464,6 +452,33 @@
 \end{frame}
 
 %----------------------------------
+\section{Simulation Results}
+
+\begin{frame}{Simulation Results}
+  \begin{block}{}
+ \begin{itemize}
+	\item Best fit percentage of the by-wire steering estimated model is 85.54
+	\item Best fit percentage of the manual steering estimated model is 90.27
+ \end{itemize}
+ \begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+        \caption{Output of Estimated By-Wire System Model}
+        \label{fig:byWireSteerModel}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+        \caption{Output of Estimated Manual System Model}
+        \label{fig:manualSteerModel}
+    \end{minipage}
+\end{figure}
+  \end{block}
+\end{frame}
+
+%----------------------------------
 \section{Timeline and Milestones}
 
 \begin{frame}{Timeline and Milestones}
@@ -476,36 +491,30 @@
   \end{block}
 \end{frame}
 
-%----------------------------------
-\section{Timeline and Milestones}
-
-\begin{frame}{Timeline and Milestones}
-  
-\end{frame}
 
 %----------------------------------
 
-\begin{frame}{Other Considerations}
-  \begin{block}{Factors}
-  	\begin{small}
-      \begin{itemize}
-        \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents
-and driving fatalities and injuries. As a result, people will be able to live longer and
-healthier lives. By creating accurate models, we will help advance the development of
-autonomous vehicles and make this a reality.
-		\item Public Safety: This is a relevant concern, because the real world implementations of inaccurate models could be disastrous since it is a self-driving vehicle. We will address this by creating a rigorous test plan for our models.
-		\item Public Welfare: This factor is somewhat related to public safety and health in that we need to make sure that these vehicles are safe for people to use. How we will help
-ensure this in our project is the same as how we will ensure public safety, by making sure we throughly test our models.
-		\item Global Factors: 
-		\item Cultural Factors: 
-		\item Social Factors: 
-		\item Environmental Factors: 
-		\item Business Factors: 
-		\item Economic Factors: 
-      \end{itemize}
-     \end{small}
-  \end{block}
-\end{frame}
+%\begin{frame}{Other Considerations}
+%  \begin{block}{Factors}
+%  	\begin{small}
+%      \begin{itemize}
+%        \item Public Health: Autonomous vehicles can make roads safer, which can prevent accidents
+%and driving fatalities and injuries. As a result, people will be able to live longer and
+%healthier lives. By creating accurate models, we will help advance the development of
+%autonomous vehicles and make this a reality.
+%		\item Public Safety: This is a relevant concern, because the real world implementations of inaccurate models could be disastrous since it is a self-driving vehicle. We will address this by creating a rigorous test plan for our models.
+%		\item Public Welfare: This factor is somewhat related to public safety and health in that we need to make sure that these vehicles are safe for people to use. How we will help
+%ensure this in our project is the same as how we will ensure public safety, by making sure we throughly test our models.
+%		\item Global Factors: 
+%		\item Cultural Factors: 
+%		\item Social Factors: 
+%		\item Environmental Factors: 
+%		\item Business Factors: 
+%		\item Economic Factors: 
+%      \end{itemize}
+%     \end{small}
+%  \end{block}
+%\end{frame}
 
 %----------------------------------
 
