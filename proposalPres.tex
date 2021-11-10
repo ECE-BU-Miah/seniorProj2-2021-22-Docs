@@ -399,6 +399,17 @@
 \includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
 \end{frame}
 
+
+\begin{frame}
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=4in]{figs/inkscape/steeringModelBlockDiagram}
+    \caption{Steering System Block Diagram}
+    \label{fig:steerBlockDiag}
+\end{figure}
+\end{frame}
+
 %----------------------------------
 
 \subsection{Preliminary Work}
@@ -455,7 +466,7 @@
 \section{Simulation Results}
 
 \begin{frame}{Simulation Results}
-  \begin{block}{}
+  \begin{block}{Steering System}
  \begin{itemize}
 	\item Best fit percentage of the by-wire steering estimated model is 85.54
 	\item Best fit percentage of the manual steering estimated model is 90.27
@@ -477,6 +488,31 @@
 \end{figure}
   \end{block}
 \end{frame}
+
+\begin{frame}{Simulation Results}
+  \begin{block}{Acceleration System}
+ \begin{itemize}
+	\item Best fit percentage of the by-wire acceleration estimated model is 97.69
+	\item Best fit percentage of the manual acceleration estimated model is 98.3
+ \end{itemize}
+ \begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/img/byWireAccelArxModel} % first figure itself
+        \caption{Output of Estimated By-Wire System Model}
+        \label{fig:byWireAccelModel}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/img/manualAccelTransferFunctionModel} % second figure itself
+        \caption{Output of Estimated Manual System Model}
+        \label{fig:manualAccelModel}
+    \end{minipage}
+\end{figure}
+  \end{block}
+\end{frame}
+
 
 %----------------------------------
 \section{Timeline and Milestones}
