@@ -240,19 +240,6 @@
     % \end{figure}
 \end{frame}
 
-%----------------------------------
-
-
-\section{System Identification}
-
-\begin{frame}{System Identification}
-  \begin{block}{System Identification}
- \begin{itemize}
-        \item System identification is the process of developing mathematical models for a dynamic system using the measurement of input and output signals of that system. The goal of the system identification methodology is to get an accurate estimation of the system response to any given input. Mathworks' MATLAB has the system identification toolbox, where a few existing examples demonstrate the working principle of this toolbox.
-\end{itemize}
-  \end{block}
-\end{frame}
-
 
 %----------------------------------
 
@@ -341,7 +328,7 @@
 \end{minipage}%
 \hfill%
 \begin{minipage}[t]{0.48\linewidth}
-\begin{block}{System Inputs}
+\begin{block}{System Outputs}
 		\begin{itemize}
 			\tiny
 		    \item Steering Model
@@ -412,6 +399,16 @@
 
 %----------------------------------
 
+\section{System Identification}
+
+\begin{frame}{System Identification}
+  \begin{block}{System Identification}
+ \begin{itemize}
+        \item System identification is the process of developing mathematical models for a dynamic system using the measurement of input and output signals of that system. The goal of the system identification methodology is to get an accurate estimation of the system response to any given input. Mathworks' MATLAB has the system identification toolbox, where a few existing examples demonstrate the working principle of this toolbox.
+\end{itemize}
+  \end{block}
+\end{frame}
+
 \subsection{Preliminary Work}
 
 \begin{frame}{Preliminary Work}
@@ -463,7 +460,26 @@
 \end{frame}
 
 %----------------------------------
-\section{Simulation Results}
+\subsection{Modeling}
+
+\begin{frame}{Model Equations}
+	\begin{block}{}
+		\begin{itemize}
+			\item Transfer Function Model: 
+			\begin{equation}
+				\frac{Y(s)}{U_A(s)} = \frac{b_{n}*s^{n} + b_{n-1}*s^{n-1} + ... + b_1*s + b_0}{a_{m}*s^{m} + a_{m-1}*s^{m-1} + ... + a_1*s + a_0}
+			\end{equation}
+			where m = number of poles and n = number of zeros
+			\item ARX Model: 
+			\begin{equation}
+				A(z)*y(t) = B(z)*u(t) + e(t)
+			\end{equation}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+%----------------------------------
+\section{Validation and Testing}
 
 \begin{frame}{Simulation Results}
   \begin{block}{Steering System}
@@ -489,6 +505,191 @@
   \end{block}
 \end{frame}
 
+\begin{frame}{By-Wire Steering System Transfer Function}
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque A}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & 3.44E-16 \\
+				b_1 & -2.203E-15 \\
+				b_2 & 1.24E-13 \\
+				b_3 & 5.975E-13 \\
+				b_4 & 3.001E-12 \\
+				b_5 & 5.23E-12 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 1.949E-16 \\
+				a_1 & 1.455E-14 \\
+				a_2 & 8.797E-13 \\
+				a_3 & 2.304E-11 \\
+				a_4 & 9.041E-10 \\
+				a_5 & 9.01E-9 \\
+				a_6 & 2.714E-7 \\
+				a_7 & 9.241E-7 \\
+				a_8 & 1.946E-5 \\
+				a_9 & 3.889E-5 \\
+				a_{10} & 0.0005721 \\
+				a_{11} & 0.0008035 \\
+				a_{12} & 0.008695 \\
+				a_{13} & 0.008922 \\
+				a_{14} & 0.07499 \\
+				a_{15} & 0.05422 \\
+				a_{16} & 0.3631 \\
+				a_{17} & 0.1693 \\
+				a_{18} & 0.9394 \\
+				a_{19} & 0.2118 \\
+				a_{20} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque B}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & -6.645E-15 \\
+				b_1 & 2.161E-14 \\
+				b_2 & -2.605E-14 \\
+				b_3 & -4.744E-13 \\
+				b_4 & -1.813E-13 \\
+				b_5 & -4.858E-12 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 2.92E-15 \\
+				a_1 & 2.758E-13 \\
+				a_2 & 1.761E-11 \\
+				a_3 & 4.228E-10 \\
+				a_4 & 1.422E-8 \\
+				a_5 & 1.561E-7 \\
+				a_6 & 1.501E-6 \\
+				a_7 & 8.426E-6 \\
+				a_8 & 5.981E-5 \\
+				a_9 & 0.0002016 \\
+				a_{10} & 0.001226 \\
+				a_{11} & 0.002649 \\
+				a_{12} & 0.01456 \\
+				a_{13} & 0.02044 \\
+				a_{14} & 0.104 \\
+				a_{15} & 0.09228 \\
+				a_{16} & 0.4417 \\
+				a_{17} & 0.2257 \\
+				a_{18} & 1.025 \\
+				a_{19} & 0.2305 \\
+				a_{20} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Manual Steering System Transfer Function}
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque A}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & 6.516E4 \\
+				b_1 & -2.944E5 \\
+				b_2 & 2.328E5 \\
+				b_3 & -2.487E5 \\
+				b_4 & 8.25E4 \\
+				b_5 & -3.038E4 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 1.224E5 \\
+				a_1 & 4.227E5 \\
+				a_2 & 2.202E6 \\
+				a_3 & 3.54E6 \\
+				a_4 & 7.98E6 \\
+				a_5 & 7.62E5 \\
+				a_6 & 1.071E7 \\
+				a_7 & 6.745E6 \\
+				a_8 & 6.85E6 \\
+				a_9 & 3.006E6 \\
+				a_{10} & 2.365E6 \\
+				a_{11} & 7.37E5 \\
+				a_{12} & 4.669E5 \\
+				a_{13} & 1.021E5 \\
+				a_{14} & 5.319E4 \\
+				a_{15} & 7752 \\
+				a_{16} & 3353 \\
+				a_{17} & 287.5 \\
+				a_{18} & 102.4 \\
+				a_{19} & 3.653 \\
+				a_{20} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque B}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			20th Order Transfer Function Model			
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & 1.209E4 \\
+				b_1 & 1.855E5 \\
+				b_2 & -2.801E5 \\
+				b_3 & 4.72E5 \\
+				b_4 & -3.976E4 \\
+				b_5 & 7.693E4 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 4.687E4 \\
+				a_1 & 7.037E5 \\
+				a_2 & 2.624E6 \\
+				a_3 & 6.133E6 \\
+				a_4 & 1.197E7 \\
+				a_5 & 1.487E7 \\
+				a_6 & 1.887E7 \\
+				a_7 & 1.446E7 \\
+				a_8 & 1.314E7 \\
+				a_9 & 7.01E6 \\
+				a_{10} & 4.79E6 \\
+				a_{11} & 1.886E6 \\
+				a_{12} & 9.836E5 \\
+				a_{13} & 2.937E5 \\
+				a_{14} & 1.149E5 \\
+				a_{15} & 2.617E4 \\
+				a_{16} & 7205 \\
+				a_{17} & 1232 \\
+				a_{18} & 200 \\
+				a_{19} & 23.54 \\
+				a_{20} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}
+\end{frame}
+
 \begin{frame}{Simulation Results}
   \begin{block}{Acceleration System}
  \begin{itemize}
@@ -511,6 +712,128 @@
     \end{minipage}
 \end{figure}
   \end{block}
+\end{frame}
+
+\begin{frame}{By-Wire Acceleration System Transfer Function}
+	\begin{block}{Fourth-Order ARX Model}
+		\begin{equation}
+			A(z)*y(t) = B(z)*u(t) + e(t)
+		\end{equation}
+		%
+		where, 
+		%
+		\begin{equation}
+			A(z) = 1 - 1.018*z^{-1} - 0.002901*z^{-2} + 0.4631*z^{-3} - 0.2038*z^{-4}
+		\end{equation}
+		\begin{equation}
+			B_1(z) = -0.0207 - 0.01912*z^{-1} - 0.02159*z^{-2} - 0.03307*z^{-3}
+		\end{equation}
+		\begin{equation}
+			B_2(z) = 0.02017 + 0.01833*z^{-1} + 0.09461*z^{-2} + 0.05683*z^{-3}
+		\end{equation}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Manual Acceleration System Transfer Function}
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque A}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & -5.741E6 \\
+				b_1 & -2.644E7 \\
+				b_2 & -2.797E6 \\
+				b_3 & -1.304E7 \\
+				b_4 & -3.203E6 \\
+				b_5 & -1.159E6 \\
+				b_6 & -5.519E5 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 2.307E7 \\
+				a_1 & 8.369E7 \\
+				a_2 & 9.137E8 \\
+				a_3 & 1.992E9 \\
+				a_4 & 3.753E9 \\
+				a_5 & 5.454E9 \\
+				a_6 & 5.548E9 \\
+				a_7 & 5.869E9 \\
+				a_8 & 3.453E9 \\
+				a_9 & 3.161E9 \\
+				a_{10} & 1.54E9 \\
+				a_{11} & 9.654E8 \\
+				a_{12} & 3.556E8 \\
+				a_{13} & 1.789E8 \\
+				a_{14} & 5.082E7 \\
+				a_{15} & 2.071E7 \\
+				a_{16} & 4.569E6 \\
+				a_{17} & 1.498E6 \\
+				a_{18} & 2.553E5 \\
+				a_{19} & 6.532E4 \\
+				a_{20} & 8443 \\
+				a_{21} & 1559 \\
+				a_{22} & 147.3 \\
+				a_{23} & 15.5 \\
+				a_{24} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque B}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & -4.159E6 \\
+				b_1 & 1.851E6 \\
+				b_2 & -4.457E6 \\
+				b_3 & 9.043E5 \\
+				b_4 & -7.45E5 \\
+				b_5 & 1.865E5 \\
+				b_6 & -1.545E4 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 5.224E6 \\
+				a_1 & 4.205E7 \\
+				a_2 & 1.429E8 \\
+				a_3 & 3.233E8 \\
+				a_4 & 5.444E8 \\
+				a_5 & 7.326E8 \\
+				a_6 & 8.247E8 \\
+				a_7 & 7.402E8 \\
+				a_8 & 6.301E8 \\
+				a_9 & 3.99E8 \\
+				a_{10} & 2.731E8 \\
+				a_{11} & 1.264E8 \\
+				a_{12} & 7.223E7 \\
+				a_{13} & 2.48E7 \\
+				a_{14} & 1.216E7 \\
+				a_{15} & 3.084E6 \\
+				a_{16} & 1.324E6 \\
+				a_{17} & 2.422E5 \\
+				a_{18} & 9.264E4 \\
+				a_{19} & 1.159E4 \\
+				a_{20} & 4003 \\
+				a_{21} & 307.4 \\
+				a_{22} & 96.87 \\
+				a_{23} & 3.451 \\
+				a_{24} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}
 \end{frame}
 
 
