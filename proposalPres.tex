@@ -272,13 +272,48 @@
 
 \begin{frame}{System Architecture}
   \begin{block}{System Architecture}
- \begin{itemize}
-        \item The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems
-\end{itemize}
+    \begin{large}
+      The overall system architecture of this project consists of six subsystems
+      \begin{itemize}
+          \item Steering Model
+          \item Acceleration Model
+          \item Brake Model
+          \item Shift Model
+          \item Speed Model
+          \item Speed Control Model
+        \end{itemize} 
+    \end{large}
   \end{block}
 \end{frame}
 
-\begin{frame}
+
+\begin{frame}{System Architecture}
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
+\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System \item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
+\end{frame}
+
+
+\begin{frame}{System Architecture}
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
+\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
+\end{frame}
+
+
+\begin{frame}{System Architecture}
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=4in]{figs/inkscape/steeringModelBlockDiagram}
+    \caption{Steering System Block Diagram}
+    \label{fig:steerBlockDiag}
+\end{figure}
+\end{frame}
+
+\begin{frame}{System Inputs and Outputs}
 \begin{minipage}[t]{0.48\linewidth}
 \tiny
 	\begin{block}{System Inputs}
@@ -368,35 +403,6 @@
 \end{minipage}
 \end{frame}
 
-
-\begin{frame}
-\centering
-\includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
-\begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System \item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
-\includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
-\includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
-\end{frame}
-
-
-\begin{frame}
-\centering
-\includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
-\begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
-\includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
-\includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
-\end{frame}
-
-
-\begin{frame}
-\begin{figure}[h]
-    \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=4in]{figs/inkscape/steeringModelBlockDiagram}
-    \caption{Steering System Block Diagram}
-    \label{fig:steerBlockDiag}
-\end{figure}
-\end{frame}
-
 %----------------------------------
 
 \section{System Identification}
@@ -404,7 +410,16 @@
 \begin{frame}{System Identification}
   \begin{block}{System Identification}
  \begin{itemize}
-        \item System identification is the process of developing mathematical models for a dynamic system using the measurement of input and output signals of that system. The goal of the system identification methodology is to get an accurate estimation of the system response to any given input. Mathworks' MATLAB has the system identification toolbox, where a few existing examples demonstrate the working principle of this toolbox.
+        \item Developing mathematical models for a dynamic system
+        \item Uses the measurement of the input and output signals
+        \begin{itemize}
+        		\item Single Input Single Output (SISO)
+        		\item Single Input Multiple Output (SIMO)
+        		\item Multiple Input Single Output (MISO)
+        		\item Multiple Input Multiple Output (MIMO)
+        \end{itemize}
+        \item Achieve an accurate estimation of the system response for any given input
+        \item Mathworks' MATLAB System Identification Toolbox
 \end{itemize}
   \end{block}
 \end{frame}
@@ -419,19 +434,33 @@
         \item Data Collection for steering, braking and acceleration subsystems
 \end{itemize}
   \end{block}
-  \begin {block}{Modeling}
-  \begin{itemize}
-  	\item All modeling of vehicle subsystems will be done using MATLAB's System Identification Toolbox feature. The subsystems can be grouped into four different categories: Single-Input-Single-Output, Multiple-Input-Multiple-Output, Single-Input-Multiple-Output, and Multiple-Input-Single-Output. 
-  	\end{itemize}
-  	\end{block}
 \end{frame}
 
 %----------------------------------
-\subsection{Design}
+\subsection{Experimental Setup}
 
-\begin{frame}{Design}
-	\begin{block}{}
-		Each subsystem that we are modeling is set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the ECU are discarded by open-circuiting the motors that control each subsystem. Instead, controllers built by AutonomouStuff send the torque voltages to the motor using relays.
+\begin{frame}{Experimental Setup}
+	\begin{block}{Control Method}
+		\begin{itemize}
+			\item Manual Mode
+			\begin{itemize}
+				\item Vehicle is not autonomous
+				\item Torque voltages are sent by the ECU
+			\end{itemize}
+			\item By-Wire Mode
+			\begin{itemize}
+				\item Vehicle is autonomous
+				\item Torque voltages are sent by the PACMod
+				\item Torque voltages sent from the ECU are discarded by open-circuiting the motors
+			\end{itemize}
+		\end{itemize}
+		\begin{figure}
+			\centering
+    			\captionsetup{justification=centering, margin=3cm}
+    			\includegraphics[width=1in]{figs/img/picturesVisitToAStuff/dataColletionSetup1-20211007}
+    			\caption{Autonomous Vehicle Data Collection Setup}
+    			\label{fig:vehicleSetup}
+		\end{figure}
 	\end{block}
 \end{frame}
 
@@ -467,12 +496,12 @@
 		\begin{itemize}
 			\item Transfer Function Model: 
 			\begin{equation}
-				\frac{Y(s)}{U_A(s)} = \frac{b_{n}*s^{n} + b_{n-1}*s^{n-1} + ... + b_1*s + b_0}{a_{m}*s^{m} + a_{m-1}*s^{m-1} + ... + a_1*s + a_0}
+				\frac{Y(s)}{U_A(s)} = \frac{b_{n}s^{n} + b_{n-1}s^{n-1} + ... + b_1s + b_0}{a_{m}s^{m} + a_{m-1}s^{m-1} + ... + a_1s + a_0}
 			\end{equation}
 			where m = number of poles and n = number of zeros
 			\item ARX Model: 
 			\begin{equation}
-				A(z)*y(t) = B(z)*u(t) + e(t)
+				A(z)y(t) = B(z)u(t) + e(t)
 			\end{equation}
 		\end{itemize}
 	\end{block}
@@ -647,7 +676,6 @@
 	\begin{block}{Torque B}
 		\tiny
 		\begin{tabular}{ cc }   % top level tables, with 2 columns
-			20th Order Transfer Function Model			
 			% leftmost table of the top level table
 			\begin{tabular}{ |c|c| } 
 				\hline
@@ -717,19 +745,19 @@
 \begin{frame}{By-Wire Acceleration System Transfer Function}
 	\begin{block}{Fourth-Order ARX Model}
 		\begin{equation}
-			A(z)*y(t) = B(z)*u(t) + e(t)
+			A(z)y(t) = B(z)u(t) + e(t)
 		\end{equation}
 		%
 		where, 
 		%
 		\begin{equation}
-			A(z) = 1 - 1.018*z^{-1} - 0.002901*z^{-2} + 0.4631*z^{-3} - 0.2038*z^{-4}
+			A(z) = 1 - 1.018z^{-1} - 0.002901z^{-2} + 0.4631z^{-3} - 0.2038z^{-4}
 		\end{equation}
 		\begin{equation}
-			B_1(z) = -0.0207 - 0.01912*z^{-1} - 0.02159*z^{-2} - 0.03307*z^{-3}
+			B_1(z) = -0.0207 - 0.01912z^{-1} - 0.02159z^{-2} - 0.03307z^{-3}
 		\end{equation}
 		\begin{equation}
-			B_2(z) = 0.02017 + 0.01833*z^{-1} + 0.09461*z^{-2} + 0.05683*z^{-3}
+			B_2(z) = 0.02017 + 0.01833z^{-1} + 0.09461z^{-2} + 0.05683z^{-3}
 		\end{equation}
 	\end{block}
 \end{frame}
