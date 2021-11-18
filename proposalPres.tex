@@ -154,7 +154,8 @@
     \begin{block}{Applications of Autonomous Vehicles}
     	\begin{itemize}
     		\item Autonomous vehicles are being developed by many companies for commercial and personal use
-    		\item Modeling the steering system for autonomous vehicles is a challenging task
+    		\item Modeling different subsystems (such as, steering, brake,
+          acceleration, $\ldots$)  for autonomous vehicles is a challenging task
      		\item Models for autonomous vehicle subsystems must be very accurate due to safety factors
 		\end{itemize}
     \end{block}
@@ -180,17 +181,16 @@
 
 \begin{frame}{Problem Statement}
   \begin{block}{Problem Statement}
-    \begin{large}
-      Model vehicle subsystems for a Lexus platform.
- \begin{itemize}
-          \item Steering Model
-          \item Acceleration Model
-          \item Brake Model
-          \item Shift Model
-          \item Speed Model
-          \item Speed Control Model
+      Model different subsystems for an autonomous vehicle (Lexus platform is considered in this project), which are
+      \begin{itemize}
+          \item Steering
+          \item Acceleration
+          \item Brake
+          \item Shift
+          \item Speed
+          \item Speed control
         \end{itemize} 
-    \end{large}
+        using input-output raw data available offline
   \end{block}
   \pause
   \begin{block}{Proposed Solution}
@@ -209,25 +209,25 @@
  \begin{itemize}
         \item Use of System Identification Toolbox in MATLAB to create models from data~\cite{Adnan2010}
 	 \begin{itemize}
-		    \tiny
+     \tiny
 		    		\item Offers a variety of model choices
 				\item Needs a large amount of raw data to produce an accurate model
 	\end{itemize}
 	\item Third order ARMAX model creates models using traditional methods of analysis~\cite{Li1999}
 	 \begin{itemize}
-		    \tiny
+     \tiny
 		    		\item Allows the use of traditional analysis methods to create a model 
 				\item More room for error during calculations
 	\end{itemize}
 	\item Steer-By-Wire method as a system model~\cite{Saruchi2015}
 	 \begin{itemize}
-		    \tiny
+     \tiny
 		    		\item Can model systems with small non-linearities 
 				\item Mechanical components replaced by electrical components 
 	\end{itemize}
 	\item Authors in~\cite{Hussain2011} illustrate identification of multiple-input single-output model for maximum power point tracking of photovoltaic system.  
 	\begin{itemize}
-	\tiny
+    \tiny
 		\item Fourth order ARX model ended up giving the best fit
 	\end{itemize}
 \end{itemize}
@@ -247,11 +247,11 @@
 
 \begin{frame}{System Requirements}
   \begin{block}{Specifications}
-    The vehicle plant model will fulfill the requirements listed below:
+    Proposed vehicle subsystem models are expected to fulfill requirements listed below:
 \begin{itemize}
-    \item The resulting plant model will consist of accurate subsystem models
-    \item The subsystems can be used to create a HIL testbench
-    \item The steering model can handle very small changes in steering angles
+    \item Resulting plant model will consist of reasonably accurate subsystem models
+    \item Subsystems can be used to create a HIL testbench
+    \item Steering model can handle very small changes in steering angles
     \begin{itemize}
     		\item smooth out any non-linear discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle, depicted in \autoref{fig:nonlinGraph}.
     \end{itemize}
@@ -273,14 +273,14 @@
 \begin{frame}{System Architecture}
   \begin{block}{System Architecture}
     \begin{large}
-      The overall system architecture of this project consists of six subsystems
+      The overall system architecture of this project consists of six subsystems: 
       \begin{itemize}
-          \item Steering Model
-          \item Acceleration Model
-          \item Brake Model
-          \item Shift Model
-          \item Speed Model
-          \item Speed Control Model
+          \item Steering
+          \item Acceleration
+          \item Brake %Model
+          \item Shift %Model
+          \item Speed %Model
+          \item Speed control %Model
         \end{itemize} 
     \end{large}
   \end{block}
@@ -817,21 +817,21 @@
   \begin{block}{Project goals}
     %\begin{LARGE}
       \begin{itemize}
-        \item Develop models of an autonomous vehicle's subsystems
+        \item Develop models of an autonomous vehicle's subsystems, which are 
         \begin{itemize}
-          \item Steering Model
-          \item Acceleration Model
-          \item Brake Model
-          \item Shift Model
-          \item Speed Model
-          \item Speed Control Model
+          \item Steering %  Model
+          \item Acceleration % Model
+          \item Brake % Model
+          \item Shift % Model
+          \item Speed % Model
+          \item Speed control %Model
         \end{itemize}
       \end{itemize}
     %\end{LARGE}
   \end{block}
   \begin{block}{Anticipated Challenges}
     \begin{itemize}
-      \item Achieving an acceptable accuracy and reliability for each model due to nonlinearities over small changes
+      \item Achieving an acceptable accuracy and reliability for each model due to nonlinearities over small changes of command inputs, such as steering angle, $\ldots$
     \end{itemize}
   \end{block}
 \end{frame}
