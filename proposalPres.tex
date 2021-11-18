@@ -96,7 +96,7 @@
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date[October~7,~2021]{Thursday, October~7,~2021}
+\date[November~18,~2021]{Thursday, November~18,~2021}
 
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
@@ -272,13 +272,48 @@
 
 \begin{frame}{System Architecture}
   \begin{block}{System Architecture}
- \begin{itemize}
-        \item The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems
-\end{itemize}
+    \begin{large}
+      The overall system architecture of this project consists of six subsystems
+      \begin{itemize}
+          \item Steering Model
+          \item Acceleration Model
+          \item Brake Model
+          \item Shift Model
+          \item Speed Model
+          \item Speed Control Model
+        \end{itemize} 
+    \end{large}
   \end{block}
 \end{frame}
 
-\begin{frame}
+
+\begin{frame}{System Architecture}
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
+\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System \item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
+\end{frame}
+
+
+\begin{frame}{System Architecture}
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
+\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
+\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
+\end{frame}
+
+
+\begin{frame}{System Architecture}
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=4in]{figs/inkscape/steeringModelBlockDiagram}
+    \caption{Steering System Block Diagram}
+    \label{fig:steerBlockDiag}
+\end{figure}
+\end{frame}
+
+\begin{frame}{System Inputs and Outputs}
 \begin{minipage}[t]{0.48\linewidth}
 \tiny
 	\begin{block}{System Inputs}
@@ -368,35 +403,6 @@
 \end{minipage}
 \end{frame}
 
-
-\begin{frame}
-\centering
-\includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
-\begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System \item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
-\includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
-\includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
-\end{frame}
-
-
-\begin{frame}
-\centering
-\includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
-\begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
-\includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
-\includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
-\end{frame}
-
-
-\begin{frame}
-\begin{figure}[h]
-    \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=4in]{figs/inkscape/steeringModelBlockDiagram}
-    \caption{Steering System Block Diagram}
-    \label{fig:steerBlockDiag}
-\end{figure}
-\end{frame}
-
 %----------------------------------
 
 \section{System Identification}
@@ -404,7 +410,16 @@
 \begin{frame}{System Identification}
   \begin{block}{System Identification}
  \begin{itemize}
-        \item System identification is the process of developing mathematical models for a dynamic system using the measurement of input and output signals of that system. The goal of the system identification methodology is to get an accurate estimation of the system response to any given input. Mathworks' MATLAB has the system identification toolbox, where a few existing examples demonstrate the working principle of this toolbox.
+        \item Developing mathematical models for a dynamic system
+        \item Uses the measurement of the input and output signals
+        \begin{itemize}
+        		\item Single Input Single Output (SISO)
+        		\item Single Input Multiple Output (SIMO)
+        		\item Multiple Input Single Output (MISO)
+        		\item Multiple Input Multiple Output (MIMO)
+        \end{itemize}
+        \item Achieve an accurate estimation of the system response for any given input
+        \item Mathworks' MATLAB System Identification Toolbox
 \end{itemize}
   \end{block}
 \end{frame}
@@ -419,19 +434,43 @@
         \item Data Collection for steering, braking and acceleration subsystems
 \end{itemize}
   \end{block}
-  \begin {block}{Modeling}
+  
+   \begin {block}{MATLAB Example: Dealing with Multi-Variable Systems: Identification and Analysis}
   \begin{itemize}
-  	\item All modeling of vehicle subsystems will be done using MATLAB's System Identification Toolbox feature. The subsystems can be grouped into four different categories: Single-Input-Single-Output, Multiple-Input-Multiple-Output, Single-Input-Multiple-Output, and Multiple-Input-Single-Output. 
+  	\item  Learned how to create an iddata object from a given data set 
+  	\item Created a state space model and compared it to the validation data 
+  	\item Tried creating submodels for some of the channels in order to try and get a better fit 
+  	\item Then created a MISO model and learned how to merge the two SISO models that were created earlier 
   	\end{itemize}
   	\end{block}
+
 \end{frame}
 
 %----------------------------------
-\subsection{Design}
+\subsection{Experimental Setup}
 
-\begin{frame}{Design}
-	\begin{block}{}
-		Each subsystem that we are modeling is set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the ECU are discarded by open-circuiting the motors that control each subsystem. Instead, controllers built by AutonomouStuff send the torque voltages to the motor using relays.
+\begin{frame}{Experimental Setup}
+	\begin{block}{Control Method}
+		\begin{itemize}
+			\item Manual Mode
+			\begin{itemize}
+				\item Vehicle is not autonomous
+				\item Torque voltages are sent by the ECU
+			\end{itemize}
+			\item By-Wire Mode
+			\begin{itemize}
+				\item Vehicle is autonomous
+				\item Torque voltages are sent by the PACMod
+				\item Torque voltages sent from the ECU are discarded by open-circuiting the motors
+			\end{itemize}
+		\end{itemize}
+		\begin{figure}
+			\centering
+    			\captionsetup{justification=centering, margin=3cm}
+    			\includegraphics[width=1in]{figs/img/picturesVisitToAStuff/dataColletionSetup1-20211007}
+    			\caption{Autonomous Vehicle Data Collection Setup}
+    			\label{fig:vehicleSetup}
+		\end{figure}
 	\end{block}
 \end{frame}
 
@@ -467,12 +506,12 @@
 		\begin{itemize}
 			\item Transfer Function Model: 
 			\begin{equation}
-				\frac{Y(s)}{U_A(s)} = \frac{b_{n}*s^{n} + b_{n-1}*s^{n-1} + ... + b_1*s + b_0}{a_{m}*s^{m} + a_{m-1}*s^{m-1} + ... + a_1*s + a_0}
+				\frac{Y(s)}{U_A(s)} = \frac{b_{n}s^{n} + b_{n-1}s^{n-1} + ... + b_1s + b_0}{a_{m}s^{m} + a_{m-1}s^{m-1} + ... + a_1s + a_0}
 			\end{equation}
 			where m = number of poles and n = number of zeros
 			\item ARX Model: 
 			\begin{equation}
-				A(z)*y(t) = B(z)*u(t) + e(t)
+				A(z)y(t) = B(z)u(t) + e(t)
 			\end{equation}
 		\end{itemize}
 	\end{block}
@@ -598,96 +637,95 @@
 \end{frame}
 
 \begin{frame}{Manual Steering System Transfer Function}
-% \begin{minipage}[t]{0.48\linewidth}
-% 	\begin{block}{Torque A}
-% 		\tiny
-% 		\begin{tabular}{ cc }   % top level tables, with 2 columns
-% 			% leftmost table of the top level table
-% 			\begin{tabular}{ |c|c| } 
-% 				\hline
-% 				b_0 & 6.516E4 \\
-% 				b_1 & -2.944E5 \\
-% 				b_2 & 2.328E5 \\
-% 				b_3 & -2.487E5 \\
-% 				b_4 & 8.25E4 \\
-% 				b_5 & -3.038E4 \\
-% 				\hline
-% 			\end{tabular} &  % starting rightmost sub table
-% 			% table 2
-% 			\begin{tabular}{ |c|c| } 
-% 				\hline
-% 				a_0 & 1.224E5 \\
-% 				a_1 & 4.227E5 \\
-% 				a_2 & 2.202E6 \\
-% 				a_3 & 3.54E6 \\
-% 				a_4 & 7.98E6 \\
-% 				a_5 & 7.62E5 \\
-% 				a_6 & 1.071E7 \\
-% 				a_7 & 6.745E6 \\
-% 				a_8 & 6.85E6 \\
-% 				a_9 & 3.006E6 \\
-% 				a_{10} & 2.365E6 \\
-% 				a_{11} & 7.37E5 \\
-% 				a_{12} & 4.669E5 \\
-% 				a_{13} & 1.021E5 \\
-% 				a_{14} & 5.319E4 \\
-% 				a_{15} & 7752 \\
-% 				a_{16} & 3353 \\
-% 				a_{17} & 287.5 \\
-% 				a_{18} & 102.4 \\
-% 				a_{19} & 3.653 \\
-% 				a_{20} & 1 \\
-% 				\hline
-% 			\end{tabular} \\
-% 		\end{tabular}
-% 	\end{block}
-% \end{minipage}%
-% \hfill%
-% \begin{minipage}[t]{0.48\linewidth}
-% 	\begin{block}{Torque B}
-% 		\tiny
-% 		\begin{tabular}{ cc }   % top level tables, with 2 columns
-% 			20th Order Transfer Function Model			
-% 			% leftmost table of the top level table
-% 			\begin{tabular}{ |c|c| } 
-% 				\hline
-% 				b_0 & 1.209E4 \\
-% 				b_1 & 1.855E5 \\
-% 				b_2 & -2.801E5 \\
-% 				b_3 & 4.72E5 \\
-% 				b_4 & -3.976E4 \\
-% 				b_5 & 7.693E4 \\
-% 				\hline
-% 			\end{tabular} &  % starting rightmost sub table
-% 			% table 2
-% 			\begin{tabular}{ |c|c| } 
-% 				\hline
-% 				a_0 & 4.687E4 \\
-% 				a_1 & 7.037E5 \\
-% 				a_2 & 2.624E6 \\
-% 				a_3 & 6.133E6 \\
-% 				a_4 & 1.197E7 \\
-% 				a_5 & 1.487E7 \\
-% 				a_6 & 1.887E7 \\
-% 				a_7 & 1.446E7 \\
-% 				a_8 & 1.314E7 \\
-% 				a_9 & 7.01E6 \\
-% 				a_{10} & 4.79E6 \\
-% 				a_{11} & 1.886E6 \\
-% 				a_{12} & 9.836E5 \\
-% 				a_{13} & 2.937E5 \\
-% 				a_{14} & 1.149E5 \\
-% 				a_{15} & 2.617E4 \\
-% 				a_{16} & 7205 \\
-% 				a_{17} & 1232 \\
-% 				a_{18} & 200 \\
-% 				a_{19} & 23.54 \\
-% 				a_{20} & 1 \\
-% 				\hline
-% 			\end{tabular} \\
-% 		\end{tabular}
-% 	\end{block}
-% \end{minipage}
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque A}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & 6.516E4 \\
+				b_1 & -2.944E5 \\
+				b_2 & 2.328E5 \\
+				b_3 & -2.487E5 \\
+				b_4 & 8.25E4 \\
+				b_5 & -3.038E4 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 1.224E5 \\
+				a_1 & 4.227E5 \\
+				a_2 & 2.202E6 \\
+				a_3 & 3.54E6 \\
+				a_4 & 7.98E6 \\
+				a_5 & 7.62E5 \\
+				a_6 & 1.071E7 \\
+				a_7 & 6.745E6 \\
+				a_8 & 6.85E6 \\
+				a_9 & 3.006E6 \\
+				a_{10} & 2.365E6 \\
+				a_{11} & 7.37E5 \\
+				a_{12} & 4.669E5 \\
+				a_{13} & 1.021E5 \\
+				a_{14} & 5.319E4 \\
+				a_{15} & 7752 \\
+				a_{16} & 3353 \\
+				a_{17} & 287.5 \\
+				a_{18} & 102.4 \\
+				a_{19} & 3.653 \\
+				a_{20} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{block}{Torque B}
+		\tiny
+		\begin{tabular}{ cc }   % top level tables, with 2 columns
+			% leftmost table of the top level table
+			\begin{tabular}{ |c|c| } 
+				\hline
+				b_0 & 1.209E4 \\
+				b_1 & 1.855E5 \\
+				b_2 & -2.801E5 \\
+				b_3 & 4.72E5 \\
+				b_4 & -3.976E4 \\
+				b_5 & 7.693E4 \\
+				\hline
+			\end{tabular} &  % starting rightmost sub table
+			% table 2
+			\begin{tabular}{ |c|c| } 
+				\hline
+				a_0 & 4.687E4 \\
+				a_1 & 7.037E5 \\
+				a_2 & 2.624E6 \\
+				a_3 & 6.133E6 \\
+				a_4 & 1.197E7 \\
+				a_5 & 1.487E7 \\
+				a_6 & 1.887E7 \\
+				a_7 & 1.446E7 \\
+				a_8 & 1.314E7 \\
+				a_9 & 7.01E6 \\
+				a_{10} & 4.79E6 \\
+				a_{11} & 1.886E6 \\
+				a_{12} & 9.836E5 \\
+				a_{13} & 2.937E5 \\
+				a_{14} & 1.149E5 \\
+				a_{15} & 2.617E4 \\
+				a_{16} & 7205 \\
+				a_{17} & 1232 \\
+				a_{18} & 200 \\
+				a_{19} & 23.54 \\
+				a_{20} & 1 \\
+				\hline
+			\end{tabular} \\
+		\end{tabular}
+	\end{block}
+\end{minipage}
 \end{frame}
 
 \begin{frame}{Simulation Results}
@@ -717,19 +755,19 @@
 \begin{frame}{By-Wire Acceleration System Transfer Function}
 	\begin{block}{Fourth-Order ARX Model}
 		\begin{equation}
-			A(z)*y(t) = B(z)*u(t) + e(t)
+			A(z)y(t) = B(z)u(t) + e(t)
 		\end{equation}
 		%
 		where, 
 		%
 		\begin{equation}
-			A(z) = 1 - 1.018*z^{-1} - 0.002901*z^{-2} + 0.4631*z^{-3} - 0.2038*z^{-4}
+			A(z) = 1 - 1.018z^{-1} - 0.002901z^{-2} + 0.4631z^{-3} - 0.2038z^{-4}
 		\end{equation}
 		\begin{equation}
-			B_1(z) = -0.0207 - 0.01912*z^{-1} - 0.02159*z^{-2} - 0.03307*z^{-3}
+			B_1(z) = -0.0207 - 0.01912z^{-1} - 0.02159z^{-2} - 0.03307z^{-3}
 		\end{equation}
 		\begin{equation}
-			B_2(z) = 0.02017 + 0.01833*z^{-1} + 0.09461*z^{-2} + 0.05683*z^{-3}
+			B_2(z) = 0.02017 + 0.01833z^{-1} + 0.09461z^{-2} + 0.05683z^{-3}
 		\end{equation}
 	\end{block}
 \end{frame}
@@ -848,6 +886,37 @@
 	\item Final report and presentation 
 \end{itemize}
   \end{block}
+  
+  \begin{block}{Timeline}
+  \begin{itemize}
+  \item Fall Semester
+  \begin{itemize}
+	\begin{tiny}
+	\item System Identification Documentation 
+	\item Collect Steering, Acceleration, and Brake Data 
+	\item System Identification Tutorials
+	\item System Functional Requirements Document and Presentation
+	\item Proposal Document and Presentation 
+	\item Model Steering, Acceleration, and Brake Subsystems 
+	\end{tiny}
+	\end{itemize}
+	\item Spring Semester
+	\begin{itemize}
+	\begin{tiny}
+	\item Collect Shift, Speed Control, and Speed Data  
+	\item Model Shift, Speed Control, and Speed Subsystems  
+	\item Test Subsystems
+	\item Test Subsystems with HIL
+	\item Final Report and Presentation 
+	\item IAB Presentation 
+	\item Project Demonstration  
+	\end{tiny}
+	\end{itemize}
+	\end{itemize}
+  \end{block}
+   
+
+
 \end{frame}
 
 
@@ -880,7 +949,7 @@
 \section{Concluding Remarks}
 \begin{frame}{Concluding Remarks}
   \begin{block}{Project goals}
-    \begin{LARGE}
+    %\begin{LARGE}
       \begin{itemize}
         \item Develop models of an autonomous vehicle's subsystems
         \begin{itemize}
@@ -892,7 +961,7 @@
           \item Speed Control Model
         \end{itemize}
       \end{itemize}
-    \end{LARGE}
+    %\end{LARGE}
   \end{block}
   \begin{block}{Anticipated Challenges}
     \begin{itemize}
@@ -926,7 +995,7 @@
 
 %----------------------------------
 
-\begin{frame}{References}
+\begin{frame}[allowframebreaks]{References}
 
   \bibliographystyle{IEEEtran}
   \bibliography{bib/references.bib}
