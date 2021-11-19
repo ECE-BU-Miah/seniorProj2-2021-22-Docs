@@ -181,7 +181,7 @@
 
 \begin{frame}{Problem Statement}
   \begin{block}{Problem Statement}
-      Model different subsystems for an autonomous vehicle (Lexus platform is considered in this project), which are
+      Model different subsystems for an autonomous vehicle (Lexus RX450H platform is considered in this project), which are
       \begin{itemize}
           \item Steering
           \item Acceleration
@@ -191,7 +191,19 @@
           \item Speed control
         \end{itemize} 
         using input-output raw data available offline
+        
+          \begin{figure}
+			\centering
+			\begin{minipage}[t]{0.4\textwidth}
+				%\centering
+				
+				\includegraphics[height=1.5cm]{figs/img/picturesVisitToAStuff/visitors1-20211007}
+				\caption{AutonomouStuff Vehicle Fleet\textsuperscript{a}}
+				
+			\end{minipage}
+			\end{figure}
   \end{block}
+
   \pause
   \begin{block}{Proposed Solution}
     \begin{large}
@@ -493,9 +505,9 @@
 	\begin{itemize}
 	\small
 	\item Laptop
-	\item PAC Mod
-	\item CAN Case 
-	\item CAN Bus
+	\item PACMod ECU
+	\item CANCase 
+	\item CAN bus
 	\end{itemize}
 \end{itemize}
   \end{block}
@@ -820,21 +832,22 @@
   \begin{block}{Project goals}
     %\begin{LARGE}
       \begin{itemize}
-        \item Develop models of an autonomous vehicle's subsystems, which are 
-        \begin{itemize}
-          \item Steering %  Model
-          \item Acceleration % Model
-          \item Brake % Model
-          \item Shift % Model
-          \item Speed % Model
-          \item Speed control %Model
-        \end{itemize}
+        \item Develop reliable and accurate models of an autonomous vehicle's subsystems 
+        \item Help further the work on autonomous vehicle development
+%        \begin{itemize}
+%          \item Steering %  Model
+%          \item Acceleration % Model
+%          \item Brake % Model
+%          \item Shift % Model
+%          \item Speed % Model
+%          \item Speed control %Model
+%        \end{itemize}
       \end{itemize}
     %\end{LARGE}
   \end{block}
   \begin{block}{Anticipated Challenges}
     \begin{itemize}
-      \item Achieving an acceptable accuracy and reliability for each model due to nonlinearities over small changes of command inputs, such as steering angle, $\ldots$
+      \item Achieving an acceptable accuracy and reliability for each model due to nonlinearities over small changes of command inputs, such as steering angle
     \end{itemize}
   \end{block}
 \end{frame}
