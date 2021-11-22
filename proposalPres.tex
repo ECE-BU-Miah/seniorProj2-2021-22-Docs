@@ -470,13 +470,13 @@
 			\item Manual Mode
 			\begin{itemize}
 				\item Vehicle is not autonomous
-				\item Torque voltages are sent by the ECU
+				\item Torque voltages are sent by the vehicle ECU
 			\end{itemize}
 			\item By-Wire Mode
 			\begin{itemize}
 				\item Vehicle is autonomous
 				\item Torque voltages are sent by the PACMod ECU
-				\item Torque voltages sent from the ECU are discarded by open-circuiting the motors
+				\item Torque voltages sent from the vehicle ECU are discarded by open-circuiting the motors
 			\end{itemize}
 		\end{itemize}
 		\begin{figure}
@@ -598,14 +598,17 @@
       \bottomrule
     \end{tabular}}
     
-    	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    \begin{tabular}{*{21}{c}}
-      \toprule
-      $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-      \midrule
-      3.44E-16 & -2.203E-15 & 1.24E-13 & 5.975E-13 & 3.001E-12 & 5.23E-12\\
-      \bottomrule
-    \end{tabular}}
+	\begin{center}
+		\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    		\begin{tabular}{*{21}{c}}
+      	\toprule
+      	$b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+      	\midrule
+      	3.44E-16 & -2.203E-15 & 1.24E-13 & 5.975E-13 & 3.001E-12 & 5.23E-12\\
+      	\bottomrule
+    		\end{tabular}}
+	\end{center}	    
+
 \end{block}
 \begin{block}{Torque Voltage B}
 	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
@@ -616,14 +619,16 @@
       2.92E-15 & 2.758E-13 & 1.761E-11 & 4.228E-10 & 1.422E-8 & 1.561E-7 & 1.501E-6 & 8.426E-6 & 5.981E-5 & 0.0002016 & 0.001226 & 0.002649 & 0.01456 & 0.02044 & 0.104 & 0.09228 & 0.4417 & 0.2257 & 1.025 & 0.2305 & 1\\
       \bottomrule
     \end{tabular}}
-    	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    \begin{tabular}{*{21}{c}}
-      \toprule
-      $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-      \midrule
-      -6.645E-15 & 2.161E-14 & -2.605E-14 & -4.744E-13 & -1.813E-13 & -4.858E-12\\
-      \bottomrule
+	\begin{center}
+		\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    		\begin{tabular}{*{21}{c}}
+     	 \toprule
+     	 $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+     	 \midrule
+      	-6.645E-15 & 2.161E-14 & -2.605E-14 & -4.744E-13 & -1.813E-13 & -4.858E-12\\
+      	\bottomrule
     \end{tabular}}
+	\end{center}	    	 
 \end{block}  
 \end{frame}
 
@@ -639,8 +644,8 @@
       1.224E5 & 4.227E5 & 2.202E6 & 3.54E6 & 7.98E6 & 7.62E5 & 1.071E7 & 6.745E6 & 6.85E6 & 3.006E6 & 2.365E6 & 7.37E5 & 4.669E5 & 1.021E5 & 5.319E4 & 7752 & 3353 & 287.5 & 102.4 & 3.653 & 1\\
       \bottomrule
     \end{tabular}}
-    
-    	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    \begin{center}
+    	\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{21}{c}}
       \toprule
       $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
@@ -648,6 +653,7 @@
       6.516E4 & -2.944E5 & 2.328E5 & -2.487E5 & 8.25E4 & -3.038E4\\
       \bottomrule
     \end{tabular}}
+    \end{center}
 \end{block}
 \begin{block}{Torque Voltage B}
 	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
@@ -658,7 +664,8 @@
       4.687E4 & 7.037E5 & 2.624E6 & 6.133E6 & 1.197E7 & 1.487E7 & 1.887E7 & 1.446E7 & 1.314E7 & 7.01E6 & 4.79E6 & 1.886E6 & 9.836E5 & 2.937E5 & 1.149E5 & 2.617E4 & 7205 & 1232 & 200 & 23.54 & 1\\
       \bottomrule
     \end{tabular}}
-    	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+	\begin{center}
+	\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{21}{c}}
       \toprule
       $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
@@ -666,6 +673,7 @@
       1.209E4 & 1.855E5 & -2.801E5 & 4.72E5 & -3.976E4 & 7.693E4\\
       \bottomrule
     \end{tabular}}
+	\end{center}	    	  
 \end{block}
 \end{frame}
 
@@ -724,8 +732,8 @@
       2.307E7 & 8.369E7 & 9.137E8 & 1.992E9 & 3.753E9 & 5.454E9 & 5.548E9 & 5.869E9 & 3.453E9 & 3.161E9 & 1.54E9 & 9.654E8 & 3.556E8 & 1.789E8 & 5.082E7 & 2.071E7 & 4.569E6 & 1.498E6 & 2.553E5 & 6.532E4 & 8443 & 1559 & 147.3 & 15.5 & 1\\
       \bottomrule
     \end{tabular}}
-    
-    	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    \begin{center}
+    		\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{7}{c}}
       \toprule
       $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$&$b_6$\\
@@ -733,6 +741,7 @@
       -5.741E6 & -2.644E7 & -2.797E6 & -1.304E7 & -3.203E6 & -1.159E6 & -5.519E5\\
       \bottomrule
     \end{tabular}}
+    \end{center}
 \end{block}
 \begin{block}{Torque Voltage B}
 	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
@@ -743,8 +752,8 @@
       5.224E6 & 4.205E7 & 1.429E8 & 3.233E8 & 5.444E8 & 7.326E8 & 8.247E8 & 7.402E8 & 6.301E8 & 3.99E8 & 2.731E8 & 1.264E8 & 7.223E7 & 2.48E7 & 1.216E7 & 3.084E6 & 1.324E6 & 2.422E5 & 9.264E4 & 1.159E4 & 4003 & 307.4 & 96.87 & 3.451 & 1\\
       \bottomrule
     \end{tabular}}
-    
-    	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    \begin{center}
+    	\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{7}{c}}
       \toprule
       $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$&$b_6$\\
@@ -752,6 +761,7 @@
       -4.159E6 & 1.851E6 & -4.457E6 & 9.043E5 & -7.45E5 & 1.865E5 & -1.545E4\\
       \bottomrule
     \end{tabular}}
+    \end{center}
 \end{block}
 \end{frame}
 

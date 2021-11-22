@@ -11,7 +11,8 @@
 \usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
 \usepackage{rotating}
-\usepackage{subfigure}
+%\usepackage{subfigure}
+\usepackage{subcaption}
 \graphicspath{%
   {figs/ipe/}
   {figs/dia/}
@@ -88,21 +89,16 @@ Autonomous vehicles are being developed by many companies for commercial and/or 
 \noindent
 There are six main subsystems - a steering model, an acceleration model, a brake model, a shifting model, a speed model, and a cruise model - that must be modeled to get an accurate representation of how the vehicle should be controlled. We will be modeling these six subsystems for a Lexus vehicle platform using the System Identification Toolbox from Matlab. The first subsystem we will model is the steering model, and then we will move onto the other subsystems. There are already controllers in place for the Lexus vehicle platform, but their reliability is lower than expected due to non-linear behaviors of the torques voltages required to control each subsystem. The scope of this project includes developing mathematical models for each subsystem so AutonomouStuff can implement controls that improve the reliability of the autonomous vehicle platform. These models will be used by AutonomouStuff for their Hardware-in-the-Loop (HIL) testing. Models for each subsystem must created for both manual drive mode and by-wire, or autonomous, mode. \autoref{fig:steerSystem} depicts how the by-wire mode controls the vehicle. Each subsystem, like the steering system in this example, sends torque voltages to a motor that will control the subsystem. In \autoref{fig:steerSystem}, the motor would turn the pinion arms which would change the steering angle of the vehicle. This principle is applied to all other subsystems.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=4.5cm]{figs/img/autonomousVehiclesAStuff}
-	\caption{AutonomouStuff Vehicle Fleet\textsuperscript{a}}
-	\label{fig:fleet}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=4.5cm]{figs/img/autonomousVehiclesSteering}
-	\caption{Autonomous Vehicle Steering System\textsuperscript{b}}
-	\label{fig:steerSystem}
-\end{figure}
-\begin{tiny}[h]
-	\textsuperscript{a}https://hexagonpositioning.com/pi-brands/autonomoustuff\\\textsuperscript{b}https://www.autonews.com/article/20181105/OEM10/181109921/delphi-s-pace-award-winning-e-steer-an-autonomous-vehicle-building-block
-\end{tiny}
+%\begin{figure}[h]
+%	\centering
+%	\subcaptionbox{AutonomouStuff Vehicle Fleet\textsuperscript{a}}
+%		[2.5cm]{\includegraphics{figs/img/autonomousVehiclesAStuff}}
+%	\subcaptionbox{Autonomous Vehicle Steering System\textsuperscript{b}}
+%		[2.5cm]{\includegraphics{figs/img/autonomousVehiclesSteering}}
+%\end{figure}
+%\begin{tiny}[h]
+%	\textsuperscript{a}https://hexagonpositioning.com/pi-brands/autonomoustuff\\\textsuperscript{b}https://www.autonews.com/article/20181105/OEM10/181109921/delphi-s-pace-award-winning-e-steer-an-autonomous-vehicle-building-block
+%\end{tiny}
 
  \section{Literature Review}
 
@@ -211,7 +207,7 @@ The overall system architecture of this project consists of six subsystems which
  \subsection{Specifications}
  Based on the system requirements listed above, the plant model will meet the following specifications:
  \begin{itemize}
-    \item The steering subsystem will be modeled first due to its non-linearities, depicted in \autoref{fig:nonlinGraph}, and the fact that it is important to the operation of the vehicle
+    \item The steering subsystem will be modeled first due to its non-linearities, depicted in \autoref{fig:nonlinGraph}, and it is important to the operation of the vehicle
     \item Each vehicle subsystem will be modeled separately 
     \item The steering subsystem will be able to handle small steering angles
  \end{itemize}
@@ -232,9 +228,9 @@ To start this project, we first read documentation outlining the uses of Matlab'
 	The following is the hardware required for this project:  
 	\begin{itemize}
     		\item Laptop
-    		\item PAC Mod 
-    		\item CAN Case 
-    		\item CAN Bus 
+    		\item PACMod 
+    		\item CANCase 
+    		\item CAN bus 
  	\end{itemize} 
 
 \subsection{Experimental Setup} \label{sec:setup}
