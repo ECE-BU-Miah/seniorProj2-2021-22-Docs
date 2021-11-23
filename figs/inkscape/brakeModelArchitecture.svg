@@ -23,13 +23,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.69664703"
-     inkscape:cx="396.90114"
-     inkscape:cy="561.25984"
+     inkscape:zoom="1.3932941"
+     inkscape:cx="387.21187"
+     inkscape:cy="507.78943"
      inkscape:window-width="1920"
-     inkscape:window-height="986"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="g634" />
   <defs
@@ -135,37 +135,39 @@
          y="0"><tspan
            x="160.24359"
            y="205.68328"
-           id="tspan10299">Brake Model</tspan></text>
+           id="tspan46391">Brake Model</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+         style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:67.398;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
          x="-32.782864"
          y="69.878975"
          id="text77963"
-         transform="scale(1.0384036,0.9630167)"><tspan
-           sodipodi:role="line"
-           id="tspan77961"
-           style="font-size:4.54957px;stroke-width:0.213261"
+         transform="matrix(1.0384036,0,0,0.9630167,4.4079966,-0.59818841)"><tspan
            x="-32.782864"
-           y="69.878975">Brake Pedal Stroke Voltages</tspan></text>
+           y="69.878975"
+           id="tspan46393">Brake Pedal Stroke </tspan><tspan
+           x="-32.782864"
+           y="77.039375"
+           id="tspan46395">Voltages</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:67.398;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+         x="-32.782864"
+         y="69.878975"
+         id="text77963-7"
+         transform="matrix(1.0384036,0,0,0.9630167,4.3863657,17.206925)"><tspan
+           x="-32.782864"
+           y="69.878975"
+           id="tspan46397">Brake Pedal On/Off </tspan><tspan
+           x="-32.782864"
+           y="77.039375"
+           id="tspan46399">Switch</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
          d="M -6.2146709,59.057548 H 34.716727"
          id="path97416-1"
          inkscape:connector-type="polyline"
          inkscape:connector-curvature="0" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
-         x="-29.233061"
-         y="88.398209"
-         id="text77963-2"
-         transform="scale(1.0384036,0.9630167)"><tspan
-           sodipodi:role="line"
-           id="tspan77961-1"
-           style="font-size:4.54957px;stroke-width:0.213261"
-           x="-29.233061"
-           y="88.398209">Brake Pedal On/Off Switch</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-2)"
          d="M -6.1442262,76.891882 H 34.787172"
@@ -174,27 +176,27 @@
          inkscape:connector-curvature="0" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+         style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
          x="88.212807"
          y="55.942917"
          id="text77963-8"
          transform="scale(1.0384036,0.9630167)"><tspan
            sodipodi:role="line"
            id="tspan77961-0"
-           style="font-size:4.54957px;stroke-width:0.213261"
+           style="font-size:5.72832px;stroke-width:0.213261"
            x="88.212807"
            y="55.942917">Brake Pedal Position</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
-         x="87.972122"
+         style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+         x="88.578545"
          y="80.248795"
          id="text77963-8-6"
          transform="scale(1.0384036,0.9630167)"><tspan
            sodipodi:role="line"
            id="tspan77961-0-7"
-           style="font-size:4.54957px;stroke-width:0.213261"
-           x="87.972122"
+           style="font-size:5.72832px;stroke-width:0.213261"
+           x="88.578545"
            y="80.248795">Brake Pressed</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-4)"
@@ -222,16 +224,17 @@
            y="17.411114">Brake Model</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
+         style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:86.6751;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
          x="-37.937969"
          y="50.949173"
          id="text77963-4"
-         transform="scale(1.0384036,0.9630167)"><tspan
-           sodipodi:role="line"
-           id="tspan77961-6"
-           style="font-size:4.54957px;stroke-width:0.213261"
+         transform="matrix(1.0384036,0,0,0.9630167,9.445707,-0.59818841)"><tspan
            x="-37.937969"
-           y="50.949173">Brake Pedal Pressure Voltages</tspan></text>
+           y="50.949173"
+           id="tspan46401">Brake Pedal Pressure </tspan><tspan
+           x="-37.937969"
+           y="58.109573"
+           id="tspan46403">Voltages</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-8)"
          d="M -6.1442264,41.257169 H 34.787172"
