@@ -57,6 +57,7 @@
 \usepackage{graphicx}
 \usepackage{siunitx}
 \usepackage{arydshln}
+\usepackage{multicol}
 
 \usepackage[ruled, vlined, linesnumbered]{algorithm2e} % For algorithms
 
@@ -181,7 +182,9 @@
 
 \begin{frame}{Problem Statement}
   \begin{block}{Problem Statement}
+	\begin{minipage}[t]{0.62\linewidth}      
       Model different subsystems for an autonomous vehicle (Lexus RX450H platform is considered in this project), which are
+	  \begin{multicols}{2}      
       \begin{itemize}
           \item Steering
           \item Acceleration
@@ -190,18 +193,17 @@
           \item Speed
           \item Speed control
         \end{itemize} 
+        \end{multicols}
         using input-output raw data available offline
-        
-          \begin{figure}
+    \end{minipage}
+    \begin{minipage}[t]{0.34\textwidth}  
+        \begin{figure}
 			\centering
-			\begin{minipage}[t]{0.4\textwidth}
-				%\centering
-				
-				\includegraphics[height=1.5cm]{figs/img/picturesVisitToAStuff/visitors1-20211007}
-				\caption{AutonomouStuff Vehicle Fleet\textsuperscript{a}}
-				
-			\end{minipage}
-			\end{figure}
+			\captionsetup{justification=centering, margin=0.5cm, font=tiny}
+			\includegraphics[width=4cm]{figs/img/picturesVisitToAStuff/visitors1-20211007}
+			\caption{AutonomouStuff Lexus RX450H Vehicle}
+		\end{figure}
+	\end{minipage}
   \end{block}
 
   \pause
@@ -258,27 +260,28 @@
 \section{System Requirements}
 
 \begin{frame}{System Requirements}
-	\tiny  
-  \begin{block}{Specifications}
+\begin{block}{Specifications}
+	\begin{minipage}[t]{0.62\linewidth}    
     Proposed vehicle subsystem models are expected to fulfill requirements listed below:
-\begin{itemize}
-    \item Resulting plant model will consist of reasonably accurate subsystem models
-    \item Subsystems can be used to create a HIL testbench
-    \item Steering model can handle very small changes in steering angles
+	\begin{itemize}
+    		\item Resulting plant model will consist of reasonably accurate subsystem models
+    		\item Subsystems can be used to create a HIL testbench
+    		\item Steering model can handle very small changes in steering angles
     \begin{itemize}
-		\tiny    		
-    		\item smooth out any non-linear discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle, depicted in \autoref{fig:nonlinGraph}.
+		\item smooth out any non-linear discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle, depicted in \autoref{fig:nonlinGraph}.
     \end{itemize}
-\end{itemize}
-\begin{figure}[h]
-	\tiny    
-    \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=1in]{figs/inkscape/nonlinearBehavior}
-    \caption{Steering Non-linear Behavior}
-    \label{fig:nonlinGraph}
-\end{figure}
-  \end{block}
+	\end{itemize}
+	\end{minipage}
+	\begin{minipage}[t]{0.34\linewidth}
+	\begin{figure}[h]
+		\centering
+    		\captionsetup{justification=centering, margin=0.5cm}
+    		\includegraphics[width=1.5in]{figs/inkscape/nonlinearBehavior}
+    		\caption{Steering Non-linear Behavior}
+    		\label{fig:nonlinGraph}
+	\end{figure}
+	\end{minipage}
+\end{block}
 \end{frame}
 
 %--------------------------------
@@ -708,7 +711,7 @@
 			A(z)y(t) = B_1(z)u_1(t) + B_2(z)u_2(t) + e(t)
 		\end{equation}
 		%
-		where na = 4, nb = 4, nk = 0, and, 
+		\centering where na = 4, nb = 4, nk = 0, and, 
 		%
 		\begin{equation}
 			A(z) = 1 - 1.018z^{-1} - 0.002901z^{-2} + 0.4631z^{-3} - 0.2038z^{-4}
