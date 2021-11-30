@@ -233,6 +233,35 @@ Each subsystem that we are modeling is set up in a similar manner. In manual mod
 \subsection{Steering System}
 In \autoref{byWireSteerModel}, the output steering angle is plotted versus time when the vehicle is in by-wire mode. The figure shows the output steering angle from some data collected to depict the steering system behavior plotted with the behavior of the estimated model. The best fit percentage for this model is 85.54\%. Likewise, \autoref{manualSteerModel} depicts the output steering angle plotted versus time when the vehicle is in manual mode. The best fit percentage for this model is 90.27\%. 
 
+
+  % %
+  % \begin{figure}
+  %   \centering
+  %   \begin{subfigure}[b]{0.48\linewidth}
+  %     \centering
+  %     \includegraphics[width=\textwidth]{figs/fusion360/PowertrainModelCorrectDimsTopViewV3}
+  %     \caption{}
+  %     \label{fig:PowertrainModelCorrectDimsTopViewV3}
+  %   \end{subfigure}
+  %   \begin{subfigure}[b]{0.48\linewidth}
+  %     \centering
+  %     \includegraphics[width=\textwidth]{figs/fusion360/PowertrainModelCorrectDimsFrontViewV4}
+  %     \caption{}
+  %     \label{fig:PowertrainModelCorrectDimsFrontViewV4}
+  %   \end{subfigure}
+  %   \begin{subfigure}[b]{0.48\linewidth}
+  %     \centering
+  %     \includegraphics[width=\textwidth]{figs/fusion360/PowertrainModelCorrectDimsSideViewV4}
+  %     \caption{}
+  %     \label{fig:PowertrainModelCorrectDimsSideViewV4}
+  %   \end{subfigure}
+  %   \caption{\subref{fig:PowertrainModelCorrectDimsTopViewV3} Top view,
+  %     \subref{fig:PowertrainModelCorrectDimsFrontViewV4} front view, and
+  %     \subref{fig:PowertrainModelCorrectDimsSideViewV4} side view of the
+  %     proposed disinfecting robot.}
+  %   \label{fig:2dViewsDisinfectingRobot}
+  % \end{figure}
+
 \begin{figure}[h]
 	\centering
 	\subcaptionbox{Output of Estimated By-Wire System Model \label{byWireSteerModel}}
@@ -292,32 +321,49 @@ In \autoref{byWireSteerModel}, the output steering angle is plotted versus time 
 \end{figure}
 
 \vspace{12pt}
-\noindent The manual steering system is modeled by a twentieth order transfer function. After considering the system costs that come with a higher order transfer function and the need to achieve a sufficient best fit percentage, it is clear that a twentieth order transfer function is the best estimation of the system. \autoref{manualSteerCoeffA} shows the coefficients of the twentieth order transfer function for the output steering angle with respect to the input torque voltage A signal. \autoref{manualSteerCoeffB} shows the coefficients of the twentieth order transfer function for the output steering angle with respect to the input torque voltage B signal.
-
-\begin{figure}[h]
+\noindent The manual steering system is modeled by a twentieth order transfer
+function. After considering the system costs that come with a higher order
+transfer function and the need to achieve a sufficient best fit percentage, it
+is clear that a twentieth order transfer function is the best estimation of the
+system. \autoref{tab:manualSteerCoeffA} shows the coefficients of the twentieth
+order transfer function for the output steering angle with respect to the input
+torque voltage A signal. %
+%
+  \begin{table}[hbtp]
+    \caption{Manual mode steering transfer function torque voltage A coefficient table. }
+    \label{tab:manualSteerCoeffA}
+    \centering
 	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    \begin{tabular}{*{21}{c}}
-      \toprule
-      $a_0$& $a_1$&$a_2$&$a_3$&$a_4$&$a_5$&$a_6$&$a_7$&$a_8$&$a_9$&$a_{10}$&$a_{11}$&$a_{12}$&$a_{13}$&$a_{14}$&$a_{15}$&$a_{16}$&$a_{17}$&$a_{18}$ &$a_{19}$&$a_{20}$\\
-      \midrule
-      1.224E5 & 4.227E5 & 2.202E6 & 3.54E6 & 7.98E6 & 7.62E5 & 1.071E7 & 6.745E6 & 6.85E6 & 3.006E6 & 2.365E6 & 7.37E5 & 4.669E5 & 1.021E5 & 5.319E4 & 7752 & 3353 & 287.5 & 102.4 & 3.653 & 1\\
-      \bottomrule
-    \end{tabular}}
+      \begin{tabular}{*{21}{c}}
+        \toprule
+        $a_0$& $a_1$&$a_2$&$a_3$&$a_4$&$a_5$&$a_6$&$a_7$&$a_8$&$a_9$&$a_{10}$&$a_{11}$&$a_{12}$&$a_{13}$&$a_{14}$&$a_{15}$&$a_{16}$&$a_{17}$&$a_{18}$ &$a_{19}$&$a_{20}$\\
+        \midrule
+        1.224E5 & 4.227E5 & 2.202E6 & 3.54E6 & 7.98E6 & 7.62E5 & 1.071E7 & 6.745E6 & 6.85E6 & 3.006E6 & 2.365E6 & 7.37E5 & 4.669E5 & 1.021E5 & 5.319E4 & 7752 & 3353 & 287.5 & 102.4 & 3.653 & 1\\
+        \bottomrule
+      \end{tabular}}
     \begin{center}
     	\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    \begin{tabular}{*{21}{c}}
-      \toprule
-      $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-      \midrule
-      6.516E4 & -2.944E5 & 2.328E5 & -2.487E5 & 8.25E4 & -3.038E4\\
-      \bottomrule
-    \end{tabular}}
+        \begin{tabular}{*{21}{c}}
+          \toprule
+          $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+          \midrule
+          6.516E4 & -2.944E5 & 2.328E5 & -2.487E5 & 8.25E4 & -3.038E4\\
+          \bottomrule
+        \end{tabular}}
     \end{center}
-    \label{manualSteerCoeffA}
-	\caption{Manual Mode Steering Transfer Function Torque Voltage A Coefficient Table}
-\end{figure}
-\begin{figure}[h]
-	  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+  \end{table}
+%
+
+
+\autoref{tab:manualSteerCoeffB} shows the coefficients of
+the twentieth order transfer function for the output steering angle with respect
+to the input torque voltage B signal. %
+%
+\begin{table}[hbtp]
+	\caption{Manual Mode Steering Transfer Function Torque Voltage B Coefficient Table}
+	\label{tab:manualSteerCoeffB}
+  \centering
+  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{21}{c}}
       \toprule
       $a_0$& $a_1$&$a_2$&$a_3$&$a_4$&$a_5$&$a_6$&$a_7$&$a_8$&$a_9$&$a_{10}$&$a_{11}$&$a_{12}$&$a_{13}$&$a_{14}$&$a_{15}$&$a_{16}$&$a_{17}$&$a_{18}$ &$a_{19}$&$a_{20}$\\
@@ -326,18 +372,17 @@ In \autoref{byWireSteerModel}, the output steering angle is plotted versus time 
       \bottomrule
     \end{tabular}}
 	\begin{center}
-	\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    \begin{tabular}{*{21}{c}}
-      \toprule
-      $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-      \midrule
-      1.209E4 & 1.855E5 & -2.801E5 & 4.72E5 & -3.976E4 & 7.693E4\\
-      \bottomrule
-    \end{tabular}}
+    \resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+      \begin{tabular}{*{21}{c}}
+        \toprule
+        $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+        \midrule
+        1.209E4 & 1.855E5 & -2.801E5 & 4.72E5 & -3.976E4 & 7.693E4\\
+        \bottomrule
+      \end{tabular}}
 	\end{center}	
-	\label{manualSteerCoeffB}
-	\caption{Manual Mode Steering Transfer Function Torque Voltage B Coefficient Table}
-\end{figure}
+\end{table}
+%
 
 \subsection{Acceleration System}
 In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted versus time when the vehicle is in by-wire mode. The figure shows the output acceleration pedal position from some data collected to depict the acceleration system behavior plotted with the behavior of the estimated model. The best fit percentage for this model is 97.69\%. Likewise, \autoref{manualAccelModel} depicts the output acceleration pedal position plotted versus time when the vehicle is in manual mode. The best fit percentage for this model is 98.3\%. 
@@ -354,25 +399,21 @@ In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted
 
 \vspace{12pt}
 \noindent The model of the by-wire acceleration system is a fourth order ARX model. The fourth order ARX model defined in \autoref{byWireAccelEq} represents the output acceleration pedal position, A(z), based on input torque voltage A, $B_1(z)$, and input torque voltage B, $B_2(z)$. 
-\begin{figure}[h]
+% \begin{figure}[h]
 	\begin{equation}
-		A(z)y(t) = B_1(z)u_1(t) + B_2(z)u_2(t) + e(t)
+		A(z)y(t) = B_1(z)u_1(t) + B_2(z)u_2(t) + e(t),
 	\end{equation}
 	%
 	where na = 4, nb = 4, nk = 0, and, 
 	%
-	\begin{equation}
-		A(z) = 1 - 1.018z^{-1} - 0.002901z^{-2} + 0.4631z^{-3} - 0.2038z^{-4}
-	\end{equation}
-	\begin{equation}
-		B_1(z) = -0.0207 - 0.01912z^{-1} - 0.02159z^{-2} - 0.03307z^{-3}
-	\end{equation}
-	\begin{equation}
-		B_2(z) = 0.02017 + 0.01833z^{-1} + 0.09461z^{-2} + 0.05683z^{-3}
-	\end{equation}
-	\label{byWireAccelEq}
-	\caption{By-Wire Mode Acceleration System ARX Model Equations}
-\end{figure}
+  \begin{align*}
+		A(z) &= 1 - 1.018z^{-1} - 0.002901z^{-2} + 0.4631z^{-3} - 0.2038z^{-4}\\
+    B_1(z) &= -0.0207 - 0.01912z^{-1} - 0.02159z^{-2} - 0.03307z^{-3}\\
+		B_2(z) &= 0.02017 + 0.01833z^{-1} + 0.09461z^{-2} + 0.05683z^{-3}
+  \end{align*}
+% 	\label{byWireAccelEq}
+% 	\caption{By-Wire Mode Acceleration System ARX Model Equations}
+% \end{figure}
 
 \vspace{12pt}
 \noindent The model of the manual acceleration system is a twenty-fourth order transfer function. The twenty-fourth order transfer function is the best proposed estimation considering the system costs associated with a higher order transfer function while also obtaining an acceptable best fit percentage. \autoref{manualAccelCoeffA} shows the coefficients of the twenty-fourth order transfer function for the output acceleration pedal position with respect to the input torque voltage A signal. \autoref{manualAccelCoeffB} shows the coefficients of the twenty-fourth order transfer function for the output acceleration pedal position with respect to the input torque voltage B signal.
