@@ -24,8 +24,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.9704154"
-     inkscape:cx="456.50274"
-     inkscape:cy="442.80004"
+     inkscape:cx="456.50273"
+     inkscape:cy="442.80003"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
      inkscape:window-x="-9"
@@ -135,10 +135,10 @@
          y="0"><tspan
            x="198.08215"
            y="205.68328"
-           id="tspan59960">Speed </tspan><tspan
+           id="tspan57289">Speed </tspan><tspan
            x="200.29582"
            y="236.73528"
-           id="tspan59962">Model</tspan></text>
+           id="tspan57291">Model</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:47.7845;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
@@ -148,10 +148,10 @@
          transform="matrix(1.0384036,0,0,0.9630167,-5.0377104,0)"><tspan
            x="-15.80829"
            y="69.433151"
-           id="tspan59964">Brake Pedal </tspan><tspan
+           id="tspan57293">Brake Pedal </tspan><tspan
            x="-15.80829"
            y="76.593552"
-           id="tspan59966">Position</tspan></text>
+           id="tspan57295">Position</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
          d="M -6.2146709,59.057548 H 34.716727"
@@ -164,13 +164,13 @@
          x="-13.99947"
          y="87.506569"
          id="text77963-2"
-         transform="matrix(1.0384036,0,0,0.9630167,-7.5565656,0)"><tspan
+         transform="matrix(1.0384036,0,0,0.9630167,-6.6686348,0)"><tspan
            x="-13.99947"
            y="87.506569"
-           id="tspan59968">Shifter Actual </tspan><tspan
+           id="tspan57297">Shifter Actual </tspan><tspan
            x="-13.99947"
            y="94.666969"
-           id="tspan59970">Gear</tspan></text>
+           id="tspan57299">Gear</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-2)"
          d="M -6.1442262,76.891882 H 34.787172"
@@ -213,13 +213,13 @@
          x="-30.103552"
          y="51.394993"
          id="text77963-4"
-         transform="matrix(1.0384036,0,0,0.9630167,10.705135,-1.1963768)"><tspan
+         transform="matrix(1.0384036,0,0,0.9630167,10.31181,-1.1963768)"><tspan
            x="-30.103552"
            y="51.394993"
-           id="tspan59972">Acceleration Pedal </tspan><tspan
+           id="tspan57301">Acceleration Pedal </tspan><tspan
            x="-30.103552"
            y="58.555393"
-           id="tspan59974">Position</tspan></text>
+           id="tspan57303">Position</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-8)"
          d="M -6.1442264,41.257169 H 34.787172"

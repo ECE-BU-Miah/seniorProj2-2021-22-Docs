@@ -242,50 +242,50 @@
      id="g100286"><text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183871"
-   x="-80.795761"
-   y="45.342514"
+   x="-78.601624"
+   y="53.375866"
    id="text77963"
    transform="scale(1.012077,0.98806712)"><tspan
      sodipodi:role="line"
      id="tspan77961"
      style="font-size:4.93889px;stroke-width:0.183871"
-     x="-80.795761"
-     y="45.342514">Desired SW Angle</tspan></text>
+     x="-78.601624"
+     y="53.375866">Desired SW Angle</tspan></text>
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183871"
    x="87.562462"
-   y="44.806931"
+   y="55.175049"
    id="text77963-5"
    transform="scale(1.012077,0.98806712)"><tspan
      sodipodi:role="line"
      id="tspan77961-4"
      style="font-size:4.93889px;stroke-width:0.183871"
      x="87.562462"
-     y="44.806931">Wheeled Angle</tspan></text>
+     y="55.175049">Wheeled Angle</tspan></text>
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183871"
-   x="-80.79586"
-   y="58.195869"
+   x="-78.18161"
+   y="67.300362"
    id="text77963-3"
    transform="scale(1.012077,0.98806712)"><tspan
      sodipodi:role="line"
      id="tspan77961-9"
      style="font-size:4.93889px;stroke-width:0.183871"
-     x="-80.79586"
-     y="58.195869">Actual SW Angle</tspan></text>
+     x="-78.18161"
+     y="67.300362">Actual SW Angle</tspan></text>
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183871"
-   x="87.292641"
-   y="58.329449"
+   x="87.721375"
+   y="67.969498"
    id="text77963-4"
    transform="scale(1.012077,0.98806712)"><tspan
      id="tspan77961-44"
      style="font-size:4.93889px;stroke-width:0.183871"
-     x="87.292641"
-     y="58.329449"
+     x="87.721375"
+     y="67.969498"
      sodipodi:role="line">Actual SW Angle</tspan></text>
 <g
    id="g27969"
@@ -307,13 +307,13 @@
      y="0"><tspan
        x="196.49702"
        y="207.34837"
-       id="tspan82605">Power </tspan><tspan
+       id="tspan78817">Power </tspan><tspan
        x="180.50091"
        y="240.68174"
-       id="tspan82607">Steering </tspan><tspan
+       id="tspan78819">Steering </tspan><tspan
        x="198.4827"
        y="274.01512"
-       id="tspan82609">Motor </tspan></text>
+       id="tspan78821">Motor </tspan></text>
   <tspan
      x="180.50091"
      y="240.68174"
@@ -323,6 +323,7 @@
      y="274.01512"
      id="tspan130">Motor</tspan>
 </g>
+
 
 =======
                    id=&quot;tspan188&quot;&gt;Power </g>
@@ -335,6 +336,7 @@
      y="274.01512"
      id="tspan192">Motor</tspan>
 </g>
+
 
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
             </g>
@@ -358,10 +360,10 @@
        y="0"><tspan
          x="180.50091"
          y="207.34837"
-         id="tspan82611">Steering </tspan><tspan
+         id="tspan78823">Steering </tspan><tspan
          x="171.02173"
          y="240.68174"
-         id="tspan82613">Controller </tspan></text>
+         id="tspan78825">Controller </tspan></text>
     <tspan
        x="171.02173"
        y="240.68175"
@@ -398,6 +400,7 @@
    id="path37907-6-7"
    inkscape:connector-type="polyline"
    inkscape:connector-curvature="0" />
+
 
 =======
                    id=&quot;tspan194&quot;&gt;Steering </g>
