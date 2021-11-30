@@ -2,179 +2,101 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
    version="1.1"
-   id="svg103168"
+   id="svg914"
+   xml:space="preserve"
+   width="603.97174"
+   height="292.51993"
+   viewBox="0 0 603.97174 292.51993"
+   sodipodi:docname="accelerationModelArchitecture.pdf"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="accelerationModelArchitecture.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview103170"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs918"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath930"><path
+         d="M 0,0 H 453 V 220 H 0 Z"
+         id="path928" /></clipPath></defs><sodipodi:namedview
+     id="namedview916"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="true"
-     inkscape:zoom="1.3932941"
-<<<<<<< HEAD
-     inkscape:cx="380.03462"
-     inkscape:cy="498.81787"
-=======
-     inkscape:cx="380.03464"
-     inkscape:cy="498.81789"
->>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
+     showgrid="false"
+     inkscape:zoom="1.3605911"
+     inkscape:cx="189.25598"
+     inkscape:cy="102.89646"
      inkscape:window-width="1920"
-     inkscape:window-height="986"
+     inkscape:window-height="974"
      inkscape:window-x="-11"
      inkscape:window-y="-11"
      inkscape:window-maximized="1"
-<<<<<<< HEAD
-     inkscape:current-layer="g119841">
-=======
-     inkscape:current-layer="g27969">
->>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
-    <inkscape:grid
-       type="xygrid"
-       id="grid103172" />
-  </sodipodi:namedview>
-  <defs
-     id="defs103165">
-    <rect
-       x="159.33464"
-       y="183.01952"
-       width="155.02829"
-       height="112.6826"
-       id="rect2367" />
-    <marker
-       style="overflow:visible"
-       id="marker97420-8"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow2Lend"
-       inkscape:isstock="true">
-      <path
-         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
-         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
-         id="path97418-9" />
-    </marker>
-    <marker
-       style="overflow:visible"
-       id="marker97420-8-4"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow2Lend"
-       inkscape:isstock="true">
-      <path
-         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
-         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
-         id="path97418-9-1" />
-    </marker>
-  </defs>
-  <g
-     inkscape:label="Layer 1"
+     inkscape:current-layer="g920" /><g
+     id="g920"
      inkscape:groupmode="layer"
-     id="layer1">
-    <g
-       id="g27969"
-       transform="matrix(0.84032881,0,0,0.88461538,49.672367,87.985951)">
-      <g
-         id="g119855">
-        <g
-           id="g119841">
-          <rect
-             style="mix-blend-mode:hue;fill:#ffb380;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.844364;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             id="rect31"
-             width="53.930946"
-             height="68.742966"
-             x="34.941174"
-             y="26.205883"
-             ry="7.4172378" />
-          <text
-             xml:space="preserve"
-             transform="matrix(0.32619916,0,0,0.33267187,-15.404615,-9.9358937)"
-             id="text2365"
-             style="font-style:normal;font-weight:normal;font-size:24.8416px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2367);fill:#000000;fill-opacity:1;stroke:none"
-             x="55.475266"
-             y="0"><tspan
-               x="160.96531"
-               y="205.68328"
-<<<<<<< HEAD
-               id="tspan394">Acceleration </tspan><tspan
-               x="200.29582"
-               y="236.73528"
-               id="tspan396">Model</tspan></text>
-=======
-               id="tspan129398">Acceleration </tspan><tspan
-               x="200.29582"
-               y="236.73528"
-               id="tspan129400">Model</tspan></text>
->>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
-             x="-34.523846"
-             y="67.426956"
-             id="text77963"
-             transform="scale(1.0384036,0.9630167)"><tspan
-               sodipodi:role="line"
-               id="tspan77961"
-               style="font-size:4.54957px;stroke-width:0.213261"
-               x="-34.523846"
-               y="67.426956">Acceleration Pedal Voltages</tspan></text>
-          <path
-             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
-<<<<<<< HEAD
-             d="M -6.8443847,59.057548 H 34.087013"
-=======
-             d="M -5.5849571,59.057548 H 35.346441"
->>>>>>> 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
-             id="path97416-1"
-             inkscape:connector-type="polyline"
-             inkscape:connector-curvature="0" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:4.54957px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
-             x="88.212807"
-             y="68.987328"
-             id="text77963-8"
-             transform="scale(1.0384036,0.9630167)"><tspan
-               sodipodi:role="line"
-               id="tspan77961-0"
-               style="font-size:4.54957px;stroke-width:0.213261"
-               x="88.212807"
-               y="68.987328">Acceleration Pedal Position</tspan></text>
-          <path
-             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-4)"
-             d="M 88.872116,59.057548 H 129.80351"
-             id="path97416-1-3"
-             inkscape:connector-type="polyline"
-             inkscape:connector-curvature="0" />
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:12.275px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.306874"
-             x="4.7902732"
-             y="17.411114"
-             id="text118702"
-             transform="scale(1.0260124,0.97464708)"><tspan
-               sodipodi:role="line"
-               id="tspan118700"
-               style="stroke-width:0.306874"
-               x="4.7902732"
-               y="17.411114">Acceleration Model</tspan></text>
-        </g>
-      </g>
-    </g>
-  </g>
-</svg>
+     inkscape:label="accelerationModelArchitecture"
+     transform="matrix(1.3333333,0,0,1.3333333,0,8.6463318e-6)"><g
+       id="g922"><g
+         id="g924"><g
+           id="g926" /><g
+           id="g940"><g
+             clip-path="url(#clipPath930)"
+             id="g938"><g
+               id="g936"><g
+                 transform="scale(0.949937,1)"
+                 id="g934"><path
+                   d="M 195.963,45.953 H 294 c 10.305,0 18.599,8.297 18.599,18.598 V 199.73 c 0,10.305 -8.294,18.602 -18.599,18.602 h -98.037 c -10.305,0 -18.599,-8.297 -18.599,-18.602 V 64.551 c 0,-10.301 8.294,-18.598 18.599,-18.598 z"
+                   style="fill:#ffb380;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.1173;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                   id="path932" /></g></g></g></g></g><text
+         transform="matrix(0.93145422,0,0,1,173.63088,126.906)"
+         style="font-variant:normal;font-weight:normal;font-size:20.7228px;font-family:Verdana;-inkscape-font-specification:Verdana;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text946"><tspan
+           x="0 14.153688 24.929556 35.705425 48.035503 53.713558 66.04364 74.49855 86.932243 95.097038 100.77509 113.33312 126.42995"
+           y="0"
+           sodipodi:role="line"
+           id="tspan942">Acceleration </tspan><tspan
+           x="32.809452 50.258068 62.816097 75.726418 88.056496"
+           y="25.903528"
+           sodipodi:role="line"
+           id="tspan944">Model</tspan></text><text
+         transform="matrix(1,0,0,0.97627664,-0.142866,143.06514)"
+         style="font-variant:normal;font-weight:normal;font-size:11.2534px;font-family:Verdana;-inkscape-font-specification:Verdana;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text950"><tspan
+           x="0 7.6860867 13.537866 19.389645 26.08543 29.168867 35.864655 40.456047 47.208099 51.641949 54.725388 61.54496 68.65712 72.607071 79.122803 85.818588 92.829468 99.58152 102.66496 106.61491 113.74958 120.56915 123.65259 128.08644 134.83849 141.84937 148.54515"
+           y="0"
+           sodipodi:role="line"
+           id="tspan948">Acceleration Pedal Voltages</tspan></text><g
+         id="g952"
+         transform="scale(0.949937,1)"><path
+           d="M 72.583,128.332 H 175.221"
+           style="fill:none;stroke:#000000;stroke-width:0.770722;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="path954" /></g><path
+         d="m 158.621,124.91 8.801,3.406 -8.801,3.407 c 1.406,-2.008 1.399,-4.762 0,-6.813 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path956" /><text
+         transform="matrix(1,0,0,0.97627664,303.44785,146.83317)"
+         style="font-variant:normal;font-weight:normal;font-size:11.2534px;font-family:Verdana;-inkscape-font-specification:Verdana;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text960"><tspan
+           x="0 7.6860867 13.537866 19.389645 26.08543 29.168867 35.864655 40.456047 47.208099 51.641949 54.725388 61.54496 68.65712 72.607071 79.122803 85.818588 92.829468 99.58152 102.66496 106.61491 113.13064 119.95022 125.80199 128.88544 133.31927 136.40271 143.22229"
+           y="0"
+           sodipodi:role="line"
+           id="tspan958">Acceleration Pedal Position</tspan></text><g
+         id="g962"
+         transform="scale(0.949937,1)"><path
+           d="M 312.599,128.332 H 415.237"
+           style="fill:none;stroke:#000000;stroke-width:0.770722;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="path964" /></g><path
+         d="m 386.621,124.91 8.801,3.406 -8.801,3.407 c 1.406,-2.008 1.399,-4.762 0,-6.813 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="path966" /><text
+         transform="translate(96.959732,22.793015)"
+         style="font-variant:normal;font-weight:normal;font-size:30.0001px;font-family:Verdana;-inkscape-font-specification:Verdana;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text970"><tspan
+           x="0 20.490042 36.090073 51.690105 69.540138 77.760155 95.610191 107.85022 125.85026 137.67027 145.89029 164.07033 183.03036 193.56039 218.82045 237.00049 255.69052 273.54056"
+           y="0"
+           sodipodi:role="line"
+           id="tspan968">Acceleration Model</tspan></text></g></g></svg>
