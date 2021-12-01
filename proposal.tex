@@ -197,6 +197,11 @@ The overall system architecture of this project consists of six subsystems which
 
 \section{Preliminary Work}
 To start this project, we first read documentation outlining the uses of MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials on how to model systems from data using System Identification and then find the most accurate model. We specifically tried to find examples with Multiple-Input Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since most of the vehicle subsystems we will model fall into one of these categories. A literature review was also conducted to see how systems with small non-linearities like our steering subsystem were modeled using System Identification. On October 7th we traveled to AutonomouStuff in order to collect data from the steering, acceleration, and braking subsystems in an autonomous vehicle. The data we collected will be used to generate and then verify our models. 
+\begin{figure}[h]
+	\centering
+	\captionbox{AutonomouStuff Lexus RX450H Vehicle}
+		{\includegraphics[height=3.5cm, width=0.4\linewidth]{figs/img/picturesVisitToAStuff/visitors1-20211007}}
+\end{figure}
 
  \subsection{Modeling} \label{sec:model}
  All modeling of vehicle subsystems will be done using Matlab's System Identification Toolbox feature. The subsystems can be grouped into four different categories: Single-Input Single-Output (SISO), Multiple-Input Multiple-Output (MIMO), Single-Input Multiple-Output (SIMO), and Multiple-Input Single-Output (MISO).
