@@ -307,13 +307,13 @@
      y="0"><tspan
        x="196.49702"
        y="207.34837"
-       id="tspan78817">Power </tspan><tspan
+       id="tspan9893">Power </tspan><tspan
        x="180.50091"
        y="240.68174"
-       id="tspan78819">Steering </tspan><tspan
+       id="tspan9895">Steering </tspan><tspan
        x="198.4827"
        y="274.01512"
-       id="tspan78821">Motor </tspan></text>
+       id="tspan9897">Motor </tspan></text>
   <tspan
      x="180.50091"
      y="240.68174"
@@ -323,6 +323,7 @@
      y="274.01512"
      id="tspan130">Motor</tspan>
 </g>
+
 
 
 =======
@@ -336,6 +337,7 @@
      y="274.01512"
      id="tspan192">Motor</tspan>
 </g>
+
 
 
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 2af1530f4eea72fb02242e1ca3d8c5b29aea5f2f
@@ -360,10 +362,10 @@
        y="0"><tspan
          x="180.50091"
          y="207.34837"
-         id="tspan78823">Steering </tspan><tspan
+         id="tspan9899">Steering </tspan><tspan
          x="171.02173"
          y="240.68174"
-         id="tspan78825">Controller </tspan></text>
+         id="tspan9901">Controller </tspan></text>
     <tspan
        x="171.02173"
        y="240.68175"
@@ -402,8 +404,26 @@
    inkscape:connector-curvature="0" />
 
 
+
 =======
-                   id=&quot;tspan194&quot;&gt;Steering </g>
+                   id=&quot;tspan194&quot;&gt;Steering <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.78621px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.244656"
+   x="83.123878"
+   y="66.221428"
+   id="text110850"
+   transform="scale(0.95070274,1.0518535)"><tspan
+     sodipodi:role="line"
+     id="tspan9861"
+     x="83.123878"
+     y="66.221428"
+     style="stroke-width:0.244656">Steering Model</tspan><tspan
+     sodipodi:role="line"
+     id="tspan9863"
+     x="83.123878"
+     y="78.454193"
+     style="stroke-width:0.244656" /></text>
+</g>
   <tspan
      x="171.02173"
      y="240.68174"
