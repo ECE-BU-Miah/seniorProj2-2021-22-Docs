@@ -223,7 +223,7 @@
      inkscape:groupmode="layer"
      id="layer1"><g
    id="g17690"
-   transform="translate(83.089318,47.901031)">
+   transform="matrix(1.0353069,0,0,1.0210571,80.60113,47.607633)">
   <text
      xml:space="preserve"
      transform="matrix(0.26458333,0,0,0.26458333,-82.415601,-46.524937)"
@@ -291,7 +291,7 @@
    id="g27969"
    transform="matrix(0.84032881,0,0,0.88461538,12.576491,3.086332)">
   <rect
-     style="mix-blend-mode:hue;fill:#ffb380;fill-opacity:1;fill-rule:evenodd;stroke-width:0.84436361;stroke:#000000;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+     style="mix-blend-mode:hue;fill:#ffb380;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.844364;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect31"
      width="53.930946"
      height="68.742966"
@@ -307,22 +307,23 @@
      y="0"><tspan
        x="196.49702"
        y="207.34837"
-       id="tspan2591">Power </tspan><tspan
+       id="tspan305">Power </tspan><tspan
        x="180.50091"
        y="240.68174"
-       id="tspan2593">Steering </tspan><tspan
+       id="tspan307">Steering </tspan><tspan
        x="198.4827"
        y="274.01512"
-       id="tspan2595">Motor </tspan></text>
+       id="tspan309">Motor </tspan></text>
   <tspan
-     x="180.50091"
-     y="240.68174"
-     id="tspan128">Steering </tspan>
+     x="180.50092"
+     y="240.68175"
+     id="tspan128">Steering</tspan>
   <tspan
      x="198.4827"
-     y="274.01512"
+     y="274.01511"
      id="tspan130">Motor</tspan>
 </g>
+
 
 
 
@@ -330,14 +331,15 @@
 =======
                    id=&quot;tspan188&quot;&gt;Power </g>
   <tspan
-     x="180.50091"
-     y="240.68174"
-     id="tspan190">Steering </tspan>
+     x="180.50092"
+     y="240.68175"
+     id="tspan190">Steering</tspan>
   <tspan
      x="198.4827"
-     y="274.01512"
+     y="274.01511"
      id="tspan192">Motor</tspan>
 </g>
+
 
 
 
@@ -364,10 +366,10 @@
        y="0"><tspan
          x="180.50091"
          y="207.34837"
-         id="tspan2597">Steering </tspan><tspan
+         id="tspan311">Steering </tspan><tspan
          x="171.02173"
          y="240.68174"
-         id="tspan2599">Controller </tspan></text>
+         id="tspan313">Controller </tspan></text>
     <tspan
        x="171.02173"
        y="240.68175"
@@ -375,32 +377,32 @@
   </g>
 </g>
 <path
-   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.547944;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
-   d="m 13.559579,96.329888 39.491494,0.0202"
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.563373;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+   d="m 8.6165149,97.056261 40.8858141,0.02062"
    id="path37907"
    inkscape:connector-type="polyline"
    inkscape:connector-curvature="0" />
 <path
-   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.547944;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2)"
-   d="m 13.559581,109.55912 39.491495,0.0202"
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.563373;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2)"
+   d="m 8.6165169,110.56406 40.8858151,0.0206"
    id="path37907-6"
    inkscape:connector-type="polyline"
    inkscape:connector-curvature="0" />
 <path
-   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.547944;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-3)"
-   d="m 170.1934,96.859058 39.49172,0.0202"
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.563373;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-3)"
+   d="m 170.78055,97.596574 40.88605,0.02062"
    id="path37907-6-70"
    inkscape:connector-type="polyline"
    inkscape:connector-curvature="0" />
 <path
-   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.547944;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-3-1)"
-   d="m 170.19343,110.08829 39.49172,0.0202"
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.563373;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-3-1)"
+   d="m 170.78058,111.10437 40.88605,0.0206"
    id="path37907-6-70-5"
    inkscape:connector-type="polyline"
    inkscape:connector-curvature="0" />
 <path
-   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.449642;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-8)"
-   d="m 97.895833,105.32561 26.592907,0.0202"
+   style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.462303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-2-8)"
+   d="m 95.930414,106.24141 27.531796,0.0206"
    id="path37907-6-7"
    inkscape:connector-type="polyline"
    inkscape:connector-curvature="0" />
@@ -408,24 +410,25 @@
 
 
 
+
 =======
                    id=&quot;tspan194&quot;&gt;Steering <text
    xml:space="preserve"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.78621px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.244656"
-   x="83.123878"
-   y="66.221428"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.0618px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.251545"
+   x="79.800835"
+   y="66.839569"
    id="text110850"
-   transform="scale(0.95070274,1.0518535)"><tspan
+   transform="scale(0.95731368,1.0445897)"><tspan
      sodipodi:role="line"
      id="tspan9861"
-     x="83.123878"
-     y="66.221428"
-     style="stroke-width:0.244656">Steering Model</tspan><tspan
+     x="79.800835"
+     y="66.839569"
+     style="stroke-width:0.251545">Steering Model</tspan><tspan
      sodipodi:role="line"
      id="tspan9863"
-     x="83.123878"
-     y="78.454193"
-     style="stroke-width:0.244656" /></text>
+     x="79.800835"
+     y="79.416817"
+     style="stroke-width:0.251545" /></text>
 </g>
   <tspan
      x="171.02173"
