@@ -12,15 +12,17 @@
 \usepackage{graphicx}
 \usepackage{rotating}
 %\usepackage{subfigure}
-\usepackage{subcaption}
+\usepackage[width=11cm,font=footnotesize,labelfont=bf, %
+format=default,justification=centerlast]{caption} % Figure caption text customization 
+
+\usepackage[list=true,labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
 \graphicspath{%
   {figs/ipe/}
   {figs/dia/}
   {figs/matlab/}
   {figs/imag/}
 } 
-\usepackage[width=11cm,font=footnotesize,labelfont=bf, %
-format=default,justification=centerlast]{caption} % Figure caption text customization 
 
 \usepackage{pgfgantt}
 
@@ -89,7 +91,7 @@ Project Title: Hardware-in-the-Loop Plant Modeling for Autonomous Vehicle
 \section{Introduction}
 Autonomous vehicles are being developed by many companies for commercial and
 personal use. These autonomous vehicles (see the AutonomouStuff vehicle fleet
-shown in \autoref{fleet}) would allow companies to continue crucial deliveries
+shown in \autoref{fig:fleet}) would allow companies to continue crucial deliveries
 or transports of their products even if there is a shortage of drivers. In
 addition, autonomous vehicles have the ability to make roads safer for drivers
 and pedestrians alike. To develop a reliable and safe transportation system for
@@ -130,58 +132,105 @@ AutonomouStuff can implement control systems that improve the \comment{reliabili
 autonomous vehicle platform. These models will be used by AutonomouStuff for
 their Hardware-in-the-Loop (HIL) testing.  There are to operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous. Models for each subsystem must be created
 for both manual drive mode and by-wire, or autonomous, mode.
-\autoref{steerSystem} depicts how the by-wire mode controls the vehicle. Each
+\autoref{fig:steerSystem} depicts how the by-wire mode controls the vehicle. Each
 subsystem, like the steering system in this example, sends torque voltages to a
-motor that will control the subsystem. In \autoref{steerSystem}, the motor would
+motor that will control the subsystem. In \autoref{fig:steerSystem}, the motor would
 turn the pinion arms which would change the steering angle of the vehicle. This
 principle is applied to all other subsystems.
 
 \vspace*{12pt}
 
-\begin{figure}[h]
-	\centering
-	\subcaptionbox{AutonomouStuff Vehicle Fleet\textsuperscript{a} \label{fleet}}
-		{\includegraphics[height=3.5cm, width=0.4\linewidth]{figs/img/autonomousVehiclesAStuff}}
-	\subcaptionbox{Autonomous Vehicle Steering System\textsuperscript{b} \label{steerSystem}}
-		{\includegraphics[height=3.5cm, width=0.4\linewidth]{figs/img/autonomousVehiclesSteering}}
-	\caption{Autonomous Vehicle Fleet and Setup}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[height=3.5cm]{figs/img/autonomousVehiclesAStuff}
+    \caption{}
+    \label{fig:fleet}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[height=3.5cm]{figs/img/autonomousVehiclesSteering}
+    \caption{}
+    \label{fig:steerSystem}
+  \end{subfigure}
+  \caption{\subref{fig:fleet} Autonomous vehicle fleet in AutonomouStuff Solutions and \subref{fig:steerSystem} steering model setup (courtesy of AutonomouStuff). }
+  \label{fig:AstuffFleetSteeringSetup}
 \end{figure}
 
-\noindent \begin{tiny}
-	\textsuperscript{a}https://hexagonpositioning.com/pi-brands/autonomoustuff\\\textsuperscript{b}https://www.autonews.com/article/20181105/OEM10/181109921/delphi-s-pace-award-winning-e-steer-an-autonomous-vehicle-building-block
-\end{tiny}
+% \noindent \begin{tiny}
+% 	\textsuperscript{a}https://hexagonpositioning.com/pi-brands/autonomoustuff\\\textsuperscript{b}https://www.autonews.com/article/20181105/OEM10/181109921/delphi-s-pace-award-winning-e-steer-an-autonomous-vehicle-building-block
+% \end{tiny}
 
  \section{Literature Review}
 
-Authors in~\cite{Hussain2011} illustrates identification of multiple-input single-output model for maximum power point tracking of photovoltaic system.  
- 
-In the paper “Identification of Multiple Input-Single Output (MISO) Model for MPPT of Photovoltaic System”, the researchers wanted to model a system where the two inputs were Solar irradiance and Cell temperature and the output was DC current. In order to model this system Matlab’s System Identification Toolbox was used. In order to create different models, they collected and used data from an energy center in Malaysia. After generating different models, the researchers ended up going with a fourth order ARX (also known as ARXQS) model because it was the most accurate, with a best fit percentage of 93.42\%. The polynomial model equation for ARX is shown below. 
+ Authors in~\cite{Hussain2011} illustrates identification of multiple-input
+ single-output model for maximum power point tracking of photovoltaic system. A
+ significant effort was conducted to model the photovoltaic system, where the two inputs were
+ Solar irradiance and Cell temperature, and the output was DC current. To model
+ this system, Matlab’s System Identification Toolbox was used. In order to
+ create different models, they collected and used data from an energy center in
+ Malaysia. After generating different models, the authors ended up going with a
+ fourth order ARX (also known as ARXQS) model because it was the most accurate,
+ with a best fit percentage of 93.42\%. The polynomial model equation for ARX is
+ shown below. %
+ %
+ \begin{align*}
+   y(t) + a_1y(t - 1) +...+a_{na}y(t - n_{a}) = b_{1}u(t-n_{k})+...+b_{nb}u(t - n_{k}-n_{b}+1) + e(t), 
+ \end{align*}
+% 
+$y(t)$ is the system output at time $t,$ while $u(t)$ is the input. \comment{}{Didn't you say, it was a two input, one output system? Where is the other input in the above equation, other than $u(t)$?} The noise disturbance of the system is represented by $e(t).$ The variables $na,$ $nb,$ and $nk$ are the system’s number of poles, amount of $b$ parameters, and the samples before the inputs begin to affect the system’s output.
 
-$y(t) + a_1y(t - 1) +...+a_{na}y(t - n_{a}) = b_{1}u(t-n_{k})+...+b_{nb}u(t - n_{k}-n_{b}+1) + e(t)$
-
-$y(t)$ is the output of the equation at a certain time t, while u(t) is the input at a certain time t. The noise disturbance of the system is represented by e(t). The variables na, nb, and nk are the system’s number of poles, amount of b parameters, and the samples before the inputs begin to affect the system’s output.
 
 
+\section{System Identification Preliminaries}
 
-\section{System Identification}
-
-System identification is the process of developing mathematical models for a dynamic system using the measurement of input and output signals of that system. There are many components or systems that engineers use to accomplish a task that they are assigned without knowing the exact behavior of this system for a given input. Without knowing the response of this black-box, there could be unexpected consequences from a system. The goal of the system identification methodology is to get an accurate estimation of the system response to any given input. Mathworks' MATLAB has the System Identification Toolbox, where a few existing examples demonstrate the working principle of this toolbox.
+System identification is the process of developing mathematical models for a dynamic system using the measurement of input and output signals of that system. There are many components that are used to accomplish a task that they are assigned without knowing the exact behavior of the system for given input signals. Without knowing the response of this black-box, there could be unexpected consequences from a system. The goal of the system identification methodology is to get an accurate estimation of the system response to any given input. Mathworks' MATLAB has the System Identification Toolbox, where a few existing examples demonstrate the working principle of this toolbox.
 
 \subsection{Example 1: Dealing with Multi-Variable Systems: Identification and Analysis}
 \label{sec:sysID-Example1}
 
-This example in~\cite{example1} shows how to create an iddata object from a dataset in order to get the inputs and the outputs. The next step was to look at the impulse and step responses in order to learn more about how the inputs and outputs act. From there the state space model was estimated using the first part of the given data. This model was compared to the step responses and with the second part of the data to see if it was a good fit. The model had a best fit percentage of 83.55\% for the generated voltage data, and a best fit of 39.33\% for the speed data. The frequency response of the model was estimated with spectral analysis and bode plots were also created. The tutorial explained that if the data doesn’t give nice models, then it is best to try out submodels for the different channels. Two single-input single-output (SISO) models were created and compared with the existing multiple-input multiple-output (MIMO) model and the actual data. The Nyquist plots were also compared. Both SISO models performed well during these comparisons. The next step in the tutorial was to create a multiple-input single-output (MISO) model in order to get a model that more accurately reflected the generated voltage data. By creating this model and comparing it to the validation data and previous models, we saw a best fit percentage of 90.18\%. The last thing the example showed was how to merge the two SISO models we created earlier.
+The example given in~\cite{example1} shows how to create an iddata object from a
+dataset in order to get the inputs and the outputs. The next step was to look at
+the impulse and step responses in order to learn more about how the inputs and
+outputs act. From there the state space model was estimated using the first part
+of the given data. This model was compared to the step responses and with the
+second part of the data to see if it was a good fit. The model had a best fit
+percentage of 83.55\% for the generated voltage data, and a best fit of 39.33\%
+for the speed data. The frequency response of the model was estimated with
+spectral analysis and bode plots were also created. The tutorial explained that
+if the data doesn’t give nice models, then it is best to try out submodels for
+the different channels. Two single-input single-output (SISO) models were
+created and compared with the existing multiple-input multiple-output (MIMO)
+model and the actual data. The Nyquist plots were also compared. Both SISO
+models performed well during these comparisons. The next step in the tutorial
+was to create a multiple-input single-output (MISO) model in order to get a
+model that more accurately reflected the generated voltage data. By creating
+this model and comparing it to the validation data and previous models, we saw a
+best fit percentage of 90.18\%. The last thing the example showed was how to
+merge the two SISO models we created earlier.
+
+\todo[inline]{Place MATLAB figures for this example here. }
 
 
 \subsection{Example 2: Selecting Model Structures for Multivariable Systems}
 \label{sec:sysID-Example2}
-This example, ~\cite{Matlab2}, discusses solutions for modeling both MISO and MIMO models using Mathworks' Matlab System Identification Toolbox. As the article discusses, MISO system models are easier to develop because all model structures used by the toolbox support models with a single output and multiple inputs. Therefore, the process for developing a model for a MISO system is importing the data as an iddata object, removing the mean from the data, and estimating the solution using any model structure available in the toolbox. The command line can be used by using the function associated with the model structure name and then using the compare function to get the best fit percentage. For MIMO systems, there are not model structures built into the System Identification Toolbox and they must be imported instead. Otherwise the process is very similar to that of a MISO system. For a MIMO system, using the compare function can be crucial. The compare function will tell which output channel is the most difficult to develop a model for, if it is possible at all. With this information, the output channel that is hardest to model should first be modeled individually because there will be less freedom in what model structures are available. The other channels should be able to closely relate to the model for the output channel you selected.
+This example~\cite{Matlab2}, discusses solutions for modeling both MISO and MIMO models using Mathworks' Matlab System Identification Toolbox. As the article discusses, MISO system models are easier to develop because all model structures used by the toolbox support models with a single output and multiple inputs. Therefore, the process for developing a model for a MISO system is importing the data as an iddata object, removing the mean from the data, and estimating the solution using any model structure available in the toolbox. The command line can be used by using the function associated with the model structure name and then using the compare function to get the best fit percentage. For MIMO systems, there are not model structures built into the System Identification Toolbox and they must be imported instead. Otherwise the process is very similar to that of a MISO system. For a MIMO system, using the compare function can be crucial. The compare function will tell which output channel is the most difficult to develop a model for, if it is possible at all. With this information, the output channel that is hardest to model should first be modeled individually because there will be less freedom in what model structures are available. The other channels should be able to closely relate to the model for the output channel you selected.
 
-
+\todo[inline]{Place MATLAB figures for this example here. }
 \subsection{Example 3: Identify Linear Models Using the Command Line}
 \label{sec:sysID-Example3}
-This example in~\cite{example3} shows how to create models for MISO systems using the command line. Before starting the model estimation process, the equilibrium values of the inputs and outputs had to be taken out. The data from each experiment also had to be separated into different iddata objects. The example showed how to estimate and compare non-parametric impulse response, transfer function, ARMA, state-space, and Box-Jenkins models with the measured experimental data. The state-space model with the five-step response prediction was the most accurate, with a best fit percentage of 85.83\%. 
+This example in~\cite{example3} shows how to create models for MISO systems
+using the command line. Before starting the model estimation process, the
+equilibrium values of the inputs and outputs had to be taken out. The data from
+each experiment also had to be separated into different iddata objects. The
+example showed how to estimate and compare non-parametric impulse response,
+transfer function, ARMA, state-space, and Box-Jenkins models with the measured
+experimental data. The state-space model with the five-step response prediction
+was the most accurate, with a best fit percentage of 85.83\%.
 
+\todo[inline]{Place MATLAB figures for this example here. }
 
 \section{System Requirements}
 The vehicle plant model will fulfill the requirements listed below:
