@@ -213,7 +213,6 @@ merge the two SISO models we created earlier.
 
 \todo[inline]{Place MATLAB figures for this example here. }
 
-
 \subsection{Example 2: Selecting Model Structures for Multivariable Systems}
 \label{sec:sysID-Example2}
 This example~\cite{Matlab2}, discusses solutions for modeling both MISO and MIMO models using Mathworks' Matlab System Identification Toolbox. As the article discusses, MISO system models are easier to develop because all model structures used by the toolbox support models with a single output and multiple inputs. Therefore, the process for developing a model for a MISO system is importing the data as an iddata object, removing the mean from the data, and estimating the solution using any model structure available in the toolbox. The command line can be used by using the function associated with the model structure name and then using the compare function to get the best fit percentage. For MIMO systems, there are not model structures built into the System Identification Toolbox and they must be imported instead. Otherwise the process is very similar to that of a MISO system. For a MIMO system, using the compare function can be crucial. The compare function will tell which output channel is the most difficult to develop a model for, if it is possible at all. With this information, the output channel that is hardest to model should first be modeled individually because there will be less freedom in what model structures are available. The other channels should be able to closely relate to the model for the output channel you selected.
@@ -229,8 +228,14 @@ example showed how to estimate and compare non-parametric impulse response,
 transfer function, ARMA, state-space, and Box-Jenkins models with the measured
 experimental data. The state-space model with the five-step response prediction
 was the most accurate, with a best fit percentage of 85.83\%.
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/img/commandLineIO}
+    \caption{Inputs and outputs of the given system}
+    \label{fig:exIO}
+\end{figure}
 
-\todo[inline]{Place MATLAB figures for this example here. }
 
 \section{System Requirements}
 The vehicle plant model will fulfill the requirements listed below:
