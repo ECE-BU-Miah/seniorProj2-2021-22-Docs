@@ -135,10 +135,10 @@
          y="0"><tspan
            x="198.08215"
            y="205.68328"
-           id="tspan57289">Speed </tspan><tspan
-           x="200.29582"
+           id="tspan26207">Speed </tspan><tspan
+           x="168.0915"
            y="236.73528"
-           id="tspan57291">Model</tspan></text>
+           id="tspan26209">Subsystem</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:47.7845;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
@@ -148,10 +148,10 @@
          transform="matrix(1.0384036,0,0,0.9630167,-5.0377104,0)"><tspan
            x="-15.80829"
            y="69.433151"
-           id="tspan57293">Brake Pedal </tspan><tspan
+           id="tspan26211">Brake Pedal </tspan><tspan
            x="-15.80829"
            y="76.593552"
-           id="tspan57295">Position</tspan></text>
+           id="tspan26213">Position</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8)"
          d="M -6.2146709,59.057548 H 34.716727"
@@ -167,10 +167,10 @@
          transform="matrix(1.0384036,0,0,0.9630167,-6.6686348,0)"><tspan
            x="-13.99947"
            y="87.506569"
-           id="tspan57297">Shifter Actual </tspan><tspan
+           id="tspan26215">Shifter Actual </tspan><tspan
            x="-13.99947"
            y="94.666969"
-           id="tspan57299">Gear</tspan></text>
+           id="tspan26217">Gear</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-2)"
          d="M -6.1442262,76.891882 H 34.787172"
@@ -197,18 +197,6 @@
          inkscape:connector-curvature="0" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:12.275px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.306874"
-         x="25.714115"
-         y="17.411114"
-         id="text118702"
-         transform="scale(1.0260124,0.97464709)"><tspan
-           sodipodi:role="line"
-           id="tspan118700"
-           style="stroke-width:0.306874"
-           x="25.714115"
-           y="17.411114">Speed Model</tspan></text>
-      <text
-         xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:5.72832px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:65.7328;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.213261"
          x="-30.103552"
          y="51.394993"
@@ -216,10 +204,10 @@
          transform="matrix(1.0384036,0,0,0.9630167,10.31181,-1.1963768)"><tspan
            x="-30.103552"
            y="51.394993"
-           id="tspan57301">Acceleration Pedal </tspan><tspan
+           id="tspan26219">Acceleration Pedal </tspan><tspan
            x="-30.103552"
            y="58.555393"
-           id="tspan57303">Position</tspan></text>
+           id="tspan26221">Position</tspan></text>
       <path
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.307358;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker97420-8-8)"
          d="M -6.1442264,41.257169 H 34.787172"
