@@ -96,7 +96,7 @@ or transports of their products even if there is a shortage of drivers. In
 addition, autonomous vehicles have the ability to make roads safer for drivers
 and pedestrians alike. To develop a reliable and safe transportation system for
 modern world, a large body of research in the field of autonomous vehicles is
-being conducted in recent decades \cite{Liu2017} \cite{Prasad2020}.
+being conducted in recent decades [][]\todo[inline]{Add some references}.
 Therefore, it is apparent that researchers of the autonomous vehicle community
 have been focusing on analysis, design, and development of different subsystems
 of self-driving/autonomous vehicles. Furthermore, modeling vehicle subsystems is
@@ -110,15 +110,16 @@ to be managed in the era of modern transportation systems in general.
 \begin{enumerate}
 \item  Steering,
   
+\item steering,
+  
 \item acceleration,
   
 \item brake,
   
-\item shift,
-
-\item speed, and 
+\item shift, and 
   
-\item speed control (cruise) subsystems.
+\item speed and speed control
+  (cruise) subsystems.
 \end{enumerate}
 %
 These subsystems are to be modeled to get an accurate representation of how
@@ -127,11 +128,10 @@ the other subsystems. There are already controllers in place for the Lexus
 vehicle platform, but their reliability is lower than expected due to non-linear
 behaviors of the torque voltages required to control each subsystem. The scope
 of this project includes developing mathematical models for each subsystem so
-AutonomouStuff can implement control systems that improve the reliability of the
-autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a best fit percentage between 85 to 95 percent. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
-Once there is confidence in each model, AutonomouStuff can use these models on their HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
-There are two operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous. Models for each subsystem must be created
-for both manual-drive mode and by-wire, or autonomous, mode.
+AutonomouStuff can implement control systems that improve the \comment{reliability}{Define reliability} of the
+autonomous vehicle platform. These models will be used by AutonomouStuff for
+their Hardware-in-the-Loop (HIL) testing.  There are to operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous. Models for each subsystem must be created
+for both manual drive mode and by-wire, or autonomous, mode.
 \autoref{fig:steerSystem} depicts how the by-wire mode controls the vehicle. Each
 subsystem, like the steering system in this example, sends torque voltages to a
 motor that will control the subsystem. In \autoref{fig:steerSystem}, the motor would
