@@ -266,6 +266,7 @@ The vehicle plant model will fulfill the requirements listed below:
 The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems as shown in \autoref{fig:subFunctionalBlock}. Each of the six subsystems can be described as a multiple input system because there are two torque voltage signals used to describe the behavior of each vehicle subsystem. Some of the systems are multiple output and some are single output as depicted in \autoref{fig:subFunctionalBlock}.
 
  \subsection{Steeering Subsystem}
+In addition to the block diagram shown in \autoref{fig:steeringmodelarchitecture}, $\theta_r{}_e{}_f$ ref represents the desired steering wheel angle. This desired angle is entered by the user. $\theta$, the actual steering wheel angle, is subtracted from the desired steering wheel angle to find the error between the two positions. This error value is sent to the steering subsystem’s controller. Using this information, the controller generates torque voltages A and B, which are sent to the steering subsystem. New torque voltages are then generated and the actual steering wheel angle is updated. 
 
  \begin{figure}[h]
     \centering
@@ -284,6 +285,7 @@ The overall system architecture of this project consists of six subsystems which
 \end{figure}
   
   \subsection{Brake Subsystem}
+  The brake subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
  \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
@@ -293,6 +295,7 @@ The overall system architecture of this project consists of six subsystems which
 \end{figure}
  
   \subsection{Acceleration Subsystem}
+  The acceleration subsystem is a multiple-input multiple-output (MIMO) system. Acceleration pedal voltages are sent to the subsystem. A new acceleration pedal position value is generated to better match the real-time pedal position. 
  \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
@@ -302,6 +305,7 @@ The overall system architecture of this project consists of six subsystems which
 \end{figure}
  
   \subsection{Shift Subsystem}
+ This subsystem can be classified as a single-input single-output system. The subsystem takes the desired shifter gear value from the user. Within the subsystem, the actual shifter gear changes to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem. 
  \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
@@ -320,6 +324,7 @@ The overall system architecture of this project consists of six subsystems which
 \end{figure}
  
   \subsection{Speed Control Subsystem}
+  The speed control subsystem is a straightforward single-input single-output system. The desired vehicle speed is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the new vehicle speed. This value is then sent out to the rest of the vehicle system. 
  \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
