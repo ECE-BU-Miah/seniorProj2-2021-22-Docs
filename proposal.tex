@@ -211,7 +211,13 @@ this model and comparing it to the validation data and previous models, we saw a
 best fit percentage of 90.18\%. The last thing the example showed was how to
 merge the two SISO models we created earlier.
 
-\todo[inline]{Place MATLAB figures for this example here. }
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/img/mimoExGrady}
+    \caption{Comparison of the state space model and merged SISO models with the validation data}
+    \label{fig:exMIMO}
+\end{figure}
 
 \subsection{Example 2: Selecting Model Structures for Multivariable Systems}
 \label{sec:sysID-Example2}
@@ -259,49 +265,112 @@ The vehicle plant model will fulfill the requirements listed below:
 \section{System Architecture}
 The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems as shown in \autoref{fig:subFunctionalBlock}. Each of the six subsystems can be described as a multiple input system because there are two torque voltage signals used to describe the behavior of each vehicle subsystem. Some of the systems are multiple output and some are single output as depicted in \autoref{fig:subFunctionalBlock}.
 
-\begin{figure}[htb]
-    \centering 
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering 
-  \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
-  \caption{}
-  \label{fig:steeringmodelarchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering
-  \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
-  \caption{}
-  \label{fig:brakeModelArchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\textwidth}
-  \centering 
-  \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
-  \caption{}
-  \label{fig:accelerationModelArchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering 
-  \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
-  \caption{}
-  \label{fig:shiftModelArchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering
-  \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
-  \caption{}
-  \label{fig:speedControlModelArchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering
-  \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
-  \caption{}
-  \label{fig:speedModelArchitecture}
-\end{subfigure}
-\caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
-\label{fig:subFunctionalBlock}
+ \subsection{Steeering Subsystem}
+
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
+    \caption{Steering subsystem block diagram}
+    \label{fig:steeringmodelarchitecture}
 \end{figure}
+
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
+    \caption{Steering block diagram}
+    \label{fig:steeringModelBlockDiagram}
+\end{figure}
+  
+  \subsection{Brake Subsystem}
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{Brake subsystem block diagram}
+    \label{fig:brakeModelArchitecture}
+\end{figure}
+ 
+  \subsection{Acceleration Subsystem}
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
+    \caption{Acceleration subsystem block diagram}
+    \label{fig:accelerationModelArchitecture}
+\end{figure}
+ 
+  \subsection{Shift Subsystem}
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
+    \caption{Shift subsystem block diagram}
+    \label{fig:shiftModelArchitecture}
+\end{figure}
+ 
+  \subsection{Speed Subsystem}
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
+    \caption{Speed subsystem block diagram}
+    \label{fig:speedModelArchitecture}
+\end{figure}
+ 
+  \subsection{Speed Control Subsystem}
+ \begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering, margin=3cm}
+    \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
+    \caption{Speed Control subsystem block diagram}
+    \label{fig:speedControlModelArchitecture}
+\end{figure}
+
+%\begin{figure}[htb]
+%    \centering 
+%\begin{subfigure}[b]{0.48\linewidth}
+%  \centering 
+%  \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
+%  \caption{}
+%  \label{fig:steeringmodelarchitecture}
+%\end{subfigure}
+%\begin{subfigure}[b]{0.48\linewidth}
+%  \centering
+%  \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+%  \caption{}
+%  \label{fig:brakeModelArchitecture}
+%\end{subfigure}
+%\\
+%\begin{subfigure}[b]{0.48\textwidth}
+%  \centering 
+%  \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
+%  \caption{}
+%  \label{fig:accelerationModelArchitecture}
+%\end{subfigure}
+%\begin{subfigure}[b]{0.48\linewidth}
+%  \centering 
+%  \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
+%  \caption{}
+%  \label{fig:shiftModelArchitecture}
+%\end{subfigure}
+%\\
+%\begin{subfigure}[b]{0.48\linewidth}
+%  \centering
+%  \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
+%  \caption{}
+%  \label{fig:speedControlModelArchitecture}
+%\end{subfigure}
+%\begin{subfigure}[b]{0.48\linewidth}
+%  \centering
+%  \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
+%  \caption{}
+%  \label{fig:speedModelArchitecture}
+%\end{subfigure}
+%\caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
+%\label{fig:subFunctionalBlock}
+%\end{figure}
 
 
  \subsection{Specifications}
