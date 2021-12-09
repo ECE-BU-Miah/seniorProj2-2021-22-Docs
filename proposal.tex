@@ -282,7 +282,7 @@ The vehicle plant model will fulfill the requirements listed below:
 \section{System Architecture}
 The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems as shown in \autoref{fig:subFunctionalBlock}. Each of the six subsystems can be described as a multiple input system because there are two torque voltage signals used to describe the behavior of each vehicle subsystem. Some of the systems are multiple output and some are single output as depicted in \autoref{fig:subFunctionalBlock}.
 
- \subsection{Steeering Subsystem}
+ \subsection{Steering Subsystem}
 In addition to the block diagram shown in \autoref{fig:steeringmodelarchitecture}, $\theta_r{}_e{}_f$ ref represents the desired steering wheel angle. This desired angle is entered by the user. $\theta$, the actual steering wheel angle, is subtracted from the desired steering wheel angle to find the error between the two positions. This error value is sent to the steering subsystem’s controller. Using this information, the controller generates torque voltages A and B, which are sent to the steering subsystem. New torque voltages are then generated and the actual steering wheel angle is updated. 
 
  \begin{figure}[h]
