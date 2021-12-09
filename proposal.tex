@@ -312,7 +312,11 @@ In addition to the block diagram shown in \autoref{fig:steeringmodelarchitecture
 \end{figure}
  
   \subsection{Acceleration Subsystem}
-  The acceleration subsystem is a multiple-input multiple-output (MIMO) system. Acceleration pedal voltages are sent to the subsystem. A new acceleration pedal position value is generated to better match the real-time pedal position. 
+  The acceleration subsystem is a multiple-input multiple-output system. 
+Acceleration pedal voltages are sent to the subsystem. 
+A new acceleration pedal position value is generated to better match 
+the real-time pedal position. This is then the output 
+of the acceleration subsystem.
  \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
@@ -332,6 +336,7 @@ In addition to the block diagram shown in \autoref{fig:steeringmodelarchitecture
 \end{figure}
  
   \subsection{Speed Subsystem}
+This speed subsystem would fall under the multiple-input single-output system. There are four inputs, the position of the acceleration pedal and the brake pedal, along with the shifter actual gear. Taking these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is the output of the system.  
  \begin{figure}[h]
     \centering
     \captionsetup{justification=centering, margin=3cm}
