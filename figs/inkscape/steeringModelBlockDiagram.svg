@@ -27,11 +27,11 @@
      inkscape:snap-grids="true"
      inkscape:zoom="1.9704154"
      inkscape:cx="396.10937"
-     inkscape:cy="486.6994"
-     inkscape:window-width="2880"
-     inkscape:window-height="1526"
-     inkscape:window-x="2869"
-     inkscape:window-y="-11"
+     inkscape:cy="407.27453"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="g1256">
     <inkscape:grid
@@ -495,10 +495,10 @@
                      y="0"><tspan
                        x="180.50091"
                        y="207.34837"
-                       id="tspan2847">Steering </tspan><tspan
-                       x="197.6103"
+                       id="tspan38008">Steering </tspan><tspan
+                       x="163.03995"
                        y="240.68174"
-                       id="tspan2849">Model </tspan></text>
+                       id="tspan38010">Subsystem </tspan></text>
                 </g>
                 <g
                    id="g27969-2"
@@ -520,7 +520,7 @@
                      y="0"><tspan
                        x="171.02173"
                        y="207.34837"
-                       id="tspan2851">Controller</tspan></text>
+                       id="tspan38012">Controller</tspan></text>
                   <ellipse
                      style="fill:#e6e6e6;stroke-width:0.555831"
                      id="path7833"
@@ -538,7 +538,7 @@
                    y="0"><tspan
                      x="300"
                      y="432.57406"
-                     id="tspan2853">A</tspan></text>
+                     id="tspan38014">A</tspan></text>
                 <text
                    xml:space="preserve"
                    transform="matrix(0.22233699,0,0,0.23405448,42.9282,-40.41368)"
@@ -548,7 +548,7 @@
                    y="0"><tspan
                      x="300"
                      y="432.57406"
-                     id="tspan2855">A</tspan></text>
+                     id="tspan38016">A</tspan></text>
                 <text
                    xml:space="preserve"
                    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.92258px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183871"
@@ -632,20 +632,6 @@
                    inkscape:connector-curvature="0" />
                 <text
                    xml:space="preserve"
-                   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-                   x="-10.38956"
-                   y="34.465233"
-                   id="text110850"><tspan
-                     sodipodi:role="line"
-                     id="tspan9861"
-                     x="-10.38956"
-                     y="34.465233">Steering Model</tspan><tspan
-                     sodipodi:role="line"
-                     id="tspan9863"
-                     x="-10.38956"
-                     y="47.694359">Block Diagram</tspan></text>
-                <text
-                   xml:space="preserve"
                    transform="matrix(0.22233699,0,0,0.23405448,43.314644,-32.552491)"
                    id="text152"
                    style="font-style:normal;font-weight:normal;font-size:24.7433px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect154);fill:#000000;fill-opacity:1;stroke:none"
@@ -653,7 +639,7 @@
                    y="0"><tspan
                      x="300"
                      y="432.57406"
-                     id="tspan2857">B</tspan></text>
+                     id="tspan38018">B</tspan></text>
                 <text
                    xml:space="preserve"
                    transform="matrix(0.22233699,0,0,0.23405448,-17.090568,-24.649954)"
@@ -663,7 +649,7 @@
                    y="0"><tspan
                      x="300"
                      y="432.57406"
-                     id="tspan2859">B</tspan></text>
+                     id="tspan38020">B</tspan></text>
                 <path
                    style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
                    d="m 59.332507,64.579862 h 1.322916"
