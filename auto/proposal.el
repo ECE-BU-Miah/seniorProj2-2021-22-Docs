@@ -4,7 +4,7 @@
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("article" "letterpaper" "12pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("caption" "width=11cm" "font=footnotesize" "labelfont=bf" "format=default" "justification=centerlast") ("algorithm2e" "ruled" "vlined" "linesnumbered")))
+                     '(("caption" "width=11cm" "font=footnotesize" "labelfont=bf" "format=default" "justification=centerlast") ("subcaption" "list=true" "labelformat=simple") ("todonotes" "colorinlistoftodos") ("algorithm2e" "ruled" "vlined" "linesnumbered")))
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
@@ -22,12 +22,13 @@
     "bm"
     "graphicx"
     "rotating"
-    "subfigure"
     "caption"
+    "subcaption"
     "pgfgantt"
     "booktabs"
     "array"
     "hyperref"
+    "todonotes"
     "soul"
     "easyReview"
     "setspace"
@@ -35,6 +36,38 @@
     "algorithm2e"
     "tikz"
     "siunitx")
+   (LaTeX-add-labels
+    "fig:fleet"
+    "fig:steerSystem"
+    "fig:AstuffFleetSteeringSetup"
+    "sec:sysID-Example1"
+    "sec:sysID-Example2"
+    "sec:sysID-Example3"
+    "fig:nonlinGraph"
+    "fig:steeringmodelarchitecture"
+    "fig:brakeModelArchitecture"
+    "fig:accelerationModelArchitecture"
+    "fig:shiftModelArchitecture"
+    "fig:speedControlModelArchitecture"
+    "fig:speedModelArchitecture"
+    "fig:subFunctionalBlock"
+    "sec:model"
+    "sec:setup"
+    "fig:vehicleSetup"
+    "sec:simresults"
+    "byWireSteerModel"
+    "manualSteerModel"
+    "tab:byWireSteerCoeffA"
+    "tab:byWireSteerCoeffB"
+    "tab:manualSteerCoeffA"
+    "tab:manualSteerCoeffB"
+    "byWireAccelModel"
+    "manualAccelModel"
+    "tab:manualAccelCoeffA"
+    "tab:manualAccelCoeffB"
+    "sec:timeline"
+    "fig:gantt1"
+    "fig:gantt2")
    (LaTeX-add-environments
     '("remark" LaTeX-env-args ["argument"] 1)
     '("prelab" LaTeX-env-args ["argument"] 1)

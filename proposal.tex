@@ -252,8 +252,8 @@ The vehicle plant model will fulfill the requirements listed below:
 
 
 \section{System Architecture}
-The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems as shown in \autoref{fig:subFunctionalBlock}. Each of the six subsystems can be described as a multiple input system because there are two torque voltage signals used to describe the behavior of each vehicle subsystem. Some of the systems are multiple output and some are single output as depicted in \autoref{fig:subFunctionalBlock}.
-
+The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems as shown in \autoref{fig:subFunctionalBlock}. Each of the six subsystems can be described as a multiple input system because there are two torque voltage signals used to describe the behavior of each vehicle subsystem. Some of the systems are multiple output and some are single output as depicted in \autoref{fig:subFunctionalBlock}. %
+%
 \begin{figure}[htb]
     \centering 
 \begin{subfigure}[b]{0.48\linewidth}
@@ -297,7 +297,7 @@ The overall system architecture of this project consists of six subsystems which
 \caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
 \label{fig:subFunctionalBlock}
 \end{figure}
-
+%
 
  \subsection{Specifications}
  Based on the system requirements listed above, the plant model will meet the following specifications:
@@ -307,8 +307,19 @@ The overall system architecture of this project consists of six subsystems which
     \item Each vehicle subsystem will be modeled separately
  \end{itemize}
 
-\section{Preliminary Work}
-To start this project, we first read documentation outlining the uses of MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials on how to model systems from data using System Identification and then find the most accurate model. We specifically tried to find examples with Multiple-Input Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since most of the vehicle subsystems we will model fall into one of these categories. A literature review was also conducted to see how systems with small non-linearities like our steering subsystem were modeled using System Identification. On October 7th we traveled to AutonomouStuff in order to collect data from the steering, acceleration, and braking subsystems in an autonomous vehicle. The data we collected will be used to generate and then verify our models. 
+\section{Modeling Vehicle Subsystems}
+To start this project, we first read documentation outlining the uses of
+MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials
+on how to model systems from data using System Identification and then find the
+most accurate model. We specifically tried to find examples with Multiple-Input
+Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since
+most of the vehicle subsystems we will model fall into one of these categories.
+A literature review was also conducted to see how systems with small
+non-linearities like our steering subsystem were modeled using System
+Identification. On October 7th we traveled to AutonomouStuff in order to collect
+data from the steering, acceleration, and braking subsystems in an autonomous
+vehicle. The data we collected will be used to generate and then verify our
+models.
 \begin{figure}[h]
 	\centering
 	\captionbox{AutonomouStuff Lexus RX450H Vehicle}
@@ -347,8 +358,14 @@ Each subsystem that we are modeling is set up in a similar manner. In manual mod
 \end{figure}
 
 \section{Validation and Testing} \label{sec:simresults}
-\subsection{Steering System}
-In \autoref{byWireSteerModel}, the output steering angle is plotted versus time when the vehicle is in by-wire mode. The figure shows the output steering angle from some data collected to depict the steering system behavior plotted with the behavior of the estimated model. The best fit percentage for this model is 85.54\%. Likewise, \autoref{manualSteerModel} depicts the output steering angle plotted versus time when the vehicle is in manual mode. The best fit percentage for this model is 90.27\%. 
+\subsection{Steering Subsystem}
+In \autoref{byWireSteerModel}, the output steering angle is plotted versus time
+when the vehicle is in by-wire mode. The figure shows the output steering angle
+from some data collected to depict the steering system behavior plotted with the
+behavior of the estimated model. The best fit percentage for this model is
+85.54\%. Likewise, \autoref{manualSteerModel} depicts the output steering angle
+plotted versus time when the vehicle is in manual mode. The best fit percentage
+for this model is 90.27\%.
 
 
   % %
