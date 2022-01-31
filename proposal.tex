@@ -125,17 +125,17 @@ These subsystems are to be modeled to get an accurate representation of how
 the vehicle should be controlled. Within the scope of this project and to expedite the modeling process, a commercially available modeling tool, called system identification toolbox, is used to model six subsystems for a Lexus vehicle platform, which is an experimental autonomous vehicle platform that belong to AutonomouStuff Solutions~\footnote{\url{https://autonomoustuff.com/}}. The first subsystem we will model is the steering model, and then we will move onto
 the other subsystems. There are already controllers in place for the Lexus
 vehicle platform, but their reliability is lower than expected due to non-linear
-behaviors of the torque voltages required to control each subsystem. The scope
+behaviors of the torque voltages required to control each subsystem. \hl{The scope
 of this project includes developing mathematical models for each subsystem so
 AutonomouStuff can implement control systems that improve the reliability of the
-autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a best fit percentage between 85 to 95 percent. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
+autonomous vehicle platform.} These models will be considered reliable if they can track actual vehicle subsystem behaviors with a best fit percentage between 85 to 95 percent. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
 Once there is confidence in each model, AutonomouStuff can use these models on their HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
 There are two operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous. Models for each subsystem must be created
 for both manual-drive mode and by-wire, or autonomous, mode.
 \autoref{fig:steerSystem} depicts how the by-wire mode controls the vehicle. Each
 subsystem, like the steering system in this example, sends torque voltages to a
 motor that will control the subsystem. In \autoref{fig:steerSystem}, the motor would
-turn the pinion arms which would change the steering angle of the vehicle. This
+turn the pinion arms\todo{Annotate in figure} which would change the steering angle of the vehicle. This
 principle is applied to all other subsystems.
 
 \vspace*{12pt}
@@ -325,9 +325,7 @@ The overall system architecture of this project consists of six subsystems which
 \caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
 \label{fig:subFunctionalBlock}
 \end{figure}
-<<<<<<< variant A
 %
->>>>>>> variant B
 
  \begin{figure}[h]
     \centering
@@ -435,7 +433,6 @@ This speed subsystem would fall under the multiple-input single-output system. T
 %\label{fig:subFunctionalBlock}
 %\end{figure}
 
-======= end
 
  \subsection{Specifications}
  Based on the system requirements listed above, the plant model will meet the following specifications:
@@ -445,7 +442,6 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \item Each vehicle subsystem will be modeled separately
  \end{itemize}
 
-<<<<<<< variant A
 \section{Modeling Vehicle Subsystems}
 To start this project, we first read documentation outlining the uses of
 MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials
@@ -459,12 +455,10 @@ Identification. On October 7th we traveled to AutonomouStuff in order to collect
 data from the steering, acceleration, and braking subsystems in an autonomous
 vehicle. The data we collected will be used to generate and then verify our
 models.
->>>>>>> variant B
 \section{Main Project Work (Modeling Vehicle Subsystems)}
 To start this project, we first read documentation outlining the uses of MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials on how to model systems from data using System Identification and then find the most accurate model. We specifically tried to find examples with Multiple-Input Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since most of the vehicle subsystems we will model fall into one of these categories. A literature review was also conducted to see how systems with small non-linearities like our steering subsystem were modeled using System Identification. On October 7th we traveled to AutonomouStuff in order to collect data from the steering, acceleration, and braking subsystems in an autonomous vehicle. The data we collected will be used to generate and then verify our models. We collected data on the Lexus RX450H vehicle platform shown in \autoref{fig:exusvehicle}. 
 
 
-======= end
 \begin{figure}[h]
 	\centering
 	\captionbox{AutonomouStuff Lexus RX450H Vehicle}
@@ -877,13 +871,14 @@ The first milestone on our list will be to model the steering system. This will 
 We plan on demonstrating our project for AutonomouStuff along with including a full report on how we modeled the vehicle subsystems. As for the final report and presentation, we plan on working on it as soon as possible next semester. This presentation will also be shown to the Industrial Advisory Board. 
 
 
-% The Gantt charts in Figures \ref{fig:gantt1} and \ref{fig:gantt2} show our planned schedule to complete this project. In these charts, there are four sections in each month represented by the dotted grid. This is to approximate a weekly schedule. Our first milestone is to complete the simulation of the system in MATLAB and CoppeliaSim. This includes simulating a remote as well as the robotic cart. The simulation of the RSSI detection will be handled in Matlab based on the positions of the cart and remote. We will add noise to the simulated RSSI in order to simulate the multipath effect. The expected functionality is that the cart will follow the remote.
 
-% The second milestone is to complete the assembly of both the cart and the remote. The cart assembly involves replacing the existing motors with the purchased motors, as well as mounting the stepper motor, reflector, and XBee on top of the robot. The assembly of the remote involves constructing the voltage regulator circuit.
-
-% The third milestone is to integrate the subsystems into one system. This will involve testing the angle and distance estimation from the cart to the remote. It will also include testing the following capabilities of the overall system. We expect that this will require a large amount of debugging and tuning. Therefore, we have allotted several weeks for this purpose.
-
-% The fourth and final milestone is to complete the final report and presentation. This involves documenting our findings in a report and presenting our work. At this point, the project will be complete.
+\begin{description}
+\item[Collect shift, speed control, and speed data] $\ldots$
+  
+\item[Model shift system] $\ldots$
+  
+\item[Model speed control system] $\ldots$
+\end{description}
 
 \section{Concluding Remarks}
 Autonomous vehicles have a numerous amount of useful applications in today's society. From being used for delivering packages to allowing drivers to rest while traveling, as the technology for autonomous vehicles is enhanced, they will become an enticing product that many consumers will purchase and use. One of the biggest concerns with autonomous vehicles today is the risk associated with public safety. One solution to reducing the safety risk is ensuring that accurate controllers are developed to reliably control each subsystem involved with the movement of the autonomous vehicle. Due to non-linear behaviors, there is no simple solution for developing reliable controllers. This project will focus on deriving models of some main subsystems so that these non-linear behaviors are removed and smooth controllers can be developed.
