@@ -125,10 +125,10 @@ These subsystems are to be modeled to get an accurate representation of how
 the vehicle should be controlled. Within the scope of this project and to expedite the modeling process, a commercially available modeling tool, called system identification toolbox, is used to model six subsystems for a Lexus vehicle platform, which is an experimental autonomous vehicle platform that belong to AutonomouStuff Solutions~\footnote{\url{https://autonomoustuff.com/}}. The first subsystem we will model is the steering model, and then we will move onto
 the other subsystems. There are already controllers in place for the Lexus
 vehicle platform, but their reliability is lower than expected due to non-linear
-behaviors of the torque voltages required to control each subsystem. \hl{The scope
+behaviors of the torque voltages required to control each subsystem. The scope
 of this project includes developing mathematical models for each subsystem so
 AutonomouStuff can implement control systems that improve the reliability of the
-autonomous vehicle platform.} These models will be considered reliable if they can track actual vehicle subsystem behaviors with a best fit percentage between 85 to 95 percent. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
+autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a best fit percentage between 85 to 95 percent. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
 Once there is confidence in each model, AutonomouStuff can use these models on their HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
 There are two operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous. Models for each subsystem must be created
 for both manual-drive mode and by-wire, or autonomous, mode.
