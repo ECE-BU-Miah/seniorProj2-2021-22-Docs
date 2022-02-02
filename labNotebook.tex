@@ -496,7 +496,7 @@ Dr. Miah, Nick, and I met to discuss the upcoming semester. Dr. Miah stressed th
 \experiment{Lab Time}
 % Place your initial below
 HG\\
-Nick and I met in the senior lab and worked on writing paragraphs for the proposal document about each deliverable for this semester. We compared models for the steering and acceleration subsystems to make sure that we were on the same page. I showed him what I had so far for the brake subsystem.  
+Nick and I met in the senior lab and worked on writing paragraphs for the proposal document about each deliverable for this semester. We compared models for the steering and acceleration subsystems to make sure that we were on the same page. I showed him what I had so far for the brake subsystem. I will work on modifying the code I have for the brake subsystem to better match the format he has been using for the steering and acceleration subsystems.  
 
 NN\\ 
 Hannah and I met in the senior lab so we could compare the steering, acceleration, and brake models that we had developed. I also worked on creating a script that simplified adding the data to the system identification tool box GUI and then I worked on refining the steering system model.
@@ -507,6 +507,22 @@ Hannah and I met in the senior lab so we could compare the steering, acceleratio
 %Place your initial below
 NN\\
 
+
+HG\\
+During the lab I kept working on the brake model. I had some questions for Nick about his formatting and he showed me how he was importing logs for the data. I realized that my assumptions of which brake logs were manual and which were by-wire was incorrect, so I went back through the logs and determined which were manual and which were by-wire. 
+
+\experiment{Meeting Minutes}
+HG\\
+Near the end of the lab time Dr. Miah, Erik, Nick, and I met to discuss our progress and what would be accomplished during the upcoming semester. Nick updated the group on the progress we had made so far. We currently have models created for the steering, acceleration, and brake subsystems created. We are close to starting testing and we also need to collect data in order to model the remaining subsystems. Nick asked Erik if we needed to find models using by-wire data since we are working to develop a new controller. Erik suggested that we should focus on using only manual data to create our models from now on. Dr. Miah mentioned that we will write a section in the report detailing why using the by-wire data doesn't make sense. Nick also asked about computing power considerations, since we do not want to come up with a model that needed more computational power than the system could provide. Erik said that the model will be put on a machine that can handle complex systems, so computational power isn't an issue. The thing to keep in mind with a complex model is that it is harder to fine tune lead and lag. After Nick asked about the desired accuracy threshold, Erik said that it should be within 0.1 radians. We decided that using the manual models, we will increase the number of poles and zeros and see how the model changes. We will also find the locations for the poles and zeros. It was said that this analysis should lead to accuracy within the accepted thresholds. Dr. Miah then asked Erik about HIL testing availability in February. Erik said that the earliest we could do this testing would be in late February, and mentioned that the models would have to be MATLAB readable. AutonomoStuff uses Simulink, so we will probably make our models into Simulink blocks. AutonomouStuff will provide the virtual environment and the inputs for testing, and Erik can give us a screenshot of where our models should go in Simulink that we can use for our report. We concluded that we would plan on conducting testing during the last week of February and that Erik would let us know what dates would work. We will also get back to Erik on what dates would work for us and adapt as necessary with a second visit in April or the end of March to ensure that the models are working. Our action items for this week are to work on the models and analyzing the transfer functions by adding poles and zeros along with creating a plan and time for subsystem data collection. We will also finish making changes to the proposal document and upload it to BitBucket. Dr. Miah is going to commit his changes to the document as well. 
+
+
+\labday{Wednesday, February 2, \currentYear}
+\experiment{Lab Time}
+% Place your initial below
+NN\\ 
+
+
+HG\\
 
 %--------------------------------------------------------------------------------------------
 
