@@ -492,7 +492,7 @@ To start this project, we first read documentation outlining the uses of MATLAB'
 \\
 %
 \\
-\noindent Using the data we collected for the steering, acceleration, and braking subsystems, we initially separated the data so we could analyze data for the by-wire mode and manual mode individually. This effort was made to identify if the models we developed could be used interchangeably regardless of what mode the autonomous vehicle subsystems are operating in. After analyzing the models we developed, we determined that these models are not interchangeable as there were differences in the model. When the vehicle subsystem is in by-wire mode, the controller AutonomouStuff developed is generating the torque voltages that are applied to each subsystem motor. Because of this, we decided the most accurate model of each subsystem would be developed using the data when the subsystems are in manual mode. For reference, the differences in the models created for by-wire and manual mode are depicted in \ref{sec:simresults} for the steering and acceleration subsystems. For all other models we develop, we will only use manual mode data and will not create models for by-wire mode.
+\noindent Using the data we collected for the steering, acceleration, and braking subsystems, we initially separated the data so we could analyze the by-wire and manual modes individually. This effort was made to identify if the models we developed could be used interchangeably regardless of what mode the autonomous vehicle subsystems were operating in. After analyzing the models we developed, we determined that they are not interchangeable as there were differences in the models. When the vehicle subsystem is in by-wire mode, the controller AutonomouStuff developed is generating the torque voltages that are applied to each subsystem motor. As a result, we decided the most accurate model of each subsystem would be developed using the data when the subsystems are in manual mode. For reference, the differences in the models created for by-wire and manual mode are depicted in \ref{sec:simresults} for the steering and acceleration subsystems. For all other models we develop, we will only use manual mode data and will not create models for by-wire mode.
 
 \begin{figure}
 	\centering
@@ -837,7 +837,7 @@ The potential schedule for our project in Spring 2022 is highlighted in the gant
      group progress label anchor = east,
      bar progress label font = \tiny,
      bar progress label anchor = east,
-     ]{1}{18}
+     ]{1}{19}
      %\gantttitle{2021}{18}\\
      \gantttitle{Jan}{2}
      \gantttitle{Feb}{5}
@@ -880,32 +880,32 @@ The first milestone on our list will be to model the steering system. This will 
 
 
 \begin{description}
-\item[Progress presentation] 
-We will create a presentation that outlines the work that we have completed up to this point as well as what we intend to complete for the remaining time of the project. We will be evaluated on our ability to demonstrate that we are making progress on the project and will be able to complete the goals that we set.  
+\item[Progress presentation]: 
+We will create a presentation that outlines the work that we have completed up to this point as well as what we intend to complete for the remaining time of the project. We will be evaluated on our ability to demonstrate that we are making progress on the project and on our ability to complete the goals that we set.  
 
-\item[Collect shift, speed control, and speed data] 
-Once we have satisfactorily modeled the Steering, Acceleration, and Brake systems, we will then travel to AutonomouStuff and collect the necessary data for the shift, speed control, and speed subsystems. We will make sure to collect a large amount of data in order to ensure that we will get accurate models. This process should only take a day. 
+\item[Collect shift, speed control, and speed data]: 
+Once we have satisfactorily modeled the steering, acceleration, and brake systems, we will then travel to AutonomouStuff and collect the necessary data for the shift, speed control, and speed subsystems. We will make sure to collect a large amount of data to work with. This process should only take a day. 
   
-\item[Model shift, speed control, and speed subsystems] 
+\item[Model shift, speed control, and speed subsystems]: 
 Once we have collected the necessary data from the Lexus vehicle, we will work on developing individual mathematical models for each subsystem. We will be using MATLAB’s System Identification Toolbox in order to try out different models and see which best represents each subsystem. These models will first be tested by us, and if they pass they will then be tested using AutonomouStuff’s HIL testbench. 
 
 
-\item[Test subsystems] 
+\item[Test subsystems]: 
 Before we do any HIL testing, we will first work on testing the models ourselves in order to ensure that they are accurate. We are still determining the best way to test these models, but this is an important step since we do not want to take inaccurate models to be tested using the HIL testbench. Using an inaccurate model would cause us to lose time that could have been spent coming up with a better one. 
 
-\item[Test subsystems with HIL] 
-Once we have modeled our subsystems, we will then take these models and test them using AutonomouStuff’s Hardware in the Loop testbench. This allows us to see how our models will perform in the real world. Once these models have been tested, they will either be changed or kept as is. 
+\item[Test subsystems with HIL]: 
+Once we have modeled our subsystems, we will then take these models and test them using AutonomouStuff’s HIL testbench. This allows us to see how our models will perform in the real world. Once these models have been tested, they will either be changed or kept as is. 
 
-\item[AutonomouStuff demonstration] 
+\item[AutonomouStuff demonstration]: 
 Around the time we test the subsystems using HIL, we will also demonstrate what we have worked on to representatives from AutonomouStuff. This is an important demonstration since AutonomouStuff has sponsored this senior project and is waiting to see if we have solved the problem of creating accurate mathematical models for their vehicle subsystems.
 
-\item[Final report] 
+\item[Final report]: 
 The final report will sum up all of our efforts and findings for this project. It will contain all of the information so that readers will be able to understand how we generated the models and how we collected the necessary data. We will make sure to detail the steps we took and especially how we dealt with the non-linearity considerations for the steering system.
 
-\item[Final presentation] 
-Similarly to the fall semester, we will give a complete presentation of the work we have done on this project and the resulting models we have come up with. This presentation will be conducted in front of a faculty panel, along with AutonomouStuff representatives and other interested parties. It will be the culmination of everything we have done over the course of the year. 
+\item[Final presentation]: 
+Similarly to the fall semester, we will give a complete presentation of the work we have done on this project and the resulting models we have come up with. This presentation will be conducted in front of a faculty panel, along with AutonomouStuff representatives and other interested parties. It will be the culmination of everything we have done over the course of our senior year. 
 
-\item[Presentation to IAB] 
+\item[Presentation to IAB]: 
 Near the end of the semester we will be presenting our work on this project to the Industrial Advisory Board, or IAB. This will allow the board to see some of the projects that the senior class has been working on this year. Since the IAB plays a large role in choosing senior projects, it will be important to show them the progress we have made on one of the projects they selected. 
 
 
