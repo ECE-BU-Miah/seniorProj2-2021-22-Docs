@@ -528,12 +528,25 @@ During the lab, I worked on making changes to the spring 2022 Gantt chart and re
 \labday{Monday, February 7, \currentYear}
 \experiment{Lab Time}
 % Place your initial below
-
+HG\\ 
+During the lab time I worked on analysis of the brake subsystem using different transfer functions. I removed the operatorInteraction output from my brakeLog model and removed the mean values from them as well, to keep it consistent with what Nick has been doing with the steering and accel models. Using the manual part of log 2 to create the model and the manual part of log 3 to validate it, I found that I got a best fit percentage of 97\%
+using a system that has 20 poles and 2 zeros. The second best system had a best fit percentage of 96.97\%
+and had 21 poles and 2 zeros. I started analyzing using brake data from log 1 as well. I split up the log 1 data in half, using the second half to create the system and the first half to validate it. I found that a transfer function with 20 poles and 2 zeros had a best fit percentage of 71.85\% 
+and the system with the best fit had two poles and one zero. The two poles and one zero transfer function gave a best fit percentage of 86.1\%
+. 
 
 
 \experiment{Meeting Minutes} 
 HG\\ 
-Near the end of lab Dr. Miah, Nick, Erik, and I met to go over our progress and what our next steps will be.  
+Near the end of lab Dr. Miah, Nick, Erik, and I met to go over our progress and what our next steps will be. I presented what I had found during brake system analysis. We discussed whether we needed to find the relationship between on/off and brake pressed, since that relationship is already known. I said that I would write down the transfer function that gives the best fit percentage. Once we make the transfer function block, Erik said that we will be able to put it in with the HIL bench. We will be using the model for testing and not the actual brake subsystem. A question about checking the stability of the system on the car was asked. Erik said that he wasn't sure if there was a metric for that, but that the biggest thing to look for is if there is a large tracking error. We decided that we will test the system stability using the step response in Simulink. We will do this with each subsystem. This will help us to determine whether our systems are stable before we do HIL testing. Nick asked about when we would be able to test our systems using HIL. Erik said that he is waiting from a response from the HIL engineer, and that Joe said we are okay on vehicle availability. He will get back to us on what the HIL engineer says. Nick mentioned that we are still doing analysis but once we are done we can create transfer function blocks in Simulink. Dr. Miah let Erik know that we will send the sim files to him about a week or two before we come in for testing to verify that they are compatible with the system. We will need to be able to just drag and drop the Simulink files into the HIL system. This should be done by the end of next week. Erik will work on getting a picture or diagram of how everything on the HIL testbench will look. This will help us to see the inputs and outputs our Simulink blocks will need to account for. Dr. Miah mentioned that we will put everything we have so far into the proposal document and will update it in BitBucket and GitHub by Wednesday. We will have to create a section about the brake system and we will need to update some block diagrams. Near the end of the meeting Erik mentioned that AutonomouStuff has never really done any modeling before, and this is the first time that they will have a model of the vehicle. By using the HIL bench and just writing code, it saves time and money that would have been spent on vehicle upkeep. Dr. Miah let Erik know that we will write about this in the proposal introduction and abstract. Our action items for this week will then be: 
+\begin{itemize}
+\item 1. Finish analysis of brake, accel, and steering subsystems
+\item 2. Update the proposal and upload it to GitHub and BitBucket
+\item 3. Create Simulink blocks
+\item 4. Test systems using step response
+\item 5. Send sim files to Erik
+\end{itemize}
+   
 
 
 %--------------------------------------------------------------------------------------------
