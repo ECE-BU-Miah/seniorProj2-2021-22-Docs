@@ -130,7 +130,7 @@ of this project includes developing mathematical models for each subsystem so
 AutonomouStuff can implement control systems that improve the reliability of the
 autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a best fit percentage between 85 to 95 percent. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
 Once there is confidence in each model, AutonomouStuff can use these models on their HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem. By developing models for these vehicle subsystems, this allows AutonomouStuff to save money and time that would normally be spent on vehicle maintenance. This is the first time that the company will have a model of one of their vehicles. 
-There are two operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous. Originally, models were created for the steering and acceleration subsystems in both manual and by-wire mode. However, as the project progressed, it was decided that only models in manual mode needed to be created. The controller handles most of the self-driving characteristics, and since the subsystem models will be used to develop new controllers, it doesn’t make sense to model the present controllers if they are going to change. 
+
 \autoref{fig:steerSystem} depicts how the by-wire mode controls the vehicle. Each
 subsystem, like the steering system in this example, sends torque voltages to a
 motor that will control the subsystem. In \autoref{fig:steerSystem}, the motor would
