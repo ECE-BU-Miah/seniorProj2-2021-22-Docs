@@ -557,12 +557,22 @@ Near the end of lab Dr. Miah, Nick, Erik, and I met to go over our progress and 
 NN\\
 During the lab time, I finished the script that would develop a model using each log of data as the estimation data and then compare that model with all the other logs as the validation data for a varying number of poles. After running this script, I could not find any model that fit our accuracy and error bound requirements. Dr. Miah advised me to start looking into using neural networks for developing the models.
 
+HG\\
+During lab I continued analysis of the brake model, trying to find the transfer function that would give the best fit. So far the model with 28 poles and 10 zeros gives a best fit within the acceptable range of accuracy for most of the log combinations, but not for all. So far I have been unable to find one that gives a best fit percentage that is within the acceptable range of accuracy for all of the log combinations. 
 
 \labday{Monday, February 14, \currentYear}
 \experiment{Lab Time}
 % Place your initial below
 NN\\
 During the lab time, I started researching into how to use MATLAB's deep learning toolboxes to develop the system models. Dr. Miah advised me to use the Neural Network Time Series app to develop the model. I worked through some examples online and then I started using the data we collected to develop a model of the steering system. We did not meet with Erik today as he had other commitments. He did tell us that we would be able to test our models on a HIL bench as early as late next week. We emailed him to let him know our availability on Friday in case the HIL bench was ready by then.
+
+HG\\
+During lab I started reading through the documentation Dr. Miah sent about the Deep Learning toolbox in MATLAB. I started looking at the error plots for the brake models. Nick emailed Erik about what the error bounds for the brake and acceleration models would be, but for now I just assumed a bound of 5\%.  
+
+\experiment{Meeting Minutes}
+
+HG\\
+Near the end of the lab time Nick, Dr. Miah, and I met to discuss some questions Nick and I had. Dr. Miah had Nick google nn to svg, then explained that training means that we are trying to find the optimal weights for each connection. We need to come up with an architecture and then go to tools that are already available. Once we have a system we should be able to input any data and still get an accurate output. We need to find the mean and variance of a data set in MATLAB, and then we can use the statistics toolbox. Once we do that we should try and see if the values for the different data sets are the same, but only by looking at some of the data (ex. torque voltages). Dr. Miah suggested that we start with the Neural Net Fitting and then the Neural Net Time Series toolbox. He mentioned that we should read through the documentation and write down the theory behind it along with writing down all of the steps. Dr. Miah will be able to give us feedback on this. He also mentioned that he converted the proposal into the final report format, and that from now on we should only be editing the report. Nick and I will have the acceleration and brake models reading for testing. We decided that we will go to AutonomouStuff for data collection and model testing either next Thursday or Friday. After the meeting Nick emailed Erik asking about the error bounds for the brake and acceleration models, if he had a skeleton diagram of how the HIL bench would be set up, and if we could come to AutonomouStuff next Friday afternoon for testing and to collect data. 
 
 
 \labday{Wednesday, February 16, \currentYear}
@@ -571,7 +581,7 @@ During the lab time, I started researching into how to use MATLAB's deep learnin
 NN\\
 During the lab time, I continued working on developing a model for the steering system using the Neural Network Time Series toolbox on MATLAB. 
 
-
+HG\\
 
 %--------------------------------------------------------------------------------------------
 
