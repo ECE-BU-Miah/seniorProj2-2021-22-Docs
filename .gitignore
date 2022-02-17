@@ -36,6 +36,8 @@ proposalPres.pdf
 *.blg
 *.pyg
 *.syntex*
+*.el
+*.pdf-view*
 
 # Dia tilde files #
 ###################
@@ -93,4 +95,5 @@ Icon*
 ########################
 TempTest/
 venv/
+auto/*.*
 
