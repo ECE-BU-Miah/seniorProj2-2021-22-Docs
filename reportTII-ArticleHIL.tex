@@ -9,10 +9,7 @@
 \usepackage[list=true,labelformat=simple]{subcaption}
 \renewcommand\thesubfigure{(\alph{subfigure})}
 \graphicspath{%
-  {figs/ipe/}
-  {figs/dia/}
   {figs/matlab/}
-  {figs/imag/}
 } 
 
 \usepackage{pgfgantt}
@@ -29,7 +26,8 @@
 \usepackage[ruled, vlined, linesnumbered]{algorithm2e} % For algorithms
 
 \usepackage{tikz}
-\usetikzlibrary{positioning,fit}
+% \usetikzlibrary{calc,tikzmark}
+\usetikzlibrary{backgrounds,calc,patterns,decorations.pathmorphing,decorations.markings,shapes,arrows,snakes,tikzmark}
 
 \usepackage{siunitx}
 % \sisetup{unitsep=\cdot}
@@ -147,13 +145,13 @@ principle is applied to all other subsystems.
 
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.48\linewidth}
+  \begin{subfigure}[b]{0.40\linewidth}
     \centering
     \includegraphics[height=3.5cm]{figs/img/autonomousVehiclesAStuff}
     \caption{}
     \label{fig:fleet}
   \end{subfigure}
-  \begin{subfigure}[b]{0.45\linewidth}
+  \begin{subfigure}[b]{0.40\linewidth}
     \centering
     \includegraphics[height=3.5cm]{figs/img/autonomousVehiclesSteering}
     \caption{}
@@ -180,9 +178,10 @@ principle is applied to all other subsystems.
  with a best fit percentage of 93.42\%. The polynomial model equation for ARX is
  shown below. %
  %
- \begin{align*}
-   y(t) + a_1y(t - 1) +...+a_{na}y(t - n_{a}) = b_{1}u_{1}(t-n_{k})+...+b_{nb}u_{nb}(t - n_{k}-n_{b}+1) + e(t), 
- \end{align*}
+ \begin{multline*}
+   y(t) + a_1y(t - 1) +...+a_{na}y(t - n_{a}) = \\
+   b_{1}u_{1}(t-n_{k})+...+b_{nb}u_{nb}(t - n_{k}-n_{b}+1) + e(t), 
+ \end{multline*}
 % 
 $y(t)$ is the system output at time $t,$ while $u(t)$ is the input. The noise disturbance of the system is represented by $e(t).$ The variables $na,$ $nb,$ and $nk$ are the system’s number of poles, amount of $b$ parameters, and the samples before the inputs begin to affect the system’s output.
 
@@ -287,66 +286,125 @@ The vehicle plant model will fulfill the requirements listed below:
 \section{System Architecture}
 The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems as shown in Fig.~\ref{fig:subFunctionalBlock}. Each of the six subsystems can be described as a multiple input system because there are two torque voltage signals used to describe the behavior of each vehicle subsystem. Some of the systems are multiple output and some are single output as depicted in Fig.~\ref{fig:subFunctionalBlock}. %
 %
-\begin{figure}[htb]
-    \centering 
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering 
-  \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
-  \caption{}
-  \label{fig:steeringmodelarchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\linewidth}
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
-  \caption{}
-  \label{fig:brakeModelArchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\textwidth}
-  \centering 
-  \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
-  \caption{}
-  \label{fig:accelerationModelArchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering 
-  \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
-  \caption{}
-  \label{fig:shiftModelArchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering
-  \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
-  \caption{}
-  \label{fig:speedControlModelArchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
-  \centering
-  \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
-  \caption{}
-  \label{fig:speedModelArchitecture}
-\end{subfigure}
-\caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
-\label{fig:subFunctionalBlock}
+  \missingfigure{Place a high level block diagram including picture of Lexus vehicle that we are modeling}
+  \caption{Hexagon Lexus self-driving vehicle showing different subsystems}
+  \label{fig:highLevelSystemArchitecture}
 \end{figure}
-%
+% \begin{figure}[htb]
+%     \centering 
+% \begin{subfigure}[b]{0.48\linewidth}
+%   \centering 
+%   \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
+%   \caption{}
+%   \label{fig:steeringmodelarchitecture}
+% \end{subfigure}
+% \\
+% \begin{subfigure}[b]{0.48\linewidth}
+%   \centering
+%   \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+%   \caption{}
+%   \label{fig:brakeModelArchitecture}
+% \end{subfigure}
+% \\
+% \begin{subfigure}[b]{0.48\textwidth}
+%   \centering 
+%   \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
+%   \caption{}
+%   \label{fig:accelerationModelArchitecture}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.48\linewidth}
+%   \centering 
+%   \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
+%   \caption{}
+%   \label{fig:shiftModelArchitecture}
+% \end{subfigure}
+% \\
+% \begin{subfigure}[b]{0.48\linewidth}
+%   \centering
+%   \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
+%   \caption{}
+%   \label{fig:speedControlModelArchitecture}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.48\linewidth}
+%   \centering
+%   \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
+%   \caption{}
+%   \label{fig:speedModelArchitecture}
+% \end{subfigure}
+% \caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
+% \label{fig:subFunctionalBlock}
+% \end{figure}
+% %
 
- \begin{figure}[h]
-    \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
-    \caption{Steering block diagram}
-    \label{fig:steeringModelBlockDiagram}
+
+\subsection{Steering Subsystem}
+\label{sec:steeringSubsystem}
+
+The steering subsystem consists of steering, the power steering motors, $\ldots$ The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~
+
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=0.75 cm]
+    \tikzstyle{sum} = [draw, circle,fill=orange!15]
+    % place nodes
+    \node[sum](sum){$\sum$};
+    \node[block,right of=sum,node distance=2 cm, text width=1.25cm,text centered](steeringController){Steering controller};
+    \node[block,right of=steeringController,node distance=2.25 cm, text width=1.3cm,text centered](steeringSubsystem){Steering subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (sum.west)--node[very near start,above]{$+$}++(-0.5,0)node[above]{$\theta^{\text{ref}}$};
+    \draw[-stealth,thick]
+    (sum.east)--node[midway,above]{Error}(steeringController);
+    \draw[-stealth,thick]
+    (steeringController.15)--node[midway,above]{$v_A$}(steeringSubsystem.165);
+    \draw[-stealth,thick]
+    (steeringController.-15)--node[midway,above]{$v_B$}(steeringSubsystem.-165);
+    \draw[-stealth,thick]
+    (steeringSubsystem.east) --coordinate (tt) ++(0.5,0)node[above]{$\theta(t)$};
+    \fill
+    ($(steeringSubsystem.east)+(0.25,0)$) circle [radius=2pt];
+    \draw[-stealth,thick]
+    (tt) -- ++(0,-0.75) -|(sum.south)node[pos=0.9,left]{$-$};
+    
+  \end{tikzpicture}
+  % \captionsetup{justification=centering, margin=3cm}
+  % \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
+  \caption{Steering subsystem block diagram.}
+  \label{fig:steeringModelBlockDiagram}
 \end{figure}
-  
+
+
   \subsection{Brake Subsystem}
   The brake subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
- \begin{figure}[h]
+ \begin{figure}[htbp]
     \centering
-    \captionsetup{justification=centering, margin=3cm}
-    \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.25cm,text centered](brakeSubsystem){Brake subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (brakeSubsystem.150)--node[pos=0.65,above]{Pressure voltages}++(-1.7,0);
+    \draw[stealth-,thick]
+    (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-1.7,0);
+    \draw[stealth-,thick]
+    (brakeSubsystem.-150)--node[pos=0.65,above]{On/Off switch}++(-1.7,0);
+    \draw[-stealth,thick]
+    (brakeSubsystem.15)--node[pos=0.5,above]{Pedal position}++(1.7,0);
+    \draw[-stealth,thick]
+    (brakeSubsystem.-15)--node[pos=0.5,below]{Brake pressed}++(1.7,0);
+    
+  \end{tikzpicture}
+    % \captionsetup{justification=centering, margin=3cm}
+    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
     \caption{Brake subsystem block diagram}
     \label{fig:brakeModelArchitecture}
 \end{figure}
@@ -395,49 +453,49 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \label{fig:speedControlModelArchitecture}
 \end{figure}
 
-\begin{figure}[htb]
-   \centering 
-\begin{subfigure}[b]{0.48\linewidth}
- \centering 
- \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
- \caption{}
- \label{fig:steeringmodelarchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
- \centering
- \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
- \caption{}
- \label{fig:brakeModelArchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\textwidth}
- \centering 
- \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
- \caption{}
- \label{fig:accelerationModelArchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
- \centering 
- \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
- \caption{}
- \label{fig:shiftModelArchitecture}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.48\linewidth}
- \centering
- \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
- \caption{}
- \label{fig:speedControlModelArchitecture}
-\end{subfigure}
-\begin{subfigure}[b]{0.48\linewidth}
- \centering
- \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
- \caption{}
- \label{fig:speedModelArchitecture}
-\end{subfigure}
-\caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
-\label{fig:subFunctionalBlock}
-\end{figure}
+% \begin{figure}[htb]
+%    \centering 
+% \begin{subfigure}[b]{0.48\linewidth}
+%  \centering 
+%  \includegraphics[width=2.5in]{figs/inkscape/steeringmodelarchitecture}
+%  \caption{}
+%  \label{fig:steeringmodelarchitecture}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.48\linewidth}
+%  \centering
+%  \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+%  \caption{}
+%  \label{fig:brakeModelArchitecture}
+% \end{subfigure}
+% \\
+% \begin{subfigure}[b]{0.48\textwidth}
+%  \centering 
+%  \includegraphics[width=2.5in]{figs/inkscape/accelerationModelArchitecture}
+%  \caption{}
+%  \label{fig:accelerationModelArchitecture}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.48\linewidth}
+%  \centering 
+%  \includegraphics[width=2.5in]{figs/inkscape/shiftModelArchitecture}
+%  \caption{}
+%  \label{fig:shiftModelArchitecture}
+% \end{subfigure}
+% \\
+% \begin{subfigure}[b]{0.48\linewidth}
+%  \centering
+%  \includegraphics[width=2.5in]{figs/inkscape/speedControlModelArchitecture}
+%  \caption{}
+%  \label{fig:speedControlModelArchitecture}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.48\linewidth}
+%  \centering
+%  \includegraphics[width=2.5in]{figs/inkscape/speedModelArchitecture}
+%  \caption{}
+%  \label{fig:speedModelArchitecture}
+% \end{subfigure}
+% \caption{Block diagrams of autonomous vehicle subsystems:~\subref{fig:steeringmodelarchitecture} steering subsystem,~\subref{fig:brakeModelArchitecture} brake subsystem,~\subref{fig:accelerationModelArchitecture} acceleration subsystem,~\subref{fig:shiftModelArchitecture} shift subsystem,~\subref{fig:speedControlModelArchitecture} speed control subsystem, and~\subref{fig:speedModelArchitecture} speed subsystem.}
+% \label{fig:subFunctionalBlock}
+% \end{figure}
 
 
  \subsection{Specifications}
