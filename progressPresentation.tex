@@ -1,0 +1,289 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+% \UseRawInputEncoding
+\documentclass{beamer}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\usepackage{pgfgantt}
+\usepackage{todonotes}
+\usepackage{media9}
+\usepackage{fontawesome5}
+\usepackage{subfigure}
+\usepackage{booktabs,array}
+\usepackage{tabulary}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{arydshln}
+\usepackage{multicol}
+
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e} % For algorithms
+
+\usepackage{amsmath} % For typesetting math
+
+% Customize Warsaw color 
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=red!50!black}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=red!60!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=red!70!black}
+
+% Customize Warsaw block title and background colors
+\setbeamercolor{block title}{bg=red!50!black,fg=white}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}  % insert bibliography numbers instead of symbol
+\setbeamertemplate{caption}[numbered] % adds the figure or table number to the caption.
+
+
+\title[HIL Plant Modeling]{Hardware-in-the-Loop Plant Modeling for Autonomous
+  Vehicle}
+
+% % A subtitle is optional and this may be deleted
+\subtitle{Progress Presentation}
+
+\author[H.~Grady, N.~Nauman]{Hannah~Grady \and Nicholas~Nauman 
+\linebreak Advisor:~Dr.~Suruz~Miah}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Bradley University] % (optional, but mostly needed)
+{
+  Department of Electrical and Computer Engineering\\
+  Bradley University\\
+  1501 W. Bradley Avenue\\
+  Peoria, IL, 61625, USA
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[March~1,~2022]{Tuesday, March~1,~2022}
+
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\logo{\hfill\href{http://www.bradley.edu}{\includegraphics[width=0.75cm]{figs/logoBU1-Print}}}  % place logo in every page 
+
+
+% \subject{Mobile Robot Localization}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each section:
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline} 
+  \tableofcontents%[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Introduction}
+
+\begin{frame}{Introduction}{}
+    \begin{block}{}
+    	\begin{itemize}
+    		\item 
+		\end{itemize}
+    \end{block}
+        
+\end{frame}
+
+
+%----------------------------------
+
+\section{Steering Subsystem}
+
+\begin{frame}{Steering Subsystem}
+  \begin{block}{}
+ \begin{itemize}
+        \item 
+	\end{itemize}
+	
+  \end{block}
+
+\end{frame}
+
+
+%----------------------------------
+
+\section{Acceleration Subsystem}
+
+\begin{frame}{Acceleration Subsystem}
+  \begin{block}{}
+ \begin{itemize}
+        \item 
+	\end{itemize}
+	
+  \end{block}
+ 
+\end{frame}
+
+%--------------------------------
+
+\section{Brake Subsystem}
+
+\begin{frame}{Brake Subsystem}
+  \begin{block}{Brake Model}
+ \begin{itemize}
+        \item System Identification Toolbox
+        \item Neural Net Time Series Toolbox
+	\end{itemize}
+	
+  \end{block}
+
+\end{frame}
+
+
+%----------------------------------
+
+
+\section{Concluding Remarks}
+\begin{frame}{Concluding Remarks}
+  \begin{block}{Semester goals}
+    %\begin{LARGE}
+      \begin{itemize}
+        \item 
+      \end{itemize}
+    %\end{LARGE}
+  \end{block}
+  \begin{block}{Anticipated Challenges}
+    \begin{itemize}
+      \item 
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+%----------------------------------
+
+\section{References}
+
+%\begin{frame}{References}
+%  \bibliographystyle{IEEEtran}
+%   \begin{itemize}
+%     \item N. Rawashdeh, R. Haddad, O. Jadallah, and A. To’ma, “A person-following
+% robotic cart controlled via a smartphone application: design and evaluation,”
+% 09 2017, pp. 1–5.
+%     \item M. M. Islam, A. Lam, H. Fukuda, Y. Kobayashi, and Y. Kuno, “An intelligent
+% shopping support robot: understanding shopping behavior from 2d skeleton data using gru network,” ROBOMECH Journal, vol. 6, no. 1, 2019.
+%     \item J. Sales, J. Marti, R. Marin Prades, E. Cervera, and P. Sanz, “Comparob: The
+% shopping cart assistance robot,” International Journal of Distributed Sensor Networks, vol. 2016, pp. 1–15, 02 2016.
+%     \item M. S. Miah, J. Knoll, and K. Hevrdejs, “Intelligent range-only mapping and navigation for mobile robots,” IEEE Transactions on Industrial Informatics, vol. 14, no. 3, pp. 1164–1174, 2018.
+%     \item D. Li and S. Lane, “A novel and versatile parabolic reflector that significantly
+% improves wi-fi reception at different distances and angles,” 2013.
+  
+%   \end{itemize}
+
+
+% \end{frame}
+
+%----------------------------------
+
+\begin{frame}[allowframebreaks]{References}
+
+  \bibliographystyle{IEEEtran}
+  \bibliography{bib/references.bib}
+
+%\begin{itemize}
+%\item
+%@INPROCEEDINGS{Donjaroennon2021,
+%  author={Donjaroennon, Natthapon and Nuchkum, Suphatchakan and Leeton, Uthen},
+%  booktitle={2021 9th International Electrical Engineering Congress (iEECON)}, 
+%  title={Mathematical model construction of DC Motor by closed-loop system Identification technique Using Matlab/Simulink}, 
+%  year={2021},
+%  volume={},
+%  number={},
+%  pages={289-292},
+%  doi={10.1109/iEECON51072.2021.9440305}}
+%\end{itemize}
+% 	\begin{itemize}
+% 		\item T. Xie, H. Jiang, X. Zhao, and C. Zhang, “A wi-fi-based wireless indoor position sensing system with multipath interference mitigation,” Sep 2019. [Online].
+% Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6767237/
+% 		\item A. M. Ladd, K. E. Bekris, A. Rudys, L. E. Kavraki, and D. S. Wallach, “Robotics-
+% based location sensing using wireless ethernet,” Wireless Networks, vol. 11, no. 1-2, p. 189–204, 2005.
+% 		\item M. Lindhe, K. Johansson, and A. Bicchi, “An experimental study of exploiting multipath fading for robot communications,” Robotics: Science and Systems III, 2007.
+% 		\item M. Lindhe and K. Johansson, “Using robot mobility to exploit multipath fading,”Wireless Communications, IEEE, vol. 16, pp. 30 – 37, 03 2009.
+% 	\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
