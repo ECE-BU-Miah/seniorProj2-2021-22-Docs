@@ -588,7 +588,7 @@ During lab I continued analysis of transfer functions to find the one that best 
 \experiment{Lab Time}
 % Place your initial below
 NN\\
-
+During the lab time, I researched how to develop a neural network using the Neural Network Time Series toolbox on MATLAB and some of the theory behind how neural networks are designed to get a better understanding of what kind of model is being trained and how many delay units and hidden neurons I would need. With this information, I got a working model of the steering subsystem within the desired accuracy requirements. I also met with Dr. Miah to discuss if the same work should be done with the acceleration subsystem since there were some issues with creating a Simulink diagram for the transfer function model. Dr. Miah suggested creating a neural network for the acceleration subsystem.
 
 HG\\
 During the lab time I realized that the sampling time for the brake system needs to be set at 33ms, and that I had it set at 34ms. Most of the lab time was then spent re-doing the transfer function analysis for the different data sets. I also researched how to implement inputting a signal to the transfer functions in the Simulink model, along with looking at documentation about the fuzzy logic toolbox. 
@@ -611,7 +611,7 @@ Dr. Miah, Erik, Joe and I met to discuss the progress we had made so far in the 
 \experiment{Lab Time}
 % Place your initial below
 NN\\
-
+During the lab time, I worked on developing a model for the acceleration system using the Neural Network Time Series toolbox on MATLAB. Once I developed a model and exported it to Simulink, I edited the steering and acceleration system neural network models so the sampling time was not set as 1 second, but inherited instead. Also, I had to recreate blocks within the model so that the model can be used without the Deep Learning toolbox. I completed both steering and acceleration system models and they are ready to be sent to Erik to prepare for testing.
 
 HG\\
 Once I had re-done all of the transfer functions, I ended up going with the transfer function that had 28 poles and 12 zeros that was generated using the data set where log 2 was used to build and log 3 was used to validate. I ended up choosing this model since it gives an acceptable best fit percentage and because it gives an error within the acceptable error margins. I then exported this transfer function to the MATLAB workspace and set up the transfer function blocks in Simulink. I then started working on generating a neural network model of the brake system. Dr. Miah stopped by at the end of the lab time in order to talk with us about the models. Nick explained that since the neural network model is just a bunch of simple blocks, Erik should be able to run it without having to make use of the deep learning toolbox. We also discussed the need to find a way to get the MISO transfer function system working. We resolved to complete all subsystems using the neural network and then send them to Erik once we know that they work in Simulink without using the deep learning toolbox. Our target to visit AutonomouStuff is the first week of March, and we are also setting a goal to have all of the models done by this Friday. Our progress presentation will be this next Tuesday, and we can use the presentation template we already have. Once we have the three subsystems done, then we will start working on the report. 
