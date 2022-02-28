@@ -154,7 +154,20 @@
 \begin{frame}{Introduction}{}
     \begin{block}{}
     	\begin{itemize}
-    		\item 
+    		\item Modeled
+			\begin{itemize}
+				\item Steering Subsystem
+    				\item Acceleration Pedal Subsystem
+    				\item Brake Pedal Subsystem
+			\end{itemize}			    			
+    		\item Not Modeled
+			\begin{itemize}
+				\item Shift Subsystem
+    				\item Speed Subsystem
+    				\item Speed Control Subsystem
+			\end{itemize}			    			
+    		\item Manual Data vs. By-Wire Data
+    		\item Neural Network Modeling \cite{Zhou2019} \cite{matlabNeuralNet}
 		\end{itemize}
     \end{block}
         
@@ -166,13 +179,17 @@
 \section{Steering Subsystem}
 
 \begin{frame}{Steering Subsystem}
-  \begin{block}{}
- \begin{itemize}
-        \item 
-	\end{itemize}
-	
-  \end{block}
-
+	\begin{block}{}
+  		\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item Only a few samples are just outside of the accuracy requirements
+			\item Transfer function model did not meet the accuracy requirements
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
+	\end{block}
 \end{frame}
 
 
@@ -181,13 +198,18 @@
 \section{Acceleration Subsystem}
 
 \begin{frame}{Acceleration Subsystem}
-  \begin{block}{}
- \begin{itemize}
-        \item 
-	\end{itemize}
-	
-  \end{block}
- 
+	\begin{block}{}
+  		\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item All samples within 2\% of the actual output
+			\item Transfer function model did not have the same accuracy bounds
+			\item Fewer concerns about connections in Simulink
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
+	\end{block}
 \end{frame}
 
 %--------------------------------
@@ -212,69 +234,29 @@
 \section{Concluding Remarks}
 \begin{frame}{Concluding Remarks}
   \begin{block}{Semester goals}
-    %\begin{LARGE}
       \begin{itemize}
-        \item 
+        \item Test our modeled subsystems on the HIL bench
+        \item Collect data for the remaining subsystems
+        \item Model the remaining subsystems and test on the HIL bench
+        \item Create final report highlighting our findings
+        \item Present our findings
       \end{itemize}
-    %\end{LARGE}
   \end{block}
   \begin{block}{Anticipated Challenges}
-    \begin{itemize}
-      \item 
-    \end{itemize}
+      \begin{itemize}
+      	\item Having time to model the remaining subsystems
+      	\item Needing to correct any models
+      \end{itemize}
   \end{block}
 \end{frame}
 
 %----------------------------------
 
 \section{References}
-
-%\begin{frame}{References}
-%  \bibliographystyle{IEEEtran}
-%   \begin{itemize}
-%     \item N. Rawashdeh, R. Haddad, O. Jadallah, and A. To’ma, “A person-following
-% robotic cart controlled via a smartphone application: design and evaluation,”
-% 09 2017, pp. 1–5.
-%     \item M. M. Islam, A. Lam, H. Fukuda, Y. Kobayashi, and Y. Kuno, “An intelligent
-% shopping support robot: understanding shopping behavior from 2d skeleton data using gru network,” ROBOMECH Journal, vol. 6, no. 1, 2019.
-%     \item J. Sales, J. Marti, R. Marin Prades, E. Cervera, and P. Sanz, “Comparob: The
-% shopping cart assistance robot,” International Journal of Distributed Sensor Networks, vol. 2016, pp. 1–15, 02 2016.
-%     \item M. S. Miah, J. Knoll, and K. Hevrdejs, “Intelligent range-only mapping and navigation for mobile robots,” IEEE Transactions on Industrial Informatics, vol. 14, no. 3, pp. 1164–1174, 2018.
-%     \item D. Li and S. Lane, “A novel and versatile parabolic reflector that significantly
-% improves wi-fi reception at different distances and angles,” 2013.
-  
-%   \end{itemize}
-
-
-% \end{frame}
-
-%----------------------------------
-
 \begin{frame}[allowframebreaks]{References}
 
   \bibliographystyle{IEEEtran}
   \bibliography{bib/references.bib}
-
-%\begin{itemize}
-%\item
-%@INPROCEEDINGS{Donjaroennon2021,
-%  author={Donjaroennon, Natthapon and Nuchkum, Suphatchakan and Leeton, Uthen},
-%  booktitle={2021 9th International Electrical Engineering Congress (iEECON)}, 
-%  title={Mathematical model construction of DC Motor by closed-loop system Identification technique Using Matlab/Simulink}, 
-%  year={2021},
-%  volume={},
-%  number={},
-%  pages={289-292},
-%  doi={10.1109/iEECON51072.2021.9440305}}
-%\end{itemize}
-% 	\begin{itemize}
-% 		\item T. Xie, H. Jiang, X. Zhao, and C. Zhang, “A wi-fi-based wireless indoor position sensing system with multipath interference mitigation,” Sep 2019. [Online].
-% Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6767237/
-% 		\item A. M. Ladd, K. E. Bekris, A. Rudys, L. E. Kavraki, and D. S. Wallach, “Robotics-
-% based location sensing using wireless ethernet,” Wireless Networks, vol. 11, no. 1-2, p. 189–204, 2005.
-% 		\item M. Lindhe, K. Johansson, and A. Bicchi, “An experimental study of exploiting multipath fading for robot communications,” Robotics: Science and Systems III, 2007.
-% 		\item M. Lindhe and K. Johansson, “Using robot mobility to exploit multipath fading,”Wireless Communications, IEEE, vol. 16, pp. 30 – 37, 03 2009.
-% 	\end{itemize}
 
 \end{frame}
 
