@@ -582,6 +582,7 @@ NN\\
 During the lab time, I continued working on developing a model for the steering system using the Neural Network Time Series toolbox on MATLAB. 
 
 HG\\
+During lab I continued analysis of transfer functions to find the one that best represented the brake system. I tried plotting transfer functions with 28 poles and 11 zeros along with transfer functions with 28 poles and 12 zeros to see if the extra zeros would help lower the error to an acceptable range. This only worked for the data set where I used log 2 to build the system and log 3 to validate it. I ended up finding that the transfer function with 28 poles and 10 zeros gave the best fit across data sets, and so I started exporting this transfer function with the goal of re-creating it in Simulink. I chose the transfer function from the data set where log 2 was used to build and log 3 was used to validate because it gave an acceptable best fit and was within the error range. In Simulink I ended up with four transfer function blocks total, since I had four inputs to the system. I'm not sure how to combine all of the transfer functions, so I will need to look into that. 
 
 \labday{Monday, February 21, \currentYear}
 \experiment{Lab Time}
@@ -590,12 +591,21 @@ NN\\
 
 
 HG\\
+During the lab time I realized that the sampling time for the brake system needs to be set at 33ms, and that I had it set at 34ms. Most of the lab time was then spent re-doing the transfer function analysis for the different data sets. I also researched how to implement inputting a signal to the transfer functions in the Simulink model, along with looking at documentation about the fuzzy logic toolbox. 
+
+Near the start of today's meeting Dr. Miah came in to answer some questions we had. He mentioned that we should make everything in Simulink as automated as possible. We talked about the upcoming progress report, and he mentioned that I should develop a deep learning model for the brake system.  
+
+
+\experiment{Meeting Minutes}
+%Place initial below
+HG\\
+Since it was President's day, we did not meet with Erik. Instead Dr. Miah, Nick and I met to discuss the project. Dr. Miah encouraged us to look at the report template and to go through the IEEE explorer and look at how people write reports in order to get an idea of how the format should look. We then decided that we would meet with Erik and Joe on Tuesday in order to make up for Monday's meeting. 
 
 \labday{Tuesday, February 22, \currentYear}
 \experiment{Meeting Minutes}
 % Place your initial below
 HG\\
-
+Dr. Miah, Erik, Joe and I met to discuss the progress we had made so far in the senior project. Nick was unable to attend due to an internet outage. We talked about the neural network steering model that Nick had developed, and how we wanted to test it using the HIL bench. There are some concerns that the neural network model might cause trouble with AutonomouStuff's model since it requires the deep learning toolbox, which is something that we need to look into. If needed, the model can be generated into code that can be used by AutonomouStuff. Dr. Miah mentioned that we may need to visit AutonomouStuff's offices a few times, and asked when we could come an test the models. Erik mentioned that he was busy this week, but that the HIL bench is basically ready. Therefore we can just send him the models we have and then set up a time to visit from there. Joe mentioned that they have customer deadlines coming up that may make scheduling the HIL bench more cumbersome going forward. We talked about getting a skeleton diagram, and Erik mentioned that it will look a lot like the other diagrams unless we want the details. I talked a little about what was going on the brake system. For sending the models, AutonomouStuff will be given two sets of models, one using the system identification toolbox and one using the deep learning toolbox. Near the end of the meeting we talked about the progress presentation. In terms of scheduling visits, we will see how the first round of testing goes and then plan from there. 
 
 \labday{Wednesday, February 23, \currentYear}
 \experiment{Lab Time}
@@ -604,6 +614,7 @@ NN\\
 
 
 HG\\
+Once I had re-done all of the transfer functions, I ended up going with the transfer function that had 28 poles and 12 zeros that was generated using the data set where log 2 was used to build and log 3 was used to validate. I ended up choosing this model since it gives an acceptable best fit percentage and because it gives an error within the acceptable error margins. I then exported this transfer function to the MATLAB workspace and set up the transfer function blocks in Simulink. I then started working on generating a neural network model of the brake system. Dr. Miah stopped by at the end of the lab time in order to talk with us about the models. Nick explained that since the neural network model is just a bunch of simple blocks, Erik should be able to run it without having to make use of the deep learning toolbox. We also discussed the need to find a way to get the MISO transfer function system working. We resolved to complete all subsystems using the neural network and then send them to Erik once we know that they work in Simulink without using the deep learning toolbox. Our target to visit AutonomouStuff is the first week of March, and we are also setting a goal to have all of the models done by this Friday. Our progress presentation will be this next Tuesday, and we can use the presentation template we already have. Once we have the three subsystems done, then we will start working on the report. 
 
 %--------------------------------------------------------------------------------------------
 
