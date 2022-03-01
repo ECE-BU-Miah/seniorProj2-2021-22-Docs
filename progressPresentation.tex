@@ -217,11 +217,17 @@
 \section{Brake Subsystem}
 
 \begin{frame}{Brake Subsystem}
-  \begin{block}{Brake Model}
- \begin{itemize}
-        \item System Identification Toolbox
-        \item Neural Net Time Series Toolbox
-	\end{itemize}
+  \begin{block}{}
+\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item All samples within 2\% of the actual output
+			\item Transfer function model did not have the same accuracy bounds
+			\item Fewer concerns about connections in Simulink
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
 	
   \end{block}
 
