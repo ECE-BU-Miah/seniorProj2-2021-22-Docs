@@ -219,11 +219,11 @@
 \begin{frame}{Brake Subsystem}
   \begin{block}{}
 \begin{figure}[H]
-  			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/brakeSimulinkBlock.jpg}\quad%
+  			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/newBrakeSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item All samples within 2\% of the actual output
-			\item Transfer function model did not have the same accuracy bounds
-			\item Fewer concerns about connections in Simulink
+			\item With this model, the error is kept below 5\%
+			\item Able to easily track model performance
+			\item Provides better results than the transfer function model
 			\end{itemize} \end{minipage}\\[1em]
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFig.jpg}\quad%
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFigLog2Test.jpg}
