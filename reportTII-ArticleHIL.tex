@@ -60,26 +60,28 @@ Tsukuba, Japan (e-mail: author@nrim.go.jp).}
 \maketitle
 
 \begin{abstract}
-These instructions give you guidelines for preparing papers for 
-IEEE Transactions and Journals. Use this document as a template if you are 
-using \LaTeX. Otherwise, use this document as an 
-instruction set. The electronic file of your paper will be formatted further 
-at IEEE. Paper titles should be written in uppercase and lowercase letters, 
-not all uppercase. Avoid writing long formulas with subscripts in the title; 
-short formulas that identify the elements are fine (e.g., "Nd--Fe--B"). Do 
-not write ``(Invited)'' in the title. Full names of authors are preferred in 
-the author field, but are not required. Put a space between authors' 
-initials. The abstract must be a concise yet comprehensive reflection of 
-what is in your article. In particular, the abstract must be self-contained, 
-without abbreviations, footnotes, or references. It should be a microcosm of 
-the full article. The abstract must be between 150--250 words. Be sure that 
-you adhere to these limits; otherwise, you will need to edit your abstract 
-accordingly. The abstract must be written as one paragraph, and should not 
-contain displayed mathematical equations or tabular material. The abstract 
-should include three or four different keywords or phrases, as this will 
-help readers to find it. It is important to avoid over-repetition of such 
-phrases as this can result in a page being rejected by search engines. 
-Ensure that your abstract reads well and is grammatically correct.
+This report presents the results of modeling vehicle systems and testing them using Hardware-in-the-Loop (HIL). First, data was collected for each system using a Lexus RX450H vehicle. After data collection, models were developed in order to accurately simulate the physical vehicle system. MATLAB’s System Identification Toolbox was initially used to create these models. However, the transfer function models it provided weren’t able to accurately represent these systems and their non-linear behaviors. After this was established, modeling was done using MATLAB’s Neural Network Time Series application. Once a Neural Network model was created, it was then exported to Simulink and modified to be able to run without the use of the Deep Learning toolbox. These models gave much more accurate results when compared to the transfer function models developed using the System Identification Toolbox. (Add section about testing and results). 
+
+%These instructions give you guidelines for preparing papers for 
+%IEEE Transactions and Journals. Use this document as a template if you are 
+%using \LaTeX. Otherwise, use this document as an 
+%instruction set. The electronic file of your paper will be formatted further 
+%at IEEE. Paper titles should be written in uppercase and lowercase letters, 
+%not all uppercase. Avoid writing long formulas with subscripts in the title; 
+%short formulas that identify the elements are fine (e.g., "Nd--Fe--B"). Do 
+%not write ``(Invited)'' in the title. Full names of authors are preferred in 
+%the author field, but are not required. Put a space between authors' 
+%initials. The abstract must be a concise yet comprehensive reflection of 
+%what is in your article. In particular, the abstract must be self-contained, 
+%without abbreviations, footnotes, or references. It should be a microcosm of 
+%the full article. The abstract must be between 150--250 words. Be sure that 
+%you adhere to these limits; otherwise, you will need to edit your abstract 
+%accordingly. The abstract must be written as one paragraph, and should not 
+%contain displayed mathematical equations or tabular material. The abstract 
+%should include three or four different keywords or phrases, as this will 
+%help readers to find it. It is important to avoid over-repetition of such 
+%phrases as this can result in a page being rejected by search engines. 
+%Ensure that your abstract reads well and is grammatically correct.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -815,7 +817,7 @@ In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted
     \end{center}	
 \end{table}
 %
-
+\subsection{Brake System}
 
 
 
