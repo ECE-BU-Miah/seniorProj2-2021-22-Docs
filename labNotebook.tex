@@ -623,10 +623,21 @@ Once I had re-done all of the transfer functions, I ended up going with the tran
 NN\\
 
 HG\\
+During the lab time I kept working on the brake model I generated using the Neural Network Time Series app. I added a mux block for the voltage inputs, along with sum and scope blocks in order to check the error between the desired and actual pedal positions. I then tested the model on my own computer in order to verify that it could work without the use of the deep learning toolbox. Once I had verified that I could use it on my computer without any problems, I then tested it using constant blocks. This was done to see if the system would generate the desired output. The system was able to generate the desired output and the error was within an acceptable range. Next I tested it using from workspace blocks and the data from the first brake log. Once I did this I found that the error plot had some spikes over 10\%, so I had to retrain the model. It did not take long to retrain the model and find one that gave satisfactory results. I then exported this model to Simulink and changed it to make it able to run without using the deep learning toolbox. I then tested it again using the constant and from workspace blocks, and this time the model passed both tests. 
 
 \labday{Tuesday, March 1, \currentYear}
 \experiment{Progress Presentation}
 % Place your initial below
+HG\\
+Nick and I presented the progress we had made so far on the senior project to Dr. Miah, Erik, and Joe. Dr. Miah explained to Nick and I that the transfer function model works well for linear systems, but if you have a highly non-linear system, then the transfer function model will not work. He also said that neural network modeling works best for highly non-linear systems. Once we had given our presentation, we then talked about working to get a date set for us to visit in order to test our models and collect more data. Dr. Miah mentioned that we have eight weeks exactly left to complete the project. We want to go through the first iteration of testing as soon as possible. Joe said that he would look into moving things around in order to make this possible. In the meantime we will work on the report. Erik said that he has started working on getting the HIL harness ready. He may be getting help with this, but it depends on who's available. Near the end of the meeting Joe mentioned that we should get this completed within the next two weeks. 
+
+\labday{Wednesday, March 2, \currentYear}
+\experiment{Lab Time}
+% Place your initial below
+NN\\
+
+
+HG\\
 
 %--------------------------------------------------------------------------------------------
 
