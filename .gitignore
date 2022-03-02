@@ -14,6 +14,8 @@ finalReportPres.pdf
 finalReport.pdf
 proposal.pdf
 proposalPres.pdf
+progressPresentation.pdf
+reportTII-ArticleHIL.pdf
 
 # TeX auxiliary files #
 #######################
@@ -97,6 +99,3 @@ TempTest/
 venv/
 auto/*.*
 
-
-/progressPresentation.pdf
-/reportTII-ArticleHIL.pdf
