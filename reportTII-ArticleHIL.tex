@@ -778,10 +778,26 @@ In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted
 \end{table}
 %
 \subsection{Brake System}
+The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%.
+\begin{figure}[h]
+	\centering
+	\subcaptionbox{Model Output Tracking and Error Plots \label{initalBrakeModel}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFig}}
+	\subcaptionbox{Model Output Tracking and Error Plots for Log Two Data \label{testedBrakeModel}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
+	\caption{Brake System Training Plots}
+\end{figure}
 
+Once the model was created, it was exported to Simulink and further tested. One test involved using constant blocks to represent the pressure voltages, position voltages, and desired pedal position for a given time instant in the first brake log. The actual pedal position and the error between the desired and actual pedal positions were then plotted. The actual pedal position plot can be seen in \autoref{brakeWorkspacePedalPosition}. The resulting error plot between the desired pedal position and the model generated position can be found in \autoref{brakeWorkspacePedalError}. 
 
-
-
+\begin{figure}[h]
+	\centering
+	\subcaptionbox{ \label{brakeWorkspacePedalPosition}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysActualPedalPositionFromWorkspaceBlocks}}
+	\subcaptionbox{ \label{brakeWorkspacePedalError}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysPedalPositionErrorFromWorkspaceBlocks}}
+	\caption{Actual Pedal Position and Error Plots Using the From Workspace Block}
+\end{figure}
 
 
 \bibliographystyle{IEEEtran}
