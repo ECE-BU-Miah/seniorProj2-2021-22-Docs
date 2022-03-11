@@ -333,21 +333,21 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
     \centering
   \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=1.5 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2.0 cm]
     % place nodes
     \node[block,text width=1.25cm,text centered](brakeSubsystem){Brake subsystem};
 
     % Connections
     \draw[stealth-,thick]
-    (brakeSubsystem.150)--node[pos=0.65,above]{Pressure voltages}++(-1.7,0);
+    (brakeSubsystem.140)--node[pos=0.65,above]{Pressure voltages}++(-1.7,0);
     \draw[stealth-,thick]
     (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-1.7,0);
     \draw[stealth-,thick]
-    (brakeSubsystem.-150)--node[pos=0.65,above]{On/Off switch}++(-1.7,0);
+    (brakeSubsystem.-140)--node[pos=0.65,above]{On/Off switch}++(-1.7,0);
     \draw[-stealth,thick]
-    (brakeSubsystem.15)--node[pos=0.5,above]{Pedal position}++(1.7,0);
+    (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(1.7,0);
     \draw[-stealth,thick]
-    (brakeSubsystem.-15)--node[pos=0.5,below]{Brake pressed}++(1.7,0);
+    (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(1.7,0);
     
   \end{tikzpicture}
     % \captionsetup{justification=centering, margin=3cm}
@@ -361,7 +361,8 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
 Acceleration pedal voltages are sent to the subsystem. 
 A new acceleration pedal position value is generated to better match 
 the real-time pedal position. This is then the output 
-of the acceleration subsystem.
+of the acceleration subsystem. %
+%
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -369,13 +370,11 @@ of the acceleration subsystem.
     \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
     % place nodes
     \node[block,text width=1.75cm,text centered](accelSubsystem){Acceleration subsystem};
-
     % Connections
     \draw[stealth-,thick]
-    (accelSubsystem.180)--node[pos=0.5,above]{Acceleration Pedal Voltages}++(-1.7,0);
+    (accelSubsystem.180)--node[very near end,above]{Acceleration pedal voltages}++(-2.0,0);
     \draw[-stealth,thick]
-    (accelSubsystem.0)--node[pos=0.5,above]{Acceleration Pedal Position}++(1.7,0);
-    
+    (accelSubsystem.0)--node[very near end,above]{Acceleration pedal position}++(2.0,0);
   \end{tikzpicture}
     \caption{Acceleration subsystem block diagram}
     \label{fig:accelModelArchitecture}
@@ -393,9 +392,9 @@ of the acceleration subsystem.
 
     % Connections
     \draw[stealth-,thick]
-    (shiftSubsystem.180)--node[pos=0.5,above]{Desired Shifter Gear}++(-1.7,0);
+    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-1.9,0);
     \draw[-stealth,thick]
-    (shiftSubsystem.0)--node[pos=0.5,above]{Actual Shifter Gear}++(1.7,0);
+    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(1.9,0);
     
   \end{tikzpicture}
     \caption{Shift subsystem block diagram}
@@ -408,19 +407,19 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \centering
   \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=1.5 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2 cm]
     % place nodes
     \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
 
     % Connections
     \draw[stealth-,thick]
-    (speedSubsystem.150)--node[pos=0.65,above]{Acceleration Pedal Position}++(-1.7,0);
+    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-1.9,0);
     \draw[stealth-,thick]
-    (speedSubsystem.180)--node[pos=0.65,above]{Brake Pedal Position}++(-1.7,0);
+    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-1.9,0);
     \draw[stealth-,thick]
-    (speedSubsystem.-150)--node[pos=0.65,above]{Shifter Gear}++(-1.7,0);
+    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-1.9,0);
     \draw[-stealth,thick]
-    (speedSubsystem.0)--node[pos=0.5,above]{Vehicle Speed}++(1.7,0);
+    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(1.9,0);
     
   \end{tikzpicture}
     % \captionsetup{justification=centering, margin=3cm}
@@ -441,9 +440,9 @@ This speed subsystem would fall under the multiple-input single-output system. T
 
     % Connections
     \draw[stealth-,thick]
-    (speedControlSubsystem.180)--node[pos=0.5,above]{Desired Vehicle Speed}++(-1.7,0);
+    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-1.9,0);
     \draw[-stealth,thick]
-    (speedControlSubsystem.0)--node[pos=0.5,above]{Actual Vehicle Speed}++(1.7,0);
+    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(1.9,0);
     
   \end{tikzpicture}
     \caption{Speed Control subsystem block diagram}
