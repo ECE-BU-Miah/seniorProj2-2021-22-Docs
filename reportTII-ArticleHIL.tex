@@ -195,6 +195,7 @@ outputs act. From there the state space model was estimated using the first part
 of the given data. This model was compared to the step responses and with the
 second part of the data to see if it was a good fit. The model had a best fit
 percentage of 83.55\% for the generated voltage data, and a best fit of 39.33\%
+
 for the speed data. The frequency response of the model was estimated with
 spectral analysis and bode plots were also created. The tutorial explained that
 if the data doesn’t give nice models, then it is best to try out submodels for
@@ -256,25 +257,6 @@ was the most accurate, with a best fit percentage of 85.83\%.
 \end{figure}
 
 
-\section{System Requirements}
-The vehicle plant model will fulfill the requirements listed below:
-\begin{itemize}
-    \item The resulting plant model will consist of accurate subsystem models, as defined above
-    \item The subsystems can be used to create a HIL testbench
-    \item The subsystems can handle very small changes in values accurately
-\end{itemize}
-
-All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior, depicted in Fig.~\ref{fig:nonlinGraph}, made it very challenging to complete features like lane tracking. These models will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer and smoother manner. 
-
-\begin{figure}[htbp]
-    \centering
-    \captionsetup{justification=centering}
-    \includegraphics[width=2.5in]{figs/inkscape/nonlinearBehavior}
-    \caption{Steering Non-linear Behavior}
-    \label{fig:nonlinGraph}
-\end{figure}
-
-
 \section{System Architecture}
 The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, thus can not be treated as a single input. Also, each subsystem will be treated as a single output system. The brake subsystem is shown to have two outputs but the behaviors of one of the outputs is already known so it will be modeled based  on the other output's behavior. 
 %
@@ -285,6 +267,13 @@ The overall system architecture of this project consists of six subsystems which
   \label{fig:highLevelSystemArchitecture}
 \end{figure}
 
+% 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[height=4cm]{figs/img/picturesVisitToAStuff/visitors1-20211007}
+	\caption{AutonomouStuff Lexus RX450H vehicle.}
+	\label{fig:lexusvehicle}
+\end{figure}
 
 \subsection{Steering Subsystem}
 \label{sec:steeringSubsystem}
@@ -321,6 +310,7 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
     
   \end{tikzpicture}
   % \captionsetup{justification=centering, margin=3cm}
+
   % \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
   \caption{Steering subsystem block diagram.}
   \label{fig:steeringModelBlockDiagram}
@@ -449,13 +439,29 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \label{fig:speedControlModelArchitecture}
  \end{figure}
 
- \subsection{Specifications}
- Based on the system requirements listed above, the plant model will meet the following specifications:
- \begin{itemize}
-    \item The steering subsystem will be modeled first due to its non-linearities, depicted in Fig.~\ref{fig:nonlinGraph}, and because it is important to the operation of the vehicle 
-    \item The steering subsystem will be able to handle small steering angles
-    \item Each vehicle subsystem will be modeled separately
- \end{itemize}
+
+
+ \section{Modeling Dynamic System using Neural Network}
+
+ In this section, we illustrate how a neural network can be used to model a
+ dynamic system in general. Neural network is a system approximation technique
+ that .......
+ The main structure of a neural network consists neurons, input layer of
+ neurons, one or more hidden layers, and the output layer of neurons. The
+ neurons of the hidden layers and the output layer have processing capabilities.
+ The actual network of a nural network following parallel and distributed system
+ architecture. .....
+
+
+ \missingfigure{Add a generic picture/block diagram of a multiple-input multiple output
+   dynamic system}
+ \todo[inline]{Add a generic picture of a neural network}
+ \todo[inline]{Weights of a neural network}
+
+ \todo[inline]{Training of a neural network}
+ \todo[inline]{Testing a neural network}
+ 
+ 
 
 \section{Modeling Vehicle Subsystems}
 To start this project, we first read documentation outlining the uses of
@@ -471,15 +477,59 @@ data from the steering, acceleration, and braking subsystems in an autonomous
 vehicle. The data we collected will be used to generate and then verify our
 models.
 
-\section{Main Project Work (Modeling Vehicle Subsystems)}
-To start this project, we first read documentation outlining the uses of MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials on how to model systems from data using System Identification and then find the most accurate model. We specifically tried to find examples with Multiple-Input Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since most of the vehicle subsystems we will model fall into one of these categories. A literature review was also conducted to see how systems with small non-linearities like our steering subsystem were modeled using System Identification. On October 7th we traveled to AutonomouStuff in order to collect data from the steering, acceleration, and braking subsystems in an autonomous vehicle. The data we collected will be used to generate and then verify our models. We collected data on the Lexus RX450H vehicle platform shown in Fig.~\ref{fig:lexusvehicle}. %
-%
+\subsection{System Requirements}
+Based on the system requirements listed above, the plant model will meet the following specifications:
+\begin{itemize}
+\item The steering subsystem will be modeled first due to its non-linearities, depicted in Fig.~\ref{fig:nonlinGraph}, and because it is important to the operation of the vehicle 
+\item The steering subsystem will be able to handle small steering angles
+\item Each vehicle subsystem will be modeled separately
+\end{itemize}
+The vehicle plant model will fulfill the requirements listed below:
+\begin{itemize}
+    \item The resulting plant model will consist of accurate subsystem models, as defined above
+    \item The subsystems can be used to create a HIL testbench
+    \item The subsystems can handle very small changes in values accurately
+\end{itemize}
+
+All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior, depicted in Fig.~\ref{fig:nonlinGraph}, made it very challenging to complete features like lane tracking. These models will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer and smoother manner. 
+
 \begin{figure}[htbp]
-	\centering
-	\includegraphics[height=4cm]{figs/img/picturesVisitToAStuff/visitors1-20211007}
-	\caption{AutonomouStuff Lexus RX450H vehicle.}
-	\label{fig:lexusvehicle}
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=2.5in]{figs/inkscape/nonlinearBehavior}
+    \caption{Steering Non-linear Behavior}
+    \label{fig:nonlinGraph}
 \end{figure}
+
+\todo[inline]{Add subsections for each subsystem on how NNs are used to model each subsystem}
+
+\todo[inline]{For each subsystem you will need to draw different NN structure }
+
+
+
+\section{Validation and Testing} \label{sec:simresults}
+
+
+To start this project, we first read documentation outlining the uses of
+MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials
+on how to model systems from data using System Identification and then find the
+most accurate model. We specifically tried to find examples with Multiple-Input
+Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since
+most of the vehicle subsystems we will model fall into one of these categories.
+A literature review was also conducted to see how systems with small
+non-linearities like our steering subsystem were modeled using System
+Identification.
+
+\subsection{Experimental Setup}
+\label{sec:experimentalSetup}
+
+
+
+On October 7th we traveled to AutonomouStuff in order to collect
+data from the steering, acceleration, and braking subsystems in an autonomous
+vehicle. The data we collected will be used to generate and then verify our
+models. We collected data on the Lexus RX450H vehicle platform shown in
+Fig.~\ref{fig:lexusvehicle}. %
 
 
 \noindent The following is the hardware required for this project:  
@@ -522,9 +572,12 @@ Using the data we collected for the steering, acceleration, and braking subsyste
 Another decision we made was to start using the Neural Network to create models. We decided to do this instead of continuing with the System Identification Toolbox for multiple reasons. The main one is because while transfer function models are able to accurately model linear systems, they struggle to model highly non-linear systems. Neural Networks work well with highly non-linear systems and are able to accurately model them. Since our systems, and the steering system in particular, exhibit non-linear behavior, they are not able to be accurately modeled by transfer functions. Another reason is that once the System Identification models were created in Simulink, there was confusion over how they would connect to produce the output. Some of the system models, such as the brake system, had four transfer functions due to having four inputs. These models were easily generated, but it wasn’t clear on how they should be connected in order to reflect the physical system. By using Neural Network models this problem can be avoided.
 
 
+\subsection{Transfer Function Modeling}
+\label{sec:TransferFunctionModeling}
 
-\section{Validation and Testing} \label{sec:simresults}
-\subsection{Steering Subsystem}
+\todo[inline]{Discuss results using the setup you explained in the previous section. See some IEEE papers}
+
+\subsubsection{Steering Subsystem}
 In Fig.~\ref{byWireSteerModel}, the output steering angle is plotted versus time
 when the vehicle is in by-wire mode. The figure shows the output steering angle
 from some data collected to depict the steering system behavior plotted with the
@@ -691,7 +744,7 @@ to the input torque voltage B signal. %
 \end{table}
 %
 
-\subsection{Acceleration System}
+\subsubsection{Acceleration System}
 In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted versus time when the vehicle is in by-wire mode. The figure shows the output acceleration pedal position from some data collected to depict the acceleration system behavior plotted with the behavior of the estimated model. The best fit percentage for this model is 97.69\%. Likewise, \autoref{manualAccelModel} depicts the output acceleration pedal position plotted versus time when the vehicle is in manual mode. The best fit percentage for this model is 98.3\%. 
 
 \begin{figure}[h]
@@ -773,7 +826,7 @@ In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted
     \end{center}	
 \end{table}
 %
-\subsection{Brake System}
+\subsubsection{Brake System}
 The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%.
 \begin{figure}[h]
 	\centering
@@ -806,6 +859,27 @@ The second test used constant blocks to represent the voltages and desired pedal
 		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysPedalPositionErrorConstantBlocks}}
 	\caption{Actual Pedal Position and Error Plots Using the Constant Blocks}
 \end{figure}
+
+\subsection{Neural Network Modeling}
+\label{sec:NN-Modeling}
+
+
+\todo[inline]{Discuss results  NN modeling using the setup you explained in the previous section. See some IEEE papers}
+
+\subsection{Discussion}
+\label{sec:discussion}
+
+\todo[inline]{Discuss pros and cons of the results you presented in the previous sections on each of the techniques you incorporated}
+
+
+\section{Conclusion and Future Work}
+\label{sec:conclustionAndFutureWork}
+
+
+
+\todo[inline]{One paragraph on conclusion, make sure you to recommend what modeling technique for the company }
+\todo[inline]{One paragraph on future work}
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{bib/references.bib}
