@@ -258,7 +258,7 @@ was the most accurate, with a best fit percentage of 85.83\%.
 
 
 \section{System Architecture}
-The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, thus can not be treated as a single input. Also, each subsystem will be treated as a single output system. The brake subsystem is shown to have two outputs but the behaviors of one of the outputs is already known so it will be modeled based  on the other output's behavior. 
+The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, and thus can not be treated as a single input. Also, each subsystem will be treated as a single output system. The brake subsystem is shown to have two outputs but the behaviors of one of the outputs is already known so it will be modeled based on the other output's behavior. 
 %
 \begin{figure}[htbp]
   \centering
@@ -392,7 +392,7 @@ of the acceleration subsystem. %
  \end{figure} 
  
   \subsection{Speed Subsystem}
-This speed subsystem would fall under the multiple-input single-output system. There are four inputs, the position of the acceleration pedal and the brake pedal, along with the shifter actual gear. Taking these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is the output of the system.  
+This speed subsystem would fall under the multiple-input single-output system. There are four inputs, the position of the acceleration pedal and the brake pedal, along with the shifter actual gear. Taking these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is then the output of the system.  
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -827,6 +827,13 @@ In \autoref{byWireAccelModel}, the output acceleration pedal position is plotted
 \end{table}
 %
 \subsubsection{Brake System}
+While some by-wire models were created for the brake system, the models created using manual data were the only ones considered once we decided to use only manual data. It was found that a transfer function of 28 poles and 12 zeros gave an acceptable best fit percentage for most of the data log combinations that were tried. However, it was only within the 5\% error bound for one of the data log combinations. Another problem was that the brake system required four transfer functions, one for each input. Once these transfer functions were exported, there was uncertainty on how to connect them in order to produce the output value. As a result, we ended up switching to using Neural Networks to create a model for the brake system. 
+
+\subsection{Neural Network Modeling}
+\label{sec:NN-Modeling}
+
+
+\subsubsection{Brake System}
 The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%.
 \begin{figure}[h]
 	\centering
@@ -860,10 +867,6 @@ The second test used constant blocks to represent the voltages and desired pedal
 	\caption{Actual Pedal Position and Error Plots Using the Constant Blocks}
 \end{figure}
 
-\subsection{Neural Network Modeling}
-\label{sec:NN-Modeling}
-
-
 \todo[inline]{Discuss results  NN modeling using the setup you explained in the previous section. See some IEEE papers}
 
 \subsection{Discussion}
@@ -874,8 +877,9 @@ The second test used constant blocks to represent the voltages and desired pedal
 
 \section{Conclusion and Future Work}
 \label{sec:conclustionAndFutureWork}
+Our initial approach was to model the subsystems using the System Identification Toolbox from MATLAB, but it produced unsatisfactory results. Switching to the Neural Network Time Series app allowed us to train models using the data we collected. These models that were developed met the predefined accuracy requirements, and so were tested using an open loop setup. In the future if AutonomouStuff would like to model other vehicle subsystems, we would recommend modeling them using Neural Networks. Creating the Neural Networks and exporting the models to Simulink was easy to do and produced accurate results. 
 
-
+For this project, further testing should be completed for these subsystem models. Since time and availability constraints prevented us from testing the models using Hardware-in-the-Loop, this would be a good place to start. Further testing is important to make sure the developed models are accurate and compatible with testing using hardware. Depending on what AutonomouStuff decides, future engineers working on this project could start developing controllers based off of these models. Currently, AutonomouStuff develops their own controllers for their vehicle subsystems, but they could allow students to design some as part of this senior project. 
 
 \todo[inline]{One paragraph on conclusion, make sure you to recommend what modeling technique for the company }
 \todo[inline]{One paragraph on future work}
