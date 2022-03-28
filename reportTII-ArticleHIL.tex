@@ -452,12 +452,12 @@ This speed subsystem would fall under the multiple-input single-output system. T
  can find a mathematical function $y=f(x)$ that maps inputs $x$ to outputs $y$. The architecture of the 
  neural network and the complexity of the dataset employed affect the accuracy of the function. This theorem
  shows that there will be a determinable function from some neural network architecture and this theorem holds
- for any number of inputs and outputs. 
+ for any number of inputs and outputs, like the system show in Fig.~\ref{fig:mimoDynamicBlockDiagram}. 
  The main structure of a neural network consists of neurons, input layer of
  neurons, one or more hidden layers, and the output layer of neurons. The
  neurons of the hidden layers and the output layer have processing capabilities.
  The actual structure of a neural network follows parallel and distributed system
- architecture. 
+ architecture.
 
  \begin{figure}[htbp]
     \centering
@@ -949,8 +949,7 @@ While some by-wire models were created for the brake system, the models created 
 
 \subsubsection{Steering System}
 
-To develop the model of the steering system using a neural network architecture, we used one data subset to train the model and then used an additional subset of data to verify the model worked. The neural network model used a feedforward network that had one hidden layer containing three neurons. 
-%The following are the results of neural network training for the steering system.
+To develop the model of the steering system using a neural network architecture, we used one data subset to train the model and then used an additional subset of data to verify the model worked. The neural network model used a feedforward network that had one hidden layer containing three neurons. The model was also trained with twelve delay units to achieve the required accuracy, meaning that the first twelve output samples of the model should be ignored.
 
 \begin{figure}[htbp]
 	\centering
@@ -964,7 +963,7 @@ To develop the model of the steering system using a neural network architecture,
 
 \subsubsection{Acceleration System}
 
-The following are the results of neural network training for the acceleration system.
+To develop the model of the acceleration system using a neural network architecture, we used one data subset to train the model and then used an additional subset of data to verify the model worked. The neural network model used a feedforward network that had one hidden layer containing three neurons. The model was also trained with three delay units to achieve the required accuracy, meaning that the first three output samples of the model should be ignored. 
 
 \begin{figure}[htbp]
 	\centering
