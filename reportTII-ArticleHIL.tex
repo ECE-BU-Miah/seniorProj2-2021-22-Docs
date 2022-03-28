@@ -264,10 +264,9 @@ The overall system architecture of this project consists of six subsystems which
 %
 \begin{figure}[htbp]
   \centering
-%  \missingfigure{Place a high level block diagram including picture of Lexus vehicle that we are modeling}
-  	\includegraphics[height=3cm]{figs/inkscape/carSystemModelOutline}
+  \missingfigure{Place a high level block diagram including picture of Lexus vehicle that we are modeling}
   \caption{Hexagon Lexus self-driving vehicle showing different subsystems}
-  \label{fig:lexusVehicleOutline}
+  \label{fig:highLevelSystemArchitecture}
 \end{figure}
 
 % 
@@ -448,12 +447,16 @@ This speed subsystem would fall under the multiple-input single-output system. T
 
  In this section, we illustrate how a neural network can be used to model a
  dynamic system in general. Neural network is a system approximation technique
- that .......
+ that utilizes the Universal Approximation Theorem, which states that any neural network architecture
+ can find a mathematical function $y=f(x)$ that maps inputs $x$ to outputs $y$. The architecture of the 
+ neural network and the complexity of the dataset employed affect the accuracy of the function. This theorem
+ shows that there will be a determinable function from some neural network architecture and this theorem holds
+ for any number of inputs and outputs. 
  The main structure of a neural network consists of neurons, input layer of
  neurons, one or more hidden layers, and the output layer of neurons. The
  neurons of the hidden layers and the output layer have processing capabilities.
  The actual structure of a neural network follows parallel and distributed system
- architecture. .....
+ architecture. 
 
  \begin{figure}[htbp]
     \centering
@@ -620,10 +623,10 @@ All of the subsystems have nonlinear behaviors when there are small changes in t
 \end{figure}
 
 \subsection{Steering System Modeling}
-
+To develop a model of the steering system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was not accurate and did not track the output of the steering system data. The transfer function model we developed was more reliable tracking the output of the steering system data, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the steering system data and stayed within the error requirements. 
 
 \subsection{Acceleration System Modeling}
-
+To develop a model of the acceleration system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was not accurate and did not track the output of the acceleration system data. The transfer function model we developed was more reliable tracking the output of the acceleration system data, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the acceleration system data and stayed within the error requirements. 
 
 \subsection{Brake System Modeling}
 
@@ -945,7 +948,8 @@ While some by-wire models were created for the brake system, the models created 
 
 \subsubsection{Steering System}
 
-The following are the results of neural network training for the steering system.
+To develop the model of the steering system using a neural network architecture, we used one data subset to train the model and then used an additional subset of data to verify the model worked. The neural network model used a feedforward network that had one hidden layer containing three neurons. 
+%The following are the results of neural network training for the steering system.
 
 \begin{figure}[htbp]
 	\centering
