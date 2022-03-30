@@ -630,7 +630,7 @@ To develop a model of the steering system, we employed multiple methods. The fir
 To develop a model of the acceleration system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was not accurate and did not track the output of the acceleration system data. The transfer function model we developed was more reliable tracking the output of the acceleration system data, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the acceleration system data and stayed within the error requirements. 
 
 \subsection{Brake System Modeling}
-
+To create a brake system model, we first tried generating transfer function models using MATLAB’s System Identification Toolbox. After generating multiple transfer function models and trying many different data log combinations, we still couldn’t find a model that was completely accurate across all combinations and that was below the error bound of 5\% for all combinations. Once this became clear Neural Network models were created using the Neural Network Time Series Toolbox provided by MATLAB to see if they could create accurate brake models. Using this we were able to create a model that accurately tracked the data we collected from the brake system and that stayed within the 5\% error bound.  
 
 \todo[inline]{Add subsections for each subsystem on how NNs are used to model each subsystem}
 
