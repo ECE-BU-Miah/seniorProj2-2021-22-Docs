@@ -81,9 +81,9 @@
 % TITLE SECTION
 %-----------------------------------------------------------
 
-\title{Smart Control of 2 Degree of Freedom Helicopters} % Poster title
+\title{Plant Modeling for an Autonomous Vehicle} % Poster title
 
-\author{Glenn Janiak, Ken Vonckx, Advisor: Dr. Suruz Miah} % Author(s)
+\author{Nick Nauman, Hannah Grady, Advisor: Dr. Suruz Miah} % Author(s)
 
 
 \institute{Department of Electrical and Computer Engineering, Bradley University, Peoria IL} %Institution(s)
@@ -118,7 +118,7 @@
 \textbf{Objective}
 \vskip -0.75cm
 \begin{itemize}
-    \item Develop a platform allowing mobile devices to control the motion of a group of helicopters
+    \item Create models for the subsystems of an autonomous vehicle
 \end{itemize}
 %\begin{itemize}
 %    \item Develop a platform that allows mobile devices to control helicopters with the least amount of error via an embedded system 
@@ -128,17 +128,21 @@
 \textbf{Contribution}
 \vskip -0.75cm
 \begin{itemize}
-    \item Determine trade-offs between traditional control techniques and machine learning
+	\item Determine if System Identification or Neural Network modeling produces better models 
+	\item Non-linearity modeling
+%    \item Determine trade-offs between traditional control techniques and machine learning
     %\item Embedded System Implementation
     %\item Mobile Device Control 
-    \item Multi-Helicopter Application
+    %\item Multi-Helicopter Application
 \end{itemize}
 \vskip -0.75cm
 \textbf{Applications}
 \vskip -0.75cm
 \begin{itemize}
-    \item Teleoperation approach to search and rescue 
-    \item Aerial turbulence resistance 
+	\item Use in testing to help develop more accurate vehicle controllers
+	\item Create a guide for modeling future vehicle subsystems
+%    \item Teleoperation approach to search and rescue 
+%    \item Aerial turbulence resistance 
 \end{itemize}
 
 %
@@ -521,11 +525,11 @@ $\bullet$ State-space representation of 2-DOF helicopter
 
 \begin{alertblock}{Conclusion and Future Work}
 \begin{itemize}
-    \item Model-based reinforcement learning technique (ADP)  is useful when system model is unknown
+    \item Using Neural Networks produced more accurate models than System Identification 
    % \item PI controller greatly reduces steady-state error, however increases overshoot and settling time
     \vskip .75cm
-    \item Implement PI controller for ADP algorithm
-    \item Use digital compass to increase accuracy of orientation and help identify initial position
+    \item Test models using Hardware-in-the-Loop
+    \item Create new vehicle controllers
 \end{itemize}
 
 
