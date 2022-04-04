@@ -490,7 +490,7 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \label{fig:mimoDynamicBlockDiagram}
  \end{figure}
  
- Figure~\ref{fig:nnActor} shows a generic actor neural network structure. ...
+ Figure~\ref{fig:nnActor} shows a generic actor neural network structure which represents a neural network designed for a multiple input multiple output system. 
  \begin{figure}
   \centering
       \tikzset{%
@@ -581,10 +581,65 @@ This speed subsystem would fall under the multiple-input single-output system. T
   \label{fig:nnActor}
 \end{figure}
 
- \todo[inline]{Weights of a neural network}
+ 
+The neural network inputs are mapped to the outputs by being assigned a set of weights. 
+The approximated neural network signal can be written as:
+\begin{align}
+  \label{eq:approximatePolicyActorWeights}
+    \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+  \end{align}
+%
+where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2$ and components of weight matrix ${\bf W}_a$ shown in Fig.~\ref{fig:nnActor} are given by %
+%
+\begin{align*}
+  {\bf W}_a = 
+  \begin{bmatrix}
+    w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
+    w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+    \vdots & \ddots & \ldots &\vdots\\
+    w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+  \end{bmatrix}.
+\end{align*}
+%
+In compact form:
+  \begin{align*}
+    \bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+  \end{align*}
+  %
+  $\mathbb{R}^{\eta\times\bar{n}}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf e}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf u}_{a,\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
 
- \todo[inline]{Training of a neural network}
- \todo[inline]{Testing a neural network}
+  Let $\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta_a$ can be written as:
+  \begin{align*}
+    \delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+  \end{align*}
+
+Actor weight ${\bf W}_a$ can then be found minimizing the sum--of--square error $\delta_a$ defined by %
+%
+\begin{align*}
+  \delta_a = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+\end{align*}
+%
+Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields 
+%
+\begin{align}
+  \frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a
+  \label{eq:actorWeightsGradient}
+\end{align}
+%
+Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
+\begin{align*}
+  {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+\end{align*}
+ 
+ The neural network is trained by altering the weights to minimize the least square error by utilizing the gradient descent approach which is defined as:
+ \begin{multline}
+  \mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}= \mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a^{(r)}\right)\\
+  = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+  \label{eq:actorWeightUpdate}
+\end{multline}
+
+ The neural network is validated by passing another subset of data that was not used for training purposes and comparing the output results of the neural network with the expected output results from the data set. An acceptable neural network model will meet the desired error requirements. 
  
  
 
