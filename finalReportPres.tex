@@ -119,7 +119,7 @@
 \logo{\hfill\href{http://www.bradley.edu}{\includegraphics[width=0.75cm]{figs/logoBU1-Print}}}  % place logo in every page 
 
 
-\subject{Mobile Robot Localization}
+\subject{Plant Modeling for Autonomous Vehicle}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
 
@@ -289,18 +289,18 @@
   	\end{block}
 \end{frame}
 
-\begin{frame}{System Identification Preliminaries}{Examples}
-  \begin{block}{}
-    \begin{LARGE}
-     
-    \end{LARGE}
-  \end{block}
-  \begin{block}{}
-    \begin{LARGE}
-      
-    \end{LARGE}
-  \end{block}
-\end{frame}
+%\begin{frame}{System Identification Preliminaries}{}
+%  \begin{block}{}
+%    \begin{LARGE}
+%     
+%    \end{LARGE}
+%  \end{block}
+%  \begin{block}{}
+%    \begin{LARGE}
+%      
+%    \end{LARGE}
+%  \end{block}
+%\end{frame}
 %-------------------------
 \section{System Architecture}
 
@@ -342,9 +342,11 @@
 %-------------------------
 \section{Modeling Vehicle Subsystems}
 
-\begin{frame}{Modeling Vehicle Subsystems}{}
+%\begin{frame}{Modeling Vehicle Subsystems}{}
+%
+%\end{frame}
 
-\end{frame}
+
 
 \begin{frame}{Modeling Vehicle Subsystems}{System Requirements}
 	\begin{block}{Specifications}
@@ -395,6 +397,8 @@
   \end{block}
 \end{frame}
 
+
+
 \begin{frame}{Validation and Testing}{Experimental Setup}
 	\begin{block}{Control Method}
 		\begin{itemize}
@@ -420,8 +424,10 @@
 	\end{block}
 \end{frame}
 
+
+
 \begin{frame}{Transfer Function Modeling}{Steering System}
-	\begin{block}
+	\begin{block}{}
  \begin{itemize}
 	\item Best fit percentage of the by-wire steering estimated model is 85.54
 	\item Best fit percentage of the manual steering estimated model is 90.27
@@ -444,8 +450,10 @@
   \end{block}
 \end{frame}
 
+
+
 \begin{frame}{Transfer Function Modeling}{Acceleration System}
-	\begin{block}
+	\begin{block}{}
  \begin{itemize}
 	\item Best fit percentage of the by-wire acceleration estimated model is 97.69
 	\item Best fit percentage of the manual acceleration estimated model is 98.3
@@ -468,12 +476,36 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{Transfer Function Modeling}{Brake System}
 
+
+\begin{frame}{Transfer Function Modeling}{Brake System}
+\begin{block}{}
+ \begin{itemize}
+	\item Only manual models were considered 
+	\item There were no transfer function models that could satisfy both the best fit and error requirements 
+ \end{itemize}
+% \begin{figure}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+%        \caption{Output of Estimated By-Wire System Model}
+%        \label{fig:byWireSteerModel}
+%    \end{minipage}\hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+%        \caption{Output of Estimated Manual System Model}
+%        \label{fig:manualSteerModel}
+%    \end{minipage}
+%\end{figure}
+  \end{block}
 \end{frame}
 
+
+
 \begin{frame}{Neural Network Modeling}{Steering System}
-	\begin{block}
+	\begin{block}{}
   		\begin{figure}[H]
   			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
@@ -486,8 +518,10 @@
 	\end{block}
 \end{frame}
 
+
+
 \begin{frame}{Neural Network Modeling}{Acceleration System}
-	\begin{block}
+	\begin{block}{}
   		\begin{figure}[H]
   			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
@@ -501,8 +535,10 @@
 	\end{block}
 \end{frame}
 
+
+
 \begin{frame}{Neural Network Modeling}{Brake System}
-	\begin{block}
+	\begin{block}{}
 \begin{figure}[H]
   			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/newBrakeSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
