@@ -173,7 +173,7 @@ $\bullet$ System Architecture
 	\centering
 	\begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=0.75 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=0.75 cm]
     \tikzstyle{sum} = [draw, circle,fill=orange!15]
     % place nodes
     \node[sum](sum){$\sum$};
@@ -209,14 +209,14 @@ $\bullet$ System Architecture
 	\centering
 	 \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width= 5 cm, minimum height=1.5 cm]
     % place nodes
     \node[block,text width=1.75cm,text centered](accelSubsystem){Acceleration subsystem};
     % Connections
     \draw[stealth-,thick]
-    (accelSubsystem.180)--node[very near end,above]{Acceleration pedal voltages}++(-2.0,0);
+    (accelSubsystem.180)--node[very near end,above]{Acceleration pedal voltages}++(-5.0,0);
     \draw[-stealth,thick]
-    (accelSubsystem.0)--node[very near end,above]{Acceleration pedal position}++(2.0,0);
+    (accelSubsystem.0)--node[very near end,above]{Acceleration pedal position}++(5.0,0);
   \end{tikzpicture}
     \caption{Acceleration subsystem block diagram}
     \label{fig:accelModelArchitecture}
@@ -227,21 +227,21 @@ $\bullet$ System Architecture
 	\centering
 	  \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2.0 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2.0 cm]
     % place nodes
     \node[block,text width=1.25cm,text centered](brakeSubsystem){Brake subsystem};
 
     % Connections
     \draw[stealth-,thick]
-    (brakeSubsystem.140)--node[pos=0.65,above]{Pressure voltages}++(-1.7,0);
+    (brakeSubsystem.140)--node[pos=0.65,above]{Pressure voltages}++(-4.5,0);
     \draw[stealth-,thick]
-    (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-1.7,0);
+    (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-4.5,0);
     \draw[stealth-,thick]
-    (brakeSubsystem.-140)--node[pos=0.65,above]{On/Off switch}++(-1.7,0);
+    (brakeSubsystem.-140)--node[pos=0.65,above]{On/Off switch}++(-4.5,0);
     \draw[-stealth,thick]
-    (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(1.7,0);
+    (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(4.5,0);
     \draw[-stealth,thick]
-    (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(1.7,0);
+    (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(4.5,0);
     
   \end{tikzpicture}
     % \captionsetup{justification=centering, margin=3cm}
@@ -255,15 +255,15 @@ $\bullet$ System Architecture
     \centering
         \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
     % place nodes
     \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
 
     % Connections
     \draw[stealth-,thick]
-    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-1.9,0);
+    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-4.0,0);
     \draw[-stealth,thick]
-    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(1.9,0);
+    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(4.0,0);
     
   \end{tikzpicture}
     \caption{Speed Control subsystem block diagram}
@@ -276,19 +276,19 @@ $\bullet$ System Architecture
     \centering
   \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2 cm]
     % place nodes
     \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
 
     % Connections
     \draw[stealth-,thick]
-    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-1.9,0);
+    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-5.0,0);
     \draw[stealth-,thick]
-    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-1.9,0);
+    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-5.0,0);
     \draw[stealth-,thick]
-    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-1.9,0);
+    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-5.0,0);
     \draw[-stealth,thick]
-    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(1.9,0);
+    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(5.0,0);
     
   \end{tikzpicture}
     % \captionsetup{justification=centering, margin=3cm}
@@ -302,24 +302,25 @@ $\bullet$ System Architecture
     \centering
 \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
     % place nodes
     \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
 
     % Connections
     \draw[stealth-,thick]
-    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-1.9,0);
+    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-4.5,0);
     \draw[-stealth,thick]
-    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(1.9,0);
+    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(4.5,0);
     
   \end{tikzpicture}
     \caption{Shift subsystem block diagram}
     \label{fig:shiftModelArchitecture}
 \end{figure}
 
-$\bullet$ Data Collection Setup 
+%$\bullet$ Data Collection Setup 
 \begin{itemize}
-	\item Lexus RX450H vehicle platform
+	\item Data Collection Setup
+		\item Lexus RX450H vehicle platform
 	\item Laptop
 	\item PACMod ECU 
 	\item CANCase
@@ -342,52 +343,36 @@ $\bullet$ Data Collection Setup
 
 \begin{block}{Transfer Function Modeling}
 \vskip -1cm
-%\begin{itemize}
-%    \item Determines optimal control gain for dynamic systems
-%%    \begin{subequations}
-%%        \small
-%%        \begin{align}
-%%            & \dot{x} = Ax + Bu\\
-%%            & u = -Kx\\
-%%            & J(u) = \int_{0}^{\infty} (x^TQx + u^TRu + 2x^TNu)dt\\
-%%            & A^TS+SA-(SB+N)R^{-1}(B^TS+N^T)+Q=0\\
-%%            & K=R^{-1}(B^TS+N^T)
-%%        \end{align}
-%%    \label{eq:LQR_EQ}
-%%    \end{subequations}
-\begin{figure}
-    \centering
-    % \missingfigure{Insert figure.}
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=.92\textwidth,keepaspectratio=true]{figs/ipe/algorithmFramework}}
-    \caption{A desired orientation is given by a user.  The difference between this input and the actual position is calculated.  The controller the calculates the proper amount of voltage to apply to the DC motors.}
-    \label{fig:algorithmFramework}
-\end{figure}
-%\end{itemize} 
+\begin{itemize}
+    \item MATLAB's System Identification Toolbox used to create models 
+    \item Models needed to meet best fit and error requirements 
+
+\end{itemize} 
 \vskip -1cm
-\begin{enumerate}
-    \item Employ state-space representation of 2-DOF helicopter:
-    \begin{align*}
-        \dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}
-    \end{align*}
-    \item Use state feedback law
-    \begin{center}
-        \vskip -1cm
-        $\mathbf{u} = -\mathbf{K}\mathbf{x}$
-    \end{center}
-    \vskip -1cm
-    to minimize the quadratic cost function:
-    \begin{align*}
-        J(\mathbf{u}) = \int_0^\infty (\mathbf{x}^T\mathbf{Q}\mathbf{x} + \mathbf{u}^T\mathbf{R}\mathbf{u} + 2\mathbf{x}^T\mathbf{N}\mathbf{u})\mathrm{dt}
-    \end{align*}
-    \item Find the solution $\mathbf{S}$ to the Riccati equation
-    \begin{align*}
-        \mathbf{A}^T\mathbf{S}+\mathbf{SA}-(\mathbf{SB}+\mathbf{N})\mathbf{R}^{-1}(\mathbf{B}^T\mathbf{S}+\mathbf{N}^T)+\mathbf{Q}=0
-    \end{align*}    
-    \item Calculate gain, $\mathbf{K}$
-    \begin{center}
-        $\mathbf{K}=\mathbf{R}^{-1}(\mathbf{B}^T\mathbf{S}+\mathbf{N}^T)$
-    \end{center}
-\end{enumerate}
+%\begin{enumerate}
+%    \item Employ state-space representation of 2-DOF helicopter:
+%    \begin{align*}
+%        \dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}
+%    \end{align*}
+%    \item Use state feedback law
+%    \begin{center}
+%        \vskip -1cm
+%        $\mathbf{u} = -\mathbf{K}\mathbf{x}$
+%    \end{center}
+%    \vskip -1cm
+%    to minimize the quadratic cost function:
+%    \begin{align*}
+%        J(\mathbf{u}) = \int_0^\infty (\mathbf{x}^T\mathbf{Q}\mathbf{x} + \mathbf{u}^T\mathbf{R}\mathbf{u} + 2\mathbf{x}^T\mathbf{N}\mathbf{u})\mathrm{dt}
+%    \end{align*}
+%    \item Find the solution $\mathbf{S}$ to the Riccati equation
+%    \begin{align*}
+%        \mathbf{A}^T\mathbf{S}+\mathbf{SA}-(\mathbf{SB}+\mathbf{N})\mathbf{R}^{-1}(\mathbf{B}^T\mathbf{S}+\mathbf{N}^T)+\mathbf{Q}=0
+%    \end{align*}    
+%    \item Calculate gain, $\mathbf{K}$
+%    \begin{center}
+%        $\mathbf{K}=\mathbf{R}^{-1}(\mathbf{B}^T\mathbf{S}+\mathbf{N}^T)$
+%    \end{center}
+%\end{enumerate}
 
 %\vskip -2.5cm
 \end{block}
@@ -399,26 +384,35 @@ $\bullet$ Data Collection Setup
 \begin{block}{Neural Network Modeling}
 \vskip -1cm
 \begin{itemize}
-    \item Utilizes gain calculated in LQR
-    \item Added Kalman filter to reduce external disturbances to the system
-%    \begin{subequations}
-%        \small
-%        \begin{align}
-%            & some eq = x\\
-%            & some eq = y\\
-%            & some eq = z
-%        \end{align}
-%    \label{eq:LQG_EQ}
-%    \end{subequations}
+    \item Used MATLAB's Neural Network Time Series App
+    \item Generated models using the Bayesian Regularization Algorithm
+    \item Models trained using collected log data  
 \end{itemize} 
-%\todo[inline]{Insert Dr. Miah's LQG image from his slides here}
+
 \begin{figure}
     \centering
-    % \missingfigure{Insert figure.}
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[width=1.05\textwidth,keepaspectratio=true]{figs/img/LQG_SimulinkResize.png}}
-    \caption{Noise resistant 2-DOF helicopter model.}
-    \label{fig:LQGModel}
+		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
+	\caption{Steering System Training Plots}
+    \label{fig:SteeringSysNeuralNetwork}
 \end{figure}
+
+\begin{figure}
+    \centering
+		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput2}}
+	\caption{Acceleration System Training Plots}
+    \label{fig:AccelerationSysNeuralNetwork}
+\end{figure}
+
+\begin{figure}
+    \centering
+		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFig}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
+	\caption{Brake System Training Plots}
+    \label{fig:BrakeSysNeuralNetwork}
+\end{figure}
+
 
 %\vskip -2.5cm
 \end{block}
