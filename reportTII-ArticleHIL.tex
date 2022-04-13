@@ -248,7 +248,7 @@ The overall system architecture of this project consists of six subsystems which
 \subsection{Steering Subsystem}
 \label{sec:steeringSubsystem}
 
-The steering subsystem consists of steering, the power steering motors, $\ldots$ The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~\ref{fig:steeringModelBlockDiagram}
+The steering subsystem consists of the steering arm, knuckle, rods, drag link, steering gear box, drop arm, cross shaft, steering column, steering shaft, and steering wheel~\footnote{\url{https://www.theengineerspost.com/car-steering-system-in-automobile/}}. The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~\ref{fig:steeringModelBlockDiagram}
 
 
 \begin{figure}[h]
@@ -288,7 +288,7 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
 
 
   \subsection{Brake Subsystem}
-  The brake subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
+ The brake subsystem is made up of the master cylinder, brake rotor, brake drum, brake pad, brake caliper, brake shoe, brake booster, brake pedal, wheel speed sensors, ABS module, and brake lines~\footnote{\url{https://oards.com/car-brake-system-components/}}. The subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -317,7 +317,7 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
 \end{figure}
  
   \subsection{Acceleration Subsystem}
-  The acceleration subsystem is a multiple-input multiple-output system. 
+  The acceleration subsystem consists of the throttle pedal, engine, and crankshaft~\footnote{\url{https://harrisautomotiverepair.com/car-accelerator/}}. It is a multiple-input multiple-output system. 
 Acceleration pedal voltages are sent to the subsystem. 
 A new acceleration pedal position value is generated to better match 
 the real-time pedal position. This is then the output 
@@ -341,7 +341,7 @@ of the acceleration subsystem. %
  \end{figure}
  
   \subsection{Shift Subsystem}
- This subsystem can be classified as a single-input single-output system. The subsystem takes the desired shifter gear value from the user. Within the subsystem, the actual shifter gear changes to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem. 
+ The components that make up the shift subsystem are the friction clutch, bands, spring loaded valve, load sensor, shift valve, torque converter, gear stick, seals, and gasket~\footnote{\url{https://oards.com/car-automatic-transmission-system-components/}}. This subsystem can be classified as a single-input single-output system. The subsystem takes the desired shifter gear value from the user. Within the subsystem, the actual shifter gear changes to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem. 
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -389,7 +389,7 @@ This speed subsystem would fall under the multiple-input single-output system. T
 \end{figure}
  
   \subsection{Speed Control Subsystem}
-  The speed control subsystem is a straightforward single-input single-output system. The desired vehicle speed is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the new vehicle speed. This value is then sent out to the rest of the vehicle system. 
+  The speed control subsystem components include the cruise control switch, vehicle speed sensor, throttle sensor, and brake switch~\footnote{\url{https://www.freeasestudyguides.com/electrical-cruise-control-systems.html}}. This subsystem is a straightforward single-input single-output system. The desired vehicle speed is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the new vehicle speed. This value is then sent out to the rest of the vehicle system. 
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
