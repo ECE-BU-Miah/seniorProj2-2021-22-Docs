@@ -40,50 +40,18 @@
 {Author \MakeLowercase{\textit{et al.}}: Title}
 \begin{document}
 \title{Hardware-in-the-Loop Plant Modeling for Autonomous Vehicle}
-\author{First A. Author, \IEEEmembership{Fellow, IEEE}, Second B. Author, and Third C. Author, Jr., \IEEEmembership{Member, IEEE}
-\thanks{This paragraph of the first footnote will contain the date on 
-which you submitted your paper for review. It will also contain support 
-information, including sponsor and financial support acknowledgment. For 
-example, ``This work was supported in part by the U.S. Department of 
-Commerce under Grant BS123456.'' }
-\thanks{The next few paragraphs should contain 
-the authors' current affiliations, including current address and e-mail. For 
-example, F. A. Author is with the National Institute of Standards and 
-Technology, Boulder, CO 80305 USA (e-mail: author@boulder.nist.gov). }
-\thanks{S. B. Author, Jr., was with Rice University, Houston, TX 77005 USA. He is 
-now with the Department of Physics, Colorado State University, Fort Collins, 
-CO 80523 USA (e-mail: author@lamar.colostate.edu).}
-\thanks{T. C. Author is with 
-the Electrical Engineering Department, University of Colorado, Boulder, CO 
-80309 USA, on leave from the National Research Institute for Metals, 
-Tsukuba, Japan (e-mail: author@nrim.go.jp).}
+\author{Hannah Grady, Nicholas Nauman, and Dr. Suruz Miah
+\thanks{This paper was submitted for review on 5/3/22. This project was supported by Hexagon's AutonomouStuff with special thanks to Joe Buckner, Erik Guetz, Sai Chittemsetty, Matt Goben, and Travis Catton.}
+\thanks{Hannah Grady is an electrical engineering student at Bradley University, Peoria, IL 61625 USA (e-mail: hgrady@mail.bradley.edu).}
+\thanks{Nicholas Nauman is an electrical engineering student at Bradley University, Peoria, IL 61625 USA (e-mail: nnauman@mail.bradley.edu).}
+\thanks{Dr. Suruz Miah is a professor for the Electrical Engineering Department, Bradley University, Peoria, IL 
+61625 USA, (e-mail: smiah@bradley.edu).}
 }
 
 \maketitle
 
 \begin{abstract}
 This report presents the results of modeling vehicle systems and testing them using Hardware-in-the-Loop (HIL). First, data was collected for each system using a Lexus RX450H vehicle. After data collection, models were developed in order to accurately simulate the physical vehicle system. MATLAB’s System Identification Toolbox was initially used to create these models. However, the transfer function models it provided weren’t able to accurately represent these systems and their non-linear behaviors. After this was established, modeling was done using MATLAB’s Neural Network Time Series application. Once a Neural Network model was created, it was then exported to Simulink and modified to be able to run without the use of the Deep Learning toolbox. These models gave much more accurate results when compared to the transfer function models developed using the System Identification Toolbox. (Add section about testing and results). 
-
-%These instructions give you guidelines for preparing papers for 
-%IEEE Transactions and Journals. Use this document as a template if you are 
-%using \LaTeX. Otherwise, use this document as an 
-%instruction set. The electronic file of your paper will be formatted further 
-%at IEEE. Paper titles should be written in uppercase and lowercase letters, 
-%not all uppercase. Avoid writing long formulas with subscripts in the title; 
-%short formulas that identify the elements are fine (e.g., "Nd--Fe--B"). Do 
-%not write ``(Invited)'' in the title. Full names of authors are preferred in 
-%the author field, but are not required. Put a space between authors' 
-%initials. The abstract must be a concise yet comprehensive reflection of 
-%what is in your article. In particular, the abstract must be self-contained, 
-%without abbreviations, footnotes, or references. It should be a microcosm of 
-%the full article. The abstract must be between 150--250 words. Be sure that 
-%you adhere to these limits; otherwise, you will need to edit your abstract 
-%accordingly. The abstract must be written as one paragraph, and should not 
-%contain displayed mathematical equations or tabular material. The abstract 
-%should include three or four different keywords or phrases, as this will 
-%help readers to find it. It is important to avoid over-repetition of such 
-%phrases as this can result in a page being rejected by search engines. 
-%Ensure that your abstract reads well and is grammatically correct.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -264,8 +232,7 @@ The overall system architecture of this project consists of six subsystems which
 %
 \begin{figure}[htbp]
   \centering
-  %  \missingfigure{Place a high level block diagram including picture of Lexus vehicle that we are modeling}
-  	\includegraphics[height=3cm]{figs/inkscape/carSystemModelOutline}
+    \includegraphics[height=3cm]{figs/inkscape/carSystemModelOutline}
   \caption{Hexagon Lexus self-driving vehicle showing different subsystems}
   \label{fig:highLevelSystemArchitecture}
 \end{figure}
@@ -281,7 +248,7 @@ The overall system architecture of this project consists of six subsystems which
 \subsection{Steering Subsystem}
 \label{sec:steeringSubsystem}
 
-The steering subsystem consists of steering, the power steering motors, $\ldots$ The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~\ref{fig:steeringModelBlockDiagram}
+The steering subsystem consists of the steering arm, knuckle, rods, drag link, steering gear box, drop arm, cross shaft, steering column, steering shaft, and steering wheel~\footnote{\url{https://www.theengineerspost.com/car-steering-system-in-automobile/}}. The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~\ref{fig:steeringModelBlockDiagram}
 
 
 \begin{figure}[h]
@@ -321,7 +288,7 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
 
 
   \subsection{Brake Subsystem}
-  The brake subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
+ The brake subsystem is made up of the master cylinder, brake rotor, brake drum, brake pad, brake caliper, brake shoe, brake booster, brake pedal, wheel speed sensors, ABS module, and brake lines~\footnote{\url{https://oards.com/car-brake-system-components/}}. The subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -350,7 +317,7 @@ The steering subsystem consists of steering, the power steering motors, $\ldots$
 \end{figure}
  
   \subsection{Acceleration Subsystem}
-  The acceleration subsystem is a multiple-input multiple-output system. 
+  The acceleration subsystem consists of the throttle pedal, engine, and crankshaft~\footnote{\url{https://harrisautomotiverepair.com/car-accelerator/}}. It is a multiple-input multiple-output system. 
 Acceleration pedal voltages are sent to the subsystem. 
 A new acceleration pedal position value is generated to better match 
 the real-time pedal position. This is then the output 
@@ -374,7 +341,7 @@ of the acceleration subsystem. %
  \end{figure}
  
   \subsection{Shift Subsystem}
- This subsystem can be classified as a single-input single-output system. The subsystem takes the desired shifter gear value from the user. Within the subsystem, the actual shifter gear changes to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem. 
+ The components that make up the shift subsystem are the friction clutch, bands, spring loaded valve, load sensor, shift valve, torque converter, gear stick, seals, and gasket~\footnote{\url{https://oards.com/car-automatic-transmission-system-components/}}. This subsystem can be classified as a single-input single-output system. The subsystem takes the desired shifter gear value from the user. Within the subsystem, the actual shifter gear changes to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem. 
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -422,7 +389,7 @@ This speed subsystem would fall under the multiple-input single-output system. T
 \end{figure}
  
   \subsection{Speed Control Subsystem}
-  The speed control subsystem is a straightforward single-input single-output system. The desired vehicle speed is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the new vehicle speed. This value is then sent out to the rest of the vehicle system. 
+  The speed control subsystem components include the cruise control switch, vehicle speed sensor, throttle sensor, and brake switch~\footnote{\url{https://www.freeasestudyguides.com/electrical-cruise-control-systems.html}}. This subsystem is a straightforward single-input single-output system. The desired vehicle speed is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the new vehicle speed. This value is then sent out to the rest of the vehicle system. 
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -469,28 +436,26 @@ This speed subsystem would fall under the multiple-input single-output system. T
 
     % Connections
 	\draw[stealth-,thick]
-    (plant.-130)--node[very near end,above](in1){Input 1}++(-1.9,0);    
+    (plant.145)--node[very near end,above](in1){Input 1}++(-1.9,0);    
     \draw[stealth-,thick]
     (plant.180)--node[very near end,above](in2){Input 2}++(-1.9,0);
     %\draw[ultra thick,Dotted] (in2) -- (inn);
     \draw[-stealth,thick]
-    (plant.130)--node[very near end,above](inn){Input n}++(1.9,0);
+    (plant.-145)--node[very near end,above](inn){Input n}++(1.9,0);
     
     \draw[-stealth,thick]
-    (plant.-45)--node[very near end,above](out1){Output 1}++(1.9,0);
+    (plant.30)--node[very near end,above](out1){Output 1}++(1.9,0);
     \draw[-stealth,thick]
     (plant.0)--node[very near end,above](out2){Output 2}++(1.9,0);
     %\draw[ultra thick,Dotted] (out2) -- (outm);
     \draw[-stealth,thick]
-    (plant.0)--node[very near end,above](outm){Output m}++(1.9,0);
-    
-    
+    (plant.-30)--node[very near end,above](outm){Output m}++(1.9,0);
   \end{tikzpicture}
     \caption{Multiple Input Multiple Output Dynamic System Block Diagram}
     \label{fig:mimoDynamicBlockDiagram}
  \end{figure}
  
- Figure~\ref{fig:nnActor} shows a generic actor neural network structure. ...
+ Figure~\ref{fig:nnActor} shows a generic actor neural network structure which represents a neural network designed for a multiple input multiple output system. 
  \begin{figure}
   \centering
       \tikzset{%
@@ -581,10 +546,65 @@ This speed subsystem would fall under the multiple-input single-output system. T
   \label{fig:nnActor}
 \end{figure}
 
- \todo[inline]{Weights of a neural network}
+ 
+The neural network inputs are mapped to the outputs by being assigned a set of weights~\footnote{\url{https://towardsdatascience.com/machine-learning-for-beginners-an-introduction-to-neural-networks-d49f22d238f9}}. 
+The approximated neural network signal can be written as:
+\begin{align}
+  \label{eq:approximatePolicyActorWeights}
+    \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+  \end{align}
+%
+where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2$ and components of weight matrix ${\bf W}_a$ shown in Fig.~\ref{fig:nnActor} are given by %
+%
+\begin{align*}
+  {\bf W}_a = 
+  \begin{bmatrix}
+    w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
+    w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+    \vdots & \ddots & \ldots &\vdots\\
+    w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+  \end{bmatrix}.
+\end{align*}
+%
+In compact form:
+  \begin{align*}
+    \bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+  \end{align*}
+  %
+  $\mathbb{R}^{\eta\times\bar{n}}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf e}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf u}_{a,\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
 
- \todo[inline]{Training of a neural network}
- \todo[inline]{Testing a neural network}
+  Let $\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta_a$ can be written as:
+  \begin{align*}
+    \delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+  \end{align*}
+
+Actor weight ${\bf W}_a$ can then be found minimizing the sum--of--square error $\delta_a$ defined by %
+%
+\begin{align*}
+  \delta_a = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+\end{align*}
+%
+Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields 
+%
+\begin{align}
+  \frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a
+  \label{eq:actorWeightsGradient}
+\end{align}
+%
+Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
+\begin{align*}
+  {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+\end{align*}
+ 
+ The neural network is trained by altering the weights to minimize the least square error by utilizing the gradient descent approach which is defined as:
+ \begin{multline}
+  \mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}= \mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a^{(r)}\right)\\
+  = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+  \label{eq:actorWeightUpdate}
+\end{multline}
+
+ The neural network is validated by passing another subset of data that was not used for training purposes and comparing the output results of the neural network with the expected output results from the data set. An acceptable neural network model will meet the desired error requirements~\footnote{\url{https://medium.com/autonomous-agents/bayesian-regularization-for-neuralnetworks-2f2d34f03adc}}. 
  
  
 
@@ -632,24 +652,9 @@ To develop a model of the acceleration system, we employed multiple methods. The
 \subsection{Brake System Modeling}
 To create a brake system model, we first tried generating transfer function models using MATLAB’s System Identification Toolbox. After generating multiple transfer function models and trying many different data log combinations, we still couldn’t find a model that was completely accurate across all combinations and that was below the error bound of 5\% for all combinations. Once this became clear Neural Network models were created using the Neural Network Time Series Toolbox provided by MATLAB to see if they could create accurate brake models. Using this we were able to create a model that accurately tracked the data we collected from the brake system and that stayed within the 5\% error bound.  
 
-\todo[inline]{Add subsections for each subsystem on how NNs are used to model each subsystem}
-
-\todo[inline]{For each subsystem you will need to draw different NN structure }
-
 
 
 \section{Validation and Testing} \label{sec:simresults}
-
-
-%To start this project, we first read documentation outlining the uses of
-%MATLAB's System Identification Toolbox. From there we worked on MATLAB tutorials
-%on how to model systems from data using System Identification and then find the
-%most accurate model. We specifically tried to find examples with Multiple-Input
-%Multiple-Output (MIMO) and Multiple-Input Single-Output (MISO) systems, since
-%most of the vehicle subsystems we will model fall into one of these categories.
-%A literature review was also conducted to see how systems with small
-%non-linearities like our steering subsystem were modeled using System
-%Identification.
 
 \subsection{Experimental Setup}
 \label{sec:experimentalSetup}
@@ -659,7 +664,6 @@ data from the steering, acceleration, and braking subsystems in an autonomous
 vehicle. The data we collected will be used to generate and then verify our
 models. We collected data on the Lexus RX450H vehicle platform shown in
 Fig.~\ref{fig:lexusvehicle}. %
-
 
 \noindent The following is the hardware components required to collect the data:  
 	\begin{itemize}
@@ -690,8 +694,6 @@ Using the data we collected for the steering, acceleration, and braking subsyste
 \subsection{Transfer Function Modeling}
 \label{sec:TransferFunctionModeling}
 
-\todo[inline]{Discuss results using the setup you explained in the previous section. See some IEEE papers}
-
 \subsubsection{Steering Subsystem}
 In Fig.~\ref{byWireSteerModel}, the output steering angle is plotted versus time
 when the vehicle is in by-wire mode. The figure shows the output steering angle
@@ -700,35 +702,6 @@ behavior of the estimated model. The best fit percentage for this model is
 85.54\%. Likewise, Fig.~\ref{manualSteerModel} depicts the output steering angle
 plotted versus time when the vehicle is in manual mode. The best fit percentage
 for this model is 90.27\%.
-
-
-  % %
-  % \begin{figure}
-  %   \centering
-  %   \begin{subfigure}[b]{0.48\linewidth}
-  %     \centering
-  %     \includegraphics[width=\textwidth]{figs/fusion360/PowertrainModelCorrectDimsTopViewV3}
-  %     \caption{}
-  %     \label{fig:PowertrainModelCorrectDimsTopViewV3}
-  %   \end{subfigure}
-  %   \begin{subfigure}[b]{0.48\linewidth}
-  %     \centering
-  %     \includegraphics[width=\textwidth]{figs/fusion360/PowertrainModelCorrectDimsFrontViewV4}
-  %     \caption{}
-  %     \label{fig:PowertrainModelCorrectDimsFrontViewV4}
-  %   \end{subfigure}
-  %   \begin{subfigure}[b]{0.48\linewidth}
-  %     \centering
-  %     \includegraphics[width=\textwidth]{figs/fusion360/PowertrainModelCorrectDimsSideViewV4}
-  %     \caption{}
-  %     \label{fig:PowertrainModelCorrectDimsSideViewV4}
-  %   \end{subfigure}
-  %   \caption{\subref{fig:PowertrainModelCorrectDimsTopViewV3} Top view,
-  %     \subref{fig:PowertrainModelCorrectDimsFrontViewV4} front view, and
-  %     \subref{fig:PowertrainModelCorrectDimsSideViewV4} side view of the
-  %     proposed disinfecting robot.}
-  %   \label{fig:2dViewsDisinfectingRobot}
-  % \end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -1010,12 +983,35 @@ The second test used constant blocks to represent the voltages and desired pedal
 	\caption{Actual Pedal Position and Error Plots Using the Constant Blocks}
 \end{figure}
 
-\todo[inline]{Discuss results  NN modeling using the setup you explained in the previous section. See some IEEE papers}
-
 \subsection{Discussion}
 \label{sec:discussion}
 
-For each vehicle subsystem, the results show that the neural network models were the most accurate models. Other models that we developed, such as the transfer function models, were relatively accurate when tracking the data, but those models were consistently falling outside of the error bounds that were defined at the start of the project. The neural network models, however, track the data more accurately and reduced the error significantly so that all error requirements were met. One downside to using neural networks as the plant model is it causes some complexities when trying to include these models into the HIL bench software for use in developing and testing controllers. 
+For each vehicle subsystem, the results show that the neural network models were the most accurate models. Other models that we developed, such as the transfer function models, were relatively accurate when tracking the data, but those models were consistently falling outside of the error bounds that were defined at the start of the project. The neural network models, however, track the data more accurately and reduced the error significantly so that all error requirements were met. We first proved that the neural network models that we developed were accurate using subsets of data as inputs to a Simulink model. Then we visited AutonomouStuff to generate the models on their HIL bench, as shown in Fig.~\ref{fig:hilBench}, using Control Desk to interface. Due to time constraints, AutonomouStuff was not able to get the proper hardware for this project connected to the HIL bench but we were able to test our models in an open-loop configuration and measure outputs to show that the correct voltages would be fed to any hardware that would be connected, shown in Fig.~\ref{fig:hilMeasuring}. One downside to using neural networks as the plant model is it causes some complexities when trying to include these models into the HIL bench software for use in developing and testing controllers. 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+		\centering    		
+    		\includegraphics[angle=270,width=0.9\linewidth]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}
+    		\caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\linewidth}
+		\centering    		
+    		\includegraphics[angle=270,width=0.9\linewidth]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
+    		\caption{}
+    \end{subfigure}
+    %\subfigure[b]{\includegraphics[width=0.48\linewidth]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}}
+    %\subfigure[b]{\includegraphics[width=0.48\linewidth]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}}
+    \caption{Verifying voltage measurements on the HIL Bench}
+    \label{fig:hilMeasuring}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\linewidth]{figs/img/picturesVisitToAStuff/hilBenchAstuff}
+	\caption{AutonomouStuff HIL Bench Configuration}
+	\label{fig:hilBench}
+\end{figure}
 
 
 \section{Conclusion and Future Work}
@@ -1024,78 +1020,7 @@ Our initial approach was to model the subsystems using the System Identification
 
 For this project, further testing should be completed for these subsystem models. Since time and availability constraints prevented us from testing the models using Hardware-in-the-Loop, this would be a good place to start. Further testing is important to make sure the developed models are accurate and compatible with testing using hardware. Depending on what AutonomouStuff decides, future engineers working on this project could start developing controllers based off of these models. Currently, AutonomouStuff develops their own controllers for their vehicle subsystems, but they could allow students to design some as part of this senior project. 
 
-\section*{Acknowledgments}
-The authors would like to thank Erik Guetz, Joe Buckner, Sai Chittemsetty, Matt Goben, and AutonomouStuff for their help and collaboration with this project. Without their support this project would never have been possible. 
-
 \bibliographystyle{IEEEtran}
 \bibliography{bib/references.bib}
-
-
-% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a1.eps}}]{First A. Author} (M'76--SM'81--F'87) and all authors may include 
-% biographies. Biographies are often not included in conference-related
-% papers. This author became a Member (M) of IEEE in 1976, a Senior
-
-%
-% Member (SM) in 1981, and a Fellow (F) in 1987. The first paragraph may
-% contain a place and/or date of birth (list place, then date). Next,
-% the author's educational background is listed. The degrees should be
-% listed with type of degree in what field, which institution, city,
-% state, and country, and year the degree was earned. The author's major
-% field of study should be lower-cased. 
-
-% The second paragraph uses the pronoun of the person (he or she) and not the 
-% author's last name. It lists military and work experience, including summer 
-% and fellowship jobs. Job titles are capitalized. The current job must have a 
-% location; previous positions may be listed 
-% without one. Information concerning previous publications may be included. 
-% Try not to list more than three books or published articles. The format for 
-% listing publishers of a book within the biography is: title of book 
-% (publisher name, year) similar to a reference. Current and previous research 
-% interests end the paragraph. The third paragraph begins with the author's 
-% title and last name (e.g., Dr.\ Smith, Prof.\ Jones, Mr.\ Kajor, Ms.\ Hunter). 
-% List any memberships in professional societies other than the IEEE. Finally, 
-% list any awards and work for IEEE committees and publications. If a 
-% photograph is provided, it should be of good quality, and 
-% professional-looking. Following are two examples of an author's biography.
-% \end{IEEEbiography}
-
-% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a2.eps}}]{Second B. Author} was born in Greenwich Village, New York, NY, USA in 
-% 1977. He received the B.S. and M.S. degrees in aerospace engineering from 
-% the University of Virginia, Charlottesville, in 2001 and the Ph.D. degree in 
-% mechanical engineering from Drexel University, Philadelphia, PA, in 2008.
-
-% From 2001 to 2004, he was a Research Assistant with the Princeton Plasma 
-% Physics Laboratory. Since 2009, he has been an Assistant Professor with the 
-% Mechanical Engineering Department, Texas A{\&}M University, College Station. 
-% He is the author of three books, more than 150 articles, and more than 70 
-% inventions. His research interests include high-pressure and high-density 
-% nonthermal plasma discharge processes and applications, microscale plasma 
-% discharges, discharges in liquids, spectroscopic diagnostics, plasma 
-% propulsion, and innovation plasma applications. He is an Associate Editor of 
-% the journal \emph{Earth, Moon, Planets}, and holds two patents. 
-
-% Dr. Author was a recipient of the International Association of Geomagnetism 
-% and Aeronomy Young Scientist Award for Excellence in 2008, and the IEEE 
-% Electromagnetic Compatibility Society Best Symposium Paper Award in 2011. 
-% \end{IEEEbiography}
-
-% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a3.eps}}]{Third C. Author, Jr.} (M'87) received the B.S. degree in mechanical 
-% engineering from National Chung Cheng University, Chiayi, Taiwan, in 2004 
-% and the M.S. degree in mechanical engineering from National Tsing Hua 
-% University, Hsinchu, Taiwan, in 2006. He is currently pursuing the Ph.D. 
-% degree in mechanical engineering at Texas A{\&}M University, College 
-% Station, TX, USA.
-
-% From 2008 to 2009, he was a Research Assistant with the Institute of 
-% Physics, Academia Sinica, Tapei, Taiwan. His research interest includes the 
-% development of surface processing and biological/medical treatment 
-% techniques using nonthermal atmospheric pressure plasmas, fundamental study 
-% of plasma sources, and fabrication of micro- or nanostructured surfaces. 
-
-% Mr. Author's awards and honors include the Frew Fellowship (Australian 
-% Academy of Science), the I. I. Rabi Prize (APS), the European Frequency and 
-% Time Forum Award, the Carl Zeiss Research Award, the William F. Meggers 
-% Award and the Adolph Lomb Medal (OSA).
-% \end{IEEEbiography}
 
 \end{document}

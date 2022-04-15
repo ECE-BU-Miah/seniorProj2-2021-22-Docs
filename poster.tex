@@ -39,6 +39,7 @@
 \usepackage{xcolor,soul}
 \usepackage{geometry}
 \usetheme{confposter} % Use the confposter theme supplied with this template
+\usetikzlibrary{calc}
 
 \setbeamercolor{block title}{fg=BUred,bg=white} % Colors of the block titles
 \setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
@@ -81,9 +82,9 @@
 % TITLE SECTION
 %-----------------------------------------------------------
 
-\title{Smart Control of 2 Degree of Freedom Helicopters} % Poster title
+\title{Plant Modeling for an Autonomous Vehicle} % Poster title
 
-\author{Glenn Janiak, Ken Vonckx, Advisor: Dr. Suruz Miah} % Author(s)
+\author{Nick Nauman, Hannah Grady, Advisor: Dr. Suruz Miah} % Author(s)
 
 
 \institute{Department of Electrical and Computer Engineering, Bradley University, Peoria IL} %Institution(s)
@@ -113,12 +114,12 @@
 % OBJECTIVE AND CONTRIBUTION
 %-----------------------------------------------------------
 
-\begin{alertblock}{Objective and Contribution}
+\begin{alertblock}{Objective and Contributions}
 %
 \textbf{Objective}
 \vskip -0.75cm
 \begin{itemize}
-    \item Develop a platform allowing mobile devices to control the motion of a group of helicopters
+    \item Provide accurate plant models of each autonomous vehicle subsystem to be used for designing controllers
 \end{itemize}
 %\begin{itemize}
 %    \item Develop a platform that allows mobile devices to control helicopters with the least amount of error via an embedded system 
@@ -128,17 +129,21 @@
 \textbf{Contribution}
 \vskip -0.75cm
 \begin{itemize}
-    \item Determine trade-offs between traditional control techniques and machine learning
+	\item Determine if System Identification or Neural Network modeling produces better models 
+	\item Non-linearity modeling
+%    \item Determine trade-offs between traditional control techniques and machine learning
     %\item Embedded System Implementation
     %\item Mobile Device Control 
-    \item Multi-Helicopter Application
+    %\item Multi-Helicopter Application
 \end{itemize}
 \vskip -0.75cm
 \textbf{Applications}
 \vskip -0.75cm
 \begin{itemize}
-    \item Teleoperation approach to search and rescue 
-    \item Aerial turbulence resistance 
+	\item Use in testing to help develop more accurate vehicle controllers
+	\item Create a guide for modeling future vehicle subsystems
+%    \item Teleoperation approach to search and rescue 
+%    \item Aerial turbulence resistance 
 \end{itemize}
 
 %
@@ -151,7 +156,7 @@
 %-----------------------------------------------------------
 \vskip -1cm
 \begin{block}{Problem Setup}
-\vskip -1cm
+%\vskip -1cm
 %\begin{enumerate}
 %    \item Develop and linearize system model
 %    \item Simulate algorithms in MATLAB
@@ -160,61 +165,161 @@
 %    \item Test algorithms on mobile device
 %\end{enumerate}
 
+
+%\vskip -1cm
+$\bullet$ Conducted a literature review to look for existing solutions
+$\bullet$ System Architecture 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=0.75 cm]
+    \tikzstyle{sum} = [draw, circle,fill=orange!15]
+    % place nodes
+    \node[sum](sum){$\sum$};
+    \node[block,right of=sum,node distance=2 cm, text width=1.25cm,text centered](steeringController){Steering controller};
+    \node[block,right of=steeringController,node distance=2.25 cm, text width=1.3cm,text centered](steeringSubsystem){Steering subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (sum.west)--node[very near start,above]{$+$}++(-0.5,0)node[above]{$\theta^{\text{ref}}$};
+    \draw[-stealth,thick]
+    (sum.east)--node[midway,above]{Error}(steeringController);
+    \draw[-stealth,thick]
+    (steeringController.15)--node[midway,above]{$v_A$}(steeringSubsystem.165);
+    \draw[-stealth,thick]
+    (steeringController.-15)--node[midway,above]{$v_B$}(steeringSubsystem.-165);
+    \draw[-stealth,thick]
+    (steeringSubsystem.east) --coordinate (tt) ++(0.5,0)node[above]{$\theta(t)$};
+    \fill
+    ($(steeringSubsystem.east)+(0.25,0)$) circle [radius=2pt];
+    \draw[-stealth,thick]
+    (tt) -- ++(0,-0.75) -|(sum.south)node[pos=0.9,left]{$-$};
+    
+  \end{tikzpicture}
+  % \captionsetup{justification=centering, margin=3cm}
+
+  % \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
+  \caption{Steering subsystem block diagram.}
+  \label{fig:steeringModelBlockDiagram}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	 \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width= 5 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.75cm,text centered](accelSubsystem){Acceleration subsystem};
+    % Connections
+    \draw[stealth-,thick]
+    (accelSubsystem.180)--node[very near end,above]{Acceleration pedal voltages}++(-5.0,0);
+    \draw[-stealth,thick]
+    (accelSubsystem.0)--node[very near end,above]{Acceleration pedal position}++(5.0,0);
+  \end{tikzpicture}
+    \caption{Acceleration subsystem block diagram}
+    \label{fig:accelModelArchitecture}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2.0 cm]
+    % place nodes
+    \node[block,text width=1.25cm,text centered](brakeSubsystem){Brake subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (brakeSubsystem.140)--node[pos=0.65,above]{Pressure voltages}++(-4.5,0);
+    \draw[stealth-,thick]
+    (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-4.5,0);
+    \draw[stealth-,thick]
+    (brakeSubsystem.-140)--node[pos=0.65,above]{On/Off switch}++(-4.5,0);
+    \draw[-stealth,thick]
+    (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(4.5,0);
+    \draw[-stealth,thick]
+    (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(4.5,0);
+    
+  \end{tikzpicture}
+    % \captionsetup{justification=centering, margin=3cm}
+    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{Brake subsystem block diagram}
+    \label{fig:brakeModelArchitecture}
+\end{figure}
+
+
 \begin{figure}
     \centering
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=\textwidth,keepaspectratio=true]{figs/ProblemStatementImage_Gray2}}
-    % \fcolorbox{gray!20}{gray!20}{\includegraphics[height=.15\textheight,width=\textwidth,keepaspectratio=true]{figs/ipe/highLevel_gry_grn.eps}
-    % }
-    \caption{High level architecture of the proposed system.}
-    \label{fig:highLevelDiagram}
+        \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-4.0,0);
+    \draw[-stealth,thick]
+    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(4.0,0);
+    
+  \end{tikzpicture}
+    \caption{Speed Control subsystem block diagram}
+    \label{fig:speedControlModelArchitecture}
+
 \end{figure}
+
+
 \begin{figure}
     \centering
-    % \missingfigure{Insert figure.}
-    % \fcolorbox{gray!10}{gray!10}{
-    % \includegraphics[height=.2\textheight,width=.92\textwidth,keepaspectratio=true]{figs/img/quanserAero.png}
-    % }
-    \caption{2-DOF helicopter (Quanser Aero).}
-    %\caption{DC motors are attached to main and tail rotors which allow the helicopter to change its pitch and yaw respectively.}
-    \label{fig:helicoterModel}
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2 cm]
+    % place nodes
+    \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-5.0,0);
+    \draw[stealth-,thick]
+    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-5.0,0);
+    \draw[stealth-,thick]
+    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-5.0,0);
+    \draw[-stealth,thick]
+    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(5.0,0);
+    
+  \end{tikzpicture}
+    % \captionsetup{justification=centering, margin=3cm}
+    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{ Speed subsystem block diagram}
+    \label{fig:speedModelArchitecture}
 \end{figure}
-\vskip -1cm
-$\bullet$ State-space representation of 2-DOF helicopter
-\begin{align*}
-\begin{bmatrix}
-    \dot\theta\\
-    \dot\psi\\
-    \ddot{\theta}\\
-    \ddot{\psi}
-\end{bmatrix}&=
-%\label{eq:matrixA}
-\begin{bmatrix}
-    0 & 0 & 1 & 0 \\
-    0 & 0 & 0 & 1 \\
-    0 & -K_{sp}/J_p & -D_p/J_p & 0 \\
-    0 & 0 & 1 & -D_y/J_y 
-\end{bmatrix} 
-%\label{eq:stateMatrix} 
-\begin{bmatrix}
-    \theta\\
-    \psi\\
-    \dot{\theta}\\
-    \dot{\psi}
-\end{bmatrix}
-\\&+
-%\label{eq:matrixB}
-\begin{bmatrix}
-    0 & 0 \\
-    0 & 0 \\
-    K_{pp}/J_p & K_{py}/J_p \\
-    K_{yp}/J_y & K_{yy}/J_y 
-\end{bmatrix}
-%\label{eq:inputMatrix}
-\begin{bmatrix}
-    V_p \\
-    V_y 
-\end{bmatrix}
-\end{align*}
+
+
+\begin{figure}
+    \centering
+\begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-4.5,0);
+    \draw[-stealth,thick]
+    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(4.5,0);
+    
+  \end{tikzpicture}
+    \caption{Shift subsystem block diagram}
+    \label{fig:shiftModelArchitecture}
+\end{figure}
+
+$\bullet$ Collected data using a Lexus RX450H vehicle platform  
+
+
 
 \vskip -1cm
 \end{block}
@@ -226,88 +331,70 @@ $\bullet$ State-space representation of 2-DOF helicopter
 \begin{column}{\onecolwid} % The second column
 
 %-----------------------------------------------------------
-% LQR
+% TRANSFER FUNCTION MODELING
 %-----------------------------------------------------------
 
-\begin{block}{Motion (Trajectory) Control Algorithm}
+\begin{block}{Transfer Function Modeling}
 \vskip -1cm
-%\begin{itemize}
-%    \item Determines optimal control gain for dynamic systems
-%%    \begin{subequations}
-%%        \small
-%%        \begin{align}
-%%            & \dot{x} = Ax + Bu\\
-%%            & u = -Kx\\
-%%            & J(u) = \int_{0}^{\infty} (x^TQx + u^TRu + 2x^TNu)dt\\
-%%            & A^TS+SA-(SB+N)R^{-1}(B^TS+N^T)+Q=0\\
-%%            & K=R^{-1}(B^TS+N^T)
-%%        \end{align}
-%%    \label{eq:LQR_EQ}
-%%    \end{subequations}
+\begin{itemize}
+    \item MATLAB's System Identification Toolbox used to create models 
+    \item Models needed to meet best fit and error requirements 
+
+\end{itemize} 
+\vskip -1cm
 \begin{figure}
-    \centering
-    % \missingfigure{Insert figure.}
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=.92\textwidth,keepaspectratio=true]{figs/ipe/algorithmFramework}}
-    \caption{A desired orientation is given by a user.  The difference between this input and the actual position is calculated.  The controller the calculates the proper amount of voltage to apply to the DC motors.}
-    \label{fig:algorithmFramework}
+	\centering
+	{\includegraphics[width=0.48\linewidth]{figs/img/byWireSteeringTransferFunctionModel}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/manualSteeringTransferFunctionModel}}
+	\caption{Steering System Estimated Steering Angle Comparison}
 \end{figure}
-%\end{itemize} 
-\vskip -1cm
-\begin{enumerate}
-    \item Employ state-space representation of 2-DOF helicopter:
-    \begin{align*}
-        \dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}
-    \end{align*}
-    \item Use state feedback law
-    \begin{center}
-        \vskip -1cm
-        $\mathbf{u} = -\mathbf{K}\mathbf{x}$
-    \end{center}
-    \vskip -1cm
-    to minimize the quadratic cost function:
-    \begin{align*}
-        J(\mathbf{u}) = \int_0^\infty (\mathbf{x}^T\mathbf{Q}\mathbf{x} + \mathbf{u}^T\mathbf{R}\mathbf{u} + 2\mathbf{x}^T\mathbf{N}\mathbf{u})\mathrm{dt}
-    \end{align*}
-    \item Find the solution $\mathbf{S}$ to the Riccati equation
-    \begin{align*}
-        \mathbf{A}^T\mathbf{S}+\mathbf{SA}-(\mathbf{SB}+\mathbf{N})\mathbf{R}^{-1}(\mathbf{B}^T\mathbf{S}+\mathbf{N}^T)+\mathbf{Q}=0
-    \end{align*}    
-    \item Calculate gain, $\mathbf{K}$
-    \begin{center}
-        $\mathbf{K}=\mathbf{R}^{-1}(\mathbf{B}^T\mathbf{S}+\mathbf{N}^T)$
-    \end{center}
-\end{enumerate}
+
+\begin{figure}
+	\centering
+	{\includegraphics[width=0.48\linewidth]{figs/img/byWireAccelArxModel}}
+	{\includegraphics[width=0.48\linewidth]{figs/img/manualAccelTransferFunctionModel}}
+	\caption{Acceleration System Estimated Pedal Position Comparison}
+\end{figure}
 
 %\vskip -2.5cm
 \end{block}
 
 %-----------------------------------------------------------
-% LQG
+% NEURAL NETWORK MODELING 
 %-----------------------------------------------------------
 
-\begin{block}{Optimal Noise Resistant Control Algorithm}
+\begin{block}{Neural Network Modeling}
 \vskip -1cm
 \begin{itemize}
-    \item Utilizes gain calculated in LQR
-    \item Added Kalman filter to reduce external disturbances to the system
-%    \begin{subequations}
-%        \small
-%        \begin{align}
-%            & some eq = x\\
-%            & some eq = y\\
-%            & some eq = z
-%        \end{align}
-%    \label{eq:LQG_EQ}
-%    \end{subequations}
+    \item Used MATLAB's Neural Network Time Series App
+    \item Generated models using the Bayesian Regularization Algorithm
+    \item Models trained using collected log data  
 \end{itemize} 
-%\todo[inline]{Insert Dr. Miah's LQG image from his slides here}
+
 \begin{figure}
     \centering
-    % \missingfigure{Insert figure.}
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[width=1.05\textwidth,keepaspectratio=true]{figs/img/LQG_SimulinkResize.png}}
-    \caption{Noise resistant 2-DOF helicopter model.}
-    \label{fig:LQGModel}
+		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
+	\caption{Steering System Training Plots}
+    \label{fig:SteeringSysNeuralNetwork}
 \end{figure}
+
+\begin{figure}
+    \centering
+		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput2}}
+	\caption{Acceleration System Training Plots}
+    \label{fig:AccelerationSysNeuralNetwork}
+\end{figure}
+
+\begin{figure}
+    \centering
+		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFig}}
+		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
+	\caption{Brake System Training Plots}
+    \label{fig:BrakeSysNeuralNetwork}
+\end{figure}
+
 
 %\vskip -2.5cm
 \end{block}
@@ -320,10 +407,10 @@ $\bullet$ State-space representation of 2-DOF helicopter
 
 \begin{column}{\onecolwid} % The third column
 %-----------------------------------------------------------
-% ADP
+% NEURAL NETWORK ALGORITHM 
 %-----------------------------------------------------------
 
-\begin{block}{Reinforcement Learning Algorithm}
+\begin{block}{Neural Network Algorithm}
 \vskip -1cm
 \begin{itemize}
     %\item Reinforcement learning based approach
@@ -360,11 +447,94 @@ $\bullet$ State-space representation of 2-DOF helicopter
 %    \end{center}
 %\end{enumerate}
 
-\begin{figure}
-    \centering
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[width=.9\textwidth,keepaspectratio=true]{figs/ipe/ADP_Neural_Network.eps}}
-    \caption{ADP Neural Network}
-    \label{fig:NeuralNetwork}
+ \begin{figure}
+  \centering
+      \tikzset{%
+        input neuron/.style={
+          circle,
+          fill=green!50,
+          minimum size=0.7cm
+        },
+        neuron missing/.style={
+          draw=none, 
+          scale=1,
+          fill=white,
+          text height=0.01cm,
+          execute at begin node=\color{black}$\vdots$
+        },
+      }
+
+      \tikzset{%
+        hidden neuron/.style={
+          circle,
+          fill=blue!50,
+          minimum size=0.7cm
+        },
+        neuron missing/.style={
+          draw=none, 
+          scale=1,
+          fill=white,
+          text height=0.01cm,
+          execute at begin node=\color{black}$\vdots$
+        },
+      }
+
+      \tikzset{%
+        output neuron/.style={
+          circle,
+          fill=red!50,
+          minimum size=0.7cm
+        },
+        neuron missing/.style={
+          draw=none, 
+          scale=1,
+          fill=white,
+          text height=0.01cm,
+          execute at begin node=\color{black}$\vdots$
+        },
+      }      
+
+      \begin{tikzpicture}[x=1.5cm, y=1.5cm]
+
+        \foreach \m/\l [count=\y] in {1,2,missing,3}
+        \node [input neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+
+        \foreach \m [count=\y] in {1,2,3,missing,4}
+        \node [hidden neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y*1.1) {};
+
+        \foreach \m [count=\y] in {1,missing,2}
+        \node [output neuron/.try, neuron \m/.try] (output-\m) at (4,2.5-\y*1.2) {};
+
+        \foreach \l [count=\i] in {1,2,n}
+        \draw [<-] (input-\i) -- ++(-1,0)
+        node [above, midway] {$\mathbf{e}_{k,\l}$};
+
+        \foreach \l [count=\i] in {1,2,3,\mbox{$\bar{n}$}}
+        \node [above] at (hidden-\i.north) {$\sigma_{\l}$};
+
+        \foreach \l [count=\i] in {1,m}
+        \draw [->] (output-\i) -- ++(1,0)
+        node [above, midway] {$\hat{u}_{a,k}^{(\l)}$};
+
+        \foreach \i in {1,...,3}
+        \foreach \j in {1,...,4}
+        \draw [->] (input-\i) -- (hidden-\j);
+
+        \foreach \i in {1,...,4}
+        \foreach \j in {1,2}
+        \draw [->] (hidden-\i) -- (output-\j);
+
+
+        
+        \foreach \l [count=\x from 0] in {Input, Hidden, Ouput}
+        \node [align=center, above] at (\x*2,1.9) {\l \\ layer};
+
+        \node [align=center, below] at (3,-2.5) {Weight \\ $\mathbf{W}_a$};
+        \draw[->,ultra thick](3,-2.5) -- (3,1.6);
+        
+      \end{tikzpicture}
+  \caption{Actor neural network structure for approximating control input.}
+  \label{fig:nnActor}
 \end{figure}
 
 
@@ -387,55 +557,11 @@ $\bullet$ State-space representation of 2-DOF helicopter
 %-----------------------------------------------------------
 % Subsystem Block Diagram
 %-----------------------------------------------------------
-%\begin{block}{Subsystem Block Diagram}
-%\begin{figure}
-%    \centering
-%        \missingfigure{Insert figure.}
-%    % \boxed{\includegraphics[width=.92\textwidth,keepaspectratio=true]{figs/ipe/subsystemBlockDiagramAlternate2}}
-%    \label{fig:subsystem}
-%\end{figure}
-%\end{block}
+
 
 %-----------------------------------------------------------
 % SIMULATION RESULTS
 %-----------------------------------------------------------
-
-\begin{block}{Simulation Results}
-\vskip -1cm
-%\begin{itemize}
-%    \item \todo[inline]{add LQR and LQG simulation results}
-%\end{itemize}
-
-%Before implementing the algorithm, it was simulated using the industry standard robot simulator V-REP. With numerous robot models available, V-REP is able to accurately and consistently produce like those expected in real--world scenarios. Preliminary simulation results can be seen in Fig.~\ref{fig:vrepResults}.
-
-\begin{figure}
-    \centering
-    \subfigure[][]{
-    %\missingfigure{Insert figure.}
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/LQG_PIvLQR_PI_Sim/Pitch}
-    \label{fig:simStepPitch}
-    }
-    \subfigure[][]{
-    %\missingfigure{Insert figure.}
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/LQG_PIvLQR_PI_Sim/Yaw}
-    \label{fig:simStepYaw}
-    }
-    \subfigure[][]{
-    %\missingfigure{Insert figure.}
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/LQG_PIvLQR_PI_Sim/Pitch_Volt}
-    \label{fig:simPitchVolt}
-    }
-    \subfigure[][]{
-    %\missingfigure{Insert figure.}
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/LQG_PIvLQR_PI_Sim/Yaw_Volt}
-    \label{fig:simYawVolt}
-    }
-    \caption{A comparison between LQG and LQR control for a step input is shown for \subref{fig:simStepPitch}~the~main~rotor and \subref{fig:simStepYaw}~the~tail~rotor and the corresponding voltages in \subref{fig:simPitchVolt}~and~\subref{fig:simYawVolt}}
-    \label{fig:simResults}
-\end{figure}
-\vskip -2cm
-\end{block}
-
 
 \end{column} % End of third column
 
@@ -449,12 +575,13 @@ $\bullet$ State-space representation of 2-DOF helicopter
 
 \begin{block}{Experimental Results}
 \vskip -1cm
-%\begin{itemize}
-%    \item ADP Algorithm
-%\end{itemize}
+\begin{itemize}
+    \item Preliminary model testing conducted before sending models to AutonomouStuff 
+    \item Official testing conducted using dSPACE software and HIL Bench 
+\end{itemize}
 \begin{figure}
     \centering
-    % \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=.9\textwidth,keepaspectratio=true]{figs/ipe/setup.eps}}
+    \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=.9\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/hilBenchAstuff.jpg}}
     \caption{Experimental Setup}
     \label{fig:Setup}
 \end{figure}
@@ -462,58 +589,26 @@ $\bullet$ State-space representation of 2-DOF helicopter
 \begin{figure}
     \centering
     \subfigure[][]{
-    %\missingfigure{Insert figure.}
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/ADPvLQR_P_USB/Pitch_ADP_LQR}
-    \label{fig:stepPitchADP}
+    \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}
     }
     \subfigure[][]{
-    %\missingfigure{Insert figure.}
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/ADPvLQR_P_USB/Yaw_ADP_LQR}
-    \label{fig:stepYawADP}
+    \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
     }
-    \caption{ADP experimental results for \subref{fig:stepPitchADP}~the~main~rotor and \subref{fig:stepYawADP}~the~tail~rotor given a step input}
-    \label{fig:ADP_Results}
+    \caption{Verifying voltage measurements on the HIL Bench}
 \end{figure}
-%\begin{itemize}
-%    \item Comparison between different controller architectures (proportional controller and proportional controller with integral term)
-%\end{itemize}
-\vskip -.5cm
 
 \begin{figure}
     \centering
-    \subfigure[][]{
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/LQR_PIvLQR_P_USB/step/Pitch_LQR_RMSE}
-    \label{fig:stepPitch}
-    }
-    \subfigure[][]{
-    % \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/matlab/LQR_PIvLQR_P_USB/step/Yaw_LQR_RMSE}
-    \label{fig:stepYaw}
-    }
-    \caption{Comparison between P and PI control for a step input is shown for \subref{fig:stepPitch}~the~main~rotor and \subref{fig:stepYaw}~the~tail~rotor}
-    \label{fig:expResults}
+    \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=.9\textwidth,keepaspectratio=true]{figs/img/aStuffValidationBrakeModel.jpg}}
+    \caption{Model validation setup}
+    \label{fig:Setup}
 \end{figure}
+
+\vskip -.5cm
+
 \vskip -2cm
 \end{block}
 
-\begin{figure}
-  \centering
-  \subfigure[][]{
-  \label{fig:time0}
-  % \includegraphics[width=0.4\textwidth]{figs/img/timeEquals0.jpg}
-  }
-  \subfigure[][]{
-  \label{fig:time10}
-  % \includegraphics[width=0.4\textwidth,height=0.057\textheight]{figs/img/timeEquals10_2}
-  }  
-  \caption{\subref{fig:time0} Time = 0~and~\subref{fig:time10} Time = 10}
-  \label{fig:posistionAtTime}
-\end{figure}
-
-%\begin{block}{Conclusion}
-
-%As seen in the experimental results, this system brings moderate accuracy considering its implementation. With a total cost of around \$140 for the system mounted on the mobile robot and around \$23 for the beacons, this system is much more attainable for those conducting research in mapping and localization algorithms and inexpensive to scale to commercial applications.
-
-%\end{block}
 
 %-----------------------------------------------------------
 % Conclusion and Future Work
@@ -521,11 +616,11 @@ $\bullet$ State-space representation of 2-DOF helicopter
 
 \begin{alertblock}{Conclusion and Future Work}
 \begin{itemize}
-    \item Model-based reinforcement learning technique (ADP)  is useful when system model is unknown
+    \item Using Neural Networks produced more accurate models than System Identification 
    % \item PI controller greatly reduces steady-state error, however increases overshoot and settling time
     \vskip .75cm
-    \item Implement PI controller for ADP algorithm
-    \item Use digital compass to increase accuracy of orientation and help identify initial position
+    \item Test models using Hardware-in-the-Loop
+    \item Create new vehicle controllers
 \end{itemize}
 
 

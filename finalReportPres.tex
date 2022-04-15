@@ -58,6 +58,7 @@
 \usepackage{siunitx}
 \usepackage{arydshln}
 \usepackage{rotating}
+\usepackage{amsmath,amssymb,amsfonts,bm}
 
 
 % Customize Warsaw color 
@@ -119,7 +120,7 @@
 \logo{\hfill\href{http://www.bradley.edu}{\includegraphics[width=0.75cm]{figs/logoBU1-Print}}}  % place logo in every page 
 
 
-\subject{Mobile Robot Localization}
+\subject{Plant Modeling for Autonomous Vehicle}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
 
@@ -162,138 +163,538 @@
 \section{Introduction}
 
 \begin{frame}{Introduction}{}
-
+	\begin{block}{Applications of Autonomous Vehicles}
+    	\begin{itemize}
+    		\item Autonomous vehicles are being developed by many companies for commercial and personal use
+    		\item Modeling different subsystems (such as, steering, brake,
+          acceleration, $\ldots$)  for autonomous vehicles is a challenging task
+     		\item Models for autonomous vehicle subsystems must be very accurate due to safety factors
+		\end{itemize}
+    \end{block}
+        \begin{figure}
+			\centering
+			\begin{minipage}[t]{0.4\textwidth}
+				\centering
+				\includegraphics[height=1.5cm]{figs/img/autonomousVehiclesAStuff}
+				\caption{AutonomouStuff Vehicle Fleet\textsuperscript{a}}
+				\label{fig:fleet}
+			\end{minipage}
+			\begin{minipage}[t]{0.4\textwidth}
+				\centering
+				\includegraphics[height=1.5cm]{figs/img/autonomousVehiclesSteering}
+				\caption{Autonomous Vehicle Steering System\textsuperscript{b}}
+				\label{fig:steerSystem}
+			\end{minipage}
+        \end{figure}
+    \begin{tiny}
+		\textsuperscript{a}https://hexagonpositioning.com/pi-brands/autonomoustuff\\\textsuperscript{b}https://www.autonews.com/article/20181105/OEM10/181109921/delphi-s-pace-award-winning-e-steer-an-autonomous-vehicle-building-block
+    \end{tiny}
 \end{frame}
 
 \begin{frame}{Introduction}{Problem Statement}
   \begin{block}{Problem Statement}
-    \begin{LARGE}
-      
-    \end{LARGE}
+    \begin{Large}
+    		Model autonomous vehicle subsystems for a Lexus platform
+    \end{Large}
   \end{block}
   \pause
   \begin{block}{Proposed Solution}
-    \begin{LARGE}
-      
-    \end{LARGE}
+    \begin{Large}
+    		Use neural network modeling techniques to develop plant models
+    \end{Large}
   \end{block}
 \end{frame}
 
 %----------------------------------
-
-
-%----------------------------------
-
-%\begin{frame}{Introduction}{Previous Work}
-%  \begin{block}{Existing Solution}
-%        Mobile application platform interface with ultrasound and radio transmission technology~\cite{Sales2016-CompaRob}
-%  \end{block}
-%    % \begin{figure}[b]
-%    %     \centering
-%    %     \includegraphics[width=0.4\textwidth]{figs/img/CompaRob}
-%    %     \caption{CompaRob}
-%    %     %\label{fig:sysBlockDiag}
-%    % \end{figure}
-%\end{frame}
-%
-%%----------------------------------
-%
-%\begin{frame}{Introduction}{Previous Work}
-%  \begin{block}{Existing Solution}
-%        Gated Recurrent Unit (GRU) network with LiDAR sensor and camera to map the customer~\cite{islam_lam_fukuda_kobayashi_kuno_2019}
-%  \end{block}
-%    % \begin{figure}[b]
-%    %     \centering
-%    %     \includegraphics[width=0.38\textwidth]{figs/img/ShoppingSuportRobot}
-%    %     \caption{Shopping Support Robot}
-%    %     %\label{fig:sysBlockDiag}
-%    % \end{figure}
-%\end{frame}
 
 %----------------------------------
 \section{Literature Review}
 
 \begin{frame}{Literature Review}{}
-
+	\begin{block}{Existing Solutions}
+ 	\begin{itemize}
+        \item Use of System Identification Toolbox in MATLAB to create models from data~\cite{Adnan2010}
+	 \begin{itemize}
+     \tiny
+		    		\item Offers a variety of model choices
+				\item Needs a large amount of raw data to produce an accurate model
+	\end{itemize}
+	\item Third order ARMAX model creates models using traditional methods of analysis~\cite{Li1999}
+	 \begin{itemize}
+     \tiny
+		    		\item Allows the use of traditional analysis methods to create a model 
+				\item More room for error during calculations
+	\end{itemize}
+	\item Steer-By-Wire method as a system model~\cite{Saruchi2015}
+	 \begin{itemize}
+     \tiny
+		    		\item Can model systems with small non-linearities 
+				\item Mechanical components replaced by electrical components 
+	\end{itemize}
+	\item Authors in~\cite{Hussain2011} illustrate identification of multiple-input single-output model for maximum power point tracking of photovoltaic system.  
+	\begin{itemize}
+    \tiny
+		\item Fourth order ARX model ended up giving the best fit
+	\end{itemize}
+\end{itemize}
+  \end{block}
 \end{frame}
+
 %---------------------------
 \section{System Identification Preliminaries}
 
 \begin{frame}{System Identification Preliminaries}{}
-
+  \begin{block}{Preliminary Work}
+ \begin{itemize}
+        \item Documentation on MATLAB's System Identification Toolbox and tutorials
+        \item Literature Review 
+        \item Data Collection for steering, braking and acceleration subsystems
+\end{itemize}
+  \end{block}
+  
+   \begin {block}{MATLAB Example: Dealing with Multi-Variable Systems: Identification and Analysis}
+  \begin{itemize}
+  	\item  Learned how to create an iddata object from a given data set 
+  	\item Created a state space model and compared it to the validation data 
+  	\item Tried creating submodels for some of the channels in order to try and get a better fit 
+  	\item Then created a MISO model and learned how to merge the two SISO models that were created earlier 
+  	\end{itemize}
+  	\end{block}
 \end{frame}
 
-\begin{frame}{System Identification Preliminaries}{Examples}
-  \begin{block}{}
-    \begin{LARGE}
-     
-    \end{LARGE}
-  \end{block}
-  \begin{block}{}
-    \begin{LARGE}
-      
-    \end{LARGE}
-  \end{block}
-\end{frame}
 %-------------------------
 \section{System Architecture}
 
 \begin{frame}{System Architecture}{}
-
+	\begin{block}{System Architecture}
+    \begin{large}
+      The overall system architecture of this project consists of six subsystems: 
+      \begin{itemize}
+          \item Steering
+          \item Acceleration
+          \item Brake %Model
+          \item Shift %Model
+          \item Speed %Model
+          \item Speed control %Model
+        \end{itemize} 
+    \end{large}
+  \end{block}
 \end{frame}
 
 \begin{frame}{System Architecture}{Subsystems}
-
+	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
+	\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System 			\item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
+	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
+	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
 \end{frame}
 
 \begin{frame}{System Architecture}{Subsystems}
-
+	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
+	\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item 		Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
+	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
+	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
 \end{frame}
+
 %---------------------------
 \section{System Modeling using Neural Networks}
 
 \begin{frame}{Modeling using Neural Networks}{}
+	\begin{block}{}
+		\begin{figure}
+			\centering
+      \tikzset{%
+        input neuron/.style={
+          circle,
+          fill=green!50,
+          minimum size=0.7cm
+        },
+        neuron missing/.style={
+          draw=none, 
+          scale=1,
+          fill=white,
+          text height=0.01cm,
+          execute at begin node=\color{black}$\vdots$
+        },
+      }
+
+      \tikzset{%
+        hidden neuron/.style={
+          circle,
+          fill=blue!50,
+          minimum size=0.7cm
+        },
+        neuron missing/.style={
+          draw=none, 
+          scale=1,
+          fill=white,
+          text height=0.01cm,
+          execute at begin node=\color{black}$\vdots$
+        },
+      }
+
+      \tikzset{%
+        output neuron/.style={
+          circle,
+          fill=red!50,
+          minimum size=0.7cm
+        },
+        neuron missing/.style={
+          draw=none, 
+          scale=1,
+          fill=white,
+          text height=0.01cm,
+          execute at begin node=\color{black}$\vdots$
+        },
+      }      
+
+      \begin{tikzpicture}[x=1.5cm, y=1.5cm]
+
+        \foreach \m/\l [count=\y] in {1,2,missing,3}
+        \node [input neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+
+        \foreach \m [count=\y] in {1,2,3,missing,4}
+        \node [hidden neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y*1.1) {};
+
+        \foreach \m [count=\y] in {1,missing,2}
+        \node [output neuron/.try, neuron \m/.try] (output-\m) at (4,2.5-\y*1.2) {};
+
+        \foreach \l [count=\i] in {1,2,n}
+        \draw [<-] (input-\i) -- ++(-1,0)
+        node [above, midway] {$\mathbf{e}_{k,\l}$};
+
+        \foreach \l [count=\i] in {1,2,3,\mbox{$\bar{n}$}}
+        \node [above] at (hidden-\i.north) {$\sigma_{\l}$};
+
+        \foreach \l [count=\i] in {1,m}
+        \draw [->] (output-\i) -- ++(1,0)
+        node [above, midway] {$\hat{u}_{a,k}^{(\l)}$};
+
+        \foreach \i in {1,...,3}
+        \foreach \j in {1,...,4}
+        \draw [->] (input-\i) -- (hidden-\j);
+
+        \foreach \i in {1,...,4}
+        \foreach \j in {1,2}
+        \draw [->] (hidden-\i) -- (output-\j);
+
+
+        
+        \foreach \l [count=\x from 0] in {Input, Hidden, Ouput}
+        \node [align=center, above] at (\x*2,1.9) {\l \\ layer};
+
+        \node [align=center, below] at (3,-2.5) {Weight \\ $\mathbf{W}_a$};
+        \draw[->,ultra thick](3,-2.5) -- (3,1.6);
+        
+      \end{tikzpicture}
+  \caption{Actor neural network structure for approximating control input.}
+  \label{fig:nnActor}
+		\end{figure}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+Therefore, approximated actor signal can be written as:
+\begin{align}
+  \label{eq:approximatePolicyActorWeights}
+    \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+  \end{align}
+%
+where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2$ and components of weight matrix ${\bf W}_a$ shown in Fig.~\ref{fig:nnActor} are given by %
+%
+\begin{align*}
+  {\bf W}_a = 
+  \begin{bmatrix}
+    w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
+    w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+    \vdots & \ddots & \ldots &\vdots\\
+    w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+  \end{bmatrix}.
+\end{align*}
+%
+
+Now take $\eta$ data points and form the set of linear equations as: %
+%
+\begin{align*}
+&  \bm{\sigma}^T(\mathbf{e}_k) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k}^{[d]}\right)^T\\
+ & \bm{\sigma}^T(\mathbf{e}_{k+1}) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k+1}^{[d]}\right)^T\\
+                                            &\vdots \\
+ & \bm{\sigma}^T(\mathbf{e}_{k+\eta-1}) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k+\eta-1}^{[d]}\right)^T  
+\end{align*}
+%
 
 \end{frame}
+
+
+\begin{frame}
+  In compact form:
+  \begin{align*}
+    \bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+  \end{align*}
+  %
+  $\mathbb{R}^{\eta\times\bar{n}}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf e}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf u}_{a,\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
+
+  Let $\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta_a$ can be written as:
+  \begin{align*}
+    \delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+  \end{align*}
+
+Actor weight ${\bf W}_a$ can then be found minimizing the sum--of--square error $\delta_a$ defined by %
+%
+\begin{align*}
+  \delta_a = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+\end{align*}
+%
+Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields 
+%
+\begin{align}
+  \frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a
+  \label{eq:actorWeightsGradient}
+\end{align}
+%
+Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
+\begin{align*}
+  {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+$\bullet$ Actor weight is updated at each policy iteration $r=0,1,\ldots$ using gradient descent approach as:
+
+\begin{multline}
+  \mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}= \mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a^{(r)}\right)\\
+  = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+  \label{eq:actorWeightUpdate}
+\end{multline}
+
+\end{frame}
+
+\begin{frame}{Modeling using Neural Networks}{}
+	\begin{block}{}
+ \begin{itemize}
+        \item Used MATLAB's Neural Network Time Series App 
+        \item All models generated using the Bayesian Regularization Algorithm 
+        \item Models trained using collected log data 
+\end{itemize}
+  \end{block}
+\end{frame}
+
 %-------------------------
 \section{Modeling Vehicle Subsystems}
 
-\begin{frame}{Modeling Vehicle Subsystems}{}
-
-\end{frame}
-
 \begin{frame}{Modeling Vehicle Subsystems}{System Requirements}
-
+	\begin{block}{Specifications}
+	\begin{minipage}[t]{0.62\linewidth}    
+    Proposed vehicle subsystem models are expected to fulfill requirements listed below:
+	\begin{itemize}
+    		\item Resulting plant model will consist of reasonably accurate subsystem models
+    		\item Subsystems can be used to create a HIL testbench
+    		\item Steering model can handle very small changes in steering angles
+    \begin{itemize}
+		\item smooth out any non-linear discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle, depicted in \autoref{fig:nonlinGraph}.
+    \end{itemize}
+	\end{itemize}
+	\end{minipage}
+	\begin{minipage}[t]{0.34\linewidth}
+	\begin{figure}[h]
+		\centering
+    		\captionsetup{justification=centering, margin=0.5cm}
+    		\includegraphics[width=1.5in]{figs/inkscape/nonlinearBehavior}
+    		\caption{Steering Non-linear Behavior}
+    		\label{fig:nonlinGraph}
+	\end{figure}
+	\end{minipage}
+\end{block}
 \end{frame}
 %-------------------------
 \section{Validation and Testing}
 
 \begin{frame}{Validation and Testing}{Experimental Setup}
+  \begin{block}{Software and Hardware}
+ \begin{itemize}
+        \item Software
+        \begin{itemize}
+        \small
+        \item MATLAB's System Identification Toolbox
+        \item Vector CANAlyzer
+        \end{itemize}
+	\item Hardware
+	\begin{itemize}
+	\small
+	\item Laptop
+	\item PACMod ECU
+	\item CANCase 
+	\item CAN bus
+	\end{itemize}
+\end{itemize}
+  \end{block}
+\end{frame}
 
+\begin{frame}{Validation and Testing}{Experimental Setup}
+	\begin{block}{Control Method}
+		\begin{itemize}
+			\item Manual Mode
+			\begin{itemize}
+				\item Vehicle is not autonomous
+				\item Torque voltages are sent by the vehicle ECU
+			\end{itemize}
+			\item By-Wire Mode
+			\begin{itemize}
+				\item Vehicle is autonomous
+				\item Torque voltages are sent by the PACMod ECU
+				\item Torque voltages sent from the vehicle ECU are discarded by open-circuiting the motors
+			\end{itemize}
+		\end{itemize}
+		\begin{figure}
+			\centering
+    			\captionsetup{justification=centering, margin=3cm}
+    			\includegraphics[width=1in]{figs/img/picturesVisitToAStuff/dataColletionSetup1-20211007}
+    			\caption{Autonomous Vehicle Data Collection Setup}
+    			\label{fig:vehicleSetup}
+		\end{figure}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Validation and Testing}{Validation Setup}
+	\begin{figure}
+		\centering \includegraphics[width=.45\linewidth]{figs/img/picturesVisitToAStuff/hilBenchAstuff}\quad%
+		\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{itemize} \item HIL Bench 						\item Measuring output voltages to confirm results \end{itemize} \end{minipage}\\[1em]
+		\centering \includegraphics[angle=270,width=.45\linewidth]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}\quad%
+		\centering \includegraphics[angle=270,width=.45\linewidth]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Validation and Testing}{Model Validation}
+	\begin{figure}
+		\centering \includegraphics[width=.45\linewidth]{figs/img/aStuffValidationBrakeModel}\quad%
+		\caption{Model Validation Setup}
+    			\label{fig:validationSetup}
+		\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{itemize} \item Testing data points using Control Desk software  \end{itemize} \end{minipage}\\[1em]
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Transfer Function Modeling}{Steering System}
-
+	\begin{block}{}
+ \begin{itemize}
+	\item Best fit percentage of the by-wire steering estimated model is 83.25
+	\item Best fit percentage of the manual steering estimated model is 90.27
+ \end{itemize}
+ \begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+        \caption{Output of Estimated By-Wire System Model}
+        \label{fig:byWireSteerModel}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+        \caption{Output of Estimated Manual System Model}
+        \label{fig:manualSteerModel}
+    \end{minipage}
+\end{figure}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Transfer Function Modeling}{Acceleration System}
-
+	\begin{block}{}
+ \begin{itemize}
+	\item Best fit percentage of the by-wire acceleration estimated model is 97.75
+	\item Best fit percentage of the manual acceleration estimated model is 98.3
+ \end{itemize}
+ \begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/byWireAccelArxModel} % first figure itself
+        \caption{Output of Estimated By-Wire System Model}
+        \label{fig:byWireAccelModel}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/manualAccelTransferFunctionModel} % second figure itself
+        \caption{Output of Estimated Manual System Model}
+        \label{fig:manualAccelModel}
+    \end{minipage}
+\end{figure}
+  \end{block}
 \end{frame}
 
 \begin{frame}{Transfer Function Modeling}{Brake System}
-
+\begin{block}{}
+ \begin{itemize}
+	\item Only manual models were considered 
+	\item There were no transfer function models that could satisfy both the best fit and error requirements 
+ \end{itemize}
+% \begin{figure}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+%        \caption{Output of Estimated By-Wire System Model}
+%        \label{fig:byWireSteerModel}
+%    \end{minipage}\hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+%        \caption{Output of Estimated Manual System Model}
+%        \label{fig:manualSteerModel}
+%    \end{minipage}
+%\end{figure}
+  \end{block}
 \end{frame}
+
+
 
 \begin{frame}{Neural Network Modeling}{Steering System}
-
+	\begin{block}{}
+  		\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item Only a few samples are just outside of the accuracy requirements
+			\item Transfer function model did not meet the accuracy requirements
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
+	\end{block}
 \end{frame}
+
+
 
 \begin{frame}{Neural Network Modeling}{Acceleration System}
-
+	\begin{block}{}
+  		\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item All samples within 2\% of the actual output
+			\item Transfer function model did not have the same accuracy bounds
+			\item Fewer concerns about connections in Simulink
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
+	\end{block}
 \end{frame}
 
-\begin{frame}{Neural Network Modeling}{Brake System}
 
+
+\begin{frame}{Neural Network Modeling}{Brake System}
+	\begin{block}{}
+\begin{figure}[H]
+  			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/newBrakeSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item With this model, the error is kept below 5\%
+			\item Able to easily track model performance
+			\item Provides better results than the transfer function model
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFig.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFigLog2Test.jpg}
+  		\end{figure}
+	
+  \end{block}
 \end{frame}
 
 %------------------------------------------------------------------------------
