@@ -34,7 +34,7 @@
 \usepackage{subfigure}  % Written by Steven Douglas Cochran
 \usepackage{amssymb,amsmath,bm}    % From the American Mathematical Society
 \usepackage{siunitx} % for units like degree, ...
-\sisetup{unitsep=\cdot,binary-units=true}
+%\sisetup{unitsep=\cdot,binary-units=true}
 \usepackage{mathtools}
 \usepackage{xcolor,soul}
 \usepackage{geometry}
@@ -117,7 +117,7 @@
 \begin{alertblock}{Objective and Contributions}
 %
 \textbf{Objective}
-\vskip -0.75cm
+%\vskip -0.75cm
 \begin{itemize}
     \item Provide accurate plant models of each autonomous vehicle subsystem to be used for designing controllers
 \end{itemize}
@@ -125,9 +125,9 @@
 %    \item Develop a platform that allows mobile devices to control helicopters with the least amount of error via an embedded system 
 %\end{itemize}
 %
-\vskip -1cm
+%\vskip -1cm
 \textbf{Contribution}
-\vskip -0.75cm
+%\vskip -0.75cm
 \begin{itemize}
 	\item Determine if System Identification or Neural Network modeling produces better models 
 	\item Non-linearity modeling
@@ -136,9 +136,9 @@
     %\item Mobile Device Control 
     %\item Multi-Helicopter Application
 \end{itemize}
-\vskip -0.75cm
+%\vskip -0.75cm
 \textbf{Applications}
-\vskip -0.75cm
+%\vskip -0.75cm
 \begin{itemize}
 	\item Use in testing to help develop more accurate vehicle controllers
 	\item Create a guide for modeling future vehicle subsystems
@@ -154,8 +154,8 @@
 %-----------------------------------------------------------
 % PROBLEM SETUP
 %-----------------------------------------------------------
-\vskip -1cm
-\begin{block}{Problem Setup}
+%\vskip -1cm
+\begin{alertblock}{Problem Setup}
 %\vskip -1cm
 %\begin{enumerate}
 %    \item Develop and linearize system model
@@ -319,10 +319,8 @@ $\bullet$ System Architecture
 
 $\bullet$ Collected data using a Lexus RX450H vehicle platform  
 
-
-
 \vskip -1cm
-\end{block}
+\end{alertblock}
 
 \end{column} % End of the first column
 
@@ -334,8 +332,8 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
 % TRANSFER FUNCTION MODELING
 %-----------------------------------------------------------
 
-\begin{block}{Transfer Function Modeling}
-\vskip -1cm
+\begin{alertblock}{Transfer Function Modeling}
+\vskip 0.5cm
 \begin{itemize}
     \item MATLAB's System Identification Toolbox used to create models 
     \item Models needed to meet best fit and error requirements 
@@ -357,14 +355,14 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
 \end{figure}
 
 %\vskip -2.5cm
-\end{block}
+\end{alertblock}
 
 %-----------------------------------------------------------
 % NEURAL NETWORK MODELING 
 %-----------------------------------------------------------
 
-\begin{block}{Neural Network Modeling}
-\vskip -1cm
+\begin{alertblock}{Neural Network Modeling}
+\vskip 0.5cm
 \begin{itemize}
     \item Used MATLAB's Neural Network Time Series App
     \item Generated models using the Bayesian Regularization Algorithm
@@ -397,7 +395,7 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
 
 
 %\vskip -2.5cm
-\end{block}
+\end{alertblock}
 
 
 
@@ -410,8 +408,8 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
 % NEURAL NETWORK ALGORITHM 
 %-----------------------------------------------------------
 
-\begin{block}{Neural Network Algorithm}
-\vskip -1cm
+\begin{alertblock}{Neural Network Algorithm}
+\vskip 0.5cm
 
  \begin{figure}
   \centering
@@ -460,7 +458,7 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
         },
       }      
 
-      \begin{tikzpicture}[x=1.5cm, y=1.5cm]
+      \begin{tikzpicture}[x=3cm, y=3cm]
 
         \foreach \m/\l [count=\y] in {1,2,missing,3}
         \node [input neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
@@ -503,68 +501,55 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
   \label{fig:nnActor}
 \end{figure}
 
-\vskip 1.5cm
+\vskip .5cm
 
-The neural network inputs are mapped to the outputs by being assigned a set of weights. 
-The approximated neural network signal can be written as:
-\begin{align}
-  \label{eq:approximatePolicyActorWeights}
-    \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
-  \end{align}
-%
-where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2$ and components of weight matrix ${\bf W}_a$ shown in Fig.~\ref{fig:nnActor} are given by %
-%
-\begin{align*}
-  {\bf W}_a = 
-  \begin{bmatrix}
-    w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
-    w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
-    \vdots & \ddots & \ldots &\vdots\\
-    w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
-  \end{bmatrix}.
-\end{align*}
-%
-In compact form:
-  \begin{align*}
-    \bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
-    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
-  \end{align*}
-  %
-  $\mathbb{R}^{\eta\times\bar{n}}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf e}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf u}_{a,\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
-
-  Let $\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta_a$ can be written as:
-  \begin{align*}
-    \delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
-  \end{align*}
-
-Actor weight ${\bf W}_a$ can then be found minimizing the sum--of--square error $\delta_a$ defined by %
-%
-\begin{align*}
-  \delta_a = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
-\end{align*}
-%
-Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields 
-%
-\begin{align}
-  \frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a
-  \label{eq:actorWeightsGradient}
-\end{align}
-%
-Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
-\begin{align*}
-  {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
-\end{align*}
- 
- The neural network is trained by altering the weights to minimize the least square error by utilizing the gradient descent approach which is defined as:
- \begin{multline}
-  \mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}= \mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a^{(r)}\right)\\
-  = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
-  \label{eq:actorWeightUpdate}
-\end{multline}
-
+\begin{enumerate}
+	\item Approximate neural network signal
+	\begin{align*}
+  		\hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+  	\end{align*}
+  	\item Define the weight matrix
+  	\begin{align*}
+  		{\bf W}_a = 
+  		\begin{bmatrix}
+    		w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
+    		w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+    		\vdots & \ddots & \ldots &\vdots\\
+    		w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+  		\end{bmatrix}.
+	\end{align*}
+	\item Compute the sum-of-squared error
+	\begin{align*}
+    		\bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+    		% \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+  	\end{align*}	
+  	\begin{align*}
+  		\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}}
+  	\end{align*}
+	\begin{align*}
+    		\delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+  	\end{align*}
+  	\item Find the actor weight by minimizing the sum-of-square error
+  	\begin{align*}
+  	\delta_a = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+	\end{align*}
+	\item Take the derivative of $\delta_a$ with respect to ${\bf W}_a$ and set $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero
+	\begin{align*}
+  		\frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T 					\bm{\Sigma}\mathbf{W}_a
+	\end{align*}
+	\begin{align*}
+  		{\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+	\end{align*}
+	\item Use the gradient descent approach to minimize the least square order alter weights when training the neural network
+	\begin{multline*}
+  		\mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}\\
+  		=\mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}				_a^{(r)}\right)\\
+  		= \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+	\end{multline*}
+\end{enumerate}
 
 \vskip -2.5cm
-\end{block}
+\end{alertblock}
 %-----------------------------------------------------------
 % Subsystem Block Diagram
 %-----------------------------------------------------------
@@ -584,15 +569,15 @@ Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
 % EXPERIMENTAL RESULTS
 %-----------------------------------------------------------
 
-\begin{block}{Experimental Results}
-\vskip -1cm
+\begin{alertblock}{Experimental Results}
+\vskip 1cm
 \begin{itemize}
     \item Preliminary model testing conducted before sending models to AutonomouStuff 
     \item Official testing conducted using dSPACE software and HIL Bench 
 \end{itemize}
 \begin{figure}
     \centering
-    \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.15\textheight,width=.9\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/hilBenchAstuff.jpg}}
+    \fcolorbox{gray!10}{gray!10}{\includegraphics[height=.2\textheight,width=.95\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/hilBenchAstuff.jpg}}
     \caption{Experimental Setup}
     \label{fig:Setup}
 \end{figure}
@@ -600,10 +585,10 @@ Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
 \begin{figure}
     \centering
     \subfigure[][]{
-    \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}
+    \includegraphics[angle=270,width=.4\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}
     }
     \subfigure[][]{
-    \includegraphics[width=.46\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
+    \includegraphics[angle=270,width=.4\textwidth,keepaspectratio=true]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
     }
     \caption{Verifying voltage measurements on the HIL Bench}
 \end{figure}
@@ -615,10 +600,8 @@ Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
     \label{fig:Setup}
 \end{figure}
 
-\vskip -.5cm
-
-\vskip -2cm
-\end{block}
+\vskip 2cm
+\end{alertblock}
 
 
 %-----------------------------------------------------------
@@ -633,8 +616,6 @@ Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
     \item Test models using Hardware-in-the-Loop
     \item Create new vehicle controllers
 \end{itemize}
-
-
 \end{alertblock}
 
 \end{column} % End of the fourth column
