@@ -432,24 +432,26 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \tikzstyle{every node} = [font=\footnotesize]
     \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
     % place nodes
-    \node[block,text width=1.75cm,text centered](plant){};
+    \node[block,text width=1.75cm,text centered](plant){MIMO system};
 
     % Connections
 	\draw[stealth-,thick]
-    (plant.145)--node[very near end,above](in1){Input 1}++(-1.9,0);    
+  (plant.150)--++(-1.2,0)node[left](in1){$x_1$};    
     \draw[stealth-,thick]
-    (plant.180)--node[very near end,above](in2){Input 2}++(-1.9,0);
-    %\draw[ultra thick,Dotted] (in2) -- (inn);
-    \draw[-stealth,thick]
-    (plant.-145)--node[very near end,above](inn){Input n}++(1.9,0);
+    (plant.170)--++(-1.2,0)node[left](in2){$x_2$};
+    \draw
+    ($(plant.180)+(-0.5,0)$)node[yshift=-0.9mm]{$\vdots$};
+    \draw[stealth-,thick]
+    (plant.-150)--++(-1.2,0)node[left](inn){$x_n$};
     
     \draw[-stealth,thick]
-    (plant.30)--node[very near end,above](out1){Output 1}++(1.9,0);
+    (plant.30)--++(1.2,0)node[right](out1){$y_1$};
     \draw[-stealth,thick]
-    (plant.0)--node[very near end,above](out2){Output 2}++(1.9,0);
-    %\draw[ultra thick,Dotted] (out2) -- (outm);
+    (plant.10)--++(1.2,0)node[right](out2){$y_2$};
+    \draw
+    ($(plant.0)+(0.5,0)$)node[yshift=-0.9mm]{$\vdots$};
     \draw[-stealth,thick]
-    (plant.-30)--node[very near end,above](outm){Output m}++(1.9,0);
+    (plant.-30)--++(1.2,0)node[right](outm){$y_m$};
   \end{tikzpicture}
     \caption{Multiple Input Multiple Output Dynamic System Block Diagram}
     \label{fig:mimoDynamicBlockDiagram}
