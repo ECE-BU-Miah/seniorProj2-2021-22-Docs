@@ -412,40 +412,6 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
 
 \begin{block}{Neural Network Algorithm}
 \vskip -1cm
-\begin{itemize}
-    %\item Reinforcement learning based approach
-    \item Uses neural network based on difference between desired and actual orientation to determine optimal gain
-    %\item Unlike LQR, ADP operates only in discrete-time and calculates new gains as the system is running
-%    \begin{subequations}
-%        \small
-%        \begin{align}
-%            & some eq = x\\
-%            & some eq = y\\
-%            & some eq = z
-%        \end{align}
-%    \label{eq:ADP_EQ}
-%    \end{subequations}
-\end{itemize} 
-%\begin{enumerate}
-%    \item Apply input to the system and calculate error e(k) at time k
-%    \item Use Euler's method to convert the error model into discrete-time and record data every $\tau \sec$
-%    \begin{center}
-%        $e_{k+1}=f(e_k)+G(e_k)u_k$
-%    \end{center}
-%    \item 
-%    %\item Minimize the cost function
-%    %\begin{center}
-%        $J(u)=\sum_{k=0}^{\infty} e_k^TQe_k+u_k^TRu_k$
-%    %\end{center}
-%    %\item Define value function
-%    %\begin{center}
-%        $V(e_k)=$
-%    %\end{center}    
-%    \item Solve for gain, K
-%    \begin{center}
-%        $K=0.5R^{-1}B^TP$
-%    \end{center}
-%\end{enumerate}
 
  \begin{figure}
   \centering
@@ -537,19 +503,64 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
   \label{fig:nnActor}
 \end{figure}
 
-
-
 \vskip 1.5cm
-%(1) t = kτ where τ is given
-%(2)Advance the system by applying determined inputs to the system and measure system states
-%(3)Calculate state error as e[k] = xref[k] − x[k], save state error
-%(4) If t 6= T, increment k and start at (1)
-%(5) If t = T, update K using collected error data
-%(5a)Use error states since last update of K as inputs to the neural network
-%(5b)Recursively determine wc values for each of the instances
-%(5c)Approximate new wc value using regression analysis of the individually calculated wc values
-%(6)Calculate new K using wc values
-%(7) Increment k and start at (1)
+
+The neural network inputs are mapped to the outputs by being assigned a set of weights. 
+The approximated neural network signal can be written as:
+\begin{align}
+  \label{eq:approximatePolicyActorWeights}
+    \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+  \end{align}
+%
+where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2$ and components of weight matrix ${\bf W}_a$ shown in Fig.~\ref{fig:nnActor} are given by %
+%
+\begin{align*}
+  {\bf W}_a = 
+  \begin{bmatrix}
+    w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
+    w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+    \vdots & \ddots & \ldots &\vdots\\
+    w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+  \end{bmatrix}.
+\end{align*}
+%
+In compact form:
+  \begin{align*}
+    \bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+  \end{align*}
+  %
+  $\mathbb{R}^{\eta\times\bar{n}}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf e}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf u}_{a,\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
+
+  Let $\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta_a$ can be written as:
+  \begin{align*}
+    \delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+  \end{align*}
+
+Actor weight ${\bf W}_a$ can then be found minimizing the sum--of--square error $\delta_a$ defined by %
+%
+\begin{align*}
+  \delta_a = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+\end{align*}
+%
+Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields 
+%
+\begin{align}
+  \frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a
+  \label{eq:actorWeightsGradient}
+\end{align}
+%
+Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
+\begin{align*}
+  {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+\end{align*}
+ 
+ The neural network is trained by altering the weights to minimize the least square error by utilizing the gradient descent approach which is defined as:
+ \begin{multline}
+  \mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}= \mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a^{(r)}\right)\\
+  = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+  \label{eq:actorWeightUpdate}
+\end{multline}
 
 
 \vskip -2.5cm
