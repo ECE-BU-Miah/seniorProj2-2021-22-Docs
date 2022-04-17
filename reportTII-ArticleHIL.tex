@@ -990,6 +990,9 @@ The second test used constant blocks to represent the voltages and desired pedal
 
 For each vehicle subsystem, the results show that the neural network models were the most accurate models. Other models that we developed, such as the transfer function models, were relatively accurate when tracking the data, but those models were consistently falling outside of the error bounds that were defined at the start of the project. The neural network models, however, track the data more accurately and reduced the error significantly so that all error requirements were met. We first proved that the neural network models that we developed were accurate using subsets of data as inputs to a Simulink model. Then we visited AutonomouStuff to generate the models on their HIL bench, as shown in Fig.~\ref{fig:hilBench}, using Control Desk to interface. Due to time constraints, AutonomouStuff was not able to get the proper hardware for this project connected to the HIL bench but we were able to test our models in an open-loop configuration and measure outputs to show that the correct voltages would be fed to any hardware that would be connected, shown in Fig.~\ref{fig:hilMeasuring}. One downside to using neural networks as the plant model is it causes some complexities when trying to include these models into the HIL bench software for use in developing and testing controllers. 
 
+
+\todo[inline]{Need annotation of each of the pictures. Like that, we show what
+  each of the equipment are}
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.48\linewidth}

@@ -49,7 +49,7 @@
 \usepackage{pgfgantt}
 \usepackage{todonotes}
 \usepackage{media9}
-\usepackage{subfigure}
+% \usepackage{subfigure}
 \usepackage{booktabs,array}
 \usepackage[font=tiny,labelfont=bf]{caption}
 \usepackage{tabulary}
@@ -191,17 +191,26 @@
     \end{tiny}
 \end{frame}
 
+
+
 \begin{frame}{Introduction}{Problem Statement}
   \begin{block}{Problem Statement}
-    \begin{Large}
-    		Model autonomous vehicle subsystems for a Lexus platform
-    \end{Large}
+    Given input-output data of different subsystems, such as steering, acceleration, brake, shift, speed, and speed control, of an autonomous (self-driving) vehicle:
+    \begin{itemize}
+    \item Develop mathematical and/or block diagram models of these subsystems 
+      
+    \item Develop machine learning-based models for the major subsystems of Lexus self-driving vehicle
+    \end{itemize}
   \end{block}
   \pause
   \begin{block}{Proposed Solution}
-    \begin{Large}
-    		Use neural network modeling techniques to develop plant models
-    \end{Large}
+    \begin{itemize}
+    \item Use state-space modeling techniques based on input and output data 
+     
+    \item Use system identification modeling techniques
+      
+    \item Use machine learning (neural network) based modeling techniques
+    \end{itemize}
   \end{block}
 \end{frame}
 
@@ -266,18 +275,17 @@
 \section{System Architecture}
 
 \begin{frame}{System Architecture}{}
+  \missingfigure{Place the overall vehicle picture from the report that shows different subsystems  }
 	\begin{block}{System Architecture}
-    \begin{large}
-      The overall system architecture of this project consists of six subsystems: 
-      \begin{itemize}
-          \item Steering
-          \item Acceleration
-          \item Brake %Model
-          \item Shift %Model
-          \item Speed %Model
-          \item Speed control %Model
-        \end{itemize} 
-    \end{large}
+    The overall system architecture of this project consists of six subsystems: 
+    \begin{itemize}
+        \item Steering
+        \item Acceleration
+        \item Brake %Model
+        \item Shift %Model
+        \item Speed %Model
+        \item Speed control %Model
+      \end{itemize} 
   \end{block}
 \end{frame}
 
@@ -299,101 +307,101 @@
 \section{System Modeling using Neural Networks}
 
 \begin{frame}{Modeling using Neural Networks}{}
-	\begin{block}{}
-		\begin{figure}
-			\centering
-      \tikzset{%
-        input neuron/.style={
-          circle,
-          fill=green!50,
-          minimum size=0.7cm
-        },
-        neuron missing/.style={
-          draw=none, 
-          scale=1,
-          fill=white,
-          text height=0.01cm,
-          execute at begin node=\color{black}$\vdots$
-        },
-      }
+  \begin{figure}
+    \centering
+    \tikzset{%
+      input neuron/.style={
+        circle,
+        fill=green!50,
+        minimum size=0.7cm
+      },
+      neuron missing/.style={
+        draw=none, 
+        scale=1,
+        fill=white,
+        text height=0.01cm,
+        execute at begin node=\color{black}$\vdots$
+      },
+    }
 
-      \tikzset{%
-        hidden neuron/.style={
-          circle,
-          fill=blue!50,
-          minimum size=0.7cm
-        },
-        neuron missing/.style={
-          draw=none, 
-          scale=1,
-          fill=white,
-          text height=0.01cm,
-          execute at begin node=\color{black}$\vdots$
-        },
-      }
+    \tikzset{%
+      hidden neuron/.style={
+        circle,
+        fill=blue!50,
+        minimum size=0.7cm
+      },
+      neuron missing/.style={
+        draw=none, 
+        scale=1,
+        fill=white,
+        text height=0.01cm,
+        execute at begin node=\color{black}$\vdots$
+      },
+    }
 
-      \tikzset{%
-        output neuron/.style={
-          circle,
-          fill=red!50,
-          minimum size=0.7cm
-        },
-        neuron missing/.style={
-          draw=none, 
-          scale=1,
-          fill=white,
-          text height=0.01cm,
-          execute at begin node=\color{black}$\vdots$
-        },
-      }      
+    \tikzset{%
+      output neuron/.style={
+        circle,
+        fill=red!50,
+        minimum size=0.7cm
+      },
+      neuron missing/.style={
+        draw=none, 
+        scale=1,
+        fill=white,
+        text height=0.01cm,
+        execute at begin node=\color{black}$\vdots$
+      },
+    }      
 
-      \begin{tikzpicture}[x=1.5cm, y=1.5cm]
+    \begin{tikzpicture}[x=1.5cm, y=1.3cm,transform shape]
 
-        \foreach \m/\l [count=\y] in {1,2,missing,3}
-        \node [input neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+      \foreach \m/\l [count=\y] in {1,2,missing,3}
+      \node [input neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
 
-        \foreach \m [count=\y] in {1,2,3,missing,4}
-        \node [hidden neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y*1.1) {};
+      \foreach \m [count=\y] in {1,2,3,missing,4}
+      \node [hidden neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y*1.1) {};
 
-        \foreach \m [count=\y] in {1,missing,2}
-        \node [output neuron/.try, neuron \m/.try] (output-\m) at (4,2.5-\y*1.2) {};
+      \foreach \m [count=\y] in {1,missing,2}
+      \node [output neuron/.try, neuron \m/.try] (output-\m) at (4,2.5-\y*1.2) {};
 
-        \foreach \l [count=\i] in {1,2,n}
-        \draw [<-] (input-\i) -- ++(-1,0)
-        node [above, midway] {$\mathbf{e}_{k,\l}$};
+      \foreach \l [count=\i] in {1,2,n}
+      \draw [<-] (input-\i) -- ++(-1,0)
+      node [above, midway] {$\mathbf{e}_{k,\l}$};
 
-        \foreach \l [count=\i] in {1,2,3,\mbox{$\bar{n}$}}
-        \node [above] at (hidden-\i.north) {$\sigma_{\l}$};
+      \foreach \l [count=\i] in {1,2,3,\mbox{$\bar{n}$}}
+      \node [above] at (hidden-\i.north) {$\sigma_{\l}$};
 
-        \foreach \l [count=\i] in {1,m}
-        \draw [->] (output-\i) -- ++(1,0)
-        node [above, midway] {$\hat{u}_{a,k}^{(\l)}$};
+      \foreach \l [count=\i] in {1,m}
+      \draw [->] (output-\i) -- ++(1,0)
+      node [above, midway] {$\hat{u}_{a,k}^{(\l)}$};
 
-        \foreach \i in {1,...,3}
-        \foreach \j in {1,...,4}
-        \draw [->] (input-\i) -- (hidden-\j);
+      \foreach \i in {1,...,3}
+      \foreach \j in {1,...,4}
+      \draw [->] (input-\i) -- (hidden-\j);
 
-        \foreach \i in {1,...,4}
-        \foreach \j in {1,2}
-        \draw [->] (hidden-\i) -- (output-\j);
+      \foreach \i in {1,...,4}
+      \foreach \j in {1,2}
+      \draw [->] (hidden-\i) -- (output-\j);
 
 
-        
-        \foreach \l [count=\x from 0] in {Input, Hidden, Ouput}
-        \node [align=center, above] at (\x*2,1.9) {\l \\ layer};
 
-        \node [align=center, below] at (3,-2.5) {Weight \\ $\mathbf{W}_a$};
-        \draw[->,ultra thick](3,-2.5) -- (3,1.6);
-        
-      \end{tikzpicture}
-  \caption{Actor neural network structure for approximating control input.}
-  \label{fig:nnActor}
+      \foreach \l [count=\x from 0] in {Input, Hidden, Ouput}
+      \node [align=center, above] at (\x*2,1.9) {\l \\ layer};
+
+      \node [align=center, below] at (3,-2.5) {Weight \\ $\mathbf{W}_a$};
+      \draw[->,ultra thick](3,-2.5) to[bend left] (3,1.6);
+
+    \end{tikzpicture}
+    \caption{Actor neural network structure for approximating control input.}
+    \label{fig:nnActor}
 		\end{figure}
-	\end{block}
 \end{frame}
 
 \begin{frame}
-Therefore, approximated actor signal can be written as:
+
+\todo[inline]{Use generic input and output symbols instead of my own symbols that I used to inputs (error) and outputs (control inputs) }
+  Therefore, approximated actor signal can be written as:
 \begin{align}
   \label{eq:approximatePolicyActorWeights}
     \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
@@ -421,7 +429,6 @@ Now take $\eta$ data points and form the set of linear equations as: %
  & \bm{\sigma}^T(\mathbf{e}_{k+\eta-1}) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k+\eta-1}^{[d]}\right)^T  
 \end{align*}
 %
-
 \end{frame}
 
 
@@ -452,14 +459,17 @@ Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields
   \label{eq:actorWeightsGradient}
 \end{align}
 %
-Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
-\begin{align*}
-  {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
-\end{align*}
 
 \end{frame}
 
 \begin{frame}
+
+
+  Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
+  \begin{align*}
+    {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+  \end{align*}
+  
 $\bullet$ Actor weight is updated at each policy iteration $r=0,1,\ldots$ using gradient descent approach as:
 
 \begin{multline}
@@ -467,6 +477,9 @@ $\bullet$ Actor weight is updated at each policy iteration $r=0,1,\ldots$ using 
   = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
   \label{eq:actorWeightUpdate}
 \end{multline}
+
+
+\todo[inline]{In your case, there is no actor neural network, I implemented generic reinforcement learning structures using actor critic neural network structure}
 
 \end{frame}
 
@@ -554,6 +567,11 @@ $\bullet$ Actor weight is updated at each policy iteration $r=0,1,\ldots$ using 
     			\label{fig:vehicleSetup}
 		\end{figure}
 	\end{block}
+\end{frame}
+
+\begin{frame}
+  
+  \todo[inline]{Where are the detailed simulink block diagram for each subsystem?}
 \end{frame}
 
 \begin{frame}{Validation and Testing}{Validation Setup}
