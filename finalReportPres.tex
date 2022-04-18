@@ -391,14 +391,14 @@
 
       \foreach \l [count=\i] in {1,2,n}
       \draw [<-] (input-\i) -- ++(-1,0)
-      node [above, midway] {$\mathbf{e}_{k,\l}$};
+      node [above, midway] {$\mathbf{x}_{\l}$};
 
-      \foreach \l [count=\i] in {1,2,3,\mbox{$\bar{n}$}}
+      \foreach \l [count=\i] in {1,2,3,p}
       \node [above] at (hidden-\i.north) {$\sigma_{\l}$};
 
       \foreach \l [count=\i] in {1,m}
       \draw [->] (output-\i) -- ++(1,0)
-      node [above, midway] {$\hat{u}_{a,k}^{(\l)}$};
+      node [above, midway] {${y}_{\l}$};
 
       \foreach \i in {1,...,3}
       \foreach \j in {1,...,4}
@@ -413,33 +413,32 @@
       \foreach \l [count=\x from 0] in {Input, Hidden, Ouput}
       \node [align=center, above] at (\x*2,1.9) {\l \\ layer};
 
-      \node [align=center, below] at (3,-2.5) {Weight \\ $\mathbf{W}_a$};
+      \node [align=center, below] at (3,-2.5) {Weight \\ $\mathbf{W}$};
       \draw[->,ultra thick](3,-2.5) to[bend left] (3,1.6);
 
     \end{tikzpicture}
-    \caption{Actor neural network structure for approximating control input.}
+    \caption{Neural network structure for approximating system behavior}
     \label{fig:nnActor}
 		\end{figure}
 \end{frame}
 
 \begin{frame}
 
-\todo[inline]{Use generic input and output symbols instead of my own symbols that I used to inputs (error) and outputs (control inputs) }
-  Therefore, approximated actor signal can be written as:
+  Therefore, approximated output signal can be written as:
 \begin{align}
   \label{eq:approximatePolicyActorWeights}
-    \hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+    \mathbf{y} = \mathbf{W}^T\bm{\sigma}(\mathbf{x}),
   \end{align}
 %
-where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2$ and components of weight matrix ${\bf W}_a$ shown in Fig.~\ref{fig:nnActor} are given by %
+where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{p}$ with components of weight matrix ${\bf W}$ shown in Fig.~\ref{fig:nnActor} are given by %
 %
 \begin{align*}
-  {\bf W}_a = 
+  {\bf W} = 
   \begin{bmatrix}
-    w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
-    w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+    w^{1,1} &  w^{1,2} & \ldots &w^{1,m}\\
+    w^{2,1} & w^{2,2}& \ldots &w^{1,m}\\
     \vdots & \ddots & \ldots &\vdots\\
-    w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+    w^{p,1} & w^{p,2}& \ldots &w^{p,m}
   \end{bmatrix}.
 \end{align*}
 %
@@ -447,10 +446,10 @@ where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{\bar{n}}$ with $\bar{n} = n(n+1)/2
 Now take $\eta$ data points and form the set of linear equations as: %
 %
 \begin{align*}
-&  \bm{\sigma}^T(\mathbf{e}_k) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k}^{[d]}\right)^T\\
- & \bm{\sigma}^T(\mathbf{e}_{k+1}) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k+1}^{[d]}\right)^T\\
+&  \bm{\sigma}^T(\mathbf{x}_k) \mathbf{W}  \approx     \left(\mathbf{y}_{k}^{[d]}\right)^T\\
+ & \bm{\sigma}^T(\mathbf{x}_{k+1}) \mathbf{W}  \approx     \left(\mathbf{y}_{k+1}^{[d]}\right)^T\\
                                             &\vdots \\
- & \bm{\sigma}^T(\mathbf{e}_{k+\eta-1}) \mathbf{W}_a  \approx     \left(\mathbf{u}_{a,k+\eta-1}^{[d]}\right)^T  
+ & \bm{\sigma}^T(\mathbf{x}_{k+\eta-1}) \mathbf{W}  \approx     \left(\mathbf{y}_{k+\eta-1}^{[d]}\right)^T  
 \end{align*}
 %
 \end{frame}
@@ -459,27 +458,27 @@ Now take $\eta$ data points and form the set of linear equations as: %
 \begin{frame}
   In compact form:
   \begin{align*}
-    \bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+    \bm{\Sigma}\mathbf{W} \approx  \mathbf{U}^{[d]},\qquad\text{with}
     % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
   \end{align*}
   %
-  $\mathbb{R}^{\eta\times\bar{n}}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf e}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf u}_{a,\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
+  $\mathbb{R}^{\eta\times p}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf x}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf y}_{\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
 
-  Let $\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta_a$ can be written as:
+  Let $\bm{\Sigma}\mathbf{W}\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta$ can be written as:
   \begin{align*}
-    \delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+    \delta = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
   \end{align*}
 
-Actor weight ${\bf W}_a$ can then be found minimizing the sum--of--square error $\delta_a$ defined by %
+Weight matrix ${\bf W}$ can then be found minimizing the sum--of--square error $\delta$ defined by %
 %
 \begin{align*}
-  \delta_a = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+  \delta = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W})^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W})\right].
 \end{align*}
 %
-Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields 
+Taking the derivative of $\delta$ with respect to ${\bf W}$ yields 
 %
 \begin{align}
-  \frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a
+  \frac{\partial\delta}{\partial\mathbf{W}} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}
   \label{eq:actorWeightsGradient}
 \end{align}
 %
@@ -489,21 +488,18 @@ Taking the derivative of $\delta_a$ with respect to ${\bf W}_a$ yields
 \begin{frame}
 
 
-  Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
+  Setting $\frac{\partial\delta}{\partial\mathbf{W}}$ to zero yeilds
   \begin{align*}
-    {\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+    {\bf W} = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
   \end{align*}
   
-$\bullet$ Actor weight is updated at each policy iteration $r=0,1,\ldots$ using gradient descent approach as:
+$\bullet$ Hidden layer to output layer weight is updated at each policy iteration $r=0,1,\ldots$ using gradient descent approach as:
 
 \begin{multline}
-  \mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}= \mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}_a^{(r)}\right)\\
-  = \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+  \mathbf{W}^{(r+1)} = \mathbf{w}^{(r)} - \ell\frac{\partial\delta}{\partial\mathbf{W}}= \mathbf{W}^{(r)} - \ell\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}^{(r)}\right)\\
+  = \mathbf{w}^{(r)}-\ell \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}^{(r)} - \mathbf{U}^{[d]}\right)
   \label{eq:actorWeightUpdate}
 \end{multline}
-
-
-\todo[inline]{In your case, there is no actor neural network, I implemented generic reinforcement learning structures using actor critic neural network structure}
 
 \end{frame}
 
