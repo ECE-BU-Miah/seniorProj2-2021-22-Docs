@@ -279,7 +279,27 @@
 \section{System Architecture}
 
 \begin{frame}{System Architecture}{}
-  \missingfigure{Place the overall vehicle picture from the report that shows different subsystems  }
+%  \missingfigure{Place the overall vehicle picture from the report that shows different subsystems  }
+\begin{figure}
+				\centering
+				\includegraphics[height=3.5cm]{figs/inkscape/carSystemModelOutline}
+				%\caption{}
+				\label{fig:carSystemSubsystem}
+        \end{figure}
+%	\begin{block}{System Architecture}
+%    The overall system architecture of this project consists of six subsystems: 
+%    \begin{itemize}
+%        \item Steering
+%        \item Acceleration
+%        \item Brake %Model
+%        \item Shift %Model
+%        \item Speed %Model
+%        \item Speed control %Model
+%      \end{itemize} 
+%  \end{block}
+\end{frame}
+
+\begin{frame}{System Architecture}{}
 	\begin{block}{System Architecture}
     The overall system architecture of this project consists of six subsystems: 
     \begin{itemize}
@@ -521,6 +541,123 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 \end{block}
 \end{frame}
 %-------------------------
+\begin{frame}{Transfer Function Modeling}{Steering System Simulation}
+	\begin{block}{}
+ \begin{itemize}
+	\item Best fit percentage of the by-wire steering estimated model is 83.25
+	\item Best fit percentage of the manual steering estimated model is 90.27
+ \end{itemize}
+ \begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+        \caption{Output of Estimated By-Wire System Model}
+        \label{fig:byWireSteerModel}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+        \caption{Output of Estimated Manual System Model}
+        \label{fig:manualSteerModel}
+    \end{minipage}
+\end{figure}
+  \end{block}
+\end{frame}
+%-------------------------
+\begin{frame}{Transfer Function Modeling}{Acceleration System Simulation}
+	\begin{block}{}
+ \begin{itemize}
+	\item Best fit percentage of the by-wire acceleration estimated model is 97.75
+	\item Best fit percentage of the manual acceleration estimated model is 98.3
+ \end{itemize}
+ \begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/byWireAccelArxModel} % first figure itself
+        \caption{Output of Estimated By-Wire System Model}
+        \label{fig:byWireAccelModel}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/img/manualAccelTransferFunctionModel} % second figure itself
+        \caption{Output of Estimated Manual System Model}
+        \label{fig:manualAccelModel}
+    \end{minipage}
+\end{figure}
+  \end{block}
+\end{frame}
+%-------------------------
+\begin{frame}{Transfer Function Modeling}{Brake System Simulation}
+\begin{block}{}
+ \begin{itemize}
+	\item Only manual models were considered 
+	\item There were no transfer function models that could satisfy both the best fit and error requirements 
+ \end{itemize}
+% \begin{figure}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+%        \caption{Output of Estimated By-Wire System Model}
+%        \label{fig:byWireSteerModel}
+%    \end{minipage}\hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+%        \caption{Output of Estimated Manual System Model}
+%        \label{fig:manualSteerModel}
+%    \end{minipage}
+%\end{figure}
+  \end{block}
+\end{frame}
+%-------------------------
+\begin{frame}{Neural Network Modeling}{Steering System Simulation}
+	\begin{block}{}
+  		\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item Only a few samples are just outside of the accuracy requirements
+			\item Transfer function model did not meet the accuracy requirements
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
+	\end{block}
+\end{frame}
+%-------------------------
+\begin{frame}{Neural Network Modeling}{Acceleration System Simulation}
+	\begin{block}{}
+  		\begin{figure}[H]
+  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item All samples within 2\% of the actual output
+			\item Transfer function model did not have the same accuracy bounds
+			\item Fewer concerns about connections in Simulink
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
+  		\end{figure}
+	\end{block}
+\end{frame}
+%-------------------------
+\begin{frame}{Neural Network Modeling}{Brake System Simulation}
+	\begin{block}{}
+\begin{figure}[H]
+  			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/newBrakeSimulinkBlock.jpg}\quad%
+			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+			\item With this model, the error is kept below 5\%
+			\item Able to easily track model performance
+			\item Provides better results than the transfer function model
+			\end{itemize} \end{minipage}\\[1em]
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFig.jpg}\quad%
+			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFigLog2Test.jpg}
+  		\end{figure}
+	
+  \end{block}
+\end{frame}
+%-------------------------
 \section{Validation and Testing}
 
 \begin{frame}{Validation and Testing}{Experimental Setup}
@@ -576,10 +713,10 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 
 \begin{frame}{Validation and Testing}{Validation Setup}
 	\begin{figure}
-		\centering \includegraphics[width=.35\linewidth]{figs/img/picturesVisitToAStuff/hilBenchAstuff}\quad%
-		\centering \begin{minipage}[b][0.35\textheight][c]{.35\linewidth} \begin{itemize} \item HIL Bench 						\item Measuring output voltages to confirm results \end{itemize} \end{minipage}\\[1em]
-		\centering \includegraphics[angle=270,width=.35\linewidth]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}\quad%
-		\centering \includegraphics[angle=270,width=.35\linewidth]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
+		\centering \includegraphics[width=.45\linewidth]{figs/img/picturesVisitToAStuff/hilBenchAstuff}\quad%
+		\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{itemize} \item HIL Bench 						\item Measuring output voltages to confirm results \end{itemize} \end{minipage}\\[1em]
+		\centering \includegraphics[angle=270,width=.45\linewidth]{figs/img/picturesVisitToAStuff/aStuffVisit2Nick}\quad%
+		\centering \includegraphics[angle=270,width=.45\linewidth]{figs/img/picturesVisitToAStuff/hilMeasurementHannah}
 	\end{figure}
 \end{frame}
 
@@ -592,60 +729,12 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Transfer Function Modeling}{Steering System}
-	\begin{block}{}
- \begin{itemize}
-	\item Best fit percentage of the by-wire steering estimated model is 83.25
-	\item Best fit percentage of the manual steering estimated model is 90.27
- \end{itemize}
- \begin{figure}
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
-        \caption{Output of Estimated By-Wire System Model}
-        \label{fig:byWireSteerModel}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
-        \caption{Output of Estimated Manual System Model}
-        \label{fig:manualSteerModel}
-    \end{minipage}
-\end{figure}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Transfer Function Modeling}{Acceleration System}
-	\begin{block}{}
- \begin{itemize}
-	\item Best fit percentage of the by-wire acceleration estimated model is 97.75
-	\item Best fit percentage of the manual acceleration estimated model is 98.3
- \end{itemize}
- \begin{figure}
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/byWireAccelArxModel} % first figure itself
-        \caption{Output of Estimated By-Wire System Model}
-        \label{fig:byWireAccelModel}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/manualAccelTransferFunctionModel} % second figure itself
-        \caption{Output of Estimated Manual System Model}
-        \label{fig:manualAccelModel}
-    \end{minipage}
-\end{figure}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Transfer Function Modeling}{Brake System}
-\begin{block}{}
- \begin{itemize}
-	\item Only manual models were considered 
-	\item There were no transfer function models that could satisfy both the best fit and error requirements 
- \end{itemize}
+%\begin{frame}{Transfer Function Modeling}{Steering System}
+%	\begin{block}{}
+% \begin{itemize}
+%	\item Best fit percentage of the by-wire steering estimated model is 83.25
+%	\item Best fit percentage of the manual steering estimated model is 90.27
+% \end{itemize}
 % \begin{figure}
 %    \centering
 %    \begin{minipage}{0.45\textwidth}
@@ -661,59 +750,107 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 %        \label{fig:manualSteerModel}
 %    \end{minipage}
 %\end{figure}
-  \end{block}
-\end{frame}
+%  \end{block}
+%\end{frame}
+
+%\begin{frame}{Transfer Function Modeling}{Acceleration System}
+%	\begin{block}{}
+% \begin{itemize}
+%	\item Best fit percentage of the by-wire acceleration estimated model is 97.75
+%	\item Best fit percentage of the manual acceleration estimated model is 98.3
+% \end{itemize}
+% \begin{figure}
+%    \centering
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/byWireAccelArxModel} % first figure itself
+%        \caption{Output of Estimated By-Wire System Model}
+%        \label{fig:byWireAccelModel}
+%    \end{minipage}\hfill
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=0.6\textwidth]{figs/img/manualAccelTransferFunctionModel} % second figure itself
+%        \caption{Output of Estimated Manual System Model}
+%        \label{fig:manualAccelModel}
+%    \end{minipage}
+%\end{figure}
+%  \end{block}
+%\end{frame}
+
+%\begin{frame}{Transfer Function Modeling}{Brake System}
+%\begin{block}{}
+% \begin{itemize}
+%	\item Only manual models were considered 
+%	\item There were no transfer function models that could satisfy both the best fit and error requirements 
+% \end{itemize}
+%% \begin{figure}
+%%    \centering
+%%    \begin{minipage}{0.45\textwidth}
+%%        \centering
+%%        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
+%%        \caption{Output of Estimated By-Wire System Model}
+%%        \label{fig:byWireSteerModel}
+%%    \end{minipage}\hfill
+%%    \begin{minipage}{0.45\textwidth}
+%%        \centering
+%%        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
+%%        \caption{Output of Estimated Manual System Model}
+%%        \label{fig:manualSteerModel}
+%%    \end{minipage}
+%%\end{figure}
+%  \end{block}
+%\end{frame}
 
 
 
-\begin{frame}{Neural Network Modeling}{Steering System}
-	\begin{block}{}
-  		\begin{figure}[H]
-  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
-			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item Only a few samples are just outside of the accuracy requirements
-			\item Transfer function model did not meet the accuracy requirements
-			\end{itemize} \end{minipage}\\[1em]
-			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput.jpg}\quad%
-			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput2.jpg}
-  		\end{figure}
-	\end{block}
-\end{frame}
+%\begin{frame}{Neural Network Modeling}{Steering System}
+%	\begin{block}{}
+%  		\begin{figure}[H]
+%  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
+%			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+%			\item Only a few samples are just outside of the accuracy requirements
+%			\item Transfer function model did not meet the accuracy requirements
+%			\end{itemize} \end{minipage}\\[1em]
+%			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput.jpg}\quad%
+%			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput2.jpg}
+%  		\end{figure}
+%	\end{block}
+%\end{frame}
 
 
 
-\begin{frame}{Neural Network Modeling}{Acceleration System}
-	\begin{block}{}
-  		\begin{figure}[H]
-  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
-			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item All samples within 2\% of the actual output
-			\item Transfer function model did not have the same accuracy bounds
-			\item Fewer concerns about connections in Simulink
-			\end{itemize} \end{minipage}\\[1em]
-			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
-			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
-  		\end{figure}
-	\end{block}
-\end{frame}
+%\begin{frame}{Neural Network Modeling}{Acceleration System}
+%	\begin{block}{}
+%  		\begin{figure}[H]
+%  			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
+%			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+%			\item All samples within 2\% of the actual output
+%			\item Transfer function model did not have the same accuracy bounds
+%			\item Fewer concerns about connections in Simulink
+%			\end{itemize} \end{minipage}\\[1em]
+%			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
+%			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
+%  		\end{figure}
+%	\end{block}
+%\end{frame}
 
 
 
-\begin{frame}{Neural Network Modeling}{Brake System}
-	\begin{block}{}
-\begin{figure}[H]
-  			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/newBrakeSimulinkBlock.jpg}\quad%
-			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item With this model, the error is kept below 5\%
-			\item Able to easily track model performance
-			\item Provides better results than the transfer function model
-			\end{itemize} \end{minipage}\\[1em]
-			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFig.jpg}\quad%
-			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFigLog2Test.jpg}
-  		\end{figure}
-	
-  \end{block}
-\end{frame}
+%\begin{frame}{Neural Network Modeling}{Brake System}
+%	\begin{block}{}
+%\begin{figure}[H]
+%  			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/newBrakeSimulinkBlock.jpg}\quad%
+%			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
+%			\item With this model, the error is kept below 5\%
+%			\item Able to easily track model performance
+%			\item Provides better results than the transfer function model
+%			\end{itemize} \end{minipage}\\[1em]
+%			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFig.jpg}\quad%
+%			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFigLog2Test.jpg}
+%  		\end{figure}
+%	
+%  \end{block}
+%\end{frame}
 
 %------------------------------------------------------------------------------
 %     SECTION BREAK
@@ -722,10 +859,18 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 \section{Conclusions and Future Work}
 
 \begin{frame}{Conclusions and Future Work}
-  \begin{block}{Conclusions}
+  \begin{block}{Conclusions and Challenges}
     \begin{itemize}
-      \item Transfer Function to Neural Network models
-      \item Neural Network modeling worked best 
+      \item Conclusions
+      \begin{itemize}
+      	\item Switch from transfer function to neural network models
+      	\item Neural network modeling worked best 
+      \end{itemize}
+      \item Challenges
+        \begin{itemize}
+      	\item Time constraints 
+      	\item Hardware constraints 
+      \end{itemize}
     \end{itemize}
   \end{block}
   \begin{block}{Future Work}
