@@ -708,7 +708,19 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 
 \begin{frame}
   
-  \todo[inline]{Where are the detailed simulink block diagram for each subsystem?}
+%  \todo[inline]{Where are the detailed simulink block diagram for each subsystem?}
+	\begin{figure}
+		\centering \includegraphics[width=.35\linewidth]{figs/img/steeringNeuralNetworkDetailedSystem}\quad%
+		\caption{Steering Neural Network Simulink Model Subsystem}
+		\centering \begin{minipage}[b][0.35\textheight][c]{.35\linewidth} 
+%		\begin{itemize} \item HIL Bench 						
+%		\item Measuring output voltages to confirm results \end{itemize} 
+		\end{minipage}\\[1em]
+		\centering \includegraphics[width=.35\linewidth]{figs/img/accelNeuralNetworkDetailedSystem}\quad%
+		\caption{Acceleration Neural Network Simulink Model Subsystem}
+		\centering \includegraphics[,width=.35\linewidth]{figs/img/brakeNeuralNetworkDetailedSystem}
+		\caption{Brake Neural Network Simulink Model Subsystem}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Validation and Testing}{Validation Setup}
