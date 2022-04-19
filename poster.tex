@@ -251,73 +251,85 @@ $\bullet$ System Architecture
 \end{figure}
 
 
-\begin{figure}
-    \centering
-        \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
-    % place nodes
-    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
+%\begin{figure}
+%    \centering
+%        \begin{tikzpicture}
+%    \tikzstyle{every node} = [font=\footnotesize]
+%    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
+%    % place nodes
+%    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
+%
+%    % Connections
+%    \draw[stealth-,thick]
+%    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-4.0,0);
+%    \draw[-stealth,thick]
+%    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(4.0,0);
+%    
+%  \end{tikzpicture}
+%    \caption{Speed Control subsystem block diagram}
+%    \label{fig:speedControlModelArchitecture}
+%
+%\end{figure}
+%
+%
+%\begin{figure}
+%    \centering
+%  \begin{tikzpicture}
+%    \tikzstyle{every node} = [font=\footnotesize]
+%    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2 cm]
+%    % place nodes
+%    \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
+%
+%    % Connections
+%    \draw[stealth-,thick]
+%    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-5.0,0);
+%    \draw[stealth-,thick]
+%    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-5.0,0);
+%    \draw[stealth-,thick]
+%    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-5.0,0);
+%    \draw[-stealth,thick]
+%    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(5.0,0);
+%    
+%  \end{tikzpicture}
+%    % \captionsetup{justification=centering, margin=3cm}
+%    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+%    \caption{ Speed subsystem block diagram}
+%    \label{fig:speedModelArchitecture}
+%\end{figure}
 
-    % Connections
-    \draw[stealth-,thick]
-    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-4.0,0);
-    \draw[-stealth,thick]
-    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(4.0,0);
-    
-  \end{tikzpicture}
-    \caption{Speed Control subsystem block diagram}
-    \label{fig:speedControlModelArchitecture}
 
-\end{figure}
-
-
-\begin{figure}
-    \centering
-  \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2 cm]
-    % place nodes
-    \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
-
-    % Connections
-    \draw[stealth-,thick]
-    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-5.0,0);
-    \draw[stealth-,thick]
-    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-5.0,0);
-    \draw[stealth-,thick]
-    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-5.0,0);
-    \draw[-stealth,thick]
-    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(5.0,0);
-    
-  \end{tikzpicture}
-    % \captionsetup{justification=centering, margin=3cm}
-    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
-    \caption{ Speed subsystem block diagram}
-    \label{fig:speedModelArchitecture}
-\end{figure}
-
-
-\begin{figure}
-    \centering
-\begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
-    % place nodes
-    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
-
-    % Connections
-    \draw[stealth-,thick]
-    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-4.5,0);
-    \draw[-stealth,thick]
-    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(4.5,0);
-    
-  \end{tikzpicture}
-    \caption{Shift subsystem block diagram}
-    \label{fig:shiftModelArchitecture}
-\end{figure}
+%\begin{figure}
+%    \centering
+%\begin{tikzpicture}
+%    \tikzstyle{every node} = [font=\footnotesize]
+%    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
+%    % place nodes
+%    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
+%
+%    % Connections
+%    \draw[stealth-,thick]
+%    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-4.5,0);
+%    \draw[-stealth,thick]
+%    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(4.5,0);
+%    
+%  \end{tikzpicture}
+%    \caption{Shift subsystem block diagram}
+%    \label{fig:shiftModelArchitecture}
+%\end{figure}
 
 $\bullet$ Collected data using a Lexus RX450H vehicle platform  
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.48\linewidth]{figs/inkscape/carSystemModelOutline}
+	\caption{Lexus vehicle with subsystems}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.48\linewidth]{figs/img/picturesVisitToAStuff/visitors1-20211007}
+	\caption{AutonomouStuff Lexus RX450H vehicle}
+\end{figure}
 
 \vskip -1cm
 \end{alertblock}

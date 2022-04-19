@@ -59,6 +59,7 @@
 \usepackage{arydshln}
 \usepackage{rotating}
 \usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{tikz}
 
 
 % Customize Warsaw color 
@@ -283,8 +284,8 @@
 \begin{figure}
 				\centering
 				\includegraphics[height=3.5cm]{figs/inkscape/carSystemModelOutline}
-				%\caption{}
 				\label{fig:carSystemSubsystem}
+				\caption{Lexus Vehicle with Subsystems}
         \end{figure}
 %	\begin{block}{System Architecture}
 %    The overall system architecture of this project consists of six subsystems: 
@@ -314,17 +315,168 @@
 \end{frame}
 
 \begin{frame}{System Architecture}{Subsystems}
-	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
-	\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System 			\item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
-	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
-	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=0.75 cm]
+    \tikzstyle{sum} = [draw, circle,fill=orange!15]
+    % place nodes
+    \node[sum](sum){$\sum$};
+    \node[block,right of=sum,node distance=2 cm, text width=1.25cm,text centered](steeringController){Steering controller};
+    \node[block,right of=steeringController,node distance=2.25 cm, text width=1.3cm,text centered](steeringSubsystem){Steering subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (sum.west)--node[very near start,above]{$+$}++(-0.5,0)node[above]{$\theta^{\text{ref}}$};
+    \draw[-stealth,thick]
+    (sum.east)--node[midway,above]{Error}(steeringController);
+    \draw[-stealth,thick]
+    (steeringController.15)--node[midway,above]{$v_A$}(steeringSubsystem.165);
+    \draw[-stealth,thick]
+    (steeringController.-15)--node[midway,above]{$v_B$}(steeringSubsystem.-165);
+    \draw[-stealth,thick]
+    (steeringSubsystem.east) --coordinate (tt) ++(0.5,0)node[above]{$\theta(t)$};
+    \fill
+    ($(steeringSubsystem.east)+(0.25,0)$) circle [radius=2pt];
+    \draw[-stealth,thick]
+    (tt) -- ++(0,-0.75) -|(sum.south)node[pos=0.9,left]{$-$};
+    
+  \end{tikzpicture}
+  % \captionsetup{justification=centering, margin=3cm}
+
+  % \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
+  \caption{Steering subsystem block diagram.}
+  \label{fig:steeringModelBlockDiagram}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2.0 cm]
+    % place nodes
+    \node[block,text width=1.25cm,text centered](brakeSubsystem){Brake subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (brakeSubsystem.140)--node[pos=0.65,above]{Pressure voltages}++(-2.0,0);
+    \draw[stealth-,thick]
+    (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-2.0,0);
+    \draw[stealth-,thick]
+    (brakeSubsystem.-140)--node[pos=0.65,above]{On/Off switch}++(-2.0,0);
+    \draw[-stealth,thick]
+    (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(2.2,0);
+    \draw[-stealth,thick]
+    (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(2.2,0);
+    
+  \end{tikzpicture}
+    % \captionsetup{justification=centering, margin=3cm}
+    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{Brake subsystem block diagram}
+    \label{fig:brakeModelArchitecture}
+\end{figure}
+
+
+
+
+%	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/steeringModelArchitecture}\quad%
+%	\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Steering System 			\item Brake System \item Acceleration System \end{enumerate} \end{minipage}\\[1em]
+%	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/brakeModelArchitecture}\quad%
+%	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/accelerationModelArchitecture}
+\end{frame}
+%
+\begin{frame}{System Architecture}{Subsystems}
+
+\begin{figure}[htbp]
+    \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.75cm,text centered](accelSubsystem){Acceleration subsystem};
+    % Connections
+    \draw[stealth-,thick]
+    (accelSubsystem.180)--node[very near end,above]{Acceleration pedal voltages}++(-2.5,0);
+    \draw[-stealth,thick]
+    (accelSubsystem.0)--node[very near end,above]{Acceleration pedal position}++(2.5,0);
+  \end{tikzpicture}
+    \caption{Acceleration subsystem block diagram}
+    \label{fig:accelModelArchitecture}
+ \end{figure}
+ 
+ \begin{figure}
+    \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-1.9,0);
+    \draw[-stealth,thick]
+    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(1.9,0);
+    
+  \end{tikzpicture}
+    \caption{Shift subsystem block diagram}
+    \label{fig:shiftModelArchitecture}
+ \end{figure} 
+
+%	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
+%	\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item 		Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
+%	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
+%	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
 \end{frame}
 
 \begin{frame}{System Architecture}{Subsystems}
-	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/shiftModelArchitecture}\quad%
-	\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth} \begin{enumerate} \item Shift System \item 		Speed Control System \item Speed System \end{enumerate} \end{minipage}\\[1em]
-	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedControlModelArchitecture}\quad%
-	\centering \includegraphics[width=.45\linewidth]{figs/inkscape/speedModelArchitecture}
+\begin{figure}[htbp]
+    \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2 cm]
+    % place nodes
+    \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-2.5,0);
+    \draw[stealth-,thick]
+    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-2.5,0);
+    \draw[stealth-,thick]
+    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-2.5,0);
+    \draw[-stealth,thick]
+    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(1.9,0);
+    
+  \end{tikzpicture}
+    % \captionsetup{justification=centering, margin=3cm}
+    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+    \caption{Speed subsystem block diagram}
+    \label{fig:speedModelArchitecture}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+  \begin{tikzpicture}
+    \tikzstyle{every node} = [font=\footnotesize]
+    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+    % place nodes
+    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
+
+    % Connections
+    \draw[stealth-,thick]
+    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-1.9,0);
+    \draw[-stealth,thick]
+    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(1.9,0);
+    
+  \end{tikzpicture}
+    \caption{Speed Control subsystem block diagram}
+    \label{fig:speedControlModelArchitecture}
+ \end{figure}
+
 \end{frame}
 
 %---------------------------
