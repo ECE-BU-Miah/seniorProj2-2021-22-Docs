@@ -156,166 +156,34 @@
 %-----------------------------------------------------------
 %\vskip -1cm
 \begin{alertblock}{Problem Setup}
-%\vskip -1cm
-%\begin{enumerate}
-%    \item Develop and linearize system model
-%    \item Simulate algorithms in MATLAB
-%    \item Test algorithms on desktop computer using USB connection 
-%    \item Test algorithms on Raspberry Pi microcontroller
-%    \item Test algorithms on mobile device
-%\end{enumerate}
+
 
 
 %\vskip -1cm
-$\bullet$ Conducted a literature review to look for existing solutions
-$\bullet$ System Architecture 
-\begin{figure}
-	\centering
-	\begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=0.75 cm]
-    \tikzstyle{sum} = [draw, circle,fill=orange!15]
-    % place nodes
-    \node[sum](sum){$\sum$};
-    \node[block,right of=sum,node distance=2 cm, text width=1.25cm,text centered](steeringController){Steering controller};
-    \node[block,right of=steeringController,node distance=2.25 cm, text width=1.3cm,text centered](steeringSubsystem){Steering subsystem};
-
-    % Connections
-    \draw[stealth-,thick]
-    (sum.west)--node[very near start,above]{$+$}++(-0.5,0)node[above]{$\theta^{\text{ref}}$};
-    \draw[-stealth,thick]
-    (sum.east)--node[midway,above]{Error}(steeringController);
-    \draw[-stealth,thick]
-    (steeringController.15)--node[midway,above]{$v_A$}(steeringSubsystem.165);
-    \draw[-stealth,thick]
-    (steeringController.-15)--node[midway,above]{$v_B$}(steeringSubsystem.-165);
-    \draw[-stealth,thick]
-    (steeringSubsystem.east) --coordinate (tt) ++(0.5,0)node[above]{$\theta(t)$};
-    \fill
-    ($(steeringSubsystem.east)+(0.25,0)$) circle [radius=2pt];
-    \draw[-stealth,thick]
-    (tt) -- ++(0,-0.75) -|(sum.south)node[pos=0.9,left]{$-$};
-    
-  \end{tikzpicture}
-  % \captionsetup{justification=centering, margin=3cm}
-
-  % \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
-  \caption{Steering subsystem block diagram.}
-  \label{fig:steeringModelBlockDiagram}
-\end{figure}
-
+\begin{itemize}
+	\item Conducted a literature review to look for existing solutions
+	\item System Architecture 
+\end{itemize}
+ 
 
 \begin{figure}
 	\centering
-	 \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width= 5 cm, minimum height=1.5 cm]
-    % place nodes
-    \node[block,text width=1.75cm,text centered](accelSubsystem){Acceleration subsystem};
-    % Connections
-    \draw[stealth-,thick]
-    (accelSubsystem.180)--node[very near end,above]{Acceleration pedal voltages}++(-5.0,0);
-    \draw[-stealth,thick]
-    (accelSubsystem.0)--node[very near end,above]{Acceleration pedal position}++(5.0,0);
-  \end{tikzpicture}
-    \caption{Acceleration subsystem block diagram}
-    \label{fig:accelModelArchitecture}
+	\includegraphics[width=1.0\linewidth]{figs/inkscape/steeringModelBlockDiagram}
+	\caption{Steering subsystem block diagram}
 \end{figure}
-
 
 \begin{figure}
 	\centering
-	  \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2.0 cm]
-    % place nodes
-    \node[block,text width=1.25cm,text centered](brakeSubsystem){Brake subsystem};
-
-    % Connections
-    \draw[stealth-,thick]
-    (brakeSubsystem.140)--node[pos=0.65,above]{Pressure voltages}++(-4.5,0);
-    \draw[stealth-,thick]
-    (brakeSubsystem.180)--node[pos=0.65,above]{Stroke voltages}++(-4.5,0);
-    \draw[stealth-,thick]
-    (brakeSubsystem.-140)--node[pos=0.65,above]{On/Off switch}++(-4.5,0);
-    \draw[-stealth,thick]
-    (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(4.5,0);
-    \draw[-stealth,thick]
-    (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(4.5,0);
-    
-  \end{tikzpicture}
-    % \captionsetup{justification=centering, margin=3cm}
-    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
-    \caption{Brake subsystem block diagram}
-    \label{fig:brakeModelArchitecture}
+	\includegraphics[width=0.48\linewidth]{figs/inkscape/accelerationModelArchitecture}
+	\caption{Acceleration subsystem block diagram}
 \end{figure}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.48\linewidth]{figs/inkscape/brakeModelArchitecture}
+	\caption{Brake subsystem block diagram}
+\end{figure}
 
-%\begin{figure}
-%    \centering
-%        \begin{tikzpicture}
-%    \tikzstyle{every node} = [font=\footnotesize]
-%    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
-%    % place nodes
-%    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
-%
-%    % Connections
-%    \draw[stealth-,thick]
-%    (speedControlSubsystem.180)--node[very near end,above]{Desired vehicle speed}++(-4.0,0);
-%    \draw[-stealth,thick]
-%    (speedControlSubsystem.0)--node[very near end,above]{Actual vehicle speed}++(4.0,0);
-%    
-%  \end{tikzpicture}
-%    \caption{Speed Control subsystem block diagram}
-%    \label{fig:speedControlModelArchitecture}
-%
-%\end{figure}
-%
-%
-%\begin{figure}
-%    \centering
-%  \begin{tikzpicture}
-%    \tikzstyle{every node} = [font=\footnotesize]
-%    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=2 cm]
-%    % place nodes
-%    \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
-%
-%    % Connections
-%    \draw[stealth-,thick]
-%    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-5.0,0);
-%    \draw[stealth-,thick]
-%    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-5.0,0);
-%    \draw[stealth-,thick]
-%    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-5.0,0);
-%    \draw[-stealth,thick]
-%    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(5.0,0);
-%    
-%  \end{tikzpicture}
-%    % \captionsetup{justification=centering, margin=3cm}
-%    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
-%    \caption{ Speed subsystem block diagram}
-%    \label{fig:speedModelArchitecture}
-%\end{figure}
-
-
-%\begin{figure}
-%    \centering
-%\begin{tikzpicture}
-%    \tikzstyle{every node} = [font=\footnotesize]
-%    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=4.5 cm, minimum height=1.5 cm]
-%    % place nodes
-%    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
-%
-%    % Connections
-%    \draw[stealth-,thick]
-%    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-4.5,0);
-%    \draw[-stealth,thick]
-%    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(4.5,0);
-%    
-%  \end{tikzpicture}
-%    \caption{Shift subsystem block diagram}
-%    \label{fig:shiftModelArchitecture}
-%\end{figure}
 
 $\bullet$ Collected data using a Lexus RX450H vehicle platform  
 
@@ -385,23 +253,23 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
     \centering
 		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
 		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
-	\caption{Steering System Training Plots}
+	\caption{ Steering System Training Plots}
     \label{fig:SteeringSysNeuralNetwork}
 \end{figure}
 
-\begin{figure}
-    \centering
-		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput2}}
-	\caption{Acceleration System Training Plots}
-    \label{fig:AccelerationSysNeuralNetwork}
-\end{figure}
+%\begin{figure}
+%    \centering
+%		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput}}
+%		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput2}}
+%	\caption{Acceleration System Training Plots}
+%    \label{fig:AccelerationSysNeuralNetwork}
+%\end{figure}
 
 \begin{figure}
     \centering
 		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFig}}
 		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
-	\caption{Brake System Training Plots}
+	\caption{ Brake System Training Plots}
     \label{fig:BrakeSysNeuralNetwork}
 \end{figure}
 
@@ -515,50 +383,71 @@ $\bullet$ Collected data using a Lexus RX450H vehicle platform
 
 \vskip .5cm
 
-\begin{enumerate}
-	\item Approximate neural network signal
-	\begin{align*}
-  		\hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
-  	\end{align*}
-  	\item Define the weight matrix
-  	\begin{align*}
-  		{\bf W}_a = 
-  		\begin{bmatrix}
-    		w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
-    		w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
-    		\vdots & \ddots & \ldots &\vdots\\
-    		w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
-  		\end{bmatrix}.
-	\end{align*}
-	\item Compute the sum-of-squared error
-	\begin{align*}
-    		\bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
-    		% \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
-  	\end{align*}	
-  	\begin{align*}
-  		\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}}
-  	\end{align*}
-	\begin{align*}
-    		\delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
-  	\end{align*}
-  	\item Find the actor weight by minimizing the sum-of-square error
-  	\begin{align*}
-  	\delta_a = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
-	\end{align*}
-	\item Take the derivative of $\delta_a$ with respect to ${\bf W}_a$ and set $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero
-	\begin{align*}
-  		\frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T 					\bm{\Sigma}\mathbf{W}_a
-	\end{align*}
-	\begin{align*}
-  		{\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
-	\end{align*}
-	\item Use the gradient descent approach to minimize the least square order alter weights when training the neural network
-	\begin{multline*}
-  		\mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}\\
-  		=\mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}				_a^{(r)}\right)\\
-  		= \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
-	\end{multline*}
-\end{enumerate}
+%\begin{enumerate}
+%	\item Approximate neural network signal
+%	\begin{align*}
+%  		\hat{\mathbf{u}}_{a,k} = \mathbf{W}_a^T\bm{\sigma}(\mathbf{e}_k),
+%  	\end{align*}
+%  	\item Define the weight matrix
+%  	\begin{align*}
+%  		{\bf W}_a = 
+%  		\begin{bmatrix}
+%    		w_a^{1,1} &  w_a^{1,2} & \ldots &w_a^{1,m}\\
+%    		w_a^{2,1} & w_a^{2,2}& \ldots &w_a^{1,m}\\
+%    		\vdots & \ddots & \ldots &\vdots\\
+%    		w_a^{\bar{n},1} & w_a^{\bar{n},2}& \ldots &w_a^{\bar{n},m}
+%  		\end{bmatrix}.
+%	\end{align*}
+%	\item Compute the sum-of-squared error
+%	\begin{align*}
+%    		\bm{\Sigma}\mathbf{W}_a \approx  \mathbf{U}^{[d]},\qquad\text{with}
+%    		% \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+%  	\end{align*}	
+%  	\begin{align*}
+%  		\bm{\Sigma}\mathbf{W}_a\equiv \hat{\mathbf{U}}
+%  	\end{align*}
+%	\begin{align*}
+%    		\delta_a = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+%  	\end{align*}
+%  	\item Find the actor weight by minimizing the sum-of-square error
+%  	\begin{align*}
+%  	\delta_a = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W}_a)\right].
+%	\end{align*}
+%	\item Take the derivative of $\delta_a$ with respect to ${\bf W}_a$ and set $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero
+%	\begin{align*}
+%  		\frac{\partial\delta_a}{\partial\mathbf{W}_a} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T 					\bm{\Sigma}\mathbf{W}_a
+%	\end{align*}
+%	\begin{align*}
+%  		{\bf W}_a = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+%	\end{align*}
+%	\item Use the gradient descent approach to minimize the least square order alter weights when training the neural network
+%	\begin{multline*}
+%  		\mathbf{W}_a^{(r+1)} = \mathbf{w}_a^{(r)} - \ell_a\frac{\partial\delta_a}{\partial\mathbf{W}_a}\\
+%  		=\mathbf{W}_a^{(r)} - \ell_a\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}				_a^{(r)}\right)\\
+%  		= \mathbf{w}_a^{(r)}-\ell_a \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}_a^{(r)} - \mathbf{U}^{[d]}\right)
+%	\end{multline*}
+%\end{enumerate}
+
+\begin{figure}
+    \centering
+		\includegraphics[width=0.80\linewidth]{figs/img/steeringSimulinkBlock}
+	\caption{Steering Neural Network Simulink Model}
+    \label{fig:steeringNeuralNetwork}
+\end{figure}
+
+\begin{figure}
+    \centering
+		\includegraphics[width=0.80\linewidth]{figs/img/accelerationSimulinkBlock}
+	\caption{Acceleration Neural Network Simulink Model}
+    \label{fig:accelNeuralNetwork}
+\end{figure}
+
+\begin{figure}
+    \centering
+		\includegraphics[width=0.80\linewidth]{figs/img/brakeSimulinkBlock}
+	\caption{Brake Neural Network Simulink Model}
+    \label{fig:brakeNeuralNetwork}
+\end{figure}
 
 \vskip -2.5cm
 \end{alertblock}
