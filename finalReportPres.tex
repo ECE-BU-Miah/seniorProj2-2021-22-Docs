@@ -697,79 +697,63 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
 \section{Simulation Results}
 
 \begin{frame}{Transfer Function Modeling}{Steering System Simulation}
-	\begin{block}{}
- \begin{itemize}
-	\item Best fit percentage of the by-wire steering estimated model is 83.25
-	\item Best fit percentage of the manual steering estimated model is 90.27
- \end{itemize}
- \begin{figure}
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
-        \caption{Output of Estimated By-Wire System Model}
-        \label{fig:byWireSteerModel}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
-        \caption{Output of Estimated Manual System Model}
-        \label{fig:manualSteerModel}
-    \end{minipage}
-\end{figure}
-  \end{block}
+	\begin{block}{Manual Mode}
+ 		\begin{figure}
+		    \centering
+		    \includegraphics[width=0.4\textwidth]{figs/img/byWireSteeringTransferFunctionModel}
+		    \caption{Output of Estimated Manual System Model}
+		        \label{fig:manualSteerModel}
+ 		\end{figure}
+  	\end{block}
 \end{frame}
+
+\begin{frame}{Transfer Function Modeling}{Steering System Simulation (Cont.)}
+	\begin{block}{By-Wire Mode}
+		\begin{figure}
+    			\centering
+    			\includegraphics[width=0.4\textwidth]{figs/img/manualSteeringTransferFunctionModel}
+    			\caption{Output of Estimated By-Wire System Model}
+        		\label{fig:byWireSteerModel}
+ 		\end{figure}
+	\end{block}
+\end{frame}
+
 %-------------------------
 \begin{frame}{Transfer Function Modeling}{Acceleration System Simulation}
-	\begin{block}{}
- \begin{itemize}
-	\item Best fit percentage of the by-wire acceleration estimated model is 97.75
-	\item Best fit percentage of the manual acceleration estimated model is 98.3
- \end{itemize}
- \begin{figure}
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/byWireAccelArxModel} % first figure itself
-        \caption{Output of Estimated By-Wire System Model}
-        \label{fig:byWireAccelModel}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.6\textwidth]{figs/img/manualAccelTransferFunctionModel} % second figure itself
-        \caption{Output of Estimated Manual System Model}
-        \label{fig:manualAccelModel}
-    \end{minipage}
-\end{figure}
-  \end{block}
+	\begin{block}{Manual Mode}
+ 		\begin{figure}
+	    		\centering
+	    		\includegraphics[width=0.4\textwidth]{figs/img/manualAccelTransferFunctionModel}
+	        \caption{Output of Estimated Manual System Model}
+	        \label{fig:manualAccelModel}
+		\end{figure}
+  	\end{block}
 \end{frame}
+
+\begin{frame}{Transfer Function Modeling}{Acceleration System Simulation (Cont.)}
+	\begin{block}{By-Wire Mode}
+		\begin{figure}
+    			\centering
+    			\includegraphics[width=0.4\textwidth]{figs/img/byWireAccelArxModel}
+    			\caption{Output of Estimated By-Wire System Model}
+        		\label{fig:byWireSteerModel}
+ 		\end{figure}
+	\end{block}
+\end{frame}
+
 %-------------------------
 \begin{frame}{Transfer Function Modeling}{Brake System Simulation}
-\begin{block}{}
- \begin{itemize}
-	\item Only manual models were considered 
-	\item There were no transfer function models that could satisfy both the best fit and error requirements 
- \end{itemize}
-% \begin{figure}
-%    \centering
-%    \begin{minipage}{0.45\textwidth}
-%        \centering
-%        \includegraphics[width=0.6\textwidth]{figs/img/byWireSteeringTransferFunctionModel} % first figure itself
-%        \caption{Output of Estimated By-Wire System Model}
-%        \label{fig:byWireSteerModel}
-%    \end{minipage}\hfill
-%    \begin{minipage}{0.45\textwidth}
-%        \centering
-%        \includegraphics[width=0.6\textwidth]{figs/img/manualSteeringTransferFunctionModel} % second figure itself
-%        \caption{Output of Estimated Manual System Model}
-%        \label{fig:manualSteerModel}
-%    \end{minipage}
-%\end{figure}
-  \end{block}
+	\begin{block}{}
+ 		\begin{itemize}
+			\item Only manual models were considered 
+			\item There were no transfer function models that could satisfy both the best fit and error requirements 
+ 		\end{itemize}
+  	\end{block}
 \end{frame}
+
 %-------------------------
 \begin{frame}{Neural Network Modeling}{Steering System Simulation}
-	\begin{block}{}
+	\begin{block}{}  		
   		\begin{figure}[H]
   			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
@@ -820,17 +804,19 @@ $\bullet$ Hidden layer to output layer weight is updated at each policy iteratio
  \begin{itemize}
         \item Software
         \begin{itemize}
-        \small
-        \item MATLAB's System Identification Toolbox
-        \item Vector CANAlyzer
+	        \small
+	        \item MATLAB's System Identification Toolbox
+	        \item MATLAB's Neural Network Time Series Toolbox
+	        \item DSpace/Control Desk
+	        \item Vector CANAlyzer
         \end{itemize}
 	\item Hardware
 	\begin{itemize}
-	\small
-	\item Laptop
-	\item PACMod ECU
-	\item CANCase 
-	\item CAN bus
+		\small
+		\item Laptop
+		\item PACMod ECU
+		\item CANCase 
+		\item CAN bus
 	\end{itemize}
 \end{itemize}
   \end{block}
