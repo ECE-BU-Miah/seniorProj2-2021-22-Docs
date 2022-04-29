@@ -51,11 +51,11 @@
 \maketitle
 
 \begin{abstract}
-This report presents the results of modeling vehicle systems and testing them using Hardware-in-the-Loop (HIL). First, data was collected for each system using a Lexus RX450H vehicle. After data collection, models were developed in order to accurately simulate the physical vehicle system. MATLAB’s System Identification Toolbox was initially used to create these models. However, the transfer function models it provided weren’t able to accurately represent these systems and their non-linear behaviors. After this was established, modeling was done using MATLAB’s Neural Network Time Series application. Once a Neural Network model was created, it was then exported to Simulink and modified to be able to run without the use of the Deep Learning toolbox. These models gave much more accurate results when compared to the transfer function models developed using the System Identification Toolbox. (Add section about testing and results). 
+This report presents the results of modeling vehicle systems and testing them using open-loop. First, data was collected for each system using a Lexus RX450H vehicle. After data collection, models were developed in order to accurately simulate the physical vehicle system. MATLAB’s System Identification Toolbox was initially used to create these models. However, the transfer function models it provided weren’t able to accurately represent these systems and their non-linear behaviors. After this was established, modeling was done using MATLAB’s Neural Network Time Series application. Once a Neural Network model was created, it was then exported to Simulink and modified to be able to run without the use of the Deep Learning toolbox. These models gave much more accurate results when compared to the transfer function models developed using the System Identification Toolbox.  
 \end{abstract}
 
 \begin{IEEEkeywords}
-Hardware-in-the-Loop, Neural Network, System Identification
+Deep Learning, Hardware-in-the-Loop, Neural Network, Plant Modeling, System Identification
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -929,9 +929,9 @@ To develop the model of the steering system using a neural network architecture,
 \begin{figure}[htbp]
 	\centering
 	\subcaptionbox{Model Output Tracking and Error Plots for Data Subset 1 \label{initalBrakeModel}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.90\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
 	\subcaptionbox{Model Output Tracking and Error Plots for Data Subset 2 \label{testedBrakeModel}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.90\linewidth]{figs/img/steeringNeuralNetworkTrainedOutput}}
 	\caption{Steering System Training Plots}
 \end{figure}
 
@@ -943,47 +943,48 @@ To develop the model of the acceleration system using a neural network architect
 \begin{figure}[htbp]
 	\centering
 	\subcaptionbox{Model Output Tracking and Error Plots for Data Subset 1 \label{initalBrakeModel}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput}}
+		{\includegraphics[width=0.90\linewidth]{figs/img/accelNeuralNetworkTrainedOutput}}
 	\subcaptionbox{Model Output Tracking and Error Plots for Data Subset 2 \label{testedBrakeModel}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/accelNeuralNetworkTrainedOutput2}}
+		{\includegraphics[width=0.90\linewidth]{figs/img/accelNeuralNetworkTrainedOutput2}}
 	\caption{Acceleration System Training Plots}
 \end{figure}
 
 
 \subsubsection{Brake System}
 
-The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%.
+The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%. The graphs show how the model tracks the data log and the error between the model output and the data log output. The y-axis for both graphs, “Output and Target” represents the Actual and Desired Brake Pedal Position as a percentage. The x-axis for both graphs represents the Time Steps, with $T_s$ equal to 33ms. The graph  \autoref{initalBrakeModel} represents the initial training of the model and the further training of the graph is represented in \autoref{testedBrakeModel}. 
+
 \begin{figure}[h]
 	\centering
 	\subcaptionbox{Model Output Tracking and Error Plots \label{initalBrakeModel}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFig}}
+		{\includegraphics[width=0.90\linewidth]{figs/img/brake_new_neuralNetworkFig}}
 	\subcaptionbox{Model Output Tracking and Error Plots for Log Two Data \label{testedBrakeModel}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
+		{\includegraphics[width=0.90\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
 	\caption{Brake System Training Plots}
 \end{figure}
 
-Once the model was created, it was exported to Simulink and tested again. One test involved using To Workspace blocks to access the pressure voltages, position voltages, and desired pedal position values in the first brake log. These values were used as inputs for the model, and the actual pedal position along with the error between the desired and actual pedal positions were then plotted. The actual pedal position plot can be seen in \autoref{brakeWorkspacePedalPosition}. The resulting error plot between the desired pedal position and the model generated position can be found in \autoref{brakeWorkspacePedalError}. Despite an initial spike within the first few seconds of the graph, the error plot shows that the difference between the pedal positions generated by the system and the desired pedal positions is never more than 5\%. 
+%Once the model was created, it was exported to Simulink and tested again. One test involved using To Workspace blocks to access the pressure voltages, position voltages, and desired pedal position values in the first brake log. These values were used as inputs for the model, and the actual pedal position along with the error between the desired and actual pedal positions were then plotted. The actual pedal position plot can be seen in \autoref{brakeWorkspacePedalPosition}. The resulting error plot between the desired pedal position and the model generated position can be found in \autoref{brakeWorkspacePedalError}. Despite an initial spike within the first few seconds of the graph, the error plot shows that the difference between the pedal positions generated by the system and the desired pedal positions is never more than 5\%. 
 
-\begin{figure}[h]
-	\centering
-	\subcaptionbox{Actual Pedal Position \label{brakeWorkspacePedalPosition}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysActualPedalPositionFromWorkspaceBlocks}}
-	\subcaptionbox{Error Between the Actual and Desired Pedal Position \label{brakeWorkspacePedalError}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysPedalPositionErrorFromWorkspaceBlocks}}
-	\caption{Actual Pedal Position and Error Plots Using the From Workspace Blocks}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\subcaptionbox{Actual Pedal Position \label{brakeWorkspacePedalPosition}}
+%		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysActualPedalPositionFromWorkspaceBlocks}}
+%	\subcaptionbox{Error Between the Actual and Desired Pedal Position \label{brakeWorkspacePedalError}}
+%		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysPedalPositionErrorFromWorkspaceBlocks}}
+%	\caption{Actual Pedal Position and Error Plots Using the From Workspace Blocks}
+%\end{figure}
 
 
 The second test used constant blocks to represent the voltages and desired pedal position at a specific time instant in the first brake log. The error and the actual pedal position were then plotted again. The pedal position plot is shown in \autoref{brakeConstantsPedalPosition}, and the error plot is represented by \autoref{brakeConstantsPedalError}. As the plots show, the model is able to produce the desired pedal position and the error falls to 0\% after a spike at the start. 
 
-\begin{figure}[h]
-	\centering
-	\subcaptionbox{Actual Pedal Position \label{brakeConstantsPedalPosition}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysActualPedalPositionConstantBlocks}}
-	\subcaptionbox{Error Between the Actual and Desired Pedal Position \label{brakeConstantsPedalError}}
-		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysPedalPositionErrorConstantBlocks}}
-	\caption{Actual Pedal Position and Error Plots Using the Constant Blocks}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\subcaptionbox{Actual Pedal Position \label{brakeConstantsPedalPosition}}
+%		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysActualPedalPositionConstantBlocks}}
+%	\subcaptionbox{Error Between the Actual and Desired Pedal Position \label{brakeConstantsPedalError}}
+%		{\includegraphics[width=0.48\linewidth]{figs/img/brakeSysPedalPositionErrorConstantBlocks}}
+%	\caption{Actual Pedal Position and Error Plots Using the Constant Blocks}
+%\end{figure}
 
 \subsection{Discussion}
 \label{sec:discussion}
@@ -1012,11 +1013,18 @@ For each vehicle subsystem, the results show that the neural network models were
 \end{figure}
 
 \begin{figure}
-	\centering
-	\includegraphics[width=0.95\linewidth]{figs/img/picturesVisitToAStuff/hilBenchAstuff}
-	\caption{AutonomouStuff HIL Bench Configuration}
-	\label{fig:hilBench}
+  \centering
+    \includegraphics[width=0.95\linewidth]{figs/inkscape/hilBenchAstuffAnnotated}
+  \caption{AutonomouStuff HIL Bench Configuration}
+  \label{fig:hilBench}
 \end{figure}
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.95\linewidth]{figs/img/picturesVisitToAStuff/hilBenchAstuff}
+%	\caption{AutonomouStuff HIL Bench Configuration}
+%	\label{fig:hilBench}
+%\end{figure}
 
 
 \section{Conclusion and Future Work}
