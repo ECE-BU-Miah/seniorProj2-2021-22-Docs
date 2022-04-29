@@ -505,7 +505,7 @@ This speed subsystem would fall under the multiple-input single-output system. T
         },
       }      
 
-      \begin{tikzpicture}[x=1.5cm, y=1.5cm]
+      \begin{tikzpicture}[x=1.25cm, y=1.25cm]
 
         \foreach \m/\l [count=\y] in {1,2,missing,3}
         \node [input neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
@@ -549,7 +549,7 @@ This speed subsystem would fall under the multiple-input single-output system. T
 \end{figure}
 
  
-The neural network inputs are mapped to the outputs by being assigned a set of weights~\footnote{\url{https://towardsdatascience.com/machine-learning-for-beginners-an-introduction-to-neural-networks-d49f22d238f9}}. 
+The neural network inputs are mapped to the outputs by being assigned a set of weights~\footnote{\tiny \hsize=0.45\textwidth \url{https://towardsdatascience.com/machine-learning-for-beginners-an-introduction-to-neural-networks-d49f22d238f9}}. 
 The approximated neural network signal can be written as:
 \begin{align}
   \label{eq:approximatePolicyActorWeights}
@@ -606,7 +606,7 @@ Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
   \label{eq:actorWeightUpdate}
 \end{multline}
 
- The neural network is validated by passing another subset of data that was not used for training purposes and comparing the output results of the neural network with the expected output results from the data set. An acceptable neural network model will meet the desired error requirements~\footnote{\url{https://medium.com/autonomous-agents/bayesian-regularization-for-neuralnetworks-2f2d34f03adc}}. 
+ The neural network is validated by passing another subset of data that was not used for training purposes and comparing the output results of the neural network with the expected output results from the data set. An acceptable neural network model will meet the desired error requirements~\footnote{\hsize=0.9\textwidth \url{https://medium.com/autonomous-agents/bayesian-regularization-for-neuralnetworks-2f2d34f03adc}}. 
  
  
 
