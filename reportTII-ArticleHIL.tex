@@ -952,7 +952,7 @@ To develop the model of the acceleration system using a neural network architect
 
 \subsubsection{Brake System}
 
-The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%. The graphs show how the model tracks the data log and the error between the model output and the data log output. The y-axis for both graphs, “Output and Target” represents the Actual and Desired Brake Pedal Position as a percentage. The x-axis for both graphs represents the Time Steps, with $T_s$ equal to 33ms. The graph  \autoref{initalBrakeModel} represents the initial training of the model and the further training of the graph is represented in \autoref{testedBrakeModel}. 
+The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in \autoref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in \autoref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%. The graphs show how the model tracks the data log and the error between the model output and the data log output. The y-axis for both graphs, “Output and Target” represents the Actual and Desired Brake Pedal Position as a percentage. The x-axis for both graphs represents the Time Steps, with $T_s$ equal to 33ms. 
 
 \begin{figure}[h]
 	\centering
@@ -975,7 +975,7 @@ The brake system was modeled using only the manual log data. It was trained usin
 %\end{figure}
 
 
-The second test used constant blocks to represent the voltages and desired pedal position at a specific time instant in the first brake log. The error and the actual pedal position were then plotted again. The pedal position plot is shown in \autoref{brakeConstantsPedalPosition}, and the error plot is represented by \autoref{brakeConstantsPedalError}. As the plots show, the model is able to produce the desired pedal position and the error falls to 0\% after a spike at the start. 
+The second test used constant blocks and To Workspace blocks to represent the voltages and desired pedal position in the first brake log. The results from this test also showed that the model was able to accurately track the data. 
 
 %\begin{figure}[h]
 %	\centering
