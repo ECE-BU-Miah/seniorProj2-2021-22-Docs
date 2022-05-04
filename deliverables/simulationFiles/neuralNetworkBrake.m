@@ -28,8 +28,6 @@ pressureVoltage1Log3 = brakeLog3.as_pacmod__BRAKE_VOLTAGE_DIAGNOSTIC_RPT__BRAKE_
 pressureVoltage2Log3 = brakeLog3.as_pacmod__BRAKE_VOLTAGE_DIAGNOSTIC_RPT__BRAKE_2_IN_VOLTAGE;
 positionVoltage1Log3 = brakeLog3.as_pacmod__BRAKE_VOLTAGE_DIAGNOSTIC_RPT_2__BRAKE_1_IN_VOLTAGE_2;
 positionVoltage2Log3 = brakeLog3.as_pacmod__BRAKE_VOLTAGE_DIAGNOSTIC_RPT_2__BRAKE_2_IN_VOLTAGE_2;
- 
-
 
 %Group together the inputs and outputs 
 inputsLog1 = [pressureVoltage1Log1,pressureVoltage2Log1,positionVoltage1Log1, positionVoltage2Log1]';
@@ -51,3 +49,12 @@ sysBrakeLog1Pedal.signals.values = outputLog1';
 sysBrakeLog1Pedal.sampleTime = 0.033;
 sysBrakeLog1Pedal.dimensions = 1; 
 sysBrakeLog1Pedal.time = brakeLog1Manual1.Time_s_;
+
+tstop = (length(outputLog1)-1)*0.033;
+brakelog1sim = sim('brakeSystemNeuralNetworkSimulink19b', tstop);
+
+figure();
+plot(brakelog1sim.tout, brakelog1sim.actualpedal.Data)
+hold on;
+plot(brakelog1sim.tout, outputLog1)
+hold off;
