@@ -1,24 +1,43 @@
 List of files:
 
-readMeSimulation.txt => This file you are reading
-simulinkFile.slx => The main simulation file for neural network modeling
-
-timeSeriesData.dat => Time-series data for Fig. 1 in the final report  
-drawPlots.m => Run this code to regenerate all the plots in the final report. 
+readMeTest.txt => This file you are reading
+validationFiles\Dspacemodel.mdl => File to control inputs to Dspace bench using Control Desk 
 
 
 
 ==================
-How to run steering model using system identification 
+How to run validation of steering neural network model
 ==================
 
-1. Open MATLAB and simply run transferFunction.m file
-2. Open file .... to see all time-series data
+1. Open Control Desk
+2. Open the model validationFiles\Dspacemodel.mdl
+3. Select "Go Online" to activate platform
+4. Turn Power Status to 1 to set power to the Dspace peripherals
+5. Set the input torque voltages and desired steering angle inputs to desired test values
+6. Verify the output steering angle matches the desired steering angle (within error margins)
 
 
 ==================
-How to run steering model using neural network modeling  
+How to run validation of acceleration neural network model 
 ==================
 
-1. Open simulink file .......slx and run
-2. .......
+1. Open Control Desk
+2. Open the model validationFiles\Dspacemodel.mdl
+3. Select "Go Online" to activate platform
+4. Turn Power Status to 1 to set power to the Dspace peripherals
+5. Set the input torque voltages and desired acceleration pedal position inputs to desired test values
+6. Verify the output acceleration pedal position matches the desired acceleration pedal position (within error margins)
+
+
+==================
+How to run validation of brake neural network model 
+==================
+
+1. Open Control Desk
+2. Open the model validationFiles\Dspacemodel.mdl
+3. Select "Go Online" to activate platform
+4. Turn Power Status to 1 to set power to the Dspace peripherals
+5. Set the input torque voltages and desired brake pedal position inputs to desired test values
+6. Verify the output brake pedal position matches the desired brake pedal position (within error margins)
+
+
