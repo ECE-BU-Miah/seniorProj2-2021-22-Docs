@@ -16,9 +16,8 @@
 
 \usepackage{booktabs,array} % Packages for tables
 
-\usepackage{hyperref}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage{soul}
+\usepackage{soul,xcolor}
+% \usepackage{todonotes}
 \usepackage{easyReview}
 \usepackage{setspace}
 \usepackage{multirow}
@@ -30,8 +29,8 @@
 \usetikzlibrary{arrows.meta, positioning, decorations.markings}
 \usetikzlibrary{calc,tikzmark}
 \usetikzlibrary{backgrounds,calc,patterns,decorations.pathmorphing,decorations.markings,shapes,arrows,snakes,tikzmark}
-
 \usepackage{siunitx}
+\usepackage{hyperref}
 % \sisetup{unitsep=\cdot}
 % \usepackage{textcomp}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -39,7 +38,7 @@
 \markboth{\journalname, VOL. XX, NO. XX, XXXX}
 {Author \MakeLowercase{\textit{et al.}}: Title}
 \begin{document}
-\title{Hardware-in-the-Loop Plant Modeling for Autonomous Vehicle}
+\title{Hardware-in-the-Loop Plant Modeling for Self-Driving Vehicles}
 \author{Hannah Grady, Nicholas Nauman, and Dr. Suruz Miah
 \thanks{This paper was submitted for review on 5/3/22. This project was supported by Hexagon's AutonomouStuff with special thanks to Joe Buckner, Erik Guetz, Sai Chittemsetty, Matt Goben, and Travis Catton.}
 \thanks{Hannah Grady is an electrical engineering student at Bradley University, Peoria, IL 61625 USA (e-mail: hgrady@mail.bradley.edu).}
@@ -51,7 +50,22 @@
 \maketitle
 
 \begin{abstract}
-This report presents the results of modeling vehicle systems and testing them using open-loop. First, data was collected for each system using a Lexus RX450H vehicle. After data collection, models were developed in order to accurately simulate the physical vehicle system. MATLAB’s System Identification Toolbox was initially used to create these models. However, the transfer function models it provided weren’t able to accurately represent these systems and their non-linear behaviors. After this was established, modeling was done using MATLAB’s Neural Network Time Series application. Once a Neural Network model was created, it was then exported to Simulink and modified to be able to run without the use of the Deep Learning toolbox. These models gave much more accurate results when compared to the transfer function models developed using the System Identification Toolbox.  
+
+\highlight{This report presents the results of modeling vehicle systems and testing them
+  using open-loop. First, data was collected for each system using a Lexus
+  RX450H vehicle. After data collection, models were developed in order to
+  accurately simulate the physical vehicle system. MATLAB's System
+  Identification Toolbox was initially used to create these models. However,
+the transfer function models it provided w
+these systems and their non-linear behaviors. After this was established,
+modeling was done using MATLAB's Neural Network Time Series application. Once a
+Neural Network model was created, it was then exported to Simulink and modified
+to be able to run without the use of the Deep Learning toolbox. These models
+gave much more accurate results when compared to the transfer function models
+developed using the System Identification Toolbox.}
+
+\alert{SM: I'll rewrite the abstract}
+
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -60,6 +74,11 @@ Deep Learning, Hardware-in-the-Loop, Neural Network, Plant Modeling, System Iden
 
 \section{Introduction}
 \label{sec:introduction}
+
+\todo[inline]{NN/HG: Add 2/3 sentences on what motivated the company to model
+  subsystems of autonomous vehicles, Hint: Erik mentioned already that employees
+can perform testing without the physical vehicle. You just need to extend his statement to write the motivational paragraph behind this project}
+
 \IEEEPARstart{A}{utonomous} vehicles are being developed by many companies for commercial and
 personal use. These autonomous vehicles (see the AutonomouStuff vehicle fleet
 shown in Fig.~\ref{fig:fleet}) would allow companies to continue crucial deliveries
@@ -67,7 +86,7 @@ or transports of their products even if there is a shortage of drivers. In
 addition, autonomous vehicles have the ability to make roads safer for drivers
 and pedestrians alike. To develop a reliable and safe transportation system for
 modern world, a large body of research in the field of autonomous vehicles is
-being conducted in recent decades \cite{Liu2017} \cite{Prasad2020}.
+being conducted in recent decades \cite{Liu2017,Prasad2020}.
 Therefore, it is apparent that researchers of the autonomous vehicle community
 have been focusing on analysis, design, and development of different subsystems
 of self-driving/autonomous vehicles. Furthermore, modeling vehicle subsystems is
@@ -89,24 +108,34 @@ to be managed in the era of modern transportation systems in general.
 
 \item speed, and 
   
-\item speed control (cruise) subsystems.
+\item speed control (cruise). 
 \end{enumerate}
 %
 These subsystems are to be modeled to get an accurate representation of how
-the vehicle should be controlled. Within the scope of this project and to expedite the modeling process, commercially available modeling tools in Mathworks' MATLAB, System Identification app in the System Identification Toolbox and Neural Network Time Series app in the Deep Learning toolbox, were used to model six subsystems for a Lexus vehicle platform, which is an experimental autonomous vehicle platform that belongs to AutonomouStuff Solutions~\footnote{\url{https://autonomoustuff.com/}}. The first subsystem we will model is the steering model, and then we will move onto
+the vehicle should be controlled. Within the scope of this project and to expedite the modeling process, commercially available modeling tools in Mathworks' MATLAB, System Identification app in the System Identification Toolbox and Neural Network Time Series app in the Deep Learning toolbox, were used to model six subsystems for a Lexus vehicle platform, which is an experimental autonomous vehicle platform that belongs to AutonomouStuff Solutions~\footnote{\url{https://autonomoustuff.com/}}.
+
+The first subsystem we will model is the steering model, and then we will move onto
 the other subsystems. There are already controllers in place for the Lexus
-vehicle platform, but their reliability is lower than expected due to non-linear
+vehicle platform, but their \comment{reliability}{Need to define what do you mean by reliability, be very specific} is lower than expected due to non-linear
 behaviors of the torque voltages required to control each subsystem. The scope
-of this project includes developing mathematical models for each subsystem so
-AutonomouStuff can implement control systems that improve the reliability of the
-autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a minimum best fit percentage between 85 to 95 percent and fall within the error bounds defined for each subsystem. Once these models are developed, they will be tested using AutonomouStuff's Hardware-in-the-Loop (HIL) bench.
-Once there is confidence in each model, AutonomouStuff can use these models on their HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
-There are two operating modes of the Lexus vehicle platform used in this project: Manual-drive and by-wire or autonomous.
+of this project includes developing mathematical \add{and/or data-driven} models for each subsystem so \add{that one} \remove{AutonomouStuff} can \add{easily} implement control systems that improve the reliability of the
+autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a minimum best fit percentage between 85 to 95 percent and fall within the error bounds defined for each subsystem. Once these models are developed, they will be tested using \remove{AutonomouStuff's} Hardware-in-the-Loop (HIL) bench.
+Once there is confidence in each model, \remove{AutonomouStuff can use} these models \add{can be used} on \add{the}  \remove{their}  HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
+
+
+There are two operating modes of the Lexus vehicle platform used in this project: %
+%
+\begin{itemize}
+  \item Manual-drive and
+  \item by-wire or autonomous. 
+\end{itemize}
+%
+\todo[inline]{NN/HG: Add a sentence on what does manual-drive operating mode mean? You mentioned this in your presentation already. Then you pass on to autonomous mode. }
 Fig.~\ref{fig:steerOverview} depicts how the by-wire mode controls the vehicle. Each
 subsystem, like the steering system in this example, sends torque voltages to a
 motor that will control the subsystem. In Fig.~\ref{fig:steerOverview}, the motor would
-turn the pinion arms which would change the steering angle of the vehicle. This
-principle is applied to all other subsystems.
+turn the pinion arms which would change the steering angle of the vehicle. \comment{This
+principle is applied to all other subsystems.}{Does this mean that this principle will be applicable to acceleration subsystem as well? If not, you will need to modify this statement.}
 
 \vspace*{12pt}
 
@@ -136,8 +165,8 @@ principle is applied to all other subsystems.
  significant effort was conducted to model the photovoltaic system, where the two inputs were
  Solar irradiance and Cell temperature, and the output was DC current. To model
  this system, Matlab’s System Identification Toolbox was used. In order to
- create different models, they collected and used data from an energy center in
- Malaysia. After generating different models, the authors ended up going with a
+ create different models, \remove{they}\add{raw data} collected \remove{and used data} from an energy center in
+ Malaysia \add{was used}. After generating different models, the authors ended up going with a
  fourth order ARX (also known as ARXQS) model because it was the most accurate,
  with a best fit percentage of 93.42\%. The polynomial model equation for ARX is
  shown below. %
@@ -147,7 +176,7 @@ principle is applied to all other subsystems.
    b_{1}u_{1}(t-n_{k})+...+b_{nb}u_{nb}(t - n_{k}-n_{b}+1) + e(t), 
  \end{multline*}
 % 
-$y(t)$ is the system output at time $t,$ while $u(t)$ is the input. The noise disturbance of the system is represented by $e(t).$ The variables $na,$ $nb,$ and $nk$ are the system’s number of poles, amount of $b$ parameters, and the samples before the inputs begin to affect the system’s output.
+$y(t)$ is the system output at time $t,$ while $u(t)$ is the input. The noise disturbance of the system is represented by $e(t).$ The variables $na,$ $nb,$ and $nk$ are the system's number of poles, amount of $b$ parameters, and the samples before the inputs begin to affect the system's output.
 
 
 
@@ -158,27 +187,30 @@ System identification is the process of developing mathematical models for a dyn
 \subsection{Example 1: Dealing with Multi-Variable Systems: Identification and Analysis}
 \label{sec:sysID-Example1}
 
-The example given in~\cite{example1} shows how to create an iddata object from a
+The example given in~\cite{example1} shows how to create an \comment{iddata}{What do you mean? Could you please define this term from high-level perspective?} object from a
 dataset in order to get the inputs and the outputs. The next step was to look at
 the impulse and step responses in order to learn more about how the inputs and
-outputs act. From there the state space model was estimated using the first part
+outputs act. From there, the state space model was estimated using the first part
 of the given data. This model was compared to the step responses and with the
 second part of the data to see if it was a good fit. The model had a best fit
 percentage of 83.55\% for the generated voltage data, and a best fit of 39.33\%
+for the speed data.
 
-for the speed data. The frequency response of the model was estimated with
-spectral analysis and bode plots were also created. The tutorial explained that
-if the data doesn’t give nice models, then it is best to try out submodels for
+
+The frequency response of the model was estimated with
+spectral analysis and bode \replace{plots}{diagrams} were also created. The tutorial explained that
+if the data \replace{doesn't}{does not} give \replace{nice}{acceptable} models, then it is best to try out submodels for
 the different channels. Two single-input single-output (SISO) models were
 created and compared with the existing multiple-input multiple-output (MIMO)
 model and the actual data. The Nyquist plots were also compared. Both SISO
 models performed well during these comparisons. The next step in the tutorial
 was to create a multiple-input single-output (MISO) model in order to get a
 model that more accurately reflected the generated voltage data. By creating
-this model and comparing it to the validation data and previous models, we saw a
+this model and comparing it to the validation data and previous models, \replace{we saw}{it is observed} a
 best fit percentage of 90.18\%. The last thing the example showed was how to
-merge the two SISO models we created earlier.
-
+merge the two SISO models we created earlier. %
+%
+\todo[inline]{Fig.~\mbox{\ref{fig:exMIMO}} was not referred in the previous paragraph. At least you should say, Fig... shows $\ldots$. A figure cannot be placed without explaining what the figure is about in the section.}
 \begin{figure}[htbp]
     \centering
     % \captionsetup{justification=centering, margin=3cm}
@@ -189,8 +221,8 @@ merge the two SISO models we created earlier.
 
 \subsection{Example 2: Selecting Model Structures for Multivariable Systems}
 \label{sec:sysID-Example2}
-This example~\cite{Matlab2} discusses solutions for modeling both MISO and MIMO models using Mathworks' Matlab System Identification Toolbox. As the article discusses, MISO system models are easier to develop because all model structures used by the toolbox support models with a single output and multiple inputs. Therefore, the process for developing a model for a MISO system is importing the data as an iddata object, removing the mean from the data, and estimating the solution using any model structure available in the toolbox. The command line can be used by using the function associated with the model structure name and then using the compare function to get the best fit percentage. For MIMO systems, there are not model structures built into the System Identification Toolbox and they must be imported instead. Otherwise the process is very similar to that of a MISO system. For a MIMO system, using the compare function can be crucial. The compare function will tell which output channel is the most difficult to develop a model for, if it is possible at all. With this information, the output channel that is hardest to model should first be modeled individually because there will be less freedom in what model structures are available. The other channels should be able to closely relate to the model for the output channel you selected.
-
+This example~\cite{Matlab2} discusses solutions for modeling both MISO \add{multiple-input single-output} and MIMO models using Mathworks' Matlab System Identification Toolbox. As the article discusses, MISO system models are easier to develop because all model structures used by the toolbox support models with a single output and multiple inputs. Therefore, the process for developing a model for a MISO system is importing the data as an iddata object, removing the mean from the data, and estimating the solution using any model structure available in the toolbox. The command line can be used by using the function associated with the model structure name and then using the compare function to get the best fit percentage. For MIMO systems, there are not model structures built into the System Identification Toolbox and they must be imported instead. Otherwise the process is very similar to that of a MISO system. For a MIMO system, using the compare function can be crucial. The compare function will tell which output channel is the most difficult to develop a model for, if it is possible at all. With this information, the output channel that is hardest to model should first be modeled individually because there will be less freedom in what model structures are available. The other channels should be able to closely relate to the model for the output channel you selected. %
+%
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{\linewidth}
@@ -207,6 +239,8 @@ This example~\cite{Matlab2} discusses solutions for modeling both MISO and MIMO 
   \caption{\subref{fig:ex2fig1} State-space model of a MIMO system with a validation data comparison and \subref{fig:ex2fig2} State-space model of a MIMO system and system-sized based state-space model with a validation data comparison }
   \label{fig:ex2}
 \end{figure}
+%
+\todo[inline]{Same thing happened here. A figure (Fig. 3) is placed without explaining what this figure is about in the text. }
 
 \subsection{Example 3: Identify Linear Models Using the Command Line}
 \label{sec:sysID-Example3}
@@ -218,6 +252,7 @@ example showed how to estimate and compare non-parametric impulse response,
 transfer function, ARMA, state-space, and Box-Jenkins models with the measured
 experimental data. The state-space model with the five-step response prediction
 was the most accurate, with a best fit percentage of 85.83\%.
+%
 \begin{figure}[htbp]
     \centering
     % \captionsetup{justification=centering, margin=3cm}
@@ -225,18 +260,20 @@ was the most accurate, with a best fit percentage of 85.83\%.
     \caption{Inputs and outputs of the given system}
     \label{fig:exIO}
 \end{figure}
-
+% 
+\todo[inline]{Same thing happened here. A figure (Fig. 4) is placed without explaining what this figure is about in the text. }
 
 \section{System Architecture}
-The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, and thus can not be treated as a single input. Also, each subsystem will be treated as a single output system. The brake subsystem is shown to have two outputs but the behaviors of one of the outputs is already known so it will be modeled based on the other output's behavior. 
-%
+The overall system architecture of this project consists of six subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. \add{Fig.~\ref{fig:highLevelSystemArchitecture} outlines these six subsystems in a Lexus self-driving vehicle provided by company (Hexagon $|$ AutonomouStuff).} %
+% 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[height=3cm]{figs/inkscape/carSystemModelOutline}
+  \includegraphics[height=3cm]{figs/inkscape/carSystemModelOutline}
   \caption{Hexagon Lexus self-driving vehicle showing different subsystems}
   \label{fig:highLevelSystemArchitecture}
 \end{figure}
-
+%
+\add{However, actual vehicle (Lexus RX450H) that is used for collecting input-output data for all of these subsystems is shown in the picture of Fig.~\ref{fig:lexusvehicle}. A team of the project members visited the site to collect raw data for steering, brake, and acceleration subsystems of the vehicle.} %
 % 
 \begin{figure}[htbp]
 	\centering
@@ -244,14 +281,17 @@ The overall system architecture of this project consists of six subsystems which
 	\caption{AutonomouStuff Lexus RX450H vehicle.}
 	\label{fig:lexusvehicle}
 \end{figure}
+%
+
+
+Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, and thus can not be treated as a single input. Also, each subsystem will be treated as a single output system. The brake subsystem is shown to have two outputs but the behaviors of one of the outputs is already known so it will be modeled based on the other output's behavior. 
 
 \subsection{Steering Subsystem}
 \label{sec:steeringSubsystem}
 
-The steering subsystem consists of the steering arm, knuckle, rods, drag link, steering gear box, drop arm, cross shaft, steering column, steering shaft, and steering wheel~\footnote{\url{https://www.theengineerspost.com/car-steering-system-in-automobile/}}. The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~\ref{fig:steeringModelBlockDiagram}
-
-
-\begin{figure}[h]
+The steering subsystem \add{of a generic self-driving vehicle} consists of the steering arm, knuckle, rods, drag link, steering gear box, drop arm, cross shaft, steering column, steering shaft, and steering wheel~\footnote{\url{https://www.theengineerspost.com/car-steering-system-in-automobile/}}. The ultimate goal of this subsystem is to control the steering angle for the vehicle to navigate in the desired heading. Therefore, the control system is designed to produce appropriate voltages to be applied to the power steering motors for the steering orient in the target direction. The block diagram of the control system designed for this subsystem is shown in Fig.~\ref{fig:steeringModelBlockDiagram}\add{, where the target and the actual orientations of the vehicle are denoted by $\theta^{\text{ref}}$ and $\theta(t)$ at time $t\ge 0,$ respectively.} %
+%
+\begin{figure}[htbp]
   \centering
   \begin{tikzpicture}
     \tikzstyle{every node} = [font=\footnotesize]
@@ -277,18 +317,18 @@ The steering subsystem consists of the steering arm, knuckle, rods, drag link, s
     ($(steeringSubsystem.east)+(0.25,0)$) circle [radius=2pt];
     \draw[-stealth,thick]
     (tt) -- ++(0,-0.75) -|(sum.south)node[pos=0.9,left]{$-$};
-    
   \end{tikzpicture}
   % \captionsetup{justification=centering, margin=3cm}
-
   % \includegraphics[width=2.5in]{figs/inkscape/steeringModelBlockDiagram}
   \caption{Steering subsystem block diagram.}
   \label{fig:steeringModelBlockDiagram}
 \end{figure}
-
+%
+\add{The error signal, which is the difference between the target and the actual directions of the vehicle, is passed on to the steering controller. The outputs of the steering controller are the torque voltages that are applied to the power steering motors of the steering subsystems of the vehicle.} 
 
   \subsection{Brake Subsystem}
- The brake subsystem is made up of the master cylinder, brake rotor, brake drum, brake pad, brake caliper, brake shoe, brake booster, brake pedal, wheel speed sensors, ABS module, and brake lines~\footnote{\url{https://oards.com/car-brake-system-components/}}. The subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
+  The brake subsystem is made up of the master cylinder, brake rotor, brake drum, brake pad, brake caliper, brake shoe, brake booster, brake pedal, wheel speed sensors, ABS module, and brake lines~\footnote{\url{https://oards.com/car-brake-system-components/}}. \add{A high-level block diagrams showing the inputs and puts of a conventional brake subsystem of a self-driving vehicle is shown in Fig.~\ref{fig:brakeModelArchitecture}.} %
+%  
  \begin{figure}[htbp]
     \centering
   \begin{tikzpicture}
@@ -308,13 +348,14 @@ The steering subsystem consists of the steering arm, knuckle, rods, drag link, s
     (brakeSubsystem.30)--node[pos=0.5,above]{Pedal position}++(1.7,0);
     \draw[-stealth,thick]
     (brakeSubsystem.-30)--node[pos=0.5,below]{Brake pressed}++(1.7,0);
-    
   \end{tikzpicture}
     % \captionsetup{justification=centering, margin=3cm}
     % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
     \caption{Brake subsystem block diagram}
     \label{fig:brakeModelArchitecture}
 \end{figure}
+%
+The subsystem takes the Brake Pedal Pressure Voltages, Brake Pedal Stroke Voltages, and the Brake Pedal On/Off Switch values as inputs. Using these values, it generates a new Brake Pedal Position and a boolean value called Brake Pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed. The brake subsystem is another example of a multiple-input multiple-output system. 
  
   \subsection{Acceleration Subsystem}
   The acceleration subsystem consists of the throttle pedal, engine, and crankshaft~\footnote{\url{https://harrisautomotiverepair.com/car-accelerator/}}. It is a multiple-input multiple-output system. 
@@ -339,7 +380,8 @@ of the acceleration subsystem. %
     \caption{Acceleration subsystem block diagram}
     \label{fig:accelModelArchitecture}
  \end{figure}
- 
+ %
+\todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.} 
   \subsection{Shift Subsystem}
  The components that make up the shift subsystem are the friction clutch, bands, spring loaded valve, load sensor, shift valve, torque converter, gear stick, seals, and gasket~\footnote{\url{https://oards.com/car-automatic-transmission-system-components/}}. This subsystem can be classified as a single-input single-output system. The subsystem takes the desired shifter gear value from the user. Within the subsystem, the actual shifter gear changes to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem. 
  \begin{figure}[htbp]
@@ -361,6 +403,8 @@ of the acceleration subsystem. %
     \label{fig:shiftModelArchitecture}
  \end{figure} 
  
+ % 
+ \todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.} 
   \subsection{Speed Subsystem}
 This speed subsystem would fall under the multiple-input single-output system. There are four inputs, the position of the acceleration pedal and the brake pedal, along with the shifter actual gear. Taking these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is then the output of the system.  
  \begin{figure}[htbp]
@@ -387,6 +431,8 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \caption{Speed subsystem block diagram}
     \label{fig:speedModelArchitecture}
 \end{figure}
+% 
+\todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.} 
  
   \subsection{Speed Control Subsystem}
   The speed control subsystem components include the cruise control switch, vehicle speed sensor, throttle sensor, and brake switch~\footnote{\url{https://www.freeasestudyguides.com/electrical-cruise-control-systems.html}}. This subsystem is a straightforward single-input single-output system. The desired vehicle speed is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the new vehicle speed. This value is then sent out to the rest of the vehicle system. 
@@ -408,7 +454,8 @@ This speed subsystem would fall under the multiple-input single-output system. T
     \caption{Speed Control subsystem block diagram}
     \label{fig:speedControlModelArchitecture}
  \end{figure}
-
+ % 
+ \todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.} 
 
 
  \section{Modeling Dynamic Systems using Neural Networks}
@@ -547,8 +594,8 @@ This speed subsystem would fall under the multiple-input single-output system. T
   \caption{Actor neural network structure for approximating control input.}
   \label{fig:nnActor}
 \end{figure}
-
- 
+%
+\todo[inline]{SM: I'll rewrite the following paragraph since the description herein is valid for specific architecture of an actor neural network. } 
 The neural network inputs are mapped to the outputs by being assigned a set of weights~\footnote{\tiny \hsize=0.45\textwidth \url{https://towardsdatascience.com/machine-learning-for-beginners-an-introduction-to-neural-networks-d49f22d238f9}}. 
 The approximated neural network signal can be written as:
 \begin{align}
@@ -606,49 +653,54 @@ Setting $\frac{\partial\delta_a}{\partial\mathbf{W}_a}$ to zero yeilds
   \label{eq:actorWeightUpdate}
 \end{multline}
 
- The neural network is validated by passing another subset of data that was not used for training purposes and comparing the output results of the neural network with the expected output results from the data set. An acceptable neural network model will meet the desired error requirements~\footnote{\hsize=0.9\textwidth \url{https://medium.com/autonomous-agents/bayesian-regularization-for-neuralnetworks-2f2d34f03adc}}. 
+
+The neural network is validated by passing another subset of data that was not used for training purposes and comparing the output results of the neural network with the expected output results from the data set. An acceptable neural network model will meet the desired error requirements\footnote{\href{https://medium.com/autonomous-agents/bayesian-regularization-for-neuralnetworks-2f2d34f03adc}{Bayesian regularization}}. 
  
  
 
 \section{Modeling Vehicle Subsystems}
 
-To start the project, we researched methods of plant modeling for autonomous vehicles and more generically, nonlinear systems. From our research, we found a few methods of modeling that we employed to discover the most accurate representation of each vehicle subsystem. The first method that we tried was developing different system types using Mathworks' MATLAB System Identification Toolbox. Using data we collected from the Lexus vehcile platform at AutonomouStuff,this toolbox allowed us to add input and output data for each vehicle subsystem. With this data, we used one subset to train the system and another subset for validation. Using this toolbox, we tried developing state-space models, NARX models, and transfer function models. We also used Mathworks' MATLAB Neural Network Time Series toolbox to develop a model of each vehicle subsystem using neural network modeling making use of the Bayesian Regularization training method. The following requirements were used to evaluate the effectiveness of our models to determine which plant model should be presented to AutonomouStuff.
+To start the project, we researched methods of plant modeling for autonomous vehicles and more generically, nonlinear systems. From our research, we found a few methods of modeling that we employed to discover the most accurate representation of each vehicle subsystem. The first method that we tried was developing different system types using Mathworks' MATLAB System Identification Toolbox. Using data we collected from the Lexus vehcile platform at AutonomouStuff, this toolbox allowed us to add input and output data for each vehicle subsystem. With this data, we used one subset to train the system and another subset for validation. Using this toolbox, we tried developing state-space models, NARX models, and transfer function models. We also used Mathworks' MATLAB Neural Network Time Series toolbox to develop a model of each vehicle subsystem using neural network modeling making use of the Bayesian Regularization training method. The following requirements were used to evaluate the effectiveness of our models to determine which plant model should be presented to AutonomouStuff.
 
 
 \subsection{System Requirements}
 
-In order to accurately model each vehicle subsystem so that safe, reliable controllers can be developed for autonomous control, the following criteria will be met:
+\replace{In order t}{T}o accurately model each vehicle subsystem so that safe, reliable controllers can be developed for autonomous control, the following criteria will be met:
 \begin{itemize}
-\item Each vehicle subsystem will be able to track nonlinearities depicted in Fig.~\ref{fig:nonlinGraph} associated with small changes in the output of each subsystem
-\item Each vehicle subsystem plant model will track any desired inputs within the specified error bounds
+\item Each vehicle subsystem will be able to track nonlinearities depicted in Fig.~\ref{fig:nonlinGraph} associated with small changes in the output of each subsystem. %
+  %
+  \begin{figure}[htbp]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=2.5in]{figs/inkscape/nonlinearBehavior}
+    \caption{Steering Non-linear Behavior}
+    \label{fig:nonlinGraph}
+  \end{figure}
+  
+\item Each vehicle subsystem plant model will track any desired inputs within the specified error bounds\add{:}
 	\begin{itemize}
-		\item Steering Angle within 5 degrees
-		\item Pedal Positions within 5\%
+		\item Steering \replace{A}{a}ngle within 5 degrees
+		\item Pedal \replace{P}{p}ositions within 5\%
 	\end{itemize}
 \item Each vehicle subsystem will be modeled independently from other vehicle subsystems
 \end{itemize}
-
+%
 The vehicle plant model will fulfill the requirements listed below:
 \begin{itemize}
     \item The resulting plant model will consist of accurate subsystem models, as defined above
     \item The subsystems can be used to create a HIL testbench
     \item The subsystems can handle very small changes in their output accurately
 \end{itemize}
+%
 
-All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior, depicted in Fig.~\ref{fig:nonlinGraph}, made it very challenging to complete features like lane tracking. These models will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer, smoother manner. 
+All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, \add{a team of researchers from }AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior, depicted in Fig.~\ref{fig:nonlinGraph}, made it very challenging to complete features like lane tracking. \replace{These}{The plant models developed in this work}\remove{ models} will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer, smoother manner. 
 
-\begin{figure}[htbp]
-    \centering
-    \captionsetup{justification=centering}
-    \includegraphics[width=2.5in]{figs/inkscape/nonlinearBehavior}
-    \caption{Steering Non-linear Behavior}
-    \label{fig:nonlinGraph}
-\end{figure}
 
 \subsection{Steering System Modeling}
 To develop a model of the steering system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was not accurate and did not track the output of the steering system data. The transfer function model we developed was more reliable tracking the output of the steering system data, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the steering system data and stayed within the error requirements. 
 
 \subsection{Acceleration System Modeling}
+\todo[inline]{The text of the following paragraph is very similar to the above section except that the word ``steering'' was replaced by ``acceleration''. You paraphrase the sentences and there should some differences in the input and output data. What are the input data, the output data, units of those data, for example}
 To develop a model of the acceleration system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was not accurate and did not track the output of the acceleration system data. The transfer function model we developed was more reliable tracking the output of the acceleration system data, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the acceleration system data and stayed within the error requirements. 
 
 \subsection{Brake System Modeling}
@@ -661,7 +713,7 @@ To create a brake system model, we first tried generating transfer function mode
 \subsection{Experimental Setup}
 \label{sec:experimentalSetup}
 
-We traveled to AutonomouStuff in order to collect
+We \replace{traveled to}{visited the workplace of} AutonomouStuff in order to collect
 data from the steering, acceleration, and braking subsystems in an autonomous
 vehicle. The data we collected will be used to generate and then verify our
 models. We collected data on the Lexus RX450H vehicle platform shown in
@@ -676,21 +728,22 @@ Fig.~\ref{fig:lexusvehicle}. %
  	\end{itemize}
  	
  	
-\noindent The laptop is used to pass commands or log data, such as steering angle or acceleration or brake pedal position. This data is sent or received using the CANCase and CAN bus. These are connected to the AutonomouStuff designed PACMod ECU, which sends torque voltages to the desired vehicle subsystem allowing the laptop to either control the desired vehicle system or log data. The Vector CANAlyzer software is installed on the laptop and is used to parse the collected data that is sent from the CANCase. This is how we were able to collect logs of data that we would use to develop models of the autonomous vehicle subsystems.
-\\
+\noindent The \add{interfacing software,} \todo[fancyline]{name of the software}, \add{installed in the} laptop is used to pass commands or log data, such as steering angle or acceleration or brake pedal position. This data is sent or received using the CANCase and CAN bus. These are connected to the AutonomouStuff designed PACMod ECU, which sends torque voltages to the desired vehicle subsystem allowing the laptop to either control the desired vehicle system or log data. The Vector CANAlyzer software is installed on the laptop and is used to parse the collected data that is sent from the CANCase. This is how we were able to collect logs of data that we would use to develop \add{plant} models of the autonomous vehicle subsystems.
 
-Each subsystem that we are modeling is set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the vehicle's electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the vehicle's ECU are discarded by open-circuiting the motors that control each subsystem. Instead, the PACMod ECU built by AutonomouStuff sends the torque voltages to the motor using relays. In Fig.~\ref{fig:vehicleSetup}, the experimental setup for data collection is shown. The laptop is used to collect the data from the desired vehicle subsystem by the use of Vector's CANAlyzer software. The CAN Case collects data from the PAC Mod and ECU and sends the data using a CAN bus to the laptop which is then parsed and displayed through the use of CANAlyzer. The ECU and PAC Mod are not shown in Fig.~\ref{fig:vehicleSetup} as they are fixed behind panels of the vehicle. 
-\\
 
+Each subsystem that we are modeling is set up in a similar manner. In manual mode, the torque voltages that control each subsystem are sent by the vehicle's electronic control unit (ECU). In order to control the vehicle autonomously, the vehicle subsystem switches to by-wire mode. In by-wire mode, the torque voltages from the vehicle's ECU are discarded by open-circuiting the motors that control each subsystem. Instead, the PACMod ECU built by AutonomouStuff sends the torque voltages to the motor using relays. In Fig.~\ref{fig:vehicleSetup}, the experimental setup for data collection is shown. %
+% 
 \begin{figure}[htbp]
 	\centering
-    	% \captionsetup{justification=centering, margin=3cm}
-    	\includegraphics[width=.48\textwidth]{figs/img/picturesVisitToAStuff/dataColletionSetup1-20211007}
-    	\caption{Autonomous Vehicle Data Collection Setup}
-    	\label{fig:vehicleSetup}
+  % \captionsetup{justification=centering, margin=3cm}
+  \includegraphics[width=.48\textwidth]{figs/img/picturesVisitToAStuff/dataColletionSetup1-20211007}
+  \caption{Autonomous Vehicle Data Collection Setup}
+  \label{fig:vehicleSetup}
 \end{figure}
+% 
+The laptop is used to collect the data from the desired vehicle subsystem by the use of Vector's CANAlyzer software. The CAN Case collects data from the PAC Mod and ECU and sends the data using a CAN bus to the laptop which is then parsed and displayed through the use of CANAlyzer. The ECU and PAC Mod are not shown in Fig.~\ref{fig:vehicleSetup} as they are fixed behind panels of the vehicle. %
 
-Using the data we collected for the steering, acceleration, and braking subsystems, we initially separated the data so we could analyze the by-wire and manual modes individually. This effort was made to identify if the models we developed could be used interchangeably regardless of what mode the autonomous vehicle subsystems were operating in. After analyzing the models we developed, we determined that they are not interchangeable as there were differences in the models. When the vehicle subsystem is in by-wire mode, the controller AutonomouStuff developed is generating the torque voltages that are applied to each subsystem motor. As a result, we decided the most accurate model of each subsystem would be developed using the data when the subsystems are in manual mode. For reference, the differences in the models created for by-wire and manual mode are depicted in \ref{sec:simresults} for the steering and acceleration subsystems. For all other models we develop, we will only use manual mode data and will not create models for by-wire mode.
+Using the data we collected for the steering, acceleration, and braking subsystems, we initially separated the data so we could analyze the by-wire and manual modes individually. This effort was made to identify if the models we developed could be used interchangeably regardless of what mode the autonomous vehicle subsystems were operating in. After analyzing the models we developed, we determined that they are not interchangeable as there were differences in the models. When the vehicle subsystem is in by-wire mode, the controller AutonomouStuff developed is generating the torque voltages that are applied to each subsystem motor. As a result, we decided the most accurate model of each subsystem would be developed using the data when the subsystems are in manual mode. For reference, the differences in the models created for by-wire and manual mode are \comment{depicted in \mbox{\ref{sec:simresults}}}{I do not understand what do you mean by in VII, is it a section, figure, or table? The sentence does not read well} for the steering and acceleration subsystems. For all other models we develop, we will only use manual mode data and will not create models for by-wire mode.
 
 
 \subsection{Transfer Function Modeling}
@@ -715,11 +768,12 @@ for this model is 90.27\%.
 \end{figure}
 
 \vspace{12pt}
-\noindent The model of the by-wire steering system is a twentieth order transfer function. The twentieth order transfer function is the best proposed estimation considering the system costs associated with a higher order transfer function while also obtaining an acceptable best fit percentage. Table~\ref{tab:byWireSteerCoeffA} shows the coefficients of the twentieth order transfer function for the output steering angle with respect to the input torque voltage A signal.%
+\noindent The model of the by-wire steering system is a twentieth order transfer
+function. The twentieth order transfer function is the best proposed estimation
+considering the system costs associated with a higher-order transfer function
+while also obtaining an acceptable best fit percentage. %
 %
 \begin{table}[hbtp]
-	\label{tab:byWireSteerCoeffA}
-	\caption{By-Wire Mode Steering Transfer Function Torque Voltage A Coefficient Table}
   \centering
   \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{21}{c}}
@@ -730,24 +784,28 @@ for this model is 90.27\%.
       \bottomrule
     \end{tabular}}
     
-	\begin{center}
-		\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    		\begin{tabular}{*{21}{c}}
-      	\toprule
-      	$b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-      	\midrule
-      	3.44E-16 & -2.203E-15 & 1.24E-13 & 5.975E-13 & 3.001E-12 & 5.23E-12\\
-      	\bottomrule
-    		\end{tabular}}
-	\end{center}	
+	\caption{By-Wire Mode Steering Transfer Function Torque Voltage A Coefficient Table}
+	\label{tab:byWireSteerCoeffA}
 \end{table}
 %
+Table~\ref{tab:byWireSteerCoeffA} shows the coefficients of the twentieth order transfer function for the output steering angle with respect to the input torque voltage A signal.%
+% 
+\add{The second set of coefficients for the torque voltage A is given below:} %
+%
+\begin{center}
+ \resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+ \begin{tabular}{*{21}{c}}
+   \toprule
+   $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+   \midrule
+   3.44E-16 & -2.203E-15 & 1.24E-13 & 5.975E-13 & 3.001E-12 & 5.23E-12\\
+   \bottomrule
+ \end{tabular}}
+\end{center}	
  
 \noindent Table~\ref{tab:byWireSteerCoeffB} shows the coefficients of the twentieth order transfer function for the output steering angle with respect to the input torque voltage B signal.%
 %
-\begin{table}[hbtp]
-	\label{tab:byWireSteerCoeffB}
-	\caption{By-Wire Mode Steering Transfer Function Torque Voltage B Coefficient Table}
+\begin{table}[htbp]
   \centering
   \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
     \begin{tabular}{*{21}{c}}
@@ -757,17 +815,22 @@ for this model is 90.27\%.
       2.92E-15 & 2.758E-13 & 1.761E-11 & 4.228E-10 & 1.422E-8 & 1.561E-7 & 1.501E-6 & 8.426E-6 & 5.981E-5 & 0.0002016 & 0.001226 & 0.002649 & 0.01456 & 0.02044 & 0.104 & 0.09228 & 0.4417 & 0.2257 & 1.025 & 0.2305 & 1\\
       \bottomrule
     \end{tabular}}
-	\begin{center}
-		\resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-    		\begin{tabular}{*{21}{c}}
-     	 \toprule
-     	 $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-     	 \midrule
-      	-6.645E-15 & 2.161E-14 & -2.605E-14 & -4.744E-13 & -1.813E-13 & -4.858E-12\\
-      	\bottomrule
-    \end{tabular}}
-	\end{center}
+	\caption{By-Wire Mode Steering Transfer Function Torque Voltage B Coefficient Table}
+	\label{tab:byWireSteerCoeffB}
 \end{table}
+%
+\add{Similar to the torque voltage A, the second set of coefficients for the torque voltage B signal is shown below:} %
+%
+\begin{center}
+  \resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    \begin{tabular}{*{21}{c}}
+      \toprule
+      $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+      \midrule
+      -6.645E-15 & 2.161E-14 & -2.605E-14 & -4.744E-13 & -1.813E-13 & -4.858E-12\\
+      \bottomrule
+    \end{tabular}}
+\end{center}
 %
 
 \vspace{12pt}
@@ -821,17 +884,20 @@ to the input torque voltage B signal. %
       4.687E4 & 7.037E5 & 2.624E6 & 6.133E6 & 1.197E7 & 1.487E7 & 1.887E7 & 1.446E7 & 1.314E7 & 7.01E6 & 4.79E6 & 1.886E6 & 9.836E5 & 2.937E5 & 1.149E5 & 2.617E4 & 7205 & 1232 & 200 & 23.54 & 1\\
       \bottomrule
     \end{tabular}}
-	\begin{center}
-    \resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
-      \begin{tabular}{*{21}{c}}
-        \toprule
-        $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
-        \midrule
-        1.209E4 & 1.855E5 & -2.801E5 & 4.72E5 & -3.976E4 & 7.693E4\\
-        \bottomrule
-      \end{tabular}}
-	\end{center}	
 \end{table}
+%
+\add{This is followed by the $b$-coefficients given below:} %
+%
+\begin{center}
+  \resizebox{0.4\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+    \begin{tabular}{*{21}{c}}
+      \toprule
+      $b_0$& $b_1$&$b_2$&$b_3$&$b_4$&$b_5$\\
+      \midrule
+      1.209E4 & 1.855E5 & -2.801E5 & 4.72E5 & -3.976E4 & 7.693E4\\
+      \bottomrule
+    \end{tabular}}
+\end{center}	
 %
 
 \subsubsection{Acceleration System}
@@ -923,6 +989,8 @@ While some by-wire models were created for the brake system, the models created 
 \label{sec:NN-Modeling}
 
 \subsubsection{Steering System}
+
+\todo[inline]{Figures of both steering and acceleration subsystem models are placed without referring them in the paragraph. Each of the figures needs to be explained. Also, the following paragraph and the paragraph for the acceleration system are alike except that the word ``steering'' is replaced with the word ``acceleration''. This should not be the case in a professional report.}
 
 To develop the model of the steering system using a neural network architecture, we used one data subset to train the model and then used an additional subset of data to verify the model worked. The neural network model used a feedforward network that had one hidden layer containing three neurons. The model was also trained with twelve delay units to achieve the required accuracy, meaning that the first twelve output samples of the model should be ignored.
 
