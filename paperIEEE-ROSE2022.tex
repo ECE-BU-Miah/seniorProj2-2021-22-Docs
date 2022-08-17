@@ -20,7 +20,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Hardware-in-the-Loop Plant Modeling for Self-Driving Vehicles\\
+\title{Data-Driven Hardware-in-the-Loop Plant Modeling for Self-Driving Vehicles\\
 \thanks{This work was partially supported by AutonomouStuff (https://autonomoustuff.com/)}
 }
 
@@ -62,24 +62,43 @@ component, formatting, style, styling, insert
 %  subsystems of autonomous vehicles, Hint: Erik mentioned already that employees
 %can perform testing without the physical vehicle. You just need to extend his statement to write the motivational paragraph behind this project}
 
-Self-driving vehicles have attracted a significant interest in the past decades due to the advent of new technologies in the field of robotics and autonomous systems.  Such vehicles are being developed by companies for commercial and personal use as they mainly aim to reduce crashes, energy consumption, pollution, and congestion. As it is apparent each self-driving vehicle is composed of varaious subsystems that researchers of autonomous vehicle community analyze, design, develop, and test.  Intuitively, self-driving vehcles require thorough testing at the factory level before their demonstrations for  the commerical purpose. Such a testing procedure each physical vehicle is inefficient and costly as it involves testing of different subsystems, such as steering, brake, shift, to name a few, of a vehicle.
-In this work, we model different modules of a self-driving vehicle using machine learning techniques, where a physical self-driving vehicle is not required for testing.
+Due to escalating demand of self-driving vehicles, automotive industry is gradually shifting its attention in  manufacturing a variety of autonomous vehicles. The advancement of new technologies led the automotive industry to develop such vehicles for commercial and personal use as they mainly aim to reduce crashes, energy consumption, pollution, and congestion. However, the development of process of autonomous vehicles still faces signifant challenges to overcome. As it is apparent, each self-driving vehicle is composed of varaious subsystems that researchers of autonomous vehicle community analyze, design, develop, and test.  Intuitively, self-driving vehcles require thorough testing at the factory level before their demonstrations for  the commerical purpose. Such a testing procedure for each physical vehicle is inefficient and costly as it involves testing of different subsystems, such as steering, brake, shift, to name a few, of a vehicle. In this work, we model different modules/subsystems of a self-driving vehicle using machine learning techniques, where a physical self-driving vehicle is not required for testing. Note that modeling vehicle subsystems is a pre-requisite for the development of reliable controllers for autonomous vehicles to be managed in the era of modern transportation systems in general. In particular, modeling different subsystems is conducted for a self-driving vehicle from the vehicle fleet shown in Fig.~\ref{fig:fleet}. %
+%
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.15]{figs/img/autonomousVehiclesAStuff}
+  \caption{Autonomous vehicle fleet (courtesy of AutonomouStuff Inc., https://autonomoustuff.com)}
+  \label{fig:fleet}
+\end{figure}
+%
+Such modeling process would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. %
 
 
+% \begin{figure}[htbp]
+%   \centering
+%   \begin{subfigure}[b]{0.48\linewidth}
+%     \centering
+%        \caption{}
+%     \label{fig:fleet}
+%   \end{subfigure}
+%   \begin{subfigure}[b]{0.48\linewidth}
+%     \centering
+%
+%     \caption{}
+%     \label{fig:steerOverview}
+%   \end{subfigure}
+%   \caption{\subref{fig:fleet} Autonomous vehicle fleet in AutonomouStuff Solutions and \subref{fig:steerOverview} steering model setup (courtesy of AutonomouStuff). }
+%   \label{fig:AstuffFleetSteeringSetup}
+% \end{figure}
 
 
-
-
-It is important to note that modeling vehicle subsystems is a pre-requisite for the development of reliable controllers for these vehicles to be managed in the era of modern transportation systems in general. In particular, modeling different subsystems are conducted for a self-driving vehicle from the vehicle fleet shown in Fig.~\ref{fig:fleet}.  would allow companies to continue crucial deliveries
-or transports of their products even if there is a shortage of drivers. In
-addition, autonomous vehicles have the ability to make roads safer for drivers
+Autonomous vehicles have the ability to make roads safer for drivers
 and pedestrians alike. To develop a reliable and safe transportation system for
 modern world, a large body of research in the field of autonomous vehicles is
-being conducted in recent decades \cite{Liu2017,Prasad2020}.
+being conducted in recent decades~\cite{Liu2017,Prasad2020}.
 
-% \vspace*{12pt}
 
-\noindent Usually, there are six main subsystems of a self-driving vehicle: %
+Usually, there are six main subsystems of a self-driving vehicle: %
 %
 \begin{enumerate}
 \item  Steering,
@@ -107,7 +126,9 @@ behaviors of the torque voltages required to control each subsystem. The scope
 of this project includes developing mathematical and/or data-driven models for each subsystem so that one can easily implement control systems that improve the reliability of the
 autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a minimum best fit percentage between 85 to 95 percent and fall within the error bounds defined for each subsystem. Once these models are developed, they will be tested using Hardware-in-the-Loop (HIL) bench.
 Once there is confidence in each model, these models can be used on the   HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
-
+\section{Self-Driving Vehicle Overview}
+\label{sec:selfDrivingVehicleOverview}
+In this section, we present an overview of the self-driving vehicle pertaining to the hardware-in-the-loop modeling process conducted in the work.
 
 There are two operating modes of the Lexus vehicle platform used in this project: %
 %
@@ -120,27 +141,22 @@ Manual-drive operation occurs when the driver has complete control over the vehi
 %
 Fig.~\ref{fig:steerOverview} depicts how the by-wire mode controls the vehicle. Each
 subsystem, like the steering system in this example, sends torque voltages to a
-motor that will control the subsystem. In Fig.~\ref{fig:steerOverview}, the motor would
-turn the pinion arms which would change the steering angle of the vehicle. The idea of by-wire mode for other vehicle subsystems is controlled in a similar manner with torque voltages being applied to a motor that controls the vehicle subsystem.
-
-\vspace*{12pt}
-
+motor that will control the subsystem. %
+%
 \begin{figure}[htbp]
   \centering
-  \begin{subfigure}[b]{0.48\linewidth}
-    \centering
-    \includegraphics[height=3cm]{figs/img/autonomousVehiclesAStuff}    \caption{}
-    \label{fig:fleet}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.48\linewidth}
-    \centering
-    \includegraphics[height=3cm]{figs/img/autonomousVehiclesSteering}
-    \caption{}
-    \label{fig:steerOverview}
-  \end{subfigure}
-  \caption{\subref{fig:fleet} Autonomous vehicle fleet in AutonomouStuff Solutions and \subref{fig:steerOverview} steering model setup (courtesy of AutonomouStuff). }
-  \label{fig:AstuffFleetSteeringSetup}
+  \includegraphics[scale=0.8]{figs/img/autonomousVehiclesSteering}
+  \caption{Steering subsystem in autonomous mode (courtesy of Autonomoustuff.com).}
+  \label{fig:steerOverview}
 \end{figure}
+%
+In Fig.~\ref{fig:steerOverview}, the motor would
+turn the pinion arms which would change the steering angle of the vehicle. The idea of by-wire mode for other vehicle subsystems is controlled in a similar manner with torque voltages being applied to a motor that controls the vehicle subsystem.
+
+
+
+
+\vspace*{12pt}
 
 
 
