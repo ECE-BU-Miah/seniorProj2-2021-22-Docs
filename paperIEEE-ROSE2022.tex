@@ -48,7 +48,7 @@ E-mail: \{hgrady,nnauman\}@mail.bradley.edu, smiah@bradley.edu }
 
 \begin{abstract}
 
-  In this paper, we present data-driven hardware-in-the-loop (HIL) plant models of different subsystems of a self-driving vehicle. Despite numerous concerns, automotive industry is still investing remarkable resources for producing self-driving vehicles to be available in the market. Among numerous challenges in the development process of such vehicles are the validation and testing process of various subsystems. Here we provide data-driven models of different subsystems so that automotive industries can validate and test autonomous vehicles without the need of a physical vehicle, which indeed reduces the considerable amount of cost for automotive industries. The vehicle subsystems considered in this work steering, acceleration, brake, shift, speed, and speed control. However, the performance of the steering, acceleration, and brake subsystems demonstrated for conciseness purpose.
+  In this paper, we present data-driven hardware-in-the-loop (HIL) plant models of different subsystems of a self-driving vehicle. Despite numerous concerns, automotive industry is still investing remarkable resources for producing self-driving vehicles to be available in the market. Among numerous challenges in the development process of such vehicles are the validation and testing process of various subsystems. Here we provide data-driven models of different subsystems so that automotive industries can validate and test autonomous vehicles without the need of a physical vehicle, which indeed reduces the considerable amount of cost for automotive industries. The vehicle subsystems considered in this work steering, acceleration, brake, shift, speed, and speed control. Each of these subsystems is either multi-input single output or single-input single output system. Lexus RX450H self-driving vehicle is employed to collect raw data (inputs and outputs data for different subsystems) offline. We used deep learning toolbox available in the commercial software package, MATLAB/SIMULINK, for modeling each of these systems. Therefore, the results of such modeling could be used for validating and testing without the need for a physical self-driving vehicle. As such, the proposed modeling results could be useful for reducing cost of vehicles' development process since a physical vehicle is not required for validation and testing. However, the performance of the steering, acceleration, and brake subsystems demonstrated for conciseness purpose.
 
 \end{abstract}
 
@@ -63,7 +63,7 @@ Data-driven modeling, deep learning, hardware-in-the-loop, self-driving vehicle,
 %  subsystems of autonomous vehicles, Hint: Erik mentioned already that employees
 %can perform testing without the physical vehicle. You just need to extend his statement to write the motivational paragraph behind this project}
 
-Due to escalating demand of self-driving vehicles, automotive industry is gradually shifting its attention in  manufacturing a variety of autonomous vehicles. The advancement of new technologies led the automotive industry to develop such vehicles for commercial and personal use as they mainly aim to reduce crashes, energy consumption, pollution, and congestion. However, the development of process of autonomous vehicles still faces signifant challenges to overcome. As it is apparent, each self-driving vehicle is composed of varaious subsystems that researchers of autonomous vehicle community analyze, design, develop, and test.  Intuitively, self-driving vehcles require thorough testing at the factory level before their demonstrations for  the commerical purpose. Such a testing procedure for each physical vehicle is inefficient and costly as it involves testing of different subsystems, such as steering, brake, shift, to name a few, of a vehicle. In this work, we model different modules/subsystems of a self-driving vehicle using machine learning techniques, where a physical self-driving vehicle is not required for testing.
+Due to escalating demand of self-driving vehicles, automotive industry is gradually shifting its attention in  manufacturing a variety of autonomous vehicles. The advancement of new technologies led the automotive industry to develop such vehicles for commercial and personal use as they mainly aim to reduce crashes, energy consumption, pollution, and congestion. However, the development of process of autonomous vehicles still faces signifant challenges to overcome. As it is apparent, each self-driving vehicle is composed of varaious subsystems that researchers of autonomous vehicle community analyze, design, develop, and test.  Intuitively, self-driving vehicles require thorough testing at the factory level before their demonstrations for  the commercial purpose. Such a testing procedure for each physical vehicle is inefficient and costly as it involves testing of different subsystems, such as steering, brake, shift, to name a few, of a vehicle. In this work, we model different modules/subsystems of a self-driving vehicle using machine learning techniques, where a physical self-driving vehicle is not required for testing.
 
 
 
@@ -275,78 +275,83 @@ Taking the acceleration pedal voltages as the input, the subsystem then produces
 % %
 %\todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.}
   \subsection{Shift Subsystem}
- The components that make up the shift subsystem are the friction clutch, bands, spring loaded valve, load sensor, shift valve, torque converter, gear stick, seals, and gasket~\footnote{\url{https://oards.com/car-automatic-transmission-system-components/}}. This subsystem can be classified as a single-input single-output system. A block diagram of the shift subsystem is seen in Fig.~\ref{fig:shiftModelArchitecture}. The subsystem takes the desired shifter gear value from the user as the input. Within the subsystem, the actual shifter gear is changed to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem.
- \begin{figure}[htbp]
-    \centering
-  \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
-    % place nodes
-    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
+  The components that make up the shift subsystem are the friction clutch, bands, spring loaded valve, load sensor, shift valve, torque converter, gear stick, seals, and gasket~\footnote{\url{https://oards.com/car-automatic-transmission-system-components/}}. This subsystem can be classified as a single-input single-output system. %
+%
+  % A block diagram of the shift subsystem is seen in Fig.~\ref{fig:shiftModelArchitecture}.
+  The subsystem takes the desired shifter gear value from the user as the input. Within the subsystem, the actual shifter gear is changed to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem.
+ % \begin{figure}[htbp]
+ %    \centering
+ %  \begin{tikzpicture}
+ %    \tikzstyle{every node} = [font=\footnotesize]
+ %    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+ %    % place nodes
+ %    \node[block,text width=1.75cm,text centered](shiftSubsystem){Shift subsystem};
 
-    % Connections
-    \draw[stealth-,thick]
-    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-1.9,0);
-    \draw[-stealth,thick]
-    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(1.9,0);
+ %    % Connections
+ %    \draw[stealth-,thick]
+ %    (shiftSubsystem.180)--node[very near end,above]{Desired Shifter Gear}++(-1.9,0);
+ %    \draw[-stealth,thick]
+ %    (shiftSubsystem.0)--node[very near end,above]{Actual Shifter Gear}++(1.9,0);
 
-  \end{tikzpicture}
-    \caption{Shift subsystem block diagram}
-    \label{fig:shiftModelArchitecture}
- \end{figure}
+ %  \end{tikzpicture}
+ %    \caption{Shift subsystem block diagram}
+ %    \label{fig:shiftModelArchitecture}
+ % \end{figure}
 
  %
 % \todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.}
   \subsection{Speed Subsystem}
-This speed subsystem would fall under the multiple-input single-output system. A block diagram representation can be found in Fig.~\ref{fig:speedModelArchitecture}. The subsystem has four inputs, the acceleration pedal position, brake pedal position, and shifter gear. Using these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is then the output of the system.
+  This speed subsystem would fall under the multiple-input single-output system. %A block diagram representation can be found in Fig.~\ref{fig:speedModelArchitecture}. %
+  The subsystem has four inputs, the acceleration pedal position, brake pedal position, and shifter gear. Using these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is then the output of the system.
 
- \begin{figure}[htbp]
-    \centering
-  \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2 cm]
-    % place nodes
-    \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
+%  \begin{figure}[htbp]
+%     \centering
+%   \begin{tikzpicture}
+%     \tikzstyle{every node} = [font=\footnotesize]
+%     \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1 cm, minimum height=2 cm]
+%     % place nodes
+%     \node[block,text width=1.25cm,text centered](speedSubsystem){Speed subsystem};
 
-    % Connections
-    \draw[stealth-,thick]
-    (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-1.9,0);
-    \draw[stealth-,thick]
-    (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-1.9,0);
-    \draw[stealth-,thick]
-    (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-1.9,0);
-    \draw[-stealth,thick]
-    (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(1.9,0);
+%     % Connections
+%     \draw[stealth-,thick]
+%     (speedSubsystem.140)--node[very near end,above]{Acceleration pedal position}++(-1.9,0);
+%     \draw[stealth-,thick]
+%     (speedSubsystem.180)--node[very near end,above]{Brake pedal position}++(-1.9,0);
+%     \draw[stealth-,thick]
+%     (speedSubsystem.-140)--node[near end,above]{Shifter Gear}++(-1.9,0);
+%     \draw[-stealth,thick]
+%     (speedSubsystem.0)--node[near end,above]{Vehicle Speed}++(1.9,0);
 
-  \end{tikzpicture}
-    % \captionsetup{justification=centering, margin=3cm}
-    % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
-    \caption{Speed subsystem block diagram}
-    \label{fig:speedModelArchitecture}
-\end{figure}
-%
+%   \end{tikzpicture}
+%     % \captionsetup{justification=centering, margin=3cm}
+%     % \includegraphics[width=2.5in]{figs/inkscape/brakeModelArchitecture}
+%     \caption{Speed subsystem block diagram}
+%     \label{fig:speedModelArchitecture}
+% \end{figure}
+% %
 %\todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.}
 
   \subsection{Speed Control Subsystem}
-  The speed control subsystem components include the cruise control switch, vehicle speed sensor, throttle sensor, and brake switch~\footnote{\url{https://www.freeasestudyguides.com/electrical-cruise-control-systems.html}}. This subsystem is a straightforward single-input single-output system, shown in Fig.~\ref{fig:speedControlModelArchitecture}. The Desired Vehicle Speed input is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the Actual Vehicle Speed. This value is then sent out to the rest of the vehicle system.
- \begin{figure}[htbp]
-    \centering
-  \begin{tikzpicture}
-    \tikzstyle{every node} = [font=\footnotesize]
-    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
-    % place nodes
-    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
+  The speed control subsystem components include the cruise control switch, vehicle speed sensor, throttle sensor, and brake switch~\footnote{\url{https://www.freeasestudyguides.com/electrical-cruise-control-systems.html}}. %This subsystem is a straightforward single-input single-output system, shown in Fig.~\ref{fig:speedControlModelArchitecture}. %
+  The Desired Vehicle Speed input is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the Actual Vehicle Speed. This value is then sent out to the rest of the vehicle system.
+ % \begin{figure}[htbp]
+ %    \centering
+ %  \begin{tikzpicture}
+ %    \tikzstyle{every node} = [font=\footnotesize]
+ %    \tikzstyle{block} = [draw, rectangle, fill=green!15, rounded corners=5pt, minimum width=1.5 cm, minimum height=1.5 cm]
+ %    % place nodes
+ %    \node[block,text width=1.75cm,text centered](speedControlSubsystem){Speed Control subsystem};
 
-    % Connections
-    \draw[stealth-,thick]
-    (speedControlSubsystem.180)--node[very near end,above]{Desired Vehicle Speed}++(-1.9,0);
-    \draw[-stealth,thick]
-    (speedControlSubsystem.0)--node[very near end,above]{Actual Vehicle Speed}++(1.9,0);
+ %    % Connections
+ %    \draw[stealth-,thick]
+ %    (speedControlSubsystem.180)--node[very near end,above]{Desired Vehicle Speed}++(-1.9,0);
+ %    \draw[-stealth,thick]
+ %    (speedControlSubsystem.0)--node[very near end,above]{Actual Vehicle Speed}++(1.9,0);
 
-  \end{tikzpicture}
-    \caption{Speed Control subsystem block diagram}
-    \label{fig:speedControlModelArchitecture}
- \end{figure}
+ %  \end{tikzpicture}
+ %    \caption{Speed Control subsystem block diagram}
+ %    \label{fig:speedControlModelArchitecture}
+ % \end{figure}
  %
 % % \todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.}
 
@@ -356,15 +361,16 @@ To start the modeling process, we first collected raw data of the subsystems ill
 
 
 \begin{itemize}
-\item Each vehicle subsystem will be able to track nonlinearities depicted in Fig.~\ref{fig:nonlinGraph} associated with small changes in the output of each subsystem. %
+  \item Each vehicle subsystem will be able to track nonlinearities %depicted in Fig.~\ref{fig:nonlinGraph} %
+        associated with small changes in the output of each subsystem. %
   %
-  \begin{figure}[htbp]
-    \centering
-    \captionsetup{justification=centering}
-    \includegraphics[width=2.5in]{figs/inkscape/nonlinearBehavior}
-    \caption{Nonlinear behavior of steering subsystem.}
-    \label{fig:nonlinGraph}
-  \end{figure}
+  % \begin{figure}[htbp]
+  %   \centering
+  %   \captionsetup{justification=centering}
+  %   \includegraphics[width=2.5in]{figs/inkscape/nonlinearBehavior}
+  %   \caption{Nonlinear behavior of steering subsystem.}
+  %   \label{fig:nonlinGraph}
+  % \end{figure}
 
 \item Each vehicle subsystem plant model will track any desired inputs within the specified error bounds\add{:}
 	\begin{itemize}
@@ -382,7 +388,8 @@ The vehicle plant models will satisfy the requirements listed below:
 \end{itemize}
 %
 
-All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, a team of researchers from AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior, depicted in Fig.~\ref{fig:nonlinGraph}, made it very challenging to complete features like lane tracking. The plant models developed in this work will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer, smoother manner.
+All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, a team of researchers from AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior %, depicted in Fig.~\ref{fig:nonlinGraph}, %
+made it very challenging to complete features like lane tracking. The plant models developed in this work will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer, smoother manner.
 
 
 \subsection{Steering System Modeling}
@@ -481,7 +488,7 @@ The brake system was modeled using only the manual log data. It was trained usin
 		{\includegraphics[width=0.90\linewidth]{figs/img/brake_new_neuralNetworkFig}}
 	\subcaptionbox{Model Output Tracking and Error Plots for Log Two Data \label{testedBrakeModel}}
 		{\includegraphics[width=0.90\linewidth]{figs/img/brake_new_neuralNetworkFigLog2Test}}
-	\caption{Brake System Training Plots}
+	\caption{Performance of the brake system modeling.}
 \end{figure}
 
 
@@ -533,6 +540,7 @@ For each vehicle subsystem, the results show that the neural network models were
 
 In this paper, we presented the effectiveness of the data-driven hardware-in-the-loop plant modeling process using deep learning. The neural network time series modeling method  allowed us to train models using the data we collected. These models that were developed met the predefined accuracy requirements, and so were tested using an open loop setup. For the conciseness, we  presented HIL plant modeling for three subsystems, which are steering, brake, and acceleration subsystems of the Lexus vehicle available at AutonomouStuff (the company who sponsored the project). Further testing should be completed for these subsystem models. Since time and availability constraints prevented us from testing the models using Hardware-in-the-Loop. Further testing is important to make sure the developed models are accurate and compatible with testing using hardware. Future work  could be to start developing controllers based off of these models.
 
+\clearpage
 \bibliographystyle{IEEEtran}
 \bibliography{bib/references.bib}
 
