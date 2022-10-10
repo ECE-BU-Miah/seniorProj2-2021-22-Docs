@@ -48,7 +48,9 @@ E-mail: \{hgrady,nnauman\}@mail.bradley.edu, smiah@bradley.edu }
 
 \begin{abstract}
 
-  In this paper, we present data-driven hardware-in-the-loop (HIL) plant models of different subsystems of a self-driving vehicle. Despite numerous concerns, the automotive industry is still investing remarkable resources for producing self-driving vehicles to be available in the market. Among numerous challenges in the development process of such vehicles are the validation and testing process of various subsystems. Here we provide data-driven models of different subsystems so that automotive industries can validate and test autonomous vehicles without the need of a physical vehicle, which indeed reduces the considerable amount of cost for automotive industries. The vehicle subsystems considered in this work include steering, acceleration, brake, shift, speed, and speed control subsystems. Each of these subsystems is either a multi-input single output or single-input single output system. A Lexus RX450H self-driving vehicle is employed to collect raw data (inputs and outputs data for different subsystems) offline. We used the deep learning toolbox available in the commercial software package, MATLAB/SIMULINK, for modeling each of these systems. The contribution of this paper is twofold. First, collecting real time raw data from a physical Lexus RX450H vehicle and use it to develop machine learning models to represent the vehicle subsystems. Second, subsystem models created using machine learning tools for the Lexus vehicle are tested using Hardware-in-the-Loop. Therefore, the results of such modeling could be used for validating and testing without the need for a physical self-driving vehicle. The proposed modeling results could be useful for reducing cost of vehicles' development process since a physical vehicle is not required for validation and testing. However, the performance of the steering, acceleration, and brake subsystems demonstrated for conciseness purpose. .
+  In this paper, we present data-driven hardware-in-the-loop (HIL) plant models of different subsystems of a self-driving vehicle. Despite numerous concerns, the automotive industry is still investing remarkable resources into the production of self-driving vehicles. Among the challenges in the development process of such vehicles are the validation and testing process of various subsystems. Here we provide data-driven models of different subsystems so that the  automotive industry can validate and test autonomous vehicles without the need of a physical vehicle, which would reduce the considerable amount of cost to the automotive industry. The vehicle subsystems considered in this work include the steering, acceleration, brake, shift, speed, and speed control subsystems. Each of these subsystems is either a multi-input single output or single-input single output system. A Lexus RX450H self-driving vehicle is employed to collect raw data (inputs and outputs data for different subsystems) offline. We used the deep learning toolbox available in the commercial software package, MATLAB/SIMULINK, for modeling each of these systems. The contribution of this paper is twofold. First, collecting real time raw data from a physical Lexus RX450H vehicle and using it to develop machine learning models to represent the vehicle subsystems. Second, subsystem models created using machine learning tools for the Lexus vehicle are tested using Hardware-in-the-Loop. Therefore, the results of such modeling could be used for validation and testing without the need for a physical self-driving vehicle. The proposed modeling results could be useful for reducing the cost of the vehicle development process, since a physical vehicle is not required for validation and testing. 
+  
+  %However, the performance of the steering, acceleration, and brake subsystems demonstrated for conciseness purpose. .
 
 \end{abstract}
 
@@ -63,11 +65,11 @@ Data-driven modeling, deep learning, hardware-in-the-loop, self-driving vehicle,
 %  subsystems of autonomous vehicles, Hint: Erik mentioned already that employees
 %can perform testing without the physical vehicle. You just need to extend his statement to write the motivational paragraph behind this project}
 
-Due to escalating demand of self-driving vehicles, automotive industry is gradually shifting its attention in  manufacturing a variety of autonomous vehicles. The advancement of new technologies led the automotive industry to develop such vehicles for commercial and personal use as they mainly aim to reduce crashes, energy consumption, pollution, and congestion. However, the development of process of autonomous vehicles still faces signifant challenges to overcome. As it is apparent, each self-driving vehicle is composed of varaious subsystems that researchers of autonomous vehicle community analyze, design, develop, and test.  Intuitively, self-driving vehicles require thorough testing at the factory level before their demonstrations for  the commercial purpose. Such a testing procedure for each physical vehicle is inefficient and costly as it involves testing of different subsystems, such as steering, brake, shift, to name a few, of a vehicle. In this work, we model different modules/subsystems of a self-driving vehicle using machine learning techniques, where a physical self-driving vehicle is not required for testing.
+Due to the escalating demand for self-driving vehicles, the automotive industry is gradually shifting its attention toward manufacturing a variety of autonomous vehicles. The advancement of new technologies has led the automotive industry to develop such vehicles for commercial and personal use, with the aim to reduce crashes, energy consumption, pollution and congestion. However, the development process for autonomous vehicles still faces significant challenges. Each self-driving vehicle is composed of various subsystems that researchers of the autonomous vehicle community analyze, design, develop, and test.  Intuitively, self-driving vehicles require thorough testing at the factory level before they can be used by the public. Such a testing procedure for each physical vehicle is inefficient and costly, as it involves the testing of different vehicle subsystems, such as the steering, brake and shift subsystems. In this work, we model different modules/subsystems of a self-driving vehicle using machine learning techniques, where a physical self-driving vehicle is not required for testing.
 
 
 
-Note that modeling vehicle subsystems is a pre-requisite for the development of reliable controllers for autonomous vehicles to be managed in the era of modern transportation systems in general. In particular, this work models different subsystems for a self-driving vehicle of the vehicle fleet shown in Fig.~\ref{fig:fleet}. %
+Note that modeling vehicle subsystems is a pre-requisite for the development of reliable controllers for autonomous vehicles to be managed in the era of modern transportation systems. In particular, this work models different subsystems for a self-driving vehicle of the vehicle fleet shown in Fig.~\ref{fig:fleet}. %
 %
 \begin{figure}[htbp]
   \centering
@@ -76,7 +78,7 @@ Note that modeling vehicle subsystems is a pre-requisite for the development of 
   \label{fig:fleet}
 \end{figure}
 %
-Such modeling process would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. %
+%Such modeling process would allow companies to continue crucial deliveries or transports of their products even if there is a shortage of drivers. %
 %
 % \begin{figure}[htbp]
 %   \centering
@@ -97,16 +99,16 @@ Such modeling process would allow companies to continue crucial deliveries or tr
 
 
 Autonomous vehicles have the ability to make roads safer for drivers
-and pedestrians alike. To develop a reliable and safe transportation system for
-modern world, a large body of research in the field of autonomous vehicles is
-being conducted in recent decades~\cite{Liu2017,Prasad2020}. In fact, the research on this topic has been conducted from a variety of perspectives, such as the application of connected and autonomous vehicle technology~\cite{DoT2017}, navigation and path control of self-driving vehicles~\cite{Duong2018,Chajan2021}. Authors in~\cite{Saruchi2015} worked on active front steering for steer-by-wire vehicle.  Steering system of high speed intelligent vehicles has been modeled using system identification~\cite{Li1999}. Therefore, it is clear that numerous research pertainting to self-driving vehicles has been pursued, especially, in the past two decades. There are two operating modes considered for the autonomous vehicle employed in this work: %
+and pedestrians alike. To develop a reliable and safe transportation system for the 
+modern world, a large body of research in the field of autonomous vehicles has
+been generated~\cite{Liu2017,Prasad2020}. In fact, the research on this topic has been conducted from a variety of perspectives, such as the application of connected and autonomous vehicle technology~\cite{DoT2017}, and the navigation and path control of self-driving vehicles~\cite{Duong2018,Chajan2021}. Authors in~\cite{Saruchi2015} worked on active front steering for a steer-by-wire vehicle. The steering system of high speed intelligent vehicles has been modeled using system identification~\cite{Li1999}. Therefore, it is clear that a large amount of research pertaining to self-driving vehicles has been pursued, especially in the past two decades. There are two operating modes considered for the autonomous vehicle employed in this work: %
 %
 \begin{itemize}
   \item Manual-drive and
   \item by-wire or autonomous~\cite{Saruchi2015}.
 \end{itemize}
 %
-Manual-drive operation occurs when the driver has complete control over the vehicle, including controlling the steering, speed, acceleration, and braking of the vehicle. Autonomous operation occurs where the vehicle is controlled by a computer under driver supervision.
+Manual-drive operation occurs when the driver has complete control over the vehicle; including controlling the steering, speed, acceleration and braking of the vehicle. Autonomous operation occurs when the vehicle is controlled by a computer under driver supervision.
 %
 Usually, there are six main subsystems of a self-driving vehicle: %
 %
@@ -124,7 +126,7 @@ Usually, there are six main subsystems of a self-driving vehicle: %
 \item speed control (cruise).
 \end{enumerate*}
 %
-These subsystems are to be modeled to get an accurate representation of how
+These subsystems are modeled in order to get an accurate representation of how
 the vehicle is to be controlled. %
 %Within the scope of this project and to expedite the modeling process, commercially available modeling tools in Mathworks' MATLAB, System Identification app in the System Identification Toolbox and Neural Network Time Series app in the Deep Learning toolbox, were used to model six subsystems for a Lexus vehicle platform, which is an experimental autonomous vehicle platform that belongs to AutonomouStuff Solutions~\footnote{\url{https://autonomoustuff.com/}}. By creating these software models, the company can run tests using them without needing the physical vehicle. As a result, these models could potentially allow the company to get more testing done.
 %
@@ -132,18 +134,18 @@ The first subsystem we shall model is the steering model, and then we will move 
 the other subsystems. There are already controllers in place for the Lexus
 vehicle platform, but their ability to match the desired input specified by the vehicle operator
 %\comment{reliability}{Need to define what do you mean by reliability, be very specific}
-is lower than expected due to non-linear
+is lower than expected due to the non-linear
 behaviors of the torque voltages required to control each subsystem. The scope
 of this project includes developing mathematical and/or data-driven models for each subsystem so that one can easily implement control systems that improve the reliability of the
-autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a minimum best fit percentage between 85 to 95 percent and fall within the error bounds defined for each subsystem. Once these models are developed, they will be tested using Hardware-in-the-Loop (HIL) bench.
-Once there is confidence in each model, these models can be used on the   HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
+autonomous vehicle platform. These models will be considered reliable if they can track actual vehicle subsystem behaviors with a minimum best fit percentage between 85 to 95 percent and fall within the error bounds defined for each subsystem. Once these models are developed, they will be tested using a Hardware-in-the-Loop (HIL) bench.
+Once there is confidence in each model, these models can be used on the HIL bench to develop controllers that will remove the non-linear behaviors of each vehicle subsystem.
 
 
 \section{Self-Driving Vehicle Subsystems}
 \label{sec:selfDrivingVehicleOverview}
 
-In this section, we illustrate subsystems of the self-driving vehicle highlighting  the hardware-in-the-loop modeling process conducted in the work. %
-As mentioned, we focus on  six  main subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. Fig.~\ref{fig:highLevelSystemArchitecture} outlines these six subsystems in a Lexus self-driving vehicle provided by the company, Hexagon $|$ AutonomouStuff (www.autonomoustuff.com). %
+In this section, we illustrate subsystems of the self-driving vehicle; highlighting the hardware-in-the-loop modeling process conducted in the work. %
+As mentioned, we focus on  six  main subsystems which are the steering, acceleration, brake, speed, shift, and speed control systems. Fig.~\ref{fig:highLevelSystemArchitecture} outlines these six subsystems in a Lexus vehicle similar to the one provided by the company, Hexagon $|$ AutonomouStuff (www.autonomoustuff.com). %
 %
 \begin{figure}[htbp]
   \centering
@@ -152,7 +154,7 @@ As mentioned, we focus on  six  main subsystems which are the steering, accelera
   \label{fig:highLevelSystemArchitecture}
 \end{figure}
 %
-However, actual self-driving vehicle (Lexus RX450H) that is used for collecting input-output data for all of these subsystems is shown in the picture of Fig.~\ref{fig:lexusvehicle}. A team of the project members visited the site to collect raw data for modeling  steering, brake, and acceleration subsystems of the vehicle. %
+However, the actual self-driving vehicle (Lexus RX450H) that is used for collecting input-output data for all of these subsystems is shown in the picture of Fig.~\ref{fig:lexusvehicle}. A team of the project members visited the site to collect raw data for modeling the steering, brake, and acceleration subsystems of the vehicle. %
 %
 \begin{figure}[htbp]
 	\centering
@@ -163,7 +165,7 @@ However, actual self-driving vehicle (Lexus RX450H) that is used for collecting 
 %
 
 
-Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, and thus can not be treated as a single input. Also, each subsystem will be treated as a single output system. The brake subsystem is shown to have two outputs but the behaviors of one of the outputs is already known so it will be modeled based on the other output's behavior. In the following we give a brief description of each of the subsystems of the self-driving vehicle modeled in this work. Each subsystem sends torque voltages to a motor that will control the subsystem.
+Each of the six subsystems will be treated as a multiple-input single-output (MISO) system. For each subsystem, every input that is a torque voltage is actually two torque voltage signals, and thus cannot be treated as a single input. The brake subsystem is shown to have two outputs, but the behaviors of one of the outputs is already known, so it will be modeled based on the other output's behavior. In the following sections we give a brief description of each of the subsystems of the self-driving vehicle modeled in this work. Each subsystem sends torque voltages to a motor that will control the subsystem.
 
 \subsection{Steering Subsystem}
 \label{sec:steeringSubsystem}
@@ -216,7 +218,7 @@ The ultimate goal of this subsystem is to control the steering angle for the veh
   \label{fig:steeringModelBlockDiagram}
 \end{figure}
 %
-The torque voltages applied to the power steering motor are denoted by $v_{A}$ and $v_{B},$ respectively.  The error signal, which is the difference between the target and the actual directions of the vehicle, is passed on to the steering controller. The outputs of the steering controller are the torque voltages that are applied to the power steering motors of the steering subsystems of the vehicle.
+The torque voltages applied to the power steering motor are denoted by $v_{A}$ and $v_{B},$ respectively. These voltages are taken from a torque sensor located on the vehicle's steering column. The error signal, which is the difference between the target and the actual steering angles of the vehicle, is passed on to the steering controller. The outputs of the steering controller are the torque voltages that are applied to the power steering motors of the steering subsystems of the vehicle.
 
 
   \subsection{Brake Subsystem}
@@ -248,7 +250,7 @@ The torque voltages applied to the power steering motor are denoted by $v_{A}$ a
     \label{fig:brakeModelArchitecture}
 \end{figure}
 %
-The subsystem takes the brake pedal pressure voltages, brake pedal stroke voltages, and the brake pedal on/off switch values as inputs. Using these values, it generates a new brake pedal position (in percentage) and a boolean value called brake pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed.
+The subsystem takes the brake pedal pressure voltages, brake pedal stroke voltages, and the brake pedal on/off switch values as inputs. Using these values, it generates a new brake pedal position (as a percentage) and a boolean value called brake pressed. This boolean value indicates to the user whether or not the brake pedal is being pressed.
 
 \subsection{Acceleration Subsystem}
 
@@ -278,7 +280,7 @@ Taking the acceleration pedal voltages as the input, the subsystem then produces
   The components that make up the shift subsystem are the friction clutch, bands, spring loaded valve, load sensor, shift valve, torque converter, gear stick, seals, and gasket~\footnote{\url{https://oards.com/car-automatic-transmission-system-components/}}. This subsystem can be classified as a single-input single-output system. %
 %
   % A block diagram of the shift subsystem is seen in Fig.~\ref{fig:shiftModelArchitecture}.
-  The subsystem takes the desired shifter gear value from the user as the input. Within the subsystem, the actual shifter gear is changed to better reflect the desired gear. This actual shifter gear value is then the output of the shift subsystem.
+  The subsystem takes the desired shifter gear value from the user as the input. Within the subsystem, the actual shifter gear is changed to better reflect the desired gear. This actual shifter gear value is then the output of the subsystem.
  % \begin{figure}[htbp]
  %    \centering
  %  \begin{tikzpicture}
@@ -301,7 +303,7 @@ Taking the acceleration pedal voltages as the input, the subsystem then produces
  %
 % \todo[inline]{Please see how I described block diagrams for steering, and brake subsystems. Use the same format for explaining all the subsystems.  You cannot just place a figure without referring and explaining the figure in the text.}
   \subsection{Speed Subsystem}
-  This speed subsystem would fall under the multiple-input single-output system. %A block diagram representation can be found in Fig.~\ref{fig:speedModelArchitecture}. %
+  The speed subsystem would fall under the multiple-input single-output system category. %A block diagram representation can be found in Fig.~\ref{fig:speedModelArchitecture}. %
   The subsystem has four inputs, the acceleration pedal position, brake pedal position, and shifter gear. Using these inputs, the speed subsystem finds the vehicle speed. This vehicle speed is then the output of the system.
 
 %  \begin{figure}[htbp]
@@ -333,7 +335,7 @@ Taking the acceleration pedal voltages as the input, the subsystem then produces
 
   \subsection{Speed Control Subsystem}
   The speed control subsystem components include the cruise control switch, vehicle speed sensor, throttle sensor, and brake switch~\footnote{\url{https://www.freeasestudyguides.com/electrical-cruise-control-systems.html}}. %This subsystem is a straightforward single-input single-output system, shown in Fig.~\ref{fig:speedControlModelArchitecture}. %
-  The Desired Vehicle Speed input is set by the user and sent to the speed control subsystem. Taking this input, the subsystem calculates the Actual Vehicle Speed. This value is then sent out to the rest of the vehicle system.
+  The Desired Vehicle Speed input is set by the user and sent to the speed control subsystem. Taking this input, the subsystem updates the Actual Vehicle Speed to better reflect the desired value. This value is then sent out to the rest of the vehicle system.
  % \begin{figure}[htbp]
  %    \centering
  %  \begin{tikzpicture}
@@ -357,7 +359,7 @@ Taking the acceleration pedal voltages as the input, the subsystem then produces
 
 \section{Modeling Vehicle Subsystems}
 
-To start the modeling process, we first collected raw data of the subsystems illustrated in the previous section. The input-output data are then used to model different subsystems of the self-driving vehicle using deep learning toolbox available in a commercial modeling software SIMULINK\footnote{\url{https://www.mathworks.com/products/simulink.html}}. To demonstrate the modeling accuracy, to evaluate the effectiveness of our models, and to develop safe and reliable controllers for each subsystem, the following system requirements are to be met:
+To start the modeling process, we first collected raw data of the subsystems illustrated in the previous section. The input-output data were then used to model different subsystems of the self-driving vehicle using the deep learning toolbox available in the commercial modeling software SIMULINK\footnote{\url{https://www.mathworks.com/products/simulink.html}}. To demonstrate the modeling accuracy, to evaluate the effectiveness of our models, and to develop safe and reliable controllers for each subsystem, the following system requirements are to be met:
 
 
 \begin{itemize}
@@ -388,18 +390,18 @@ The vehicle plant models will satisfy the requirements listed below:
 \end{itemize}
 %
 
-All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, a team of researchers from AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform, that when small changes in the steering angle (less than five degrees) occurred, the torque voltages would momentarily stall and then suddenly change causing a more drastic change. This behavior %, depicted in Fig.~\ref{fig:nonlinGraph}, %
-made it very challenging to complete features like lane tracking. The plant models developed in this work will aid in the development of controllers that will remove the nonlinearities allowing features like lane tracking to be implemented in a safer, smoother manner.
+All of the subsystems have nonlinear behaviors when there are small changes in the output of the subsystem. The steering subsystem, for example, should behave in a smooth, continuous manner. However, a team of researchers from AutonomouStuff observed that when trying to implement features such as lane tracking for the Lexus vehicle platform,  the torque voltages would momentarily stall and then suddenly change when small changes in the steering angle (less than five degrees) occurred. This behavior %, depicted in Fig.~\ref{fig:nonlinGraph}, %
+made it very challenging to complete features like lane tracking. The plant models developed in this work will aid in the development of controllers that will remove the nonlinearities, allowing features like lane tracking to be implemented in a safer, smoother manner.
 
 
 \subsection{Steering System Modeling}
 To develop a model of the steering system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was not accurate and did not track the output of the steering system data. The transfer function model we developed was more reliable tracking the output of the steering system data, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the steering system data and stayed within the error requirements.
 
 \subsection{Acceleration System Modeling}
-To develop a model of the acceleration system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was accurate for the by-wire model and tracked the output of the acceleration system data, but did not meet the error requirements. The transfer function model we developed was more reliable tracking the output of the acceleration system data for the manual mode operation, but was unable to meet the error requirements, as there were sudden changes that forced high error peaks. Then we employed a neural network model, making use of the Neural Network Time Series Toolbox in MATLAB. With the neural network model, the model was able to reliably and accurately track the output of the acceleration system data and stayed within the error requirements.
+To develop a model of the acceleration system, we employed multiple methods. The first method that we tried was generating a NARX model and a transfer function model, making use of the System Identification Toolbox in MATLAB. The NARX model we developed was accurate for the by-wire model and tracked the output of the acceleration system data, but did not meet the error requirements. The transfer function model we developed was more reliable tracking the output of the acceleration system data for the manual mode operation, but was unable to meet the error requirements, due to sudden changes that caused high error peaks. We then tried using a neural network model, using the Neural Network Time Series Toolbox in MATLAB. The neural network model reliably and accurately tracked the output of the acceleration system data while staying within the error requirements.
 
 \subsection{Brake System Modeling}
-To create a brake system model, we first tried generating transfer function models using MATLAB’s System Identification Toolbox. After generating multiple transfer function models and trying many different data log combinations, we still couldn’t find a model that was completely accurate across all combinations and that was below the error bound of 5\% for all combinations. Once this became clear Neural Network models were created using the Neural Network Time Series Toolbox provided by MATLAB to see if they could create accurate brake models. Using this we were able to create a model that accurately tracked the data we collected from the brake system and that stayed within the 5\% error bound.
+To create a brake system model, we first tried generating transfer function models using MATLAB’s System Identification Toolbox. After generating multiple transfer function models and trying many different data log combinations, we still couldn’t find a model that was completely accurate across all combinations and that was below the error bound of 5\% for all combinations. Once this became clear, neural network models were created using the Neural Network Time Series Toolbox provided by MATLAB to see if they could create accurate brake models. Using this we were able to create a model that accurately tracked the data we collected from the brake system and that stayed within the 5\% error bound.
 
 
 
@@ -413,7 +415,7 @@ data from the steering, acceleration, and braking subsystems in an autonomous
 vehicle. The data we collected will be used to generate and then verify our
 models. We collected data on the Lexus RX450H vehicle platform shown in
 Fig.~\ref{fig:lexusvehicle}. %
-The following  the hardware components required to collect the data:
+The following hardware components that were used to collect the data:
 	\begin{itemize}
     		\item Laptop
     		\item PACMod ECU
@@ -445,7 +447,7 @@ To develop the model of the steering, acceleration, and brake subsystems using a
 
 \subsubsection{Steering System}
 %
-In Fig.~\ref{fig:InitialSteeringModel}, the top plot shows the simulated output of the neural network when the input torque voltages and desired steering angle from a subset of data (subset~\#1) collected offline is fed into the model. The bottom plot shows the error between the desired steering angle and the output of the neural network. For the steering model, the error should be less than 5 degrees or approximately 0.1 radians. %Fig.~\ref{testedSteeringModel} shows the same plots except data subset 2 was used instead. %
+In Fig.~\ref{fig:InitialSteeringModel}, the top plot shows the simulated output of the neural network (Actual Output and Desired Output) when the input torque voltages and desired steering angle from a subset of data (subset~\#1) collected offline is fed into the model. The bottom plot shows the error between the desired steering angle and the output of the neural network. For the steering model, the error should be less than 5 degrees or approximately 0.1 radians. %Fig.~\ref{testedSteeringModel} shows the same plots except data subset 2 was used instead. %
 %
 \begin{figure}[htbp]
   \centering
@@ -466,7 +468,7 @@ In Fig.~\ref{fig:InitialSteeringModel}, the top plot shows the simulated output 
 
 \subsubsection{Acceleration System}
 %
-In Fig.~\ref{initalAccelModel}, the top plot shows the simulated output of the neural network when the input torque voltages and desired acceleration pedal position from data subset 1 are fed into the model. The bottom plot shows the error between the acceleration pedal position and the output of the neural network. For the acceleration model, the error should be less than 5\% or 0.05. Fig.~\ref{testedAccelModel} shows the same plots except data subset 2 was used instead.
+In Fig.~\ref{initalAccelModel}, the top plot shows the simulated output of the neural network when the input torque voltages and desired acceleration pedal position from data subset 1 are fed into the model. The bottom plot shows the error between the acceleration pedal position and the output of the neural network. For the acceleration model, the error should be less than 5\% or 0.05. Fig.~\ref{testedAccelModel} shows the same plots except data subset 2 was used instead. The model generated was able to follow the data from the logs very closely, and so met the accuracy requirements we had set. 
 
 \begin{figure}[htbp]
 	\centering
@@ -480,7 +482,7 @@ In Fig.~\ref{initalAccelModel}, the top plot shows the simulated output of the n
 
 \subsubsection{Brake System}
 
-The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in Fig.~\ref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in Fig.~\ref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%. The graphs show how the model tracks the data log and the error between the model output and the data log output. The y-axis for both graphs, “Output and Target” represents the Actual and Desired Brake Pedal Position as a percentage. The x-axis for both graphs represents the Time Steps, with $T_s$ equal to 33ms.
+The brake system was modeled using only the manual log data. It was trained using the data from the first brake log, and the result and error plots can be seen in Fig.~\ref{initalBrakeModel}. The plots show that the model is able to predict the outputs relatively accurately, along with keeping the error below 5\%. In order to further verify the accuracy of the model, it was tested using data from the second brake log. The results from that test, shown in Fig.~\ref{testedBrakeModel}, also show that the model can accurately predict the output values and do this within the accepted error bound of 5\%. The graphs show how the model tracks the data log and the error between the model output and the data log output. The y-axis for both graphs, “Output and Target” represents the Actual and Desired Brake Pedal Position as a percentage. Target represents the pedal position values from the brake data log we fed into our model. Output represents the pedal position values that the model produced. The x-axis for both graphs represents the Time Steps, with $T_s$ equal to 33ms. The brake subsystem neural network model was able to meet both the best fit and error requirements that had been set earlier, making it an accurate model. 
 
 \begin{figure}[h]
 	\centering
@@ -538,7 +540,7 @@ For each vehicle subsystem, the results show that the neural network models were
 \section{Conclusion and Future Work}
 \label{sec:conclustionAndFutureWork}
 
-In this paper, we presented the effectiveness of the data-driven hardware-in-the-loop plant modeling process using deep learning. The neural network time series modeling method  allowed us to train models using the data we collected. These models that were developed met the predefined accuracy requirements, and so were tested using an open loop setup. For the conciseness, we  presented HIL plant modeling for three subsystems, which are steering, brake, and acceleration subsystems of the Lexus vehicle available at AutonomouStuff (the company who sponsored the project). Further testing should be completed for these subsystem models. Since time and availability constraints prevented us from testing the models using Hardware-in-the-Loop. Further testing is important to make sure the developed models are accurate and compatible with testing using hardware. Future work  could be to start developing controllers based off of these models.
+In this paper, we presented the effectiveness of the data-driven hardware-in-the-loop plant modeling process using deep learning. The neural network time series modeling method  allowed us to train models using the data we collected. These models that were developed met the predefined accuracy requirements, and so were tested using an open loop setup. For conciseness, we presented HIL plant modeling for three subsystems, which are the steering, brake, and acceleration subsystems of the Lexus vehicle available at AutonomouStuff (the company who sponsored the project). Further testing should be completed for these subsystem models. Since time and availability constraints prevented us from testing the models using Hardware-in-the-Loop, further testing is important to make sure the developed models are accurate and compatible with testing using hardware. Future work  could be to start developing controllers based off of these models.
 
 \clearpage
 \bibliographystyle{IEEEtran}
