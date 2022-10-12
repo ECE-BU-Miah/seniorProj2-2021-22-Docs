@@ -574,86 +574,86 @@
 		\end{figure}
 \end{frame}
 
-\begin{frame}
-
-  Therefore, approximated output signal can be written as:
-\begin{align}
-  \label{eq:approximatePolicyActorWeights}
-    \mathbf{y} = \mathbf{W}^T\bm{\sigma}(\mathbf{x}),
-  \end{align}
+%\begin{frame}
 %
-where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{p}$ with components of weight matrix ${\bf W}$ shown in Fig.~\ref{fig:nnActor} are given by %
+%  Therefore, approximated output signal can be written as:
+%\begin{align}
+%  \label{eq:approximatePolicyActorWeights}
+%    \mathbf{y} = \mathbf{W}^T\bm{\sigma}(\mathbf{x}),
+%  \end{align}
+%%
+%where $\bm{\sigma}:\mathbb{R}^n\to\mathbb{R}^{p}$ with components of weight matrix ${\bf W}$ shown in Fig.~\ref{fig:nnActor} are given by %
+%%
+%\begin{align*}
+%  {\bf W} = 
+%  \begin{bmatrix}
+%    w^{1,1} &  w^{1,2} & \ldots &w^{1,m}\\
+%    w^{2,1} & w^{2,2}& \ldots &w^{1,m}\\
+%    \vdots & \ddots & \ldots &\vdots\\
+%    w^{p,1} & w^{p,2}& \ldots &w^{p,m}
+%  \end{bmatrix}.
+%\end{align*}
+%%
 %
-\begin{align*}
-  {\bf W} = 
-  \begin{bmatrix}
-    w^{1,1} &  w^{1,2} & \ldots &w^{1,m}\\
-    w^{2,1} & w^{2,2}& \ldots &w^{1,m}\\
-    \vdots & \ddots & \ldots &\vdots\\
-    w^{p,1} & w^{p,2}& \ldots &w^{p,m}
-  \end{bmatrix}.
-\end{align*}
+%Now take $\eta$ data points and form the set of linear equations as: %
+%%
+%\begin{align*}
+%&  \bm{\sigma}^T(\mathbf{x}_k) \mathbf{W}  \approx     \left(\mathbf{y}_{k}^{[d]}\right)^T\\
+% & \bm{\sigma}^T(\mathbf{x}_{k+1}) \mathbf{W}  \approx     \left(\mathbf{y}_{k+1}^{[d]}\right)^T\\
+%                                            &\vdots \\
+% & \bm{\sigma}^T(\mathbf{x}_{k+\eta-1}) \mathbf{W}  \approx     \left(\mathbf{y}_{k+\eta-1}^{[d]}\right)^T  
+%\end{align*}
+%%
+%\end{frame}
+
+
+%\begin{frame}
+%  In compact form:
+%  \begin{align*}
+%    \bm{\Sigma}\mathbf{W} \approx  \mathbf{U}^{[d]},\qquad\text{with}
+%    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
+%  \end{align*}
+%  %
+%  $\mathbb{R}^{\eta\times p}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf x}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf y}_{\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
 %
-
-Now take $\eta$ data points and form the set of linear equations as: %
+%  Let $\bm{\Sigma}\mathbf{W}\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta$ can be written as:
+%  \begin{align*}
+%    \delta = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
+%  \end{align*}
 %
-\begin{align*}
-&  \bm{\sigma}^T(\mathbf{x}_k) \mathbf{W}  \approx     \left(\mathbf{y}_{k}^{[d]}\right)^T\\
- & \bm{\sigma}^T(\mathbf{x}_{k+1}) \mathbf{W}  \approx     \left(\mathbf{y}_{k+1}^{[d]}\right)^T\\
-                                            &\vdots \\
- & \bm{\sigma}^T(\mathbf{x}_{k+\eta-1}) \mathbf{W}  \approx     \left(\mathbf{y}_{k+\eta-1}^{[d]}\right)^T  
-\end{align*}
+%Weight matrix ${\bf W}$ can then be found minimizing the sum--of--square error $\delta$ defined by %
+%%
+%\begin{align*}
+%  \delta = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W})^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W})\right].
+%\end{align*}
+%%
+%Taking the derivative of $\delta$ with respect to ${\bf W}$ yields 
+%%
+%\begin{align}
+%  \frac{\partial\delta}{\partial\mathbf{W}} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}
+%  \label{eq:actorWeightsGradient}
+%\end{align}
+%%
 %
-\end{frame}
+%\end{frame}
 
-
-\begin{frame}
-  In compact form:
-  \begin{align*}
-    \bm{\Sigma}\mathbf{W} \approx  \mathbf{U}^{[d]},\qquad\text{with}
-    % \hat{\mathbf{U}} \approx \mathbf{U}^{[d]}, 
-  \end{align*}
-  %
-  $\mathbb{R}^{\eta\times p}\ni \bm{\Sigma} = [\bm{\Sigma}_0,\bm{\Sigma}_1,\ldots,\bm{\Sigma}_{\eta -1}]^T$ with $\bm{\Sigma}_\kappa = \bm{\sigma}^T({\bf x}_{k+\kappa})$ and $\mathbb{R}^{\eta\times m}\ni {\bf U}^{[d]} = [{\bf U}_0,{\bf U}_1,\ldots, {\bf U}_{\eta-1}]^T$ with ${\bf U}_\kappa = \left({\bf y}_{\kappa}\right)^T$ for $\kappa = 0,1,\ldots,\eta-1.$
-
-  Let $\bm{\Sigma}\mathbf{W}\equiv \hat{\mathbf{U}},$ sum-of-squared error, $\delta$ can be written as:
-  \begin{align*}
-    \delta = \frac{1}{2}\|\mathbf{U}^{[d]} - \hat{\mathbf{U}}\|^2
-  \end{align*}
-
-Weight matrix ${\bf W}$ can then be found minimizing the sum--of--square error $\delta$ defined by %
+%\begin{frame}
 %
-\begin{align*}
-  \delta = \frac{1}{2}\|{\bf U}^{[d]} - \bm{\Sigma} {\bf W}\|^2  = \frac{1}{2}\mathrm{Tr}\left[({\bf U}^{[d]} - \bm{\Sigma} {\bf W})^T({\bf U}^{[d]} - \bm{\Sigma} {\bf W})\right].
-\end{align*}
 %
-Taking the derivative of $\delta$ with respect to ${\bf W}$ yields 
+%  Setting $\frac{\partial\delta}{\partial\mathbf{W}}$ to zero yields
+%  \begin{align*}
+%    {\bf W} = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
+%  \end{align*}
+%  
+%$\bullet$ Hidden layer to output layer weight is updated at each policy iteration $r=0,1,\ldots$ using gradient descent approach as:
 %
-\begin{align}
-  \frac{\partial\delta}{\partial\mathbf{W}} = - \bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}
-  \label{eq:actorWeightsGradient}
-\end{align}
+%\begin{multline}
+%  \mathbf{W}^{(r+1)} = \mathbf{w}^{(r)} - \ell\frac{\partial\delta}{\partial\mathbf{W}}= \mathbf{W}^{(r)} - \ell\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}^{(r)}\right)\\
+%  = \mathbf{w}^{(r)}-\ell \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}^{(r)} - \mathbf{U}^{[d]}\right)
+%  \label{eq:actorWeightUpdate}
+%\end{multline}
 %
-
-\end{frame}
-
-\begin{frame}
-
-
-  Setting $\frac{\partial\delta}{\partial\mathbf{W}}$ to zero yields
-  \begin{align*}
-    {\bf W} = \left(\bm{\Sigma}^T\bm{\Sigma}\right)^T\bm{\Sigma}^T{\bf U}^{[d]}.
-  \end{align*}
-  
-$\bullet$ Hidden layer to output layer weight is updated at each policy iteration $r=0,1,\ldots$ using gradient descent approach as:
-
-\begin{multline}
-  \mathbf{W}^{(r+1)} = \mathbf{w}^{(r)} - \ell\frac{\partial\delta}{\partial\mathbf{W}}= \mathbf{W}^{(r)} - \ell\left(-\bm{\Sigma}^T\mathbf{U}^{[d]} + \bm{\Sigma}^T \bm{\Sigma}\mathbf{W}^{(r)}\right)\\
-  = \mathbf{w}^{(r)}-\ell \bm{\Sigma}^T\left(\bm{\Sigma}\mathbf{W}^{(r)} - \mathbf{U}^{[d]}\right)
-  \label{eq:actorWeightUpdate}
-\end{multline}
-
-\end{frame}
+%\end{frame}
 
 \begin{frame}{Modeling using Neural Networks}{}
 	\begin{block}{}
