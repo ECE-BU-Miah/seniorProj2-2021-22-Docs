@@ -671,10 +671,12 @@
 \begin{frame}{Modeling Vehicle Subsystems}{System Requirements}
 	\begin{block}{Specifications}
 	\begin{minipage}[t]{0.62\linewidth}    
-    Proposed vehicle subsystem models are expected to fulfill requirements listed below:
+    Proposed vehicle subsystem models are expected to fulfill requirements listed below'
+    :
 	\begin{itemize}
     		\item Resulting plant model will consist of reasonably accurate subsystem models
-    		\item Subsystems can be used to create a HIL testbench
+    		\item Subsystem models must reach an accuracy level of at least 95\% 
+    		%\item Subsystems can be used to create a HIL testbench
     		\item Steering model can handle very small changes in steering angles
     \begin{itemize}
 		\item smooth out any non-linear discontinuities that would normally be measured by the steering motor, especially for small changes in the steering angle, depicted in \autoref{fig:nonlinGraph}.
@@ -698,29 +700,56 @@
 
 \begin{frame}{Transfer Function Modeling}{Steering System Simulation}
 	\begin{block}{Manual Mode}
+	\begin{itemize}
+			\item x-axis represents time in seconds 
+			\item y-axis represents the steering angle in radians
+			\item Model was able to achieve a best fit percentage of 83.25\% 
+ 		\end{itemize}
+ 		\begin{figure}
+    			\centering
+    			\includegraphics[width=0.4\textwidth]{figs/img/manualSteeringTransferFunctionModel}
+    			\caption{Output of Estimated By-Wire System Model}
+        		\label{fig:byWireSteerModel}
+ 		\end{figure}
+% 		\begin{figure}
+%		    \centering
+%		    \includegraphics[width=0.4\textwidth]{figs/img/byWireSteeringTransferFunctionModel}
+%		    \caption{Output of Estimated Manual System Model}
+%		        \label{fig:manualSteerModel}
+% 		\end{figure}
+  	\end{block}
+\end{frame}
+
+\begin{frame}{Transfer Function Modeling}{Steering System Simulation (Cont.)}
+	\begin{block}{By-Wire Mode}
+		\begin{itemize}
+			\item x-axis represents time in seconds 
+			\item y-axis represents the steering angle in radians
+			\item Model was able to achieve a best fit percentage of 86.87\% 
+ 		\end{itemize}
  		\begin{figure}
 		    \centering
 		    \includegraphics[width=0.4\textwidth]{figs/img/byWireSteeringTransferFunctionModel}
 		    \caption{Output of Estimated Manual System Model}
 		        \label{fig:manualSteerModel}
  		\end{figure}
-  	\end{block}
-\end{frame}
-
-\begin{frame}{Transfer Function Modeling}{Steering System Simulation (Cont.)}
-	\begin{block}{By-Wire Mode}
-		\begin{figure}
-    			\centering
-    			\includegraphics[width=0.4\textwidth]{figs/img/manualSteeringTransferFunctionModel}
-    			\caption{Output of Estimated By-Wire System Model}
-        		\label{fig:byWireSteerModel}
- 		\end{figure}
+%		\begin{figure}
+%    			\centering
+%    			\includegraphics[width=0.4\textwidth]{figs/img/manualSteeringTransferFunctionModel}
+%    			\caption{Output of Estimated By-Wire System Model}
+%        		\label{fig:byWireSteerModel}
+% 		\end{figure}
 	\end{block}
 \end{frame}
 
 %-------------------------
 \begin{frame}{Transfer Function Modeling}{Acceleration System Simulation}
 	\begin{block}{Manual Mode}
+		\begin{itemize}
+			\item x-axis represents time in seconds 
+			\item y-axis represents the acceleration pedal position as a percentage 
+			\item Model was able to achieve a best fit percentage of 98.3\% 
+ 		\end{itemize}
  		\begin{figure}
 	    		\centering
 	    		\includegraphics[width=0.4\textwidth]{figs/img/manualAccelTransferFunctionModel}
@@ -732,6 +761,11 @@
 
 \begin{frame}{Transfer Function Modeling}{Acceleration System Simulation (Cont.)}
 	\begin{block}{By-Wire Mode}
+			\begin{itemize}
+			\item x-axis represents time in seconds 
+			\item y-axis represents the acceleration pedal position as a percentage 
+			\item Model was able to achieve a best fit percentage of 97.69\% 
+ 		\end{itemize}
 		\begin{figure}
     			\centering
     			\includegraphics[width=0.4\textwidth]{figs/img/byWireAccelArxModel}
@@ -757,8 +791,9 @@
   		\begin{figure}[H]
   			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item Only a few samples are just outside of the accuracy requirements
-			\item Transfer function model did not meet the accuracy requirements
+			\item \begin{small} Only a few samples are just outside of the accuracy requirements \end{small}
+			%\item \begin{small} Transfer function model did not meet the accuracy requirements \end{small} 
+			\item \begin{small} y-axis of top graph represents the actual and desired steering angle in radians \end{small} 
 			\end{itemize} \end{minipage}\\[1em]
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput.jpg}\quad%
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/steeringNeuralNetworkTrainedOutput2.jpg}
@@ -771,9 +806,9 @@
   		\begin{figure}[H]
   			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelerationSimulinkBlock.jpg}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item All samples within 2\% of the actual output
-			\item Transfer function model did not have the same accuracy bounds
-			\item Fewer concerns about connections in Simulink
+			\item \begin{small} All samples within 2\% of the actual output \end{small}
+			\item \begin{small} y-axis of top graph represents the actual and desired acceleration pedal position as a percentage \end{small} 
+			\item \begin{small} Fewer concerns about connections in Simulink \end{small} 
 			\end{itemize} \end{minipage}\\[1em]
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput.jpg}\quad%
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/accelNeuralNetworkTrainedOutput2.jpg}
@@ -786,9 +821,9 @@
 \begin{figure}[H]
   			\centering \includegraphics[width=.48\linewidth , height=.37\textheight]{figs/img/brakeSimulinkBlock}\quad%
 			\centering \begin{minipage}[b][0.4\textheight][c]{.45\linewidth}  \begin{itemize}
-			\item With this model, the error is kept below 5\%
-			\item Able to easily track model performance
-			\item Provides better results than the transfer function model
+			\item \begin{small} With this model, the error is kept below 5\% \end{small} 
+			\item \begin{small} y-axis of top graph represents the actual and desired brake pedal position as a percentage \end{small}
+			\item \begin{small} Provides better results than the transfer function model \end{small} 
 			\end{itemize} \end{minipage}\\[1em]
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFig.jpg}\quad%
 			\centering \includegraphics[width=.45\linewidth , height=.37\textheight]{figs/img/brake_new_neuralNetworkFigLog2Test.jpg}
